@@ -1,3 +1,5 @@
-.tt{
-    background-color: aqua;
+
+.buttons .button {
+    margin-bottom: 0.5rem;
+    margin-right: 5px;
 }
