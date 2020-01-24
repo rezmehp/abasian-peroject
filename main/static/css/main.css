@@ -17,3 +17,16 @@
 .hero-background.is-transparent {
   opacity: 3.3;
 }
+
+.map-responsive{
+border:0;
+left:0;
+top:0;
+height:500px;
+width:100%;
+position:absolute;
+overflow:hidden;
+padding-bottom:3%;
+position:relative;
+}
+
