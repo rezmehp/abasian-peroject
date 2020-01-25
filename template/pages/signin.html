@@ -3,51 +3,49 @@
 {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
     <div class="hero-body">
         <div class="container">
             <section class="hero is-fullheight">
                 <h1 class="title has-text-centered">خوش آمدید</h1>
                 <div class="hero-body">
-                  <div class="container">
-                    <div class="columns is-centered">
-                      <div class="column is-5-tablet is-4-desktop is-4-widescreen">
-                        <form action="" class="box">
-                          <div class="field">
-                            <label for="" class="label">ایمیل آدرس</label>
-                            <div class="control has-icons-left">
-                              <input type="email" placeholder="ایمیل آدرس" class="input" required>
-                              <span class="icon is-small is-left">
+                    <div class="container">
+                        <div class="columns is-centered">
+                            <div class="column is-5-tablet is-4-desktop is-4-widescreen">
+                                <form action="" class="box">
+                                    <div class="field">
+                                        <label for="" class="label">ایمیل آدرس</label>
+                                        <div class="control has-icons-left">
+                                            <input type="email" placeholder="ایمیل آدرس" class="input" required>
+                                            <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                               </span>
-                            </div>
-                          </div>
-                          <div class="field">
-                            <label for="" class="label">رمز کاربری</label>
-                            <div class="control has-icons-left">
-                              <input type="password" placeholder="*******" class="input" required>
-                              <span class="icon is-small is-left">
+                                        </div>
+                                    </div>
+                                    <div class="field">
+                                        <label for="" class="label">رمز کاربری</label>
+                                        <div class="control has-icons-left">
+                                            <input type="password" placeholder="*******" class="input" required>
+                                            <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                               </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <a class="button is-success" href="{% url 'index' %}">
+                                            ورود
+                                        </a>
+                                    </div>
+                                </form>
                             </div>
-                          </div>
-            
-                          <div class="field">
-                            <button class="button is-success">
-                              ورود
-                            </button>
-                          </div>
-                        </form>
-                      </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </section>
+            </section>
         </div>
     </div>
 </div>
-
-
 
 
 {% endblock %}
