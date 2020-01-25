@@ -3,49 +3,50 @@
 {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
     <div class="hero-body">
         <div class="container">
-            <!--        تیتر بالای صفحه بعد از سکشن-->
-            <h1 class="title has-text-centered">ورود</h1>
-
-                <section class="section has-background-light">
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control is-expanded has-icons-right">
-                                    <input class="input" type="email" placeholder="ایمیل">
-                                    <span class="icon is-small is-right"><i class="fas fa-envelope"></i></span>
-                                </p>
+            <section class="hero is-fullheight">
+                <div class="hero-body">
+                  <div class="container">
+                    <div class="columns is-centered">
+                      <div class="column is-5-tablet is-4-desktop is-4-widescreen">
+                        <form action="" class="box">
+                          <div class="field">
+                            <label for="" class="label">ایمیل آدرس</label>
+                            <div class="control has-icons-left">
+                              <input type="email" placeholder="ایمیل آدرس" class="input" required>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-envelope"></i>
+                              </span>
                             </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control is-expanded  has-icons-right">
-                                    <input class="input" type="password" placeholder="رمز عبور">
-                                    <span class="icon is-small is-right"><i class="fas fa-key"></i></span>
-                                </p>
+                          </div>
+                          <div class="field">
+                            <label for="" class="label">رمز کاربری</label>
+                            <div class="control has-icons-left">
+                              <input type="password" placeholder="*******" class="input" required>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                              </span>
                             </div>
-                        </div>
+                          </div>
+            
+                          <div class="field">
+                            <button class="button is-success">
+                              ورود
+                            </button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <button class="button is-primary">
-                                        ورود
-                                    </button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
+                  </div>
+                </div>
+              </section>
         </div>
     </div>
 </div>
+
+
+
 
 {% endblock %}
