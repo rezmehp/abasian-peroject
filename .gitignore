@@ -1,6 +1,10 @@
 .vscode
 vscode
 venv
+./venv
+.venv
 .DS_Store
 .idea
 env
+.env
+./env
