@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background">
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <div class="hero-body">
+        <div class="container">
+            <section class="hero is-fullheight">
+                <h1 class="title has-text-centered">نتیجه آزمون</h1>
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-primary is-centered">
+                            <div class="column   is-8-widescreen">
+                                <div class="box field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            عنوان آزمون
+                                        </div>
+                                        <div class="field">
+                                            نمره از 100 -> 85
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="" class="box">
+                                    <div class="box field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                تعداد پاسخ درست - 17
+                                            </div>
+                                            <div class="field">
+                                                تعداد پاسخ نادرست - 2
+                                            </div>
+                                            <div class="field">
+                                                تعداد سوال بی پاسخ - 1
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="field">
+                                            <a class="button is-warning" href="{% url 'exam' %}">
+                                                بازگشت به صفحه آزمون ها
+                                            </a>
+                                    </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

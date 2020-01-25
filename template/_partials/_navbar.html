@@ -1,6 +1,6 @@
 {% load static %}
 
-<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
            data-target="navbarBasicExample">
@@ -22,9 +22,6 @@
             <a class="navbar-item is-link is-right" href="{% url 'index' %}">
                 <span class="fas fa-home"></span>&nbsp;صفحه اصلی
             </a>
-            <a class="navbar-item">
-                <span class="fas fa-users"></span>&nbsp; مشاوره
-            </a>
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">
                     <span></span>&nbsp; بسته اموزشی
@@ -42,8 +39,7 @@
                     </a>
                 </div>
             </div>
-
-            <a class="navbar-item">
+            <a class="navbar-item is-link is-right" href="{% url 'exam' %}">
                 <span class="far fa-edit"></span>&nbsp; آزمون
             </a>
 

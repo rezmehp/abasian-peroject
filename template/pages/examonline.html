@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background">
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <div class="hero-body">
+        <div class="container">
+            <section class="hero is-fullheight">
+                <h1 class="title has-text-centered">آزمون آنلاین</h1>
+                <div class="hero-body">
+                    <div class="container">
+                        <div class="columns is-primary is-centered">
+                            <div class="column  is-8-widescreen">
+                                <div class="box field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            عنوان آزمون
+                                        </div>
+                                        <div class="field">
+                                            زمان باقی مانده
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="" class="box">
+                                    <div class="box field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                فایل متن
+                                            </div>
+                                            <div class="field">
+                                                فایل عکس
+                                            </div>
+                                            <div class="field">
+                                                فایل صوت
+                                            </div>
+                                            <div class="field">
+                                                فایل ویدیو
+                                            </div>
+                                            <div class="field">
+                                                پاسخ
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="field is-horizontal">
+                                            <div class="field-body">
+                                                <div class="field">
+                                                    <label for="" class="label">سوال 1 - ضرب عدد 2 در 2 چند می
+                                                        شود؟ </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="field is-horizontal">
+                                            <div class="field">
+                                                <input type="radio" name="test" value="1"> <b>الف - </b>عددی بزرگ تر
+                                                از 5
+                                            </div>
+                                        </div>
+                                        <div class="field is-horizontal">
+                                            <div class="field">
+                                                <input type="radio" name="test" value="1"> <b>ب - </b>4
+                                            </div>
+                                        </div>
+                                        <div class="field is-horizontal">
+                                            <div class="field">
+                                                <input type="radio" name="test" value="1"> <b>ج - </b>عددی کوچکتر از
+                                                3
+                                            </div>
+                                        </div>
+                                        <div class="field is-horizontal">
+                                            <div class="field">
+                                                <input type="radio" name="test" value="1"> <b>د - </b>جواب نامعلوم
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <nav class="pagination is-centered box" role="navigation" aria-label="pagination">
+                                        <ul class="pagination-list">
+                                            <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
+                                            <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
+                                        </ul>
+                                    </nav>
+                                    <div class="field">
+                                            <a class="button is-warning" href="{% url 'examresault' %}">
+                                                 پایان آزمون
+                                            </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </section>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}

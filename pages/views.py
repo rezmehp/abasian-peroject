@@ -20,6 +20,17 @@ def signup(request):
     return render(request, 'pages/signup.html')
 
 
-
 def signin(request):
     return render(request, 'pages/signin.html')
+
+
+def exam(request):
+    return render(request, 'pages/exam.html')
+
+
+def examonline(request):
+    return render(request, 'pages/examonline.html')
+
+
+def examresault(request):
+    return render(request, 'pages/examresault.html')

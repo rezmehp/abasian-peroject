@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background">
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <div class="hero-body">
+        <div class="container">
+            <!--        تیتر بالای صفحه بعد از سکشن-->
+            <h1 class="title has-text-centered">آزمون</h1>
+            <!--        عکس تیتر بالای صفحه-->
+            <figure class="image is-3by1">
+                <img src="/static/images/pic02.jpg">
+            </figure>
+
+            <div class="box">
+                <section class="section has-background-light">
+                    <div class="container ">
+                        <!--        تیتر توضیحات زیر عکس اول درباره ما-->
+                        <h1 class="title has-text-dark">توضیحات ثبت نام</h1><br>
+                        <!--            توضحات زیر عکس اول درباره ما-->
+                        <h2 class="subtitle has-text-dark has-text-justified">
+
+
+                            1. ثبت نام به صورت حضوری
+                            شما میتوانید برای ثبت‌نام آزمون‌های آزمایشی (حضوري و مکاتبه‌اي)، به دفاتر مرکزی تهران و یا
+                            نمایندگی شهرتان در سراسر کشور مراجعه فرمایید.
+
+                            2. ثبت نام غیرحضوری و تلفنی
+                            حضور داوطلب در مرکز آموزشي ضروری نیست و شما می توانید جهت ثبت نام غیرحضوری، پس از تماس با
+                            موسسه
+                            و انجام پیش ثبت نام، هزینه را به
+                            روش زیر واریز نمایید:
+
+
+                            - مبلغ اعلام شده را به شماره حساب 1279912017644 یا شماره کارت 9657- 0217- 1610- 5054 بانک
+                            صادرات، در وجه دکتر احمد خلیلی، واريز کرده و فيش بانکي آن را همراه با ذکر: "نام و
+                            نام‌خانوادگي،
+                            مقطع و رشته آزمون و شماره تلفن همراه" به پست الکترونیکی واحد آزمون ارسالفرمائيد.
+
+
+                        </h2>
+                    </div>
+                </section>
+                <section class="section has-background-light">
+                    <div class="container ">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                <select>
+                                                    <option selected>مدرک تحصیلی</option>
+                                                    <option>دیپلم</option>
+                                                    <option>فوق دیپلم</option>
+                                                    <option>لیسانس</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>رشته تحصیلی</option>
+                                                        <option>ریاضی</option>
+                                                        <option>تجربی</option>
+                                                        <option>علوم انسانی</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>رشته تخصصی</option>
+                                                        <option>ژنتیک پزشکی</option>
+                                                        <option>بیوشیمی بالینی</option>
+                                                        <option>بیوتکنولوژی پزشکی</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>آزمون</option>
+                                                        <option>پرتوهای بیولوژیکی</option>
+                                                        <option>باکتری شناسی</option>
+                                                        <option>انگل شناسی</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <label class="label is-primary has-text-right">هزینه ثبت نام</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary">
+                                        ثبت نام در آزمون
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+
+            <section class="section has-background-light">
+                <div class="container ">
+                    <h1 class="title has-text-dark">آزمون های ثبت نام شده</h1><br>
+                    <table class="table is-fullwidth">
+                        <thead>
+                        <tr>
+                            <th class="has-text-right"><abbr title="Position">ردیف</abbr></th>
+                            <th class="has-text-right">نام آزمون</th>
+                            <th class="has-text-right"><abbr title="Played">تاریخ آزمون</abbr></th>
+                            <th class="has-text-right"><abbr title="Won">مدت زمان آزمون</abbr></th>
+                            <th class="has-text-right"><abbr title="Drawn">ورود به آزمون</abbr></th>
+                            <th class="has-text-right"><abbr title="Lost">سرفصل آزمون</abbr></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="has-text-right">1</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                                                          title="Leicester City F.C.">Leicester
+                                City</a> <strong>(C)</strong>
+                            </td>
+                            <td class="has-text-right">12 خرداد 1398</td>
+                            <td class="has-text-right">23 دقیقه</td>
+                            <td class="has-text-right">
+                                <a href="{% url 'examonline' %}">اینجا کلیک کنید</a>
+                            </td>
+                            <td class="has-text-right">ریاضی مهندسی</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">2</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Arsenal_F.C."
+                                                          title="Arsenal F.C.">Arsenal</a>
+                            </td>
+                            <td class="has-text-right">12 خرداد 1398</td>
+                            <td class="has-text-right">23 دقیقه</td>
+                            <td class="has-text-right">
+                                <a href="{% url 'examonline' %}">اینجا کلیک کنید</a>
+                            </td>
+                            <td class="has-text-right">ریاضی مهندسی</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">3</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C."
+                                                          title="Tottenham Hotspur F.C.">Tottenham
+                                Hotspur</a></td>
+                            <td class="has-text-right">12 خرداد 1398</td>
+                            <td class="has-text-right">23 دقیقه</td>
+                            <td class="has-text-right">
+                                <a href="{% url 'examonline' %}">اینجا کلیک کنید</a>
+                            </td>
+                            <td class="has-text-right">ریاضی مهندسی</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">4</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C."
+                                                          title="Manchester City F.C.">Manchester
+                                City</a></td>
+                            <td class="has-text-right">12 خرداد 1398</td>
+                            <td class="has-text-right">23 دقیقه</td>
+                            <td class="has-text-right">
+                                <a href="{% url 'examonline' %}">اینجا کلیک کنید</a>
+                            </td>
+                            <td class="has-text-right">ریاضی مهندسی</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">5</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C."
+                                                          title="Manchester United F.C.">Manchester
+                                United</a></td>
+                            <td class="has-text-right">12 خرداد 1398</td>
+                            <td class="has-text-right">23 دقیقه</td>
+                            <td class="has-text-right">
+                                <a href="{% url 'examonline' %}">اینجا کلیک کنید</a>
+                            </td>
+                            <td class="has-text-right">ریاضی مهندسی</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <section class="section has-background-light">
+                <div class="container ">
+                    <h1 class="title has-text-dark">آزمون های گذرانده شده</h1><br>
+                    <table class="table is-fullwidth">
+                        <thead>
+                        <tr>
+                            <th class="has-text-right"><abbr title="Position">ردیف</abbr></th>
+                            <th class="has-text-right">نام آزمون</th>
+                            <th class="has-text-right"><abbr title="Played">نمره از 100</abbr></th>
+                            <th class="has-text-right"><abbr title="Won">تعداد پاسخ صحیح</abbr></th>
+                            <th class="has-text-right"><abbr title="Drawn">تعداد پاسخ غلت</abbr></th>
+                            <th class="has-text-right"><abbr title="Lost">تعداد سوال بی پاسخ</abbr></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th class="has-text-right">1</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Leicester_City_F.C."
+                                                          title="Leicester City F.C.">Leicester
+                                City</a> <strong>(C)</strong>
+                            </td>
+                            <td class="has-text-right">38</td>
+                            <td class="has-text-right">23</td>
+                            <td class="has-text-right">12</td>
+                            <td class="has-text-right">3</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">2</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Arsenal_F.C."
+                                                          title="Arsenal F.C.">Arsenal</a>
+                            </td>
+                            <td class="has-text-right">38</td>
+                            <td class="has-text-right">20</td>
+                            <td class="has-text-right">11</td>
+                            <td class="has-text-right">7</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">3</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Tottenham_Hotspur_F.C."
+                                                          title="Tottenham Hotspur F.C.">Tottenham
+                                Hotspur</a></td>
+                            <td class="has-text-right">38</td>
+                            <td class="has-text-right">19</td>
+                            <td class="has-text-right">13</td>
+                            <td class="has-text-right">6</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">4</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Manchester_City_F.C."
+                                                          title="Manchester City F.C.">Manchester
+                                City</a></td>
+                            <td class="has-text-right">38</td>
+                            <td class="has-text-right">19</td>
+                            <td class="has-text-right">9</td>
+                            <td class="has-text-right">10</td>
+                        </tr>
+                        <tr>
+                            <th class="has-text-right">5</th>
+                            <td class="has-text-right"><a href="https://en.wikipedia.org/wiki/Manchester_United_F.C."
+                                                          title="Manchester United F.C.">Manchester
+                                United</a></td>
+                            <td class="has-text-right">38</td>
+                            <td class="has-text-right">19</td>
+                            <td class="has-text-right">9</td>
+                            <td class="has-text-right">10</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+
+            <section class="section has-background-dark">
+                <div class="container">
+
+                    <div class="columns is-desktop">
+                        تماس با بخش آزمون
+
+
+                        تلفن دفتر آزمون:
+                        66568621 -021 (داخلي 4)
+
+                        پست الکترونيک:
+                        khalili.azmoon@gmail.com
+
+                        تلفن:
+                        021-66944063
+
+                        ارتباط پيامکي و تلگرام:
+                        09308989724
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
