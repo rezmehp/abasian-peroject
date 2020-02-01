@@ -21,7 +21,7 @@
                                     </div>
                                 </div>
                                 <form action="" class="box  has-background-dark">
-                                    <div class="box">
+                                    <div class="box" id="changeQC">
                                         <div class="box field is-horizontal">
                                             <div class="field-body">
                                                 <div class="field button">
@@ -52,30 +52,32 @@
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test" value="1"> <b>الف - </b>عددی بزرگ تر
+                                                    <input type="radio" name="test" value="1" onclick="qc()"> <b>الف
+                                                    - </b>عددی بزرگ تر
                                                     از 5
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
+
                                                 <div class="field">
-                                                    <input type="radio" name="test" value="1"> <b>ب - </b>4
+                                                    <input type="radio" name="test" value="1" onclick="qc()"> <b>ب - </b>4
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test" value="1"> <b>ج - </b>عددی کوچکتر از
+                                                    <input type="radio" name="test" value="1"  onclick="qc()"> <b>ج - </b>عددی کوچکتر از
                                                     3
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test" value="1"> <b>د - </b>جواب نامعلوم
+                                                    <input type="radio" name="test" value="1"  onclick="qc()"> <b>د - </b>جواب نامعلوم
                                                 </div>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="box">
+                                    <div class="box" id="changeQC2">
                                         <div class="box field is-horizontal">
                                             <div class="field-body">
                                                 <div class="field button">
@@ -106,35 +108,37 @@
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test2" value="1"> <b>الف - </b>عددی بزرگ تر
+                                                    <input type="radio" name="test2" value="1"  onclick="qc2()"> <b>الف - </b>عددی بزرگ
+                                                    تر
                                                     از 5
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test2" value="1"> <b>ب - </b>4
+                                                    <input type="radio" name="test2" value="1" onclick="qc2()"> <b>ب - </b>4
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test2" value="1"> <b>ج - </b>عددی کوچکتر از
+                                                    <input type="radio" name="test2" value="1" onclick="qc2()"> <b>ج - </b>عددی کوچکتر
+                                                    از
                                                     3
                                                 </div>
                                             </div>
                                             <div class="field is-horizontal">
                                                 <div class="field">
-                                                    <input type="radio" name="test2" value="1"> <b>د - </b>جواب نامعلوم
+                                                    <input type="radio" name="test2" value="1" onclick="qc2()"> <b>د - </b>جواب نامعلوم
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-<!--                                    <nav class="pagination is-centered box" role="navigation"-->
-<!--                                         aria-label="pagination">-->
-<!--                                        <ul class="pagination-list">-->
-<!--                                            <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>-->
-<!--                                            <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>-->
-<!--                                        </ul>-->
-<!--                                    </nav>-->
+                                    <!--                                    <nav class="pagination is-centered box" role="navigation"-->
+                                    <!--                                         aria-label="pagination">-->
+                                    <!--                                        <ul class="pagination-list">-->
+                                    <!--                                            <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>-->
+                                    <!--                                            <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>-->
+                                    <!--                                        </ul>-->
+                                    <!--                                    </nav>-->
                                     <div class="field">
                                         <a class="button is-warning" href="{% url 'examresault' %}">
                                             پایان آزمون
@@ -149,7 +153,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!--عکس-->
 <div id="ex1" class="modal">
     <div class="hero-body">
@@ -222,5 +226,19 @@
     </div>
 </div>
 
+
+<script>function qc(){
+var changeQC=document.getElementById('changeQC');
+changeQC.style.backgroundColor='yellow';
+}
+
+</script>
+
+<script>function qc2(){
+var changeQC=document.getElementById('changeQC2');
+changeQC.style.backgroundColor='yellow';
+}
+
+</script>
 
 {% endblock %}

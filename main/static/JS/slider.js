@@ -28,3 +28,11 @@ function audioStop(){
 var audio=document.getElementById('audio');
 audio.pause();
 }
+
+
+function qc(){
+var changeQC=document.getElementById('changeQC');
+changeQC.style.backgroundColor='red';
+}
+
+

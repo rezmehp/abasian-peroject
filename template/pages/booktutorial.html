@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background">
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <div class="hero-body">
+        <section class="container">
+            <figure class="image is-3by1">
+                <img src="/static/images/pic02.jpg">
+            </figure>
+            <div class="box">
+                <section class="section has-background-light">
+                    <!--        تیتر توضیحات زیر عکس اول درباره ما-->
+                    <h1 class="title has-text-dark">جستجوی کتاب</h1>
+
+                </section>
+                <section class="section has-background-light">
+                    <div class="container ">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                <select>
+                                                    <option selected>مقطع تحصیلی</option>
+                                                    <option>دیپلم</option>
+                                                    <option>فوق دیپلم</option>
+                                                    <option>لیسانس</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>رشته تحصیلی</option>
+                                                        <option>ریاضی</option>
+                                                        <option>تجربی</option>
+                                                        <option>علوم انسانی</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>درس مورد نظر</option>
+                                                        <option>ژنتیک پزشکی</option>
+                                                        <option>بیوشیمی بالینی</option>
+                                                        <option>بیوتکنولوژی پزشکی</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>مدرسین</option>
+                                                        <option>مهدی زهرایی</option>
+                                                        <option>رضا حسینی</option>
+                                                        <option>استاد عباسیان</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        <option selected>نوع هزینه</option>
+                                                        <option>رایگان</option>
+                                                        <option>دارای هزینه</option>
+                                                        <option></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right  is-fullwidth">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <button class="button is-primary">
+                                        جستجوی کتاب
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <section class="section has-background-light">
+                <div class="container ">
+                    <a href="{% url 'showvideotutorial' %}" class="columns box">
+                        <div class="column is-one-quarter">
+                            <figure class="image">
+                                <img src="static/images/pic08.jpg" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-vcentered">
+                                    <strong>آموزش ریاضی</strong><br>
+                                    <strong>استاد مهدی زهرایی</strong><br>
+                                    <small>11 ساعت آموزش</small>
+                                    <br>
+                                    در گذشته، فرض بر این بود که ریاضیات برای گروه خاصی از افراد جامعه است و
+                                    ریاضیات را همه نمی توانند یاد بگیرند. با تغییر هدف آموزش ریاضی، ضرورت آموزش
+                                    ریاضی برای همگان درک شد. برای کمک به درک بهتر از مسائل، باید ریاضیات به صورت
+                                    یک کل، آموزش داده شود. متأسفانه در دروس آکادمیک، ریاضیات را به صورت یک جزء
+                                    به ما آموخته اند و صورت کلی از ریاضی در ذهن اکثر دانشجویان نقش نبسته است.
+                                    بعد از یادگیری مفاهیم پایه در این آموزش می توان به یادگیری مفاهیم موجود در
+                                    ریاضی ۱ مانند حد و پیوستگی، مشتق، انتگرال، دنباله و سری و اعداد مختلط
+                                    پرداخت. این آموزش برای دانشجویان پیام نور نیز مناسب ارزیابی می شود.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <br>
+                    <a href="{% url 'showvideotutorial' %}" class="columns box">
+                        <div class="column is-one-quarter">
+                            <figure class="image">
+                                <img src="static/images/pic08.jpg" alt="Image">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-vcentered">
+                                    <strong>آموزش ریاضی</strong><br>
+                                    <strong>استاد مهدی زهرایی</strong><br>
+                                    <small>11 ساعت آموزش</small>
+                                    <br>
+                                    در گذشته، فرض بر این بود که ریاضیات برای گروه خاصی از افراد جامعه است و
+                                    ریاضیات را همه نمی توانند یاد بگیرند. با تغییر هدف آموزش ریاضی، ضرورت آموزش
+                                    ریاضی برای همگان درک شد. برای کمک به درک بهتر از مسائل، باید ریاضیات به صورت
+                                    یک کل، آموزش داده شود. متأسفانه در دروس آکادمیک، ریاضیات را به صورت یک جزء
+                                    به ما آموخته اند و صورت کلی از ریاضی در ذهن اکثر دانشجویان نقش نبسته است.
+                                    بعد از یادگیری مفاهیم پایه در این آموزش می توان به یادگیری مفاهیم موجود در
+                                    ریاضی ۱ مانند حد و پیوستگی، مشتق، انتگرال، دنباله و سری و اعداد مختلط
+                                    پرداخت. این آموزش برای دانشجویان پیام نور نیز مناسب ارزیابی می شود.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">کتابهای پیشنهادی</h3>
+                <div class="columns is-multiline">
+
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="static/images/pic08.jpg" alt="Image">
+                            <p class="has-text-centered">درس ریاضی</p>
+                            <p class="has-text-centered">استاد زهرایی</p>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </div>
+</div>
+
+{% endblock %}

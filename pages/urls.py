@@ -10,5 +10,8 @@ urlpatterns = [
     path('exam', views.exam, name='exam'),
     path('examonline', views.examonline, name='examonline'),
     path('examresault', views.examresault, name='examresault'),
-
+    path('showvideotutorial', views.showvideotutorial, name='showvideotutorial'),
+    path('videotutorial', views.videotutorial, name='videotutorial'),
+    path('filetutorial', views.filetutorial, name='filetutorial'),
+    path('bookotutorial', views.booktutorial, name='booktutorial'),
 ]

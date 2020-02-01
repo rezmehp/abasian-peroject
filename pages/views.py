@@ -34,3 +34,19 @@ def examonline(request):
 
 def examresault(request):
     return render(request, 'pages/examresault.html')
+
+
+def showvideotutorial(request):
+    return render(request, 'pages/showvideotutorial.html')
+
+
+def videotutorial(request):
+    return render(request, 'pages/videotutorial.html')
+
+
+def filetutorial(request):
+    return render(request, 'pages/filetutorial.html')
+
+
+def booktutorial(request):
+    return render(request, 'pages/booktutorial.html')
