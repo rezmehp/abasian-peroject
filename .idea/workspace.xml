@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84341e95-26a2-41f0-b685-5d1e8e3b346e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/abasian-peroject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/REZA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/JS/slider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main/static/css/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/JS/slider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/_partials/slider.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/JS/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/JS/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/JS/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/JS/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/examonline.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/examonline.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/examresault.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/examresault.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +77,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -174,7 +158,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,13 +270,20 @@
       <option name="project" value="LOCAL" />
       <updated>1580157301790</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="تنظیمات نتیجه امتحان ها">
+      <created>1580416393523</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1580416393523</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24776785" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24776785" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -304,8 +294,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49627978" visible="true" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="9" sideWeight="0.5037202" side_tool="true" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.4955357" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50446427" side_tool="true" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -325,7 +315,8 @@
     <MESSAGE value="کامل شدن بخش آزمون ها" />
     <MESSAGE value="کامل شدن بخش آزمون ها و مسیر دهی های اولیه" />
     <MESSAGE value="تنظیمات نمایش آنلاین فایل های مربوط به سوالات" />
-    <option name="LAST_COMMIT_MESSAGE" value="تنظیمات نمایش آنلاین فایل های مربوط به سوالات" />
+    <MESSAGE value="تنظیمات نتیجه امتحان ها" />
+    <option name="LAST_COMMIT_MESSAGE" value="تنظیمات نتیجه امتحان ها" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="editorHistoryManager">
