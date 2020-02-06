@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="84341e95-26a2-41f0-b685-5d1e8e3b346e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/template/pages/booktutorial.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/pages/filetutorial.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/pages/showvideotutorial.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/pages/videotutorial.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/pages/showbooktutorial.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/pages/showfiletutorial.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/static/JS/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/JS/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/static/JS/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/static/JS/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/JS/slider.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/JS/slider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/slider.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/slider.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/_partials/_navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/_partials/_navbar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/pages/examonline.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/examonline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/pages/booktutorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/booktutorial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/pages/filetutorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/filetutorial.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/pages/showvideotutorial.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/pages/showvideotutorial.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +24,90 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/template/pages/booktutorial.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/template/pages/showfiletutorial.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+            <state relative-caret-position="310">
+              <caret line="237" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="237" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#1219#1225#0" expanded="true" />
+                <element signature="e#1550#1556#0" expanded="true" />
+                <element signature="e#1881#1887#0" expanded="true" />
+                <element signature="e#2212#2218#0" expanded="true" />
+                <element signature="e#2545#2551#0" expanded="true" />
+                <element signature="e#2877#2883#0" expanded="true" />
+                <element signature="e#3208#3214#0" expanded="true" />
+                <element signature="e#3539#3545#0" expanded="true" />
+                <element signature="e#3870#3876#0" expanded="true" />
+                <element signature="e#4201#4207#0" expanded="true" />
+                <element signature="e#4534#4540#0" expanded="true" />
+                <element signature="e#4866#4872#0" expanded="true" />
+                <element signature="e#5269#5275#0" expanded="true" />
+                <element signature="e#5606#5612#0" expanded="true" />
+                <element signature="e#5943#5949#0" expanded="true" />
+                <element signature="e#6280#6286#0" expanded="true" />
+                <element signature="e#6619#6625#0" expanded="true" />
+                <element signature="e#6957#6963#0" expanded="true" />
+                <element signature="e#7294#7300#0" expanded="true" />
+                <element signature="e#7631#7637#0" expanded="true" />
+                <element signature="e#7968#7974#0" expanded="true" />
+                <element signature="e#8305#8311#0" expanded="true" />
+                <element signature="e#8644#8650#0" expanded="true" />
+                <element signature="e#8982#8988#0" expanded="true" />
+                <element signature="n#section#1;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/template/pages/showbooktutorial.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="328">
+              <caret line="238" selection-start-line="238" selection-end-line="238" />
+              <folding>
+                <element signature="n#section#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#nav#0;n#section#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="e#1192#1198#0" expanded="true" />
+                <element signature="e#1529#1535#0" expanded="true" />
+                <element signature="e#1866#1872#0" expanded="true" />
+                <element signature="e#2203#2209#0" expanded="true" />
+                <element signature="e#2542#2548#0" expanded="true" />
+                <element signature="e#2880#2886#0" expanded="true" />
+                <element signature="e#3217#3223#0" expanded="true" />
+                <element signature="e#3554#3560#0" expanded="true" />
+                <element signature="e#3891#3897#0" expanded="true" />
+                <element signature="e#4228#4234#0" expanded="true" />
+                <element signature="e#4567#4573#0" expanded="true" />
+                <element signature="e#4905#4911#0" expanded="true" />
+                <element signature="e#5242#5248#0" expanded="true" />
+                <element signature="e#5579#5585#0" expanded="true" />
+                <element signature="e#5916#5922#0" expanded="true" />
+                <element signature="e#6253#6259#0" expanded="true" />
+                <element signature="e#6592#6598#0" expanded="true" />
+                <element signature="e#6930#6936#0" expanded="true" />
+                <element signature="e#7267#7273#0" expanded="true" />
+                <element signature="e#7604#7610#0" expanded="true" />
+                <element signature="e#7941#7947#0" expanded="true" />
+                <element signature="e#8278#8284#0" expanded="true" />
+                <element signature="e#8617#8623#0" expanded="true" />
+                <element signature="e#8955#8961#0" expanded="true" />
+                <element signature="n#section#1;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,9 +120,9 @@
       <find>fil</find>
       <find>field-body</find>
       <find>media</find>
-      <find>media</find>
       <find>navbar</find>
       <find>.navbar.is-dark</find>
+      <find>column</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -61,23 +141,27 @@
         <option value="$PROJECT_DIR$/template/pages/signin.html" />
         <option value="$PROJECT_DIR$/template/pages/signup.html" />
         <option value="$PROJECT_DIR$/static/JS/main.js" />
-        <option value="$PROJECT_DIR$/main/static/JS/main.js" />
         <option value="$PROJECT_DIR$/template/_partials/slider.html" />
         <option value="$PROJECT_DIR$/main/static/css/slider.css" />
         <option value="$PROJECT_DIR$/template/base.html" />
         <option value="$PROJECT_DIR$/main/static/css/main.css" />
-        <option value="$PROJECT_DIR$/static/css/main.css" />
         <option value="$PROJECT_DIR$/template/pages/examresault.html" />
         <option value="$PROJECT_DIR$/main/static/JS/slider.js" />
-        <option value="$PROJECT_DIR$/template/pages/showvideotutorial.html" />
         <option value="$PROJECT_DIR$/template/pages/examonline.html" />
         <option value="$PROJECT_DIR$/template/pages/about.html" />
         <option value="$PROJECT_DIR$/template/pages/videotutorial.html" />
+        <option value="$PROJECT_DIR$/template/_partials/_navbar.html" />
+        <option value="$PROJECT_DIR$/static/css/main.css" />
+        <option value="$PROJECT_DIR$/static/css/slider.css" />
+        <option value="$PROJECT_DIR$/static/JS/slider.js" />
+        <option value="$PROJECT_DIR$/main/static/JS/main.js" />
+        <option value="$PROJECT_DIR$/template/pages/showvideotutorial.html" />
         <option value="$PROJECT_DIR$/pages/urls.py" />
         <option value="$PROJECT_DIR$/pages/views.py" />
-        <option value="$PROJECT_DIR$/template/_partials/_navbar.html" />
         <option value="$PROJECT_DIR$/template/pages/filetutorial.html" />
         <option value="$PROJECT_DIR$/template/pages/booktutorial.html" />
+        <option value="$PROJECT_DIR$/template/pages/showfiletutorial.html" />
+        <option value="$PROJECT_DIR$/template/pages/showbooktutorial.html" />
       </list>
     </option>
   </component>
@@ -145,6 +229,12 @@
               <item name="abasian-peroject" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="abasian-peroject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="abasian-peroject" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="JS" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="abasian-peroject" type="b2602c69:ProjectViewProjectNode" />
@@ -299,13 +389,28 @@
       <option name="project" value="LOCAL" />
       <updated>1580561400269</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="تنظیمات نتیجه امتحان ها">
+      <created>1580580042838</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1580580042838</updated>
+    </task>
+    <task id="LOCAL-00015" summary="تمام شدن صفحات آموزش">
+      <created>1580580115065</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1580580115065</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24776785" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24776785" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -316,8 +421,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.4940476" visible="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50595236" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49330357" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5066964" side_tool="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49925596" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -338,7 +443,9 @@
     <MESSAGE value="کامل شدن بخش آزمون ها و مسیر دهی های اولیه" />
     <MESSAGE value="تنظیمات نمایش آنلاین فایل های مربوط به سوالات" />
     <MESSAGE value="تنظیمات نتیجه امتحان ها" />
-    <option name="LAST_COMMIT_MESSAGE" value="تنظیمات نتیجه امتحان ها" />
+    <MESSAGE value="تمام شدن صفحات آموزش" />
+    <MESSAGE value="تمام شدن تمام صفحات بجز صفحه اصلی و فوتر" />
+    <option name="LAST_COMMIT_MESSAGE" value="تمام شدن تمام صفحات بجز صفحه اصلی و فوتر" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -356,13 +463,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="121" column="18" selection-start-line="121" selection-start-column="18" selection-end-line="121" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/bulma.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="6601" column="1" lean-forward="true" selection-start-line="6601" selection-start-column="1" selection-end-line="6601" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -418,27 +518,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/slider.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/static/JS/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -486,31 +569,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/pages/showvideotutorial.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="138" column="14" selection-start-line="138" selection-start-column="14" selection-end-line="138" selection-end-column="14" />
-          <folding>
-            <element signature="n#div#0;n#section#1;n#div#0;n#div#0;n#div#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/pages/exam.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="139" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="139" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/template/pages/examonline.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="164" column="25" lean-forward="true" selection-start-line="164" selection-start-column="25" selection-end-line="164" selection-end-column="44" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#2;n#div#1;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -524,48 +586,187 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/views.py">
+    <entry file="file://$PROJECT_DIR$/template/_partials/_navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
+        <state relative-caret-position="238">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/pages/examonline.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="185" column="20" lean-forward="true" selection-start-line="185" selection-start-column="20" selection-end-line="187" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#1;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#2;n#div#1;n#a#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/slider.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/JS/slider.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/static/JS/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/pages/videotutorial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" selection-end-line="269" selection-end-column="14" />
+        <state relative-caret-position="243">
+          <caret line="264" column="22" selection-start-line="196" selection-start-column="11" selection-end-line="264" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/bulma.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="118">
+          <caret line="8255" column="9" selection-start-line="8255" selection-start-column="3" selection-end-line="8255" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/_partials/_navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="36" column="62" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template/pages/filetutorial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="132" column="51" selection-start-line="132" selection-start-column="51" selection-end-line="132" selection-end-column="51" />
+        <state relative-caret-position="328">
+          <caret line="269" column="14" lean-forward="true" selection-start-line="269" selection-start-column="14" selection-end-line="269" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/template/pages/booktutorial.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="63" selection-start-line="14" selection-start-column="63" selection-end-line="14" selection-end-column="63" />
+        <state relative-caret-position="22">
+          <caret line="120" lean-forward="true" selection-start-line="120" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/pages/showvideotutorial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="194" column="58" selection-end-line="453" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/pages/showfiletutorial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="237" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="237" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#nav#0;n#div#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1219#1225#0" expanded="true" />
+            <element signature="e#1550#1556#0" expanded="true" />
+            <element signature="e#1881#1887#0" expanded="true" />
+            <element signature="e#2212#2218#0" expanded="true" />
+            <element signature="e#2545#2551#0" expanded="true" />
+            <element signature="e#2877#2883#0" expanded="true" />
+            <element signature="e#3208#3214#0" expanded="true" />
+            <element signature="e#3539#3545#0" expanded="true" />
+            <element signature="e#3870#3876#0" expanded="true" />
+            <element signature="e#4201#4207#0" expanded="true" />
+            <element signature="e#4534#4540#0" expanded="true" />
+            <element signature="e#4866#4872#0" expanded="true" />
+            <element signature="e#5269#5275#0" expanded="true" />
+            <element signature="e#5606#5612#0" expanded="true" />
+            <element signature="e#5943#5949#0" expanded="true" />
+            <element signature="e#6280#6286#0" expanded="true" />
+            <element signature="e#6619#6625#0" expanded="true" />
+            <element signature="e#6957#6963#0" expanded="true" />
+            <element signature="e#7294#7300#0" expanded="true" />
+            <element signature="e#7631#7637#0" expanded="true" />
+            <element signature="e#7968#7974#0" expanded="true" />
+            <element signature="e#8305#8311#0" expanded="true" />
+            <element signature="e#8644#8650#0" expanded="true" />
+            <element signature="e#8982#8988#0" expanded="true" />
+            <element signature="n#section#1;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template/pages/showbooktutorial.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="238" selection-start-line="238" selection-end-line="238" />
+          <folding>
+            <element signature="n#section#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#nav#0;n#section#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1192#1198#0" expanded="true" />
+            <element signature="e#1529#1535#0" expanded="true" />
+            <element signature="e#1866#1872#0" expanded="true" />
+            <element signature="e#2203#2209#0" expanded="true" />
+            <element signature="e#2542#2548#0" expanded="true" />
+            <element signature="e#2880#2886#0" expanded="true" />
+            <element signature="e#3217#3223#0" expanded="true" />
+            <element signature="e#3554#3560#0" expanded="true" />
+            <element signature="e#3891#3897#0" expanded="true" />
+            <element signature="e#4228#4234#0" expanded="true" />
+            <element signature="e#4567#4573#0" expanded="true" />
+            <element signature="e#4905#4911#0" expanded="true" />
+            <element signature="e#5242#5248#0" expanded="true" />
+            <element signature="e#5579#5585#0" expanded="true" />
+            <element signature="e#5916#5922#0" expanded="true" />
+            <element signature="e#6253#6259#0" expanded="true" />
+            <element signature="e#6592#6598#0" expanded="true" />
+            <element signature="e#6930#6936#0" expanded="true" />
+            <element signature="e#7267#7273#0" expanded="true" />
+            <element signature="e#7604#7610#0" expanded="true" />
+            <element signature="e#7941#7947#0" expanded="true" />
+            <element signature="e#8278#8284#0" expanded="true" />
+            <element signature="e#8617#8623#0" expanded="true" />
+            <element signature="e#8955#8961#0" expanded="true" />
+            <element signature="n#section#1;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#2;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#3;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#section#4;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

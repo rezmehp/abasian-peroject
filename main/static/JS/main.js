@@ -25,6 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+
+
+
+
+
+
+
+
 //  اسلاید شو
 $(document).ready(function() {
         $('.slideshow').cycle({

@@ -44,8 +44,15 @@ def videotutorial(request):
     return render(request, 'pages/videotutorial.html')
 
 
+def showfiletutorial(request):
+    return render(request, 'pages/showfiletutorial.html')
+
 def filetutorial(request):
     return render(request, 'pages/filetutorial.html')
+
+
+def showbooktutorial(request):
+    return render(request, 'pages/showbooktutorial.html')
 
 
 def booktutorial(request):

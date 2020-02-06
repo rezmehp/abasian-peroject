@@ -12,6 +12,8 @@ urlpatterns = [
     path('examresault', views.examresault, name='examresault'),
     path('showvideotutorial', views.showvideotutorial, name='showvideotutorial'),
     path('videotutorial', views.videotutorial, name='videotutorial'),
-    path('filetutorial', views.filetutorial, name='filetutorial'),
+    path('showfiletutorial', views.showfiletutorial, name='showfiletutorial'),
+path('filetutorial', views.filetutorial, name='filetutorial'),
+    path('showbookotutorial', views.showbooktutorial, name='showbooktutorial'),
     path('bookotutorial', views.booktutorial, name='booktutorial'),
 ]
