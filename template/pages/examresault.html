@@ -1,177 +1,168 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!--test-->
-<div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
-    <div class="hero-body">
-        <div class="container">
-            <section class="hero is-fullheight">
-                <h1 class="title has-text-centered">نتیجه آزمون</h1>
-                <div class="hero-body">
-                    <div class="container">
-                        <div class="columns is-primary is-centered">
-                            <div class="column   is-8-widescreen">
-                                <div class="box field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            عنوان آزمون
+<div class="container  has-background-white-ter">
+    <section class="hero is-fullheight">
+        <br><br>
+        <h1 class="title has-text-centered">نتیجه آزمون</h1>
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-primary is-centered">
+                    <div class="column   is-8-widescreen">
+                        <div class="box field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    عنوان آزمون
+                                </div>
+                                <div class="field">
+                                    نمره از 100 -> 85
+                                </div>
+                            </div>
+                        </div>
+                        <form action="" class="box">
+                            <div class="box field is-horizontal">
+                                <div class="field-body">
+                                    <div class="field has-text-success">
+                                        <b>تعداد پاسخ درست - 17</b>
+                                    </div>
+                                    <div class="field has-text-danger">
+                                        <b>تعداد پاسخ نادرست - 2</b>
+                                    </div>
+                                    <div class="field has-text-link">
+                                        <b>تعداد سوال بی پاسخ - 1</b>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="box">
+                                <div class="field">
+                                    <div class="field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <label class="label">سوال 1 - ضرب عدد 2 در 2 چند می
+                                                            شود؟ </label>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="field is-horizontal">
                                         <div class="field">
-                                            نمره از 100 -> 85
+                                            <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر از 5
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-square"></span> <b>ب - </b>4
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-check-square has-text-success"></span> <b>ج - </b>عددی کوچکتر از 3
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-minus-square has-text-danger"></span> <b>د - </b>جواب نامعلوم
                                         </div>
                                     </div>
                                 </div>
-                                <form action="" class="box">
-                                    <div class="box field is-horizontal">
+
+                            </div>
+
+
+
+
+
+                            <div class="box">
+                                <div class="field">
+                                    <div class="field is-horizontal">
                                         <div class="field-body">
-                                            <div class="field has-text-success">
-                                               <b>تعداد پاسخ درست - 17</b>
-                                            </div>
-                                            <div class="field has-text-danger">
-                                                <b>تعداد پاسخ نادرست - 2</b>
-                                            </div>
-                                            <div class="field has-text-link">
-                                                <b>تعداد سوال بی پاسخ - 1</b>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <div class="box">
-                                        <div class="field">
-                                            <div class="field is-horizontal">
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <label class="label">سوال 1 - ضرب عدد 2 در 2 چند می
+                                            <div class="field">
+                                                <label class="label">سوال 2 - ضرب عدد 2 در 2 چند می
                                                             شود؟ </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر
-                                                    از 5
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>ب - </b>4
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-check-square has-text-success"></span> <b>ج - </b>عددی کوچکتر از
-                                                    3
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-minus-square has-text-danger"></span> <b>د - </b>جواب نامعلوم
-                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
-
-
-
-
-
-                                    <div class="box">
+                                    <div class="field is-horizontal">
                                         <div class="field">
-                                            <div class="field is-horizontal">
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <label class="label">سوال 2 - ضرب عدد 2 در 2 چند می
+                                            <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر از 5
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-square"></span> <b>ب - </b>4
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-check-square has-text-link"></span> <b>ج - </b>عددی کوچکتر از 3
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+
+                            <div class="box">
+                                <div class="field">
+                                    <div class="field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <label class="label">سوال 3 - ضرب عدد 2 در 2 چند می
                                                             شود؟ </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر
-                                                    از 5
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>ب - </b>4
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-check-square has-text-link"></span> <b>ج - </b>عددی کوچکتر از
-                                                    3
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
-                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
-
-
-
-
-
-
-
-                                    <div class="box">
+                                    <div class="field is-horizontal">
                                         <div class="field">
-                                            <div class="field is-horizontal">
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        <label class="label">سوال 3 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-check-square has-text-success"></span> <b>الف - </b>عددی بزرگ تر از 5
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>ب - </b>4
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>ج - </b>عددی کوچکتر از 3
-                                                </div>
-                                            </div>
-                                            <div class="field is-horizontal">
-                                                <div class="field">
-                                                    <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
-                                                </div>
-                                            </div>
+                                            <span class="far fa-check-square has-text-success"></span> <b>الف - </b>عددی بزرگ تر از 5
                                         </div>
-
                                     </div>
-
-
-                                    <div class="field">
+                                    <div class="field is-horizontal">
                                         <div class="field">
-                                            <a class="button is-warning" href="{% url 'exam' %}">
+                                            <span class="far fa-square"></span> <b>ب - </b>4
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-square"></span> <b>ج - </b>عددی کوچکتر از 3
+                                        </div>
+                                    </div>
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="field">
+                                <div class="field">
+                                    <a class="button is-warning" href="{% url 'exam' %}">
                                                 بازگشت به صفحه آزمون ها
                                             </a>
-                                        </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-    </div>
+    </section>
+
 </div>
 
 
