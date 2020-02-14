@@ -1,40 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
-<section class="hero">
-
-    <figure class="image image is-3by1">
-        <img src="/static/images/bg4.jpg">
-    </figure>
-</section>
-
-    <!-- Begin Services Content -->
-    <section class="section has-background-white-ter ">
+{% include '_partials\_slider.html' %}
+<!-- Begin Services Content -->
+    <section class="section box has-background-light ">
         <div class="section-color services" id="services">
             <div class="container">
                 <div class="columns is-multiline">
                     <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="title has-text-centered section-title">Services</h1>
+                        <h1 class="title has-text-centered section-title">دسته بندی کلاس ها</h1>
 
                         <h2 class="subtitle">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua
+                            گروه آموزشی و تالیفی ما با چندین سال سابقه فعالیت در زمینه کنکور ارشد و دکتری و برگزاری کلاسهای کارآمد و مفید و اساتید مجرب آمار قبولی شگفت انگیزی را ارائه داده است. کلاسهای این گروه آموزشی در تمامی...
                         </h2>
                         <br />
                     </div>
-                    <div class="columns is-12">
+                    <div class="columns is-12"  style="overflow-x:scroll;">
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fad fa-meteor fa-3x"></i>
-                            <hr />
+                            
+                            <h1 class="subtitle">خون شناسی</h1>  
                             <h2>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                                گروه آموزشی دکتر خلیلی دوره های آموزشی ویژه ای برای داوطلبان کنکور کارشناسی ارشد و دکتری دانشگاه آزاد و فراگیر پیام نور به صورت تخصصی برای رشته های گروه علوم زیستی و علوم پایه پزشکی برگزار میکند
                             </h2>
                         </div>
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fas fa-paint-brush fa-3x"></i>
-                            <hr />
+                            <h1 class="subtitle">خون شناسی</h1> 
                             <h2>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -42,18 +34,16 @@
                         </div>
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fas fa-rocket fa-3x"></i>
-                            <hr />
+                            <h1 class="subtitle">خون شناسی</h1> 
                             <h2>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua
                             </h2>
                         </div>
-                    </div>
-                    <hr />
-                    <div class="columns is-12">
+                    
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fas fa-upload fa-3x"></i>
-                            <hr />
+                            <h1 class="subtitle">خون شناسی</h1> 
                             <h2>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -61,7 +51,7 @@
                         </div>
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fas fa-bus fa-3x"></i>
-                            <hr />
+                            <h1 class="subtitle">خون شناسی</h1> 
                             <h2>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -69,7 +59,7 @@
                         </div>
                         <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
                             <i class="fas fa-code fa-3x"></i>
-                            <hr />
+                            <h1 class="subtitle">خون شناسی</h1> 
                             <h2>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                                 do eiusmod tempor incididunt ut labore et dolore magna aliqua
@@ -77,18 +67,21 @@
                         </div>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </section>
     <!-- End Services Content -->
 
-    <section class="section has-background-danger">
+
+    
+    <section class="section box has-background-light">
         <div class="container">
-            <h1 class="title has-text-centered section-title">Services</h1>
+            <h1 class="title has-text-centered section-title">جدیدترین دوره ها</h1>
 
             <h2 class="subtitle">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua
+                لیست نمایندگیهای فعال گروه آموزشی تالیفی پژوهشی دکترخلیلی در سراسر کشور
+ارائه خدمات کلاس، آزمون، مشاوره، درسنامه، کتاب و مشاوره رایگان در مقطع کارشناسی ارشد و دکتری وزارت بهداشت
             </h2>
             <br />
             <div class="section">
@@ -96,101 +89,109 @@
                 <!-- Developers -->
                 <div class="row columns">
                     <div class="column is-one-third">
-                        <div class="card large">
+                        <div class="card large" style="border-radius: 5%;">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="https://source.unsplash.com/pe_R74hldW4" alt="Image">
+                                    <img src="static\images\pic03.jpg"  style="border-radius: 5%;" alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-96x96">
-                                            <img src="https://i.imgsafe.org/a5/a5e978ce20.jpeg" alt="Image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-4 no-padding">The Conceptionist</p>
-                                        <p><span class="title is-6"><a href="http://twitter.com/#">@twitterid</a></span>
-                                        </p>
-                                        <p class="subtitle is-6">Developer</p>
-                                    </div>
-                                </div>
+                                        <p class="title is-4 no-padding">خون شناسی</p>
+                                        <p class="subtitle is-6">نام استاد</p>
+                                        <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
                                 <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur
-                                    numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis
-                                    sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!
+                                    داوطلبان میتوانند جهت تهیه محصولات و خدمات موسسه دکترخلیلی در سراسر کشور از تاریخ 5 الی 8 بهمن ماه به نمایندگی شهر خود مراجعه نمایند.
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="column is-one-third">
-                        <div class="card large">
+                        <div class="card large" style="border-radius: 5%;">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="https://source.unsplash.com/pe_R74hldW4" alt="Image">
+                                    <img src="static\images\pic03.jpg"  style="border-radius: 5%;" alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-96x96">
-                                            <img src="https://i.imgsafe.org/a5/a5e978ce20.jpeg" alt="Image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-4 no-padding">The Conceptionist</p>
-                                        <p><span class="title is-6"><a href="http://twitter.com/#">@twitterid</a></span>
-                                        </p>
-                                        <p class="subtitle is-6">Developer</p>
-                                    </div>
-                                </div>
+                                        <p class="title is-4 no-padding">خون شناسی</p>
+                                        <p class="subtitle is-6">نام استاد</p>
+                                        <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
                                 <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur
-                                    numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis
-                                    sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!
+                                    داوطلبان میتوانند جهت تهیه محصولات و خدمات موسسه دکترخلیلی در سراسر کشور از تاریخ 5 الی 8 بهمن ماه به نمایندگی شهر خود مراجعه نمایند.
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="column is-one-third">
-                        <div class="card large">
+                        <div class="card large" style="border-radius: 5%;">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="https://source.unsplash.com/pe_R74hldW4" alt="Image">
+                                    <img src="static\images\pic03.jpg"  style="border-radius: 5%;" alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <div class="media">
-                                    <div class="media-left">
-                                        <figure class="image is-96x96">
-                                            <img src="https://i.imgsafe.org/a5/a5e978ce20.jpeg" alt="Image">
-                                        </figure>
-                                    </div>
-                                    <div class="media-content">
-                                        <p class="title is-4 no-padding">The Conceptionist</p>
-                                        <p><span class="title is-6"><a href="http://twitter.com/#">@twitterid</a></span>
-                                        </p>
-                                        <p class="subtitle is-6">Developer</p>
-                                    </div>
-                                </div>
+                                        <p class="title is-4 no-padding">خون شناسی</p>
+                                        <p class="subtitle is-6">نام استاد</p>
+                                        <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
                                 <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum consequatur
-                                    numquam aliquam tenetur ad amet inventore hic beatae, quas accusantium perferendis
-                                    sapiente explicabo, corporis totam! Labore reprehenderit beatae magnam animi!
+                                    داوطلبان میتوانند جهت تهیه محصولات و خدمات موسسه دکترخلیلی در سراسر کشور از تاریخ 5 الی 8 بهمن ماه به نمایندگی شهر خود مراجعه نمایند.
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- End Developers -->
     </section>
 
 
-    <section class="section info-tiles has-background-warning">
+  <!-- Begin Services Content -->
+  <section class="section box has-background-light">
+    <div class="section-color services" id="services">
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
+                    <h1 class="title has-text-centered section-title">پربازدید ترین دوره ها</h1>
+
+                    <h2 class="subtitle">
+                        گروه آموزشی و تالیفی ما با چندین سال سابقه فعالیت در زمینه کنکور ارشد و دکتری و برگزاری کلاسهای کارآمد و مفید و اساتید مجرب آمار قبولی شگفت انگیزی را ارائه داده است. کلاسهای این گروه آموزشی در تمامی...
+                    </h2>
+                    <br />
+                </div>
+                <div class="columns">
+                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
+                            <img  src="static\images\pic08.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
+                        <b><h1 class="subtitle">خون شناسی</h1></b>
+                        <h2>
+                            گروه آموزشی دکتر خلیلی دوره های آموزشی ویژه ای برای داوطلبان کنکور کارشناسی ارشد و دکتری دانشگاه آزاد و فراگیر پیام نور به صورت تخصصی برای رشته های گروه علوم زیستی و علوم پایه پزشکی برگزار میکند.
+                        </h2>
+                    </div>
+                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
+                        <img  src="static\images\pic08.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
+                    <b><h1 class="subtitle">خون شناسی</h1></b>
+                    <h2>
+                        گروه آموزشی دکتر خلیلی دوره های آموزشی ویژه ای برای داوطلبان کنکور کارشناسی ارشد و دکتری دانشگاه آزاد و فراگیر پیام نور به صورت تخصصی برای رشته های گروه علوم زیستی و علوم پایه پزشکی برگزار میکند.
+                    </h2>
+                </div>
+                <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
+                    <img  src="static\images\pic08.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
+                <b><h1 class="subtitle">خون شناسی</h1></b>
+                <h2>
+                    گروه آموزشی دکتر خلیلی دوره های آموزشی ویژه ای برای داوطلبان کنکور کارشناسی ارشد و دکتری دانشگاه آزاد و فراگیر پیام نور به صورت تخصصی برای رشته های گروه علوم زیستی و علوم پایه پزشکی برگزار میکند.
+                </h2>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Services Content -->
+
+
+    <section class="section info-tiles has-background-light">
         
         <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
@@ -221,7 +222,7 @@
     </section>
 
     <!-- Begin Work Content -->
-    <section class="section has-background-grey-lighter">
+    <section class="section has-background-light">
         <div class="section-dark my-work" id="my-work">
             <div class="container">
                 <div class="columns is-multiline" data-aos="fade-in" data-aos-easing="linear">
