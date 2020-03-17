@@ -57,3 +57,14 @@ def showbooktutorial(request):
 
 def booktutorial(request):
     return render(request, 'pages/booktutorial.html')
+
+def showaplication(request):
+    return render(request, 'pages/showaplication.html')
+
+
+def aplication(request):
+    return render(request, 'pages/aplication.html')
+
+
+def links(request):
+    return render(request, 'pages/links.html')

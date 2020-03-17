@@ -1,32 +1,41 @@
+@font-face {
+    font-family: samim;
+    src: url('http://fonts.codearena.ir/rastikerdar/samim/samim.eot');
+    src: url('http://fonts.codearena.ir/rastikerdar/samim/samim.eot?#iefix') format('embedded-opentype'), url('http://fonts.codearena.ir/rastikerdar/samim/samim.woff') format('woff'), url('http://fonts.codearena.ir/rastikerdar/samim/samim.ttf') format('truetype');
+    font-weight: normal;
+    line-height: 3rem;
+}
+
 .buttons .button {
     margin-bottom: 0.5rem;
     margin-right: 5px;
 }
 
 .hero.has-background {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
+
 .hero-background {
-  position: absolute;
-  object-fit: cover;
-  object-position: center center;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
 }
+
 .hero-background.is-transparent {
-  opacity: 3.3;
+    opacity: 3.3;
 }
 
-.map-responsive{
-border:0;
-left:0;
-top:0;
-height:500px;
-width:100%;
-position:absolute;
-overflow:hidden;
-padding-bottom:3%;
-position:relative;
+.map-responsive {
+    border: 0;
+    left: 0;
+    top: 0;
+    height: 500px;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    padding-bottom: 3%;
+    position: relative;
 }
-
