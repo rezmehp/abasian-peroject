@@ -11,11 +11,6 @@ def index(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-
-def contact(request):
-    return render(request, 'pages/contact.html')
-
-
 def signup(request):
     return render(request, 'pages/signup.html')
 
