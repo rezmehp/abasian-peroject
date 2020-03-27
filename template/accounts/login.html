@@ -1,9 +1,7 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
     <div class="hero-body">
         <div class="container">
             <section class="hero is-fullheight">
@@ -12,7 +10,9 @@
                     <div class="container">
                         <div class="columns is-centered">
                             <div class="column is-5-tablet is-4-desktop is-4-widescreen">
-                                <form action="" class="box">
+
+                                <form action="{% url 'login' %}" method="POST" class="box">
+                                    {% csrf_token %}
                                     <div class="field">
                                         <label for="" class="label">ایمیل آدرس</label>
                                         <div class="control has-icons-left">
@@ -33,9 +33,10 @@
                                     </div>
 
                                     <div class="field">
-                                        <a class="button is-success" href="{% url 'index' %}">
-                                            ورود
-                                        </a>
+                                        <button>ورود</button>
+                                        <div class="has-background-warning has-text-danger has-text-right">
+                                            {% include '_partials/_alerts.html' %}
+                                        </div>
                                     </div>
                                 </form>
                             </div>

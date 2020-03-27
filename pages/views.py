@@ -11,13 +11,6 @@ def index(request):
 def about(request):
     return render(request, 'pages/about.html')
 
-def signup(request):
-    return render(request, 'pages/signup.html')
-
-
-def signin(request):
-    return render(request, 'pages/signin.html')
-
 
 def exam(request):
     return render(request, 'pages/exam.html')

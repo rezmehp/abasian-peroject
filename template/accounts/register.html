@@ -1,16 +1,16 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg"/>
+    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
     <div class="hero-body">
         <div class="container">
             <!--        تیتر بالای صفحه بعد از سکشن-->
-            <h1 class="title has-text-centered">با ثبت نام در سایت ما به بهترین فایل های آموزشی دسترسی داشته باشید</h1>
+            <h1 class="title has-text-centered">
+                با ثبت نام در سایت ما به بهترین فایل های آموزشی دسترسی داشته باشید
+            </h1>
 
-
-            <section class="section has-background-light">
+            <form action="{% url 'register' %}" method="POST" class="section has-background-light">
+                {% csrf_token %}
                 <div class="container ">
                     <div class="columns">
                         <div class="column">
@@ -18,10 +18,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded has-icons-right">
-                                            <input class="input" type="text" placeholder="نام">
+                                            <input name="first_name" class="input" type="text" placeholder="نام" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-user"></i>
-                                            </span>
+                        <i class="fas fa-user"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
@@ -32,16 +32,15 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded  has-icons-right">
-                                            <input class="input" type="password" placeholder="رمز عبور">
+                                            <input class="input" type="password" name="password" placeholder="رمز عبور" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-key"></i>
-                                            </span>
+                        <i class="fas fa-key"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="columns">
                         <div class="column">
@@ -49,10 +48,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded has-icons-right">
-                                            <input class="input" type="text" placeholder="نام خانوادگی">
+                                            <input class="input" type="text" name="last_name" placeholder="نام خانوادگی" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-user"></i>
-                                            </span>
+                        <i class="fas fa-user"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
@@ -63,16 +62,15 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded  has-icons-right">
-                                            <input class="input" type="password" placeholder="تکرار رمز عبور">
+                                            <input class="input" type="password" name="password2" placeholder="تکرار رمز عبور" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-key"></i>
-                                            </span>
+                        <i class="fas fa-key"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="columns">
                         <div class="column">
@@ -80,10 +78,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded has-icons-right">
-                                            <input class="input" type="text" placeholder="تلفن همراه">
+                                            <input class="input" type="text" name="tell" placeholder="تلفن همراه" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-phone"></i>
-                                            </span>
+                        <i class="fas fa-phone"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
@@ -94,20 +92,19 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="field">
-                                        <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select>
-                                                <option selected>جنسیت</option>
-                                                <option>مرد</option>
-                                                <option>زن</option>
-                                                <option>نامعلوم</option>
-                                            </select>
+                                            <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                <select name="gender">
+                          <option selected>جنسیت</option>
+                          <option>مرد</option>
+                          <option>زن</option>
+                          <option>نامعلوم</option>
+                        </select>
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="columns">
                         <div class="column">
@@ -115,10 +112,10 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded has-icons-right">
-                                            <input class="input" type="text" placeholder="کد ملی">
+                                            <input class="input" type="text" name="melli_code" placeholder="کد ملی" />
                                             <span class="icon is-small is-right">
-                                                <i class="far fa-id-badge"></i>
-                                            </span>
+                        <i class="far fa-id-badge"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
@@ -129,19 +126,18 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <p class="control is-expanded  has-icons-right">
-                                            <input class="input" type="email" placeholder="ایمیل">
+                                            <input class="input" type="email" name="email" placeholder="ایمیل" />
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-envelope"></i>
-                                            </span>
+                        <i class="fas fa-envelope"></i>
+                      </span>
                                             <span class="icon is-small is-right">
-                                                <i class="fas fa-check"></i>
-                                            </span>
+                        <i class="fas fa-check"></i>
+                      </span>
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     <div class="columns">
                         <div class="column">
@@ -149,11 +145,15 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select>
-                                                <option selected>مقطع</option>
-                                                <option>لیسانس</option>
-                                                <option>فوق لیسانس</option>
-                                            </select>
+                                            <select name="maghta">
+                        {% if maghtaTahsilis %} {% for maghtaTahsili in maghtaTahsilis %}
+                        <option>{{ maghtaTahsili.maghta }}</option>
+                        {% endfor %} {% else %}
+                        <div class="col-md-12">
+                          <p>No Ostan Available</p>
+                        </div>
+                        {% endif %}
+                      </select>
                                         </div>
                                     </div>
                                 </div>
@@ -163,30 +163,38 @@
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
-                                       <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select>
-                                                <option selected>رشته</option>
-                                                <option>ریاضی</option>
-                                                <option>تجربی</option>
-                                            </select>
+                                        <div class="control is-expanded has-icons-right select is-fullwidth">
+                                            <select name="reshte">
+                        {% if reshteTahsilis %} {% for reshteTahsili in reshteTahsilis %}
+                        <option>{{ reshteTahsili.reshte }}</option>
+
+                        {% endfor %} {% else %}
+                        <div class="col-md-12">
+                          <p>No Ostan Available</p>
+                        </div>
+                        {% endif %}
+                      </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="columns">
+                    <div id="karname11111" class="columns">
                         <div class="column">
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select>
-                                                <option selected>استان</option>
-                                                <option>فارس</option>
-                                                <option>بادن ووتنبرگ</option>
-                                            </select>
+                                            <select name="ostan">
+                        {% if ostanhas %} {% for ostanha in ostanhas %}
+                        <option >{{ ostanha.ostanName }}</option>
+                        {% endfor %} {% else %}
+                        <div class="col-md-12">
+                          <p>No Ostan Available</p>
+                        </div>
+                        {% endif %}
+                      </select>
                                         </div>
                                     </div>
                                 </div>
@@ -197,32 +205,37 @@
                                 <div class="field-body">
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select>
-                                                <option selected>شهر</option>
-                                                <option>شیراز</option>
-                                                <option>کارسروهه</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                            <select name="shahr">
+                        {% if shahrhas %} {% for shahrha in shahrhas %}
 
+                        <option>{{ shahrha.shahrNames }}</option>
+
+                        {% endfor %} {% else %}
+                        <div class="col-md-12">
+                          <p>No Ostan Available</p>
+                        </div>
+                        {% endif %}
+                      </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="field is-horizontal">
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <a class="button is-success" href="{% url 'index' %}">
-                                        ثبت نام
-                                    </a>
+                                    <button>ثبت نام</button>
+                                    <div class="has-background-warning has-text-danger has-text-right">
+                                        {% include '_partials/_alerts.html' %}
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </section>
+            </form>
         </div>
     </div>
 </div>
