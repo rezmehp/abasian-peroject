@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block title %} login {% endblock %}
+{% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
     <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
@@ -14,18 +16,18 @@
                                 <form action="{% url 'login' %}" method="POST" class="box">
                                     {% csrf_token %}
                                     <div class="field">
-                                        <label for="" class="label">ایمیل آدرس</label>
+                                        <label for="" class="label">نام کاربری</label>
                                         <div class="control has-icons-left">
-                                            <input type="email" placeholder="ایمیل آدرس" class="input" required>
+                                            <input class="input" type="text" name="username" placeholder="نام کاربری" required/>
                                             <span class="icon is-small is-left">
                                 <i class="fa fa-envelope"></i>
                               </span>
                                         </div>
                                     </div>
                                     <div class="field">
-                                        <label for="" class="label">رمز کاربری</label>
+                                        <label for="" class="label">رمز عبور</label>
                                         <div class="control has-icons-left">
-                                            <input type="password" placeholder="*******" class="input" required>
+                                            <input class="input" type="password" name="password" placeholder="رمز عبور" required/>
                                             <span class="icon is-small is-left">
                                 <i class="fa fa-lock"></i>
                               </span>

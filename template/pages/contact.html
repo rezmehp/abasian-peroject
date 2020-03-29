@@ -1,25 +1,55 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block title %}
+
+
+{% if contactusers %} {% for contactuser in contactusers %}
+{{ contactuser.title_page }}
+{% endfor %} 
+{% endif %}
+
+
+
+
+ {% endblock %}
+{% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
+
     <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
     <div class="hero-body">
         <div class="container">
             <!--        تیتر بالای صفحه بعد از سکشن-->
-            <h1 class="title has-text-centered">تماس با ما</h1>
+            <h1 class="title has-text-centered">
+                {% if contactusers %} {% for contactuser in contactusers %}
+            {{ contactuser.title_page }}
+            {% endfor %} 
+            {% endif %}</h1>
             <!--        عکس تیتر بالای صفحه-->
             <figure class="image is-3by1">
-                <img src="static/images/call.jpg">
+                {% if contactusers %} {% for contactuser in contactusers %}
+                <img src=" {{ contactuser.pic.url }}">
+           
+            {% endfor %} 
+            {% endif %}
+
+             
             </figure>
             <section class="section has-background-light">
                 <div class="container ">
                     <div class="field is-horizontal">
                         <div class="field-label">
-                            <label class="label">منتظر نظرات شما هستیم</label>
+
+                            
+                            <label class="label">
+                                {% if contactusers %} {% for contactuser in contactusers %}
+                                
+                                {{ contactuser.title_message }}
+                            {% endfor %} 
+                            {% endif %}
+
+                            </label>
+                            
                         </div>
-                        <!-- دسترسی دسترسی دسترسی -->
-                        <div class="field-label">
-                            <label class="label">((برای دیدن بخش ارسال نظرات لطفا در سایت ثبت نام نمایید))</label>
-                        </div>
+                       
                     </div>
                     <!-- دسترسی دسترسی دسترسی -->
                     <div class="columns">
@@ -90,7 +120,10 @@
                             <div class="field">
                                 <div class="control">
                                     <button class="button is-primary">
-                                        ارسال پیام
+                                        {% if contactusers %} {% for contactuser in contactusers %}
+                                        {{ contactuser.click }}
+                                    {% endfor %} 
+                                    {% endif %}
                                     </button>
                                 </div>
                             </div>
@@ -122,7 +155,11 @@
 
             <section class="section has-background-dark">
                 <div class="container">
-                    <iframe class="map-responsive" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55504.59169730114!2d52.4910592!3d29.6026112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fb21278067675bb%3A0x740522b63767a06d!2z2KfbjNiz2Krar9in2Ycg2YXYqtix2Ygg2KfZhdin2YUg2K3Ys9uM2YY!5e0!3m2!1sfa!2s!4v1579856600481!5m2!1sfa!2s"></iframe>
+                      {% if contactusers %} {% for contactuser in contactusers %}
+                      <iframe class="map-responsive" src="{{ contactuser.address }}"></iframe>
+                                    {% endfor %} 
+                                    {% endif %}
+                   
                 </div>
             </section>
         </div>

@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class contactAdmin(models.Model):
     title_page = models.CharField(max_length=200)
     pic = models.ImageField(upload_to='contact/photos/%y/%m/%d/')
