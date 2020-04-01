@@ -3,13 +3,13 @@
 
 {% if contactusers %} {% for contactuser in contactusers %}
 {{ contactuser.title_page }}
-{% endfor %} 
+{% endfor %}
 {% endif %}
 
 
 
 
- {% endblock %}
+{% endblock %}
 {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
@@ -20,97 +20,48 @@
             <!--        تیتر بالای صفحه بعد از سکشن-->
             <h1 class="title has-text-centered">
                 {% if contactusers %} {% for contactuser in contactusers %}
-            {{ contactuser.title_page }}
-            {% endfor %} 
-            {% endif %}</h1>
+                {{ contactuser.title_page }}
+                {% endfor %}
+                {% endif %}</h1>
             <!--        عکس تیتر بالای صفحه-->
             <figure class="image is-3by1">
                 {% if contactusers %} {% for contactuser in contactusers %}
                 <img src=" {{ contactuser.pic.url }}">
-           
-            {% endfor %} 
-            {% endif %}
 
-             
+                {% endfor %}
+                {% endif %}
+
+
             </figure>
-            <section class="section has-background-light">
+
+            <form action="{% url 'contact' %}" method="POST" class="section has-background-light">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
                 <div class="container ">
+
                     <div class="field is-horizontal">
                         <div class="field-label">
 
-                            
+
                             <label class="label">
                                 {% if contactusers %} {% for contactuser in contactusers %}
-                                
+
                                 {{ contactuser.title_message }}
-                            {% endfor %} 
-                            {% endif %}
+                                {% endfor %}
+                                {% endif %}
 
                             </label>
-                            
-                        </div>
-                       
-                    </div>
-                    <!-- دسترسی دسترسی دسترسی -->
-                    <div class="columns">
-                        <div class="column">
-                            <div class="field is-horizontal">
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control is-expanded has-icons-right">
-                                            <input class="input" type="text" placeholder="نام و نام خانوادگی">
-                                            <span class="icon is-small is-right">
-                                                <i class="fas fa-user"></i>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="field is-horizontal">
-                                <div class="field-body">
-                                    <div class="field">
-                                        <p class="control is-expanded  has-icons-right">
-                                            <input class="input" type="email" placeholder="ایمیل" value="wowweb@ir.com">
-                                            <span class="icon is-small is-right">
-                                                <i class="fas fa-envelope"></i>
-                                            </span>
-                                            <span class="icon is-small is-right">
-                                                <i class="fas fa-check"></i>
-                                            </span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
                     </div>
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field is-expanded">
-                                <div class="field has-addons">
-                                    <p class="control is-expanded">
-                                        <input class="input" type="tel" placeholder="شماره تماس">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- دسترسی دسترسی دسترسی -->
                     <div class="field is-horizontal">
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <input class="input" type="text" placeholder="موضوع پیام">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field is-horizontal">
-                        <div class="field-body">
-                            <div class="field">
-                                <div class="control">
-                                    <textarea class="textarea" placeholder="سوالات،نظرات و پیشنهادات"></textarea>
+                                    <textarea class="textarea" name="soal" placeholder="سوالات،نظرات و پیشنهادات"
+                                        required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -122,8 +73,8 @@
                                     <button class="button is-primary">
                                         {% if contactusers %} {% for contactuser in contactusers %}
                                         {{ contactuser.click }}
-                                    {% endfor %} 
-                                    {% endif %}
+                                        {% endfor %}
+                                        {% endif %}
                                     </button>
                                 </div>
                             </div>
@@ -131,35 +82,84 @@
                     </div>
                 </div>
                 <br>
+
+                {% if contactuserpayam %} {% for contactuserpayams in contactuserpayam %}
+
                 <div class="timeline box">
-                    <header class="timeline-header">
-                        <div class="tag is-medium">سوال : آیا این برنامه توانایی ایجاد سلول را دارد؟</div>
-                    </header>
+                    {{ contactuserpayams.soal }}
                     <hr>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-content">
-                                <p class="heading">January 2016</p>
-                                <p>بله اگر شما به صورت رجیستر شده نرم افزار را نصب نمایید</p>
-                            </div>
+                    <p>{{ contactuserpayams.javabadmin }}</p>
+                </div>
+
+                {% endfor %}
+                {% endif %}
+                {% else %}
+                <div class="container ">
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                            <label class="label">
+                                برای ارسال پیام باید وارد شوید
+                            </label>
+
                         </div>
                     </div>
                 </div>
-            </section>
-
-
-
-
+                {% endif %}
+                <div class="row">
+                    {% if contactuserpayam.has_other_pages %}
+                        <ul class="pagination">
+                            {% if contactuserpayam.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{contactuserpayam.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for i in contactuserpayam.paginator.page_range %}
+                                {% if contactuserpayam.number == i %}
+                                    <li class="page-item active">
+                                        <a class="page-link">{{i}}</a>
+                                    </li>
+                                {% else %}
+                                    <li class="page-item">
+                                        <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if contactuserpayam.has_next %}
+                            <li class="page-item">
+                                <a href="?page={{contactuserpayam.next_page_number}}" class="page-link">
+                                    &raquo;
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disable">
+                                <a class="page-link">
+                                    &raquo;
+                                </a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </form>
+            
 
             <!--            نقشه گوگل-->
 
             <section class="section has-background-dark">
                 <div class="container">
-                      {% if contactusers %} {% for contactuser in contactusers %}
-                      <iframe class="map-responsive" src="{{ contactuser.address }}"></iframe>
-                                    {% endfor %} 
-                                    {% endif %}
-                   
+                    {% if contactusers %} {% for contactuser in contactusers %}
+                    <iframe class="map-responsive" src="{{ contactuser.address }}"></iframe>
+                    {% endfor %}
+                    {% endif %}
+
                 </div>
             </section>
         </div>

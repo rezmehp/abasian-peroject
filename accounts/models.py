@@ -19,4 +19,4 @@ class karbaruser1(models.Model):
     ostan = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.username
+        return self.username+self.maghta+self.reshte
