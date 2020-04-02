@@ -1,0 +1,35 @@
+from django.db import models
+
+class aboutAdmin(models.Model):
+    
+    title_page = models.CharField(max_length=500)
+    pic = models.ImageField(upload_to='contact/photos/%y/%m/%d/')
+    title_text = models.CharField(max_length=500)
+    text_about = models.TextField(blank=True)
+    modir1_pic=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    modir1_semat=models.CharField(max_length=300)
+    modir1_name=models.CharField(max_length=300)
+    modir1_text=models.TextField()
+    modir1_email=models.EmailField(max_length=300)
+    modir2_pic=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    modir2_semat=models.CharField(max_length=300)
+    modir2_name=models.CharField(max_length=300)
+    modir2_text=models.TextField()
+    modir2_email=models.EmailField(max_length=300)
+    modir3_pic=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    modir3_semat=models.CharField(max_length=300)
+    modir3_name=models.CharField(max_length=300)
+    modir3_text=models.TextField()
+    modir3_email=models.EmailField(max_length=300)
+    pic_is_publish=models.BooleanField(default=True)
+    pic_title=models.CharField(max_length=500)
+    pic1=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic2=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic3=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic4=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic5=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic6=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic7=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    pic8=models.ImageField(upload_to='about/photos/%y/%m/%d/')
+    def __str__(self):
+        return self.title_page
