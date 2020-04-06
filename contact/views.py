@@ -35,3 +35,4 @@ def contact(request):
         return redirect('contact')
     else:
         return render(request, 'pages/contact.html', context)
+

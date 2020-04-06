@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili
+from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili, modaresin
+
+
+
+
+
 
 
 class FooterAdminShow(admin.ModelAdmin):
@@ -31,3 +36,11 @@ class reshteTahsiliShow(admin.ModelAdmin):
    
     
 admin.site.register(reshteTahsili, reshteTahsiliShow)
+
+
+
+class modaresinshow(admin.ModelAdmin):
+    list_display = ('modares', 'email_modares')
+   
+
+admin.site.register(modaresin, modaresinshow)

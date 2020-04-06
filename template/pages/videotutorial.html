@@ -1,16 +1,27 @@
-{% extends 'base.html' %} {% block title %} video {% endblock %} {% block content %}
+{% extends 'base.html' %}
+
+
+
+{% block title %}{% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+{{ tutorialvideoAdmin.title_page }} {% endfor %}
+{% endif %}{% endblock %} {% block content %}
 <!--test-->
 <div class="hero is-fullheight is-primary has-background">
     <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
     <div class="hero-body">
         <section class="container">
             <figure class="image is-3by1">
-                <img src="/static/images/video.jpg">
+                {% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+                <img src="{{ tutorialvideoAdmin.pic.url }}">
+                {% endfor %}
+                {% endif %}
             </figure>
             <div class="box">
                 <section class="section has-background-light">
                     <!--        تیتر توضیحات زیر عکس اول درباره ما-->
-                    <h1 class="title has-text-dark">جستجوی ویدیو</h1>
+                    <h1 class="title has-text-dark">{% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+                        {{ tutorialvideoAdmin.title_search }} {% endfor %}
+                        {% endif %}</h1>
 
                 </section>
                 <section class="section has-background-light">
@@ -22,10 +33,14 @@
                                         <div class="field">
                                             <div class="control is-expanded has-icons-right select is-fullwidth">
                                                 <select>
-                                                    <option selected>مقطع تحصیلی</option>
-                                                    <option>دیپلم</option>
-                                                    <option>فوق دیپلم</option>
-                                                    <option>لیسانس</option>
+                                                    {% if maghtaTahsilishows %} {% for maghtaTahsilishow in maghtaTahsilishows %}
+                                                <option>{{ maghtaTahsilishow.maghta }}</option>
+
+                                                {% endfor %} {% else %}
+                                                <div class="col-md-12">
+                                                    <p>No maghta Available</p>
+                                                </div>
+                                                {% endif %}
                                                 </select>
                                             </div>
                                         </div>
@@ -41,82 +56,61 @@
                                             <div class="field">
                                                 <div class="control is-expanded has-icons-right select is-fullwidth">
                                                     <select>
-                                                        <option selected>رشته تحصیلی</option>
-                                                        <option>ریاضی</option>
-                                                        <option>تجربی</option>
-                                                        <option>علوم انسانی</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>درس مورد نظر</option>
-                                                        <option>ژنتیک پزشکی</option>
-                                                        <option>بیوشیمی بالینی</option>
-                                                        <option>بیوتکنولوژی پزشکی</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>مدرسین</option>
-                                                        <option>مهدی زهرایی</option>
-                                                        <option>رضا حسینی</option>
-                                                        <option>استاد عباسیان</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="columns">
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>نوع هزینه</option>
-                                                        <option>رایگان</option>
-                                                        <option>دارای هزینه</option>
-                                                        <option></option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right  is-fullwidth">
+                                                        {% if reshteTahsilishows %} {% for reshteTahsilishow in reshteTahsilishows %}
+                                                <option>{{ reshteTahsilishow.reshte }}</option>
 
+                                                {% endfor %} {% else %}
+                                                <div class="col-md-12">
+                                                    <p>No Ostan Available</p>
+                                                </div>
+                                                {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        {% if coursevideoshows %} {% for coursevideoshow in coursevideoshows %}
+                                                        <option>{{ coursevideoshow.coursename }}</option>
+        
+                                                        {% endfor %} {% else %}
+                                                        <div class="col-md-12">
+                                                            <p>No modares Available</p>
+                                                        </div>
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select>
+                                                        {% if modaresinshows %} {% for modaresinshow in modaresinshows %}
+                                                        <option>{{ modaresinshow.modares }}</option>
+        
+                                                        {% endfor %} {% else %}
+                                                        <div class="col-md-12">
+                                                            <p>No modares Available</p>
+                                                        </div>
+                                                        {% endif %}
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,7 +122,9 @@
                             <div class="field">
                                 <div class="control">
                                     <button class="button is-primary">
-                                        جستجوی ویدیو
+                                        {% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+                                        {{ tutorialvideoAdmin.text_click }} {% endfor %}
+                                        {% endif %}
                                     </button>
                                 </div>
                             </div>
@@ -139,114 +135,80 @@
 
             <section class="section has-background-light">
                 <div class="container ">
-                    <a href="{% url 'showvideotutorial' %}" class="columns box">
+                    {% if coursevideoshows %} {% for coursevideoshow in coursevideoshows %}
+                    <a href="" class="columns box">
                         <div class="column is-one-quarter">
                             <figure class="image">
-                                <img src="static/images/pic08.jpg" alt="Image">
+                                <img src="{{ coursevideoshow.pic.url }}">
                             </figure>
                         </div>
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-vcentered">
-                                    <strong>آموزش ریاضی</strong><br>
-                                    <strong>استاد مهدی زهرایی</strong><br>
-                                    <small>11 ساعت آموزش</small>
-                                    <br> در گذشته، فرض بر این بود که ریاضیات برای گروه خاصی از افراد جامعه است و ریاضیات را همه نمی توانند یاد بگیرند. با تغییر هدف آموزش ریاضی، ضرورت آموزش ریاضی برای همگان درک شد. برای کمک به درک بهتر از مسائل، باید ریاضیات
-                                    به صورت یک کل، آموزش داده شود. متأسفانه در دروس آکادمیک، ریاضیات را به صورت یک جزء به ما آموخته اند و صورت کلی از ریاضی در ذهن اکثر دانشجویان نقش نبسته است. بعد از یادگیری مفاهیم پایه در این آموزش می توان به یادگیری
-                                    مفاهیم موجود در ریاضی ۱ مانند حد و پیوستگی، مشتق، انتگرال، دنباله و سری و اعداد مختلط پرداخت. این آموزش برای دانشجویان پیام نور نیز مناسب ارزیابی می شود.
+                                    <strong>
+                                        درس : {{ coursevideoshow.coursename }}
+                                       </strong><br>
+                                    <strong>
+                                        استاد : {{ coursevideoshow.modaresinfkey }}
+                                        </strong><br>
+                                    <small>
+                                        {{ coursevideoshow.saattadris }} ساعت آموزش
+                                        </small><br>
+                                        <small>
+                                            هزینه : {{ coursevideoshow.hazine }} ریال
+                                            </small>
+                                    <br>
+                                    {{ coursevideoshow.tozihat }}
+                                    
                                 </p>
                             </div>
                         </div>
                     </a>
                     <br>
-                    <a href="{% url 'showvideotutorial' %}" class="columns box">
-                        <div class="column is-one-quarter">
-                            <figure class="image">
-                                <img src="static/images/pic08.jpg" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="column">
-                            <div class="content has-text-right">
-                                <p class="has-text-dark is-vcentered">
-                                    <strong>آموزش ریاضی</strong><br>
-                                    <strong>استاد مهدی زهرایی</strong><br>
-                                    <small>11 ساعت آموزش</small>
-                                    <br> در گذشته، فرض بر این بود که ریاضیات برای گروه خاصی از افراد جامعه است و ریاضیات را همه نمی توانند یاد بگیرند. با تغییر هدف آموزش ریاضی، ضرورت آموزش ریاضی برای همگان درک شد. برای کمک به درک بهتر از مسائل، باید ریاضیات
-                                    به صورت یک کل، آموزش داده شود. متأسفانه در دروس آکادمیک، ریاضیات را به صورت یک جزء به ما آموخته اند و صورت کلی از ریاضی در ذهن اکثر دانشجویان نقش نبسته است. بعد از یادگیری مفاهیم پایه در این آموزش می توان به یادگیری
-                                    مفاهیم موجود در ریاضی ۱ مانند حد و پیوستگی، مشتق، انتگرال، دنباله و سری و اعداد مختلط پرداخت. این آموزش برای دانشجویان پیام نور نیز مناسب ارزیابی می شود.
-                                </p>
-                            </div>
-                        </div>
-                    </a>
+                    {% endfor %} 
+                    {% endif %}
+                </div>
+
+            </section>
+            <hr>
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+                    {{ tutorialvideoAdmin.title_1 }} {% endfor %}
+                    {% endif %}</h3>
+                <div class="columns is-multiline">
+                    
+                    {% if bettercoursevideoshows %}  {% for bettercoursevideoshow in bettercoursevideoshows %}
+                    
+                    <div class="column is-one-quarter">
+                        <a class="box">
+                            <img src="{{ bettercoursevideoshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس : {{ bettercoursevideoshow.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ bettercoursevideoshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ bettercoursevideoshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    
+                    {% endfor %} 
+                    {% endif %}
                 </div>
             </section>
+            <hr>
             <section class="section has-background-light">
-                <h3 class="title has-text-centered has-text-dark">ویدیوهای پیشنهادی</h3>
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
+                    {{ tutorialvideoAdmin.title_2 }} {% endfor %}
+                    {% endif %}</h3>
                 <div class="columns is-multiline">
-
+                    {% if newcoursevideoshows %} {% for newcoursevideoshow in newcoursevideoshows %}
                     <div class="column is-one-quarter">
                         <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
+                            <img src="{{ newcoursevideoshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس : {{ newcoursevideoshow.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ newcoursevideoshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ newcoursevideoshow.saattadris }} ساعت آموزش</p>
                         </a>
                     </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
+                    {% endfor %} 
+                    {% endif %}
                 </div>
             </section>
         </section>
@@ -254,3 +216,5 @@
 </div>
 
 {% endblock %}
+
+

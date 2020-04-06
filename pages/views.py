@@ -21,12 +21,8 @@ def examresault(request):
     return render(request, 'pages/examresault.html')
 
 
-def showvideotutorial(request):
-    return render(request, 'pages/showvideotutorial.html')
 
 
-def videotutorial(request):
-    return render(request, 'pages/videotutorial.html')
 
 
 def showfiletutorial(request):

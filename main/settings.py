@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'contact.apps.ContactConfig',
     'about.apps.AboutConfig',
+    'tutorialvideo.apps.TutorialvideoConfig',
     'django.contrib.admin',
     'accounts.apps.AccountsConfig',
     'django.contrib.auth',

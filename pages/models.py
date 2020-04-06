@@ -49,3 +49,10 @@ class reshteTahsili(models.Model):
     reshte = models.CharField(max_length=100)
     def __str__(self):
         return self.reshte
+
+
+class modaresin(models.Model):
+    modares = models.CharField(max_length=300)
+    email_modares = models.CharField(max_length=2000)
+    def __str__(self):
+        return self.modares
