@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialvideoAdmin, coursevideo2
+from .models import tutorialvideoAdmin, coursevideo2, videos
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -16,8 +16,7 @@ def tutorialvideo(request):
     reshteTahsilishows = reshteTahsili.objects.all()
     modaresinshows = modaresin.objects.all()
     coursevideoshows = coursevideo2.objects.all()
-    bettercoursevideoshows = coursevideo2.objects.filter(
-        reshteTahsilifkey=1).order_by('-id')[:4]
+    bettercoursevideoshows = coursevideo2.objects.filter(reshteTahsilifkey=1).order_by('-id')[:4]
     newcoursevideoshows = coursevideo2.objects.all().order_by('-id')[:8]
     context = {
 
@@ -38,8 +37,9 @@ def tutorialvideo(request):
 
 def showvideotutorial(request, coursevideo2_id):
     coursevideo = get_object_or_404(coursevideo2, pk=coursevideo2_id)
-
+    videoss = videos.objects.filter(coursenamefkey=coursevideo2_id)
     context = {
-        'coursevideo': coursevideo
+        'coursevideo': coursevideo,
+        'videoss':videoss
     }
-    return render(request, 'pages/videotutorial.html', context)
+    return render(request, 'pages/showvideotutorial.html', context)
