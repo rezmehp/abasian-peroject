@@ -18,20 +18,23 @@
                 <div class="container ">
                     <div class="columns">
                         <div class="column is-centered has-text-centered">
-                                <img class="is-centered has-text-centered" src="{{ coursevideo.pic.url }}">
+                            <img class="is-centered has-text-centered" src="{{ coursevideo.pic.url }}">
                         </div>
                     </div>
                     <div class="columns">
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevideo.coursename }}</h3><br>
+                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevideo.coursename }}
+                                    </h3><br>
                                     <h4 class="has-text-dark">مدرس : {{ coursevideo.modaresinfkey }}</h4><br>
-                                    <small class="has-text-dark">مدت زمان آموزش : {{ coursevideo.saattadris }} دقیقه </small><br>
+                                    <small class="has-text-dark">مدت زمان آموزش : {{ coursevideo.saattadris }} دقیقه
+                                    </small><br>
                                     {% if coursevideo.hazine != 0 %}
                                     <small class="has-text-dark">هزینه :{{ coursevideo.hazine }} ریال </small>
                                     {% endif %}
-                                    <br><h5 class="has-text-dark">{{ coursevideo.tozihat }}</h5>
+                                    <br>
+                                    <h5 class="has-text-dark">{{ coursevideo.tozihat }}</h5>
                                 </p>
                             </div>
 
@@ -64,14 +67,14 @@
                                 {{ videos.videoname }} (لینک مستقیم)
                             </a>
                             {% endif %}
-                            
+
                             {% endfor %}
                             {% endif %}
 
-                        
-                            
-                                
-                            
+
+
+
+
 
 
 

@@ -16,10 +16,13 @@ def tutorialvideo(request):
     reshteTahsilishows = reshteTahsili.objects.all()
     modaresinshows = modaresin.objects.all()
     coursevideoshows = coursevideo2.objects.all()
-    bettercoursevideoshows = coursevideo2.objects.filter(reshteTahsilifkey=1).order_by('-id')[:4]
+    karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte',flat=True)
+    reshteTahsiliid = reshteTahsili.objects.filter(reshte=karbaruser1online[0]).values_list('id',flat=True)
+    bettercoursevideoshows = coursevideo2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')[:4]
     newcoursevideoshows = coursevideo2.objects.all().order_by('-id')[:8]
     context = {
-
+        'reshteTahsiliid':reshteTahsiliid,
+        'karbaruser1online':karbaruser1online,
         'tutorialvideoAdmins': tutorialvideoAdmins,
         'usernameshows': usernameshows,
         'karbaruser1shows': karbaruser1shows,

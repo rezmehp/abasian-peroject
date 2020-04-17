@@ -144,6 +144,8 @@
 
             <section class="section has-background-light">
                 <div class="container ">
+                  
+
                     {% if coursevideoshows %} {% for coursevideoshow in coursevideoshows %}
                     <a href="{% url 'showvideotutorial' coursevideoshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
@@ -174,6 +176,9 @@
                                     {% endif %}
                                     <br>
                                     {{ coursevideoshow.tozihat }}
+                                      
+                    
+
 
                                 </p>
                             </div>
@@ -183,7 +188,7 @@
                     {% endfor %}
                     {% endif %}
                 </div>
-
+                
             </section>
             <hr>
             <section class="section has-background-light">
