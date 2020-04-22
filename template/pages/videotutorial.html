@@ -24,7 +24,7 @@
                         {% endif %}</h1>
 
                 </section>
-                <section class="section has-background-light">
+                <form action="{% url 'tutorialvideo' %}" class="section has-background-light">
                     <div class="container ">
                         <div class="columns">
                             <div class="column">
@@ -32,18 +32,18 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                <select>
+                                                <select name="maghtan">
                                                     {% if maghtaTahsilishows %}
                                                     {% for maghtaTahsilishow in maghtaTahsilishows %}
                                                     <option>{{ maghtaTahsilishow.maghta }}</option>
                                                     {% endfor %}
                                                     <option selected>مقطع تحصیلی</option>
-                                                     {% else %}
+                                                    {% else %}
                                                     <div class="col-md-12">
                                                         <p>No maghta Available</p>
                                                     </div>
                                                     {% endif %}
-                                                    
+
                                                 </select>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                         <div class="field">
                                             <div class="field">
                                                 <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
+                                                    <select name="reshten">
                                                         {% if reshteTahsilishows %}
                                                         {% for reshteTahsilishow in reshteTahsilishows %}
                                                         <option>{{ reshteTahsilishow.reshte }}</option>
@@ -79,51 +79,15 @@
                         </div>
                         <div class="columns">
                             <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        {% if coursevideoshows %}
-                                                        {% for coursevideoshow in coursevideoshows %}
-                                                        <option>{{ coursevideoshow.coursename }}</option>
-                                                        {% endfor %}
-                                                        <option selected>نام درس</option>
-                                                        {% else %}
-                                                        <div class="col-md-12">
-                                                            <p>No modares Available</p>
-                                                        </div>
-                                                        {% endif %}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="control">
+                                    <input class="input is-fullwidth" placeholder="نام درس" type="text"
+                                        name="coursen">
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        {% if modaresinshows %}
-                                                        {% for modaresinshow in modaresinshows %}
-                                                        <option>{{ modaresinshow.modares }}</option>
-                                                        {% endfor %}
-                                                        <option selected>نام مدرس</option>
-                                                        {% else %}
-                                                        <div class="col-md-12">
-                                                            <p>No modares Available</p>
-                                                        </div>
-                                                        {% endif %}
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="control">
+                                    <input class="input is-fullwidth" placeholder="نام مدرس" type="text"
+                                        name="modaresn">
                                 </div>
                             </div>
                         </div>
@@ -139,35 +103,35 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </form>
             </div>
-
+            {% if searchcoursevideoshows %}
             <section class="section has-background-light">
                 <div class="container ">
-                  
 
-                    {% if coursevideoshows %} {% for coursevideoshow in coursevideoshows %}
-                    <a href="{% url 'showvideotutorial' coursevideoshow.id %}" class="columns box">
+                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    {% for searchcoursevideoshow in searchcoursevideoshows %}
+                    <a href="{% url 'showvideotutorial' searchcoursevideoshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
                             <figure class="image">
-                                <img src="{{ coursevideoshow.pic.url }}">
+                                <img src="{{ searchcoursevideoshow.pic.url }}">
                             </figure>
                         </div>
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-vcentered">
                                     <strong>
-                                        درس : {{ coursevideoshow.coursename }}
+                                        درس : {{ searchcoursevideoshow.coursename }}
                                     </strong><br>
                                     <strong>
-                                        استاد : {{ coursevideoshow.modaresinfkey }}
+                                        استاد : {{ searchcoursevideoshow.modaresinfkey }}
                                     </strong><br>
                                     <small>
-                                        {{ coursevideoshow.saattadris }} ساعت آموزش
+                                        {{ searchcoursevideoshow.saattadris }} ساعت آموزش
                                     </small><br>
-                                    {% if coursevideoshow.hazine != 0 %}
+                                    {% if searchcoursevideoshow.hazine != 0 %}
                                     <small>
-                                        هزینه : {{ coursevideoshow.hazine }} ریال
+                                        هزینه : {{ searchcoursevideoshow.hazine }} ریال
                                     </small>
                                     {% else %}
                                     <small>
@@ -175,22 +139,20 @@
                                     </small>
                                     {% endif %}
                                     <br>
-                                    {{ coursevideoshow.tozihat }}
-                                      
-                    
-
-
+                                    {{ searchcoursevideoshow.tozihat }}
                                 </p>
                             </div>
                         </div>
                     </a>
                     <br>
                     {% endfor %}
-                    {% endif %}
+
                 </div>
-                
+
             </section>
             <hr>
+            {% endif %}
+            {% if bettercoursevideoshows %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %}
                     {% for tutorialvideoAdmin in tutorialvideoAdmins %}
@@ -198,7 +160,7 @@
                     {% endif %}
                 </h3>
                 <div class="columns is-multiline">
-                    {% if bettercoursevideoshows %} {% for bettercoursevideoshow in bettercoursevideoshows %}
+                    {% for bettercoursevideoshow in bettercoursevideoshows %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showvideotutorial' bettercoursevideoshow.id %}" class="box">
                             <img src="{{ bettercoursevideoshow.pic.url }}">
@@ -209,11 +171,12 @@
                         </a>
                     </div>
                     {% endfor %}
-                    {% endif %}
+
                 </div>
 
             </section>
             <hr>
+            {% endif %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %}
                     {% for tutorialvideoAdmin in tutorialvideoAdmins %}
