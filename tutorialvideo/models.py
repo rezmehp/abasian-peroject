@@ -38,7 +38,7 @@ class videos(models.Model):
     videolink_is_published = models.BooleanField(default=True)
     videolink = models.CharField(max_length=1000)
     videofile_is_published = models.BooleanField(default=True)
-    videofile = models.FileField(upload_to='coursevideo/videos/%y/%m/%d/')
+    videofile = models.FileField(upload_to='coursevideo/videos/%y/%m/%d/',blank=True)
     
     
     def __str__(self):

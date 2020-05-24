@@ -24,7 +24,8 @@
                         {% endif %}</h1>
 
                 </section>
-                <form action="{% url 'tutorialvideo' %}" class="section has-background-light">
+                <form method="post" id="formidsearch" action="{% url 'tutorialvideo' %}" data-searchselect-url="{% url 'tutorialvideo' %}" class="section has-background-light">
+                    {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
                             <div class="column">
@@ -32,42 +33,37 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                <select name="maghtan">
+                                                <select  id="maghtanidtemp" name="maghtan">
+                                                    <option  selected="True" disabled="disabled">مقطع تحصیلی</option>
                                                     {% if maghtaTahsilishows %}
                                                     {% for maghtaTahsilishow in maghtaTahsilishows %}
-                                                    <option>{{ maghtaTahsilishow.maghta }}</option>
+                                                    <option data-id="{{ maghtaTahsilishow.id }}" value="{{ maghtaTahsilishow.id }}">{{ maghtaTahsilishow.maghta }}</option>
                                                     {% endfor %}
-                                                    <option selected>مقطع تحصیلی</option>
                                                     {% else %}
                                                     <div class="col-md-12">
                                                         <p>No maghta Available</p>
                                                     </div>
                                                     {% endif %}
-
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
+                            
+                        
                             <div class="column">
                                 <div class="field is-horizontal">
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="field">
                                                 <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select name="reshten">
+                                                    <select id="reshtenidtemp" name="reshten">
+                                                        <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را انتخاب نمایید</option>
                                                         {% if reshteTahsilishows %}
-                                                        {% for reshteTahsilishow in reshteTahsilishows %}
-                                                        <option>{{ reshteTahsilishow.reshte }}</option>
-                                                        {% endfor %}
-                                                        <option selected>رشته تحصیلی</option>
-                                                        {% else %}
-                                                        <div class="col-md-12">
-                                                            <p>No Ostan Available</p>
-                                                        </div>
+                                                            {% for reshteTahsilishow in reshteTahsilishows %}
+                                                                <option value="{{ reshteTahsilishow.id }}">{{ reshteTahsilishow.reshte }}</option>
+                                                            {% endfor %}
                                                         {% endif %}
                                                     </select>
                                                 </div>
@@ -77,24 +73,54 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $('select[name="maghtan"]').on('change',function () {
+                                    var sardaste_id =  $("#maghtanidtemp option:selected").attr('data-id');
+                        
+                                    if(sardaste_id){
+                                        $.ajax({
+                                            url: '/tutorialvideo/m/'+sardaste_id,
+                                            type: 'GET',
+                                            dataType: 'json',
+                                            success: function(data) {
+                                                console.log(data);
+                                                $('select[name="reshten"]').empty();
+                                                $.each(data,function (key,value) {
+                                                    $('select[name="reshten"]').append('<option value="'+value+'">'+ value + '</option>');
+                                                });
+                                            },
+                                        })
+                                    }else {
+                                        $('select[name="reshten"]').empty();
+                                    }
+                                })
+                            })
+                        </script>
+                        
+
+
+
                         <div class="columns">
                             <div class="column">
                                 <div class="control">
-                                    <input class="input is-fullwidth" placeholder="نام درس" type="text"
-                                        name="coursen">
+                                    <input value="{{ values.coursen }}" class="input is-fullwidth" placeholder="نام درس"
+                                        type="text" name="coursen">
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="control">
-                                    <input class="input is-fullwidth" placeholder="نام مدرس" type="text"
-                                        name="modaresn">
+                                    <input value="{{ values.modaresn }}" class="input is-fullwidth"
+                                        placeholder="نام مدرس" type="text" name="modaresn">
                                 </div>
                             </div>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <button class="button is-primary">
+                                    <button id="maghtanidtempbtn" class="button is-primary">
                                         {% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
                                         {{ tutorialvideoAdmin.text_click }} {% endfor %}
                                         {% endif %}
