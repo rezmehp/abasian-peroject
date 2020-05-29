@@ -36,7 +36,7 @@ class videos(models.Model):
     coursenamefkey = models.ForeignKey(coursevideo2, on_delete=models.DO_NOTHING)
     videoname = models.CharField(max_length=1000)
     videolink_is_published = models.BooleanField(default=True)
-    videolink = models.CharField(max_length=1000)
+    videolink = models.CharField(max_length=1000 ,blank=True)
     videofile_is_published = models.BooleanField(default=True)
     videofile = models.FileField(upload_to='coursevideo/videos/%y/%m/%d/',blank=True)
     

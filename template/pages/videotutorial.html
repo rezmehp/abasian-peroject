@@ -24,7 +24,8 @@
                         {% endif %}</h1>
 
                 </section>
-                <form method="post" id="formidsearch" action="{% url 'tutorialvideo' %}" data-searchselect-url="{% url 'tutorialvideo' %}" class="section has-background-light">
+                <form method="post" id="formidsearch" action="{% url 'tutorialvideo' %}"
+                    data-searchselect-url="{% url 'tutorialvideo' %}" class="section has-background-light">
                     {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
@@ -33,11 +34,13 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                <select  id="maghtanidtemp" name="maghtan">
-                                                    <option  selected="True" disabled="disabled">مقطع تحصیلی</option>
+                                                <select id="maghtanidtemp" name="maghtan">
+                                                    <option selected="True" disabled="disabled">مقطع تحصیلی</option>
                                                     {% if maghtaTahsilishows %}
                                                     {% for maghtaTahsilishow in maghtaTahsilishows %}
-                                                    <option data-id="{{ maghtaTahsilishow.id }}" value="{{ maghtaTahsilishow.id }}">{{ maghtaTahsilishow.maghta }}</option>
+                                                    <option data-id="{{ maghtaTahsilishow.id }}"
+                                                        value="{{ maghtaTahsilishow.id }}">
+                                                        {{ maghtaTahsilishow.maghta }}</option>
                                                     {% endfor %}
                                                     {% else %}
                                                     <div class="col-md-12">
@@ -50,8 +53,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                        
+
+
                             <div class="column">
                                 <div class="field is-horizontal">
                                     <div class="field-body">
@@ -59,11 +62,13 @@
                                             <div class="field">
                                                 <div class="control is-expanded has-icons-right select is-fullwidth">
                                                     <select id="reshtenidtemp" name="reshten">
-                                                        <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را انتخاب نمایید</option>
+                                                        <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را
+                                                            انتخاب نمایید</option>
                                                         {% if reshteTahsilishows %}
-                                                            {% for reshteTahsilishow in reshteTahsilishows %}
-                                                                <option value="{{ reshteTahsilishow.id }}">{{ reshteTahsilishow.reshte }}</option>
-                                                            {% endfor %}
+                                                        {% for reshteTahsilishow in reshteTahsilishows %}
+                                                        <option value="{{ reshteTahsilishow.id }}">
+                                                            {{ reshteTahsilishow.reshte }}</option>
+                                                        {% endfor %}
                                                         {% endif %}
                                                     </select>
                                                 </div>
@@ -77,29 +82,33 @@
                         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                         <script>
                             $(document).ready(function () {
-                                $('select[name="maghtan"]').on('change',function () {
-                                    var sardaste_id =  $("#maghtanidtemp option:selected").attr('data-id');
-                        
-                                    if(sardaste_id){
+                                $('select[name="maghtan"]').on('change', function () {
+                                    var sardaste_id = $("#maghtanidtemp option:selected").attr('data-id');
+
+                                    if (sardaste_id) {
                                         $.ajax({
-                                            url: '/tutorialvideo/m/'+sardaste_id,
+                                            url: '/tutorialvideo/m/' + sardaste_id,
                                             type: 'GET',
                                             dataType: 'json',
-                                            success: function(data) {
+                                            success: function (data) {
                                                 console.log(data);
                                                 $('select[name="reshten"]').empty();
-                                                $.each(data,function (key,value) {
-                                                    $('select[name="reshten"]').append('<option value="'+value+'">'+ value + '</option>');
-                                                });
+                                               
+                                               
+                                                    $.each(data, function (key, value) {
+                                                        $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
+                                                    });
+                                                
+                                              
                                             },
                                         })
-                                    }else {
+                                    } else {
                                         $('select[name="reshten"]').empty();
                                     }
                                 })
                             })
                         </script>
-                        
+
 
 
 
