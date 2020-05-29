@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tutorialbook.apps.TutorialbookConfig',
     'django.contrib.admin',
     'accounts.apps.AccountsConfig',
+    'links.apps.LinksConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

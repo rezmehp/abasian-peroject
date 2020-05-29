@@ -28,5 +28,6 @@ urlpatterns = [
     path('tutorialvideo/',include('tutorialvideo.urls')),
     path('tutorialfile/',include('tutorialfile.urls')),
     path('tutorialbook/',include('tutorialbook.urls')),
+    path('links',include('links.urls')),
     path('accounts',include('accounts.urls')),
 ] + static(settings.MEDIA_URL , document_root=settings.MEDIA_ROOT)

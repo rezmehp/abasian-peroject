@@ -161,9 +161,6 @@
                                     <strong>
                                         استاد : {{ searchcoursebookshow.modaresinfkey }}
                                     </strong><br>
-                                    <small>
-                                        {{ searchcoursebookshow.saattadris }} ساعت آموزش
-                                    </small><br>
                                     {% if searchcoursebookshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcoursebookshow.hazine }} ریال
@@ -202,7 +199,6 @@
                             <p class="has-text-centered"><strong> درس :
                                     {{ bettercoursebookshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ bettercoursebookshow.modaresinfkey }}</p>
-                            <p class="has-text-centered">{{ bettercoursebookshow.saattadris }} ساعت آموزش</p>
                         </a>
                     </div>
                     {% endfor %}
@@ -224,7 +220,6 @@
                             <img src="{{ newcoursebookshow.pic.url }}">
                             <p class="has-text-centered"><strong> درس : {{ newcoursebookshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ newcoursebookshow.modaresinfkey }}</p>
-                            <p class="has-text-centered">{{ newcoursebookshow.saattadris }} ساعت آموزش</p>
                         </a>
                     </div>
                     {% endfor %}

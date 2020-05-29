@@ -22,30 +22,3 @@ def examresault(request):
 
 
 
-
-
-
-def showfiletutorial(request):
-    return render(request, 'pages/showfiletutorial.html')
-
-def filetutorial(request):
-    return render(request, 'pages/filetutorial.html')
-
-
-def showbooktutorial(request):
-    return render(request, 'pages/showbooktutorial.html')
-
-
-def booktutorial(request):
-    return render(request, 'pages/booktutorial.html')
-
-def showaplication(request):
-    return render(request, 'pages/showaplication.html')
-
-
-def aplication(request):
-    return render(request, 'pages/aplication.html')
-
-
-def links(request):
-    return render(request, 'pages/links.html')
