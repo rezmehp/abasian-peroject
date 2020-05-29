@@ -7,8 +7,8 @@ urlpatterns = [
     path('examonline', views.examonline, name='examonline'),
     path('examresault', views.examresault, name='examresault'),
 
-    path('showfiletutorial', views.showfiletutorial, name='showfiletutorial'),
-    path('filetutorial', views.filetutorial, name='filetutorial'),
+  
+    
     path('aplication', views.aplication, name='aplication'),
     path('showaplication', views.showaplication, name='showaplication'),
     path('links', views.links, name='links'),

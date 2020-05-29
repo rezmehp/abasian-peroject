@@ -1,391 +1,90 @@
-{% extends 'base.html' %} {% block title %} file {% endblock %} {% block content %}
-<script defer xmlns="http://www.w3.org/1999/html">
+{% extends 'base.html' %}
+{% block title %}{{ coursefile.coursename }} {% endblock %}
+{% block content %}
+<script defer>
     function outputsize() {
         let s = document.getElementById("columnssize").clientHeight;
-        let videosize = document.getElementById('myvideo').style.height = s + "px";
-
+        let filesize = document.getElementById('myfile').style.height = s + "px";
         console.log(s)
     }
     outputsize()
 </script>
 
 
-<div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
+<div class="hero is-fullheight  has-background-dark">
     <div class="hero-body">
         <div class="container">
             <section class="section has-background-light">
-                <div class="columns">
-                    <section class="column is-3 panel is-primary">
-                        <nav>
-                            <p class="panel-heading">
-                                لیست فایل های این مبحث
-                            </p>
-                            <div style="overflow-y: scroll;">
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت اول
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت دوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت سوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت چهارم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت پنجم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت ششم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت اول
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت دوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت سوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت چهارم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت پنجم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت ششم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت اول
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت دوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت سوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت چهارم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت پنجم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت ششم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت اول
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت دوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت سوم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت چهارم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت پنجم
-                                </a>
-                                <a class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>&nbsp; قسمت ششم
-                                </a>
-                            </div>
-                        </nav>
-                    </section>
-                    <section class="column panel is-primary">
-                        <p class="panel-heading">
-                            آموزش ریاضی
-                        </p>
-                        <div class="section has-background-light">
-                            <div class="container ">
-                                <div class="has-text-dark">
-                                    <div>
-                                        <div class="content has-text-right">
-                                            <p class="has-text-dark is-centered">
-                                                <h4>استاد مهدی زهرایی</h4><br>
-                                                <small>11 ساعت آموزش</small>
-                                                <br> در گذشته، فرض بر این بود که ریاضیات برای گروه خاصی از افراد جامعه است و ریاضیات را همه نمی توانند یاد بگیرند. با تغییر هدف آموزش ریاضی، ضرورت آموزش ریاضی برای همگان درک شد. برای کمک به درک بهتر از مسائل،
-                                                باید ریاضیات به صورت یک کل، آموزش داده شود. متأسفانه در دروس آکادمیک، ریاضیات را به صورت یک جزء به ما آموخته اند و صورت کلی از ریاضی در ذهن اکثر دانشجویان نقش نبسته است. بعد از یادگیری مفاهیم پایه در این
-                                                آموزش می توان به یادگیری مفاهیم موجود در ریاضی ۱ مانند حد و پیوستگی، مشتق، انتگرال، دنباله و سری و اعداد مختلط پرداخت. این آموزش برای دانشجویان پیام نور نیز مناسب ارزیابی می شود.
-                                                <br><br><br> فهرست سرفصل ها و رئوس مطالب مطرح شده در این مجموعه آموزشی، در ادامه آمده است:
-                                                <br> درس یکم: آشنایی با Mobirise و نحوه نصب آن<br><br> مقدمه نحوه نصب Mobirise بر ویندوز درس دوم: شروع ساخت سایت<br><br> انتخاب قالب و ویرایش مطالب اضافه کردن مطالب و متن اضافه کردن عکس و ویدئو در سایت اضافه
-                                                کردن آیکون و لوگو به سایت درس سوم: نحوه کار با بلاک های آماده<br><br> اضافه کردن انواع بلاک های آماده سایت و نحوه کار با آن ها درس چهارم: اضافه کردن پیج های متعدد و لینک دادن<br><br> اضافه کردن صفحات متعدد
-                                                لینک کردن صفحات به یکدیگر لینک دادن به بیرون از سایت درس پنجم: افزونه ها<br><br> معرفی افزونه ها نحوه فعال سازی و کار با تک تک افزونه ها درس ششم: خروجی گرفتن<br><br> خروجی گرفتن از سایت ویرایش بعد از خروجی
-                                                درس هفتم: انتشار سایت<br><br> نحوه انشار سایت و آپلود سایت روی هاست درس هشتم: برنامه Mobirise در موبایل<br><br> نحوه کار با اپلیکیشن موبایل Mobirise
-                                            </p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                <div class="container ">
+                    <div class="columns">
+                        <div class="column is-centered has-text-centered">
+                            <img class="is-centered has-text-centered" src="{{ coursefile.pic.url }}">
                         </div>
-                    </section>
-                </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursefile.coursename }}
+                                    </h3><br>
+                                    <h4 class="has-text-dark">مدرس : {{ coursefile.modaresinfkey }}</h4><br>
+                                    <small class="has-text-dark">مدت زمان آموزش : {{ coursefile.saattadris }} دقیقه
+                                    </small><br>
+                                    {% if coursefile.hazine != 0 %}
+                                    <small class="has-text-dark">هزینه :{{ coursefile.hazine }} ریال </small>
+                                    {% endif %}
+                                    <br>
+                                    <h5 class="has-text-dark">{{ coursefile.tozihat }}</h5>
+                                </p>
+                            </div>
 
-            </section>
-
-            <section class="section has-background-light" style=" direction: ltr;">
-                <h3 class="title has-text-centered has-text-dark">فایل های مرتبط</h3>
-                <div class="columns" style="overflow-x:scroll;">
-
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-2">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
+                        </div>
                     </div>
                 </div>
             </section>
+            <section class="section has-background-light">
+                <div class="columns">
+                    <div id="myfile" class="column" style="overflow-y:scroll;">
+                        <nav class="panel">
+                            <p class="panel-heading">
+                                لیست فیلم های این مبحث
+                            </p>
+                            {% if filess %} {% for files in filess %}
+                            {% if files.filelink_is_published == True %}
+                            <a href="{{ files.filelink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }}
+                            </a>
+                            {% endif %}
+                            {% if files.filefile_is_published == True %}
 
-            <section class="section has-background-light" style=" direction: ltr;">
-                <h3 class="title has-text-centered has-text-dark">فایل های پیشنهادی</h3>
-                <div class="columns" style="overflow-x:scroll;">
+                            <a href="{{ files.filefile.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
 
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
+                            {% endfor %}
+                            {% endif %}
+
+
+
+
+
+
+
+
+
+
+                        </nav>
                     </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
+
                 </div>
-            </section>
 
-
-            <section class="section has-background-light" style=" direction: ltr;">
-                <h3 class="title has-text-centered has-text-dark">جدیدترین فایل ها</h3>
-                <div class="columns" style="overflow-x:scroll;">
-
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                    <div class="column is-one-quarter">
-                        <a class="box">
-                            <img src="static/images/pic08.jpg" alt="Image">
-                            <p class="has-text-centered">درس ریاضی</p>
-                            <p class="has-text-centered">استاد زهرایی</p>
-                        </a>
-                    </div>
-                </div>
             </section>
         </div>
     </div>
