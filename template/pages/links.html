@@ -1,6 +1,4 @@
 {% extends 'base.html' %}
-
-
 {% block title %}
 {% if linksAdmins %}
 {% for linksAdmin in linksAdmins %}
@@ -9,15 +7,12 @@
 {% endif %}
 {% endblock %}
 {% block content %}
-
-
 <!--test-->
 <div class="hero is-fullheight is-primary has-background-dark">
     <div class="hero-body">
         <div class="container">
             <!--        تیتر بالای صفحه بعد از سکشن-->
-            <br>
-<br>
+            <br><br>
             <h1 class="title has-text-centered">{% if linksAdmins %} {% for linksAdmin in linksAdmins %}
                 {{ linksAdmin.title_page }}
                 {% endfor %}
@@ -29,8 +24,6 @@
                 {% endfor %}
                 {% endif %}
             </figure>
-
-
 
             <section class="section has-background-light">
                 <div class="container ">
@@ -59,8 +52,5 @@
         </div>
     </div>
 </div>
-
 </div>
-
-
 {% endblock %}
