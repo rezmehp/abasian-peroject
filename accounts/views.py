@@ -3,7 +3,7 @@ from django.contrib import messages, auth
 from .models import karbaruser1
 from django.contrib.auth.models import User
 from pages.models import ostanha, shahrha, maghtaTahsili, reshteTahsili
-
+from django.http.response import JsonResponse
 
 def register(request):
     ostanhas = ostanha.objects.all()
@@ -93,3 +93,25 @@ def logout(request):
 
 def dashboard(request):
     return render(request, 'accounts/dashboard.html')
+
+
+
+def maghtatutorialregister(request, pk):
+   
+    reshteTahsilishows = reshteTahsili.objects.filter(maghtafkey_id=pk)
+    data_info = {
+    }
+    for data in reshteTahsilishows:
+        data_info[data.id] = str(data.reshte)
+    return JsonResponse(data_info, content_type='application/json')
+
+
+
+def ostantutorialregister(request, pk):
+   
+    shahrhashows = shahrha.objects.filter(ostanNamefkey_id=pk)
+    data_info = {
+    }
+    for data in shahrhashows:
+        data_info[data.id] = str(data.shahrNames)
+    return JsonResponse(data_info, content_type='application/json')
