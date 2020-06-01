@@ -1,167 +1,39 @@
 {% extends 'base.html' %} {% block title %} welcome {% endblock %}
-{% block content %} {% include '_partials/_alerts.html' %} {% include '_partials/_slider.html' %} 
-<!-- Begin Services Content -->
-<section class="section box has-background-light ">
-    <div class="section-color services" id="services">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
-                    <h1 class="title has-text-centered section-title">دسته بندی کلاس ها</h1>
-
-                    <h2 class="subtitle">
-                        گروه آموزشی و تالیفی ما با چندین سال سابقه فعالیت در زمینه کنکور ارشد و دکتری و برگزاری کلاسهای کارآمد و مفید و اساتید مجرب آمار قبولی شگفت انگیزی را ارائه داده است. ارائه خدمات کلاس، آزمون، مشاوره، درسنامه، کتاب و مشاوره رایگان در مقطع کارشناسی، کارشناسی
-                        ارشد و دکتری
-                    </h2>
-                    <br />
-                </div>
-                <div class="columns is-12" style="overflow-x:scroll;">
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">خون شناسی</h1>
-                        <h2>
-                            خون‌شناسی یا هماتولوژی (به انگلیسی: Hematology) به مطالعه یاخته‌های خونی، انعقاد خون و فرایند خونسازی می‌پردازد.
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">رادیوتراپی</h1>
-                        <h2>
-                            پرتودرمانی یا رادیوتراپی (به انگلیسی: radiotherapy) یکی از مهم‌ترین شاخه‌های فیزیک پزشکی است.
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">ارتوپدی</h1>
-                        <h2>
-                            جراحی ارتوپدی (به انگلیسی: Orthopedic surgery) یا استخوان‌پزشکی یا ارتاپزشکی به شاخه‌ای از علم پزشکی گفته می‌شود که شامل درمان بیماری‌ها و اصلاح ناهنجاری‌های مربوط به استخوان‌ها و مفاصل است.
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">پزشکی مولکولی</h1>
-                        <h2>
-                            پزشکی مولکولی (به انگلیسی: Molecular Medicine) شاخه‌ وسیعی از دانش پزشکی است که علوم پایه و پزشکی را در جهت شناسایی اساس مولکولی و خطاهای ژنتیکی بیماریها به منظور یافتن راههای پیشگیری، تشخیص و مداخله‌های مولکولی برای اصلاح بیماریها به کار می‌گیرد.
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">داروسازی</h1>
-                        <h2>
-                            داروسازی حرفه‌ای است که در زمینه دارو درمانی برای مداوای یک بیمار به عنوان متداول‌ترین شیوه در دنیا با بیماران و مردم مرتبط می‌گردد.
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <h1 class="subtitle">دندان‌پزشکی</h1>
-                        <h2>
-                            دندانپزشکی از رشته‌های پزشکی مرتبط با سلامت دهان و دندان است.
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- End Services Content -->
-
-
+{% block content %} {% include '_partials/_alerts.html' %} {% include '_partials/_slider.html' %}
 
 <section class="section box has-background-light">
     <div class="container">
         <h1 class="title has-text-centered section-title">جدیدترین ویدیوها</h1>
         <div class="section">
-
             <!-- Developers -->
             <div class="row columns">
+                {% if newcoursevideos %} {% for newcoursevideo in newcoursevideos %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/khoonshenasi.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Hematology</p>
-                            <p class="subtitle is-6">مجید متعهد</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
+                        <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newcoursevideo.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                </figure>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/rna.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">RNA</p>
-                            <p class="subtitle is-6">مهدی بازیاب</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newcoursevideo.coursename }}</p>
+                                <p class="subtitle is-6">{{ newcoursevideo.modaresinfkey }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/dna.jpeg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">DNA</p>
-                            <p class="subtitle is-6">رسول ارجمند</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- End Developers -->
-</section>
-
-
-<!-- Begin Services Content -->
-<section class="section box has-background-light">
-    <div class="section-color services" id="services">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
-                    <h1 class="title has-text-centered section-title">پربازدیدترین ویدیوها</h1>
-                </div>
-                <div class="columns">
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static/images/daroosazi.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">دارو سازی</h1></b>
-                        <h2>
-                            این دوره توسط استاد میرزایی در 8 ساعت فیلم ویدیویی تهیه شده است و شامل 16 قسمت می باشد که به همراه این ویدیو ها فایل جزوه آن قرار داده شده است
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\radiotrapy.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">رادیوتراپی</h1></b>
-                        <h2>
-                            این دوره توسط استاد مهرپرور در20 ساعت فیلم ویدیویی تهیه شده است و شامل 33 قسمت می باشد که به همراه این ویدیو ها فایل جزوه آن قرار داده شده است
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\gharchshenasi.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">قارچ شناسی</h1></b>
-                        <h2>
-                            این دوره توسط استاد کواکبیان در 6 ساعت فیلم ویدیویی تهیه شده است و شامل 3 قسمت می باشد که به همراه این ویدیو ها فایل جزوه آن قرار داده شده است
-                        </h2>
-                    </div>
-                </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
-    </div>
+    </div> <!-- End Developers -->
 </section>
+
+
 
 
 <section class="section box has-background-light">
@@ -171,99 +43,33 @@
 
             <!-- Developers -->
             <div class="row columns">
+                {% if newcoursefiles %} {% for newcoursefile in newcoursefiles %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/norology.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Norology</p>
-                            <p class="subtitle is-6">مازیار بستامی</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
+                        <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newcoursefile.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                </figure>
                             </div>
-                        </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newcoursefile.coursename }}</p>
+                                <p class="subtitle is-6">{{ newcoursefile.modaresinfkey }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/ankology.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">uncology</p>
-                            <p class="subtitle is-6">باقر معصومی</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/imonology.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Imonology</p>
-                            <p class="subtitle is-6">مجتبی شکرپور</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
+                {% endif %}
             </div>
-            <!-- End Developers -->
-</section>
-
-
-<!-- Begin Services Content -->
-<section class="section box has-background-light">
-    <div class="section-color services" id="services">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
-                    <h1 class="title has-text-centered section-title">پربازدیدترین فایل ها</h1>
-                </div>
-                <div class="columns">
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static/images/patology.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">پاتولوژی</h1></b>
-                        <h2>
-                            این دوره توسط استاد روح افزا در 80 صفحه تهیه شده است و شامل 5 فایل می باشد
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\virusshenasi.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">ویروس شناسی</h1></b>
-                        <h2>
-                            این دوره توسط استاد تخشید در 400 صفحه تهیه شده است و شامل 20 فایل می باشد
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\radiology.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">رادیولوژی</h1></b>
-                        <h2>
-                            این دوره توسط استاد زهرایی در 250 صفحه تهیه شده است و شامل 3 فایل می باشد
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> <!-- End Developers -->
     </div>
 </section>
+
+
 
 
 <section class="section box has-background-light">
@@ -273,101 +79,69 @@
 
             <!-- Developers -->
             <div class="row columns">
+                {% if newcoursebooks %} {% for newcoursebook in newcoursebooks %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/colorectal.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Colorectal</p>
-                            <p class="subtitle is-6">مجید مقامی</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
+                        <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newcoursebook.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                </figure>
                             </div>
-                        </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newcoursebook.coursename }}</p>
+                                <p class="subtitle is-6">{{ newcoursebook.modaresinfkey }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/dentistry.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Dentistry</p>
-                            <p class="subtitle is-6">مهدی ملک پور</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-one-third">
-                    <div class="card large" style="border-radius: 5%;">
-                        <div class="card-image">
-                            <figure class="image">
-                                <img src="static/images/Psychology.jpg" style="border-radius: 5%;" alt="Image">
-                            </figure>
-                        </div>
-                        <div class="card-content">
-                            <p class="title is-4 no-padding">Psychology</p>
-                            <p class="subtitle is-6">رجب موحد</p>
-                            <p><span class="title is-6"><a href="http://twitter.com/#">مشاهده درس های این دوره</a></span></p>
-                            <div class="content">
-                                <div class="background-icon"><span class="icon-barcode"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                {% endfor %}
+                {% endif %}
             </div>
             <!-- End Developers -->
-</section>
-
-
-<!-- Begin Services Content -->
-<section class="section box has-background-light">
-    <div class="section-color services" id="services">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-12 about-me" data-aos="fade-in" data-aos-easing="linear">
-                    <h1 class="title has-text-centered section-title">پربازدیدترین کتابها</h1>
-                </div>
-                <div class="columns">
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static/images/hooshbary.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">هوشبری</h1></b>
-                        <h2>
-                            این کتاب توسط استاد باقری در 350 صفحه نوشته شده است
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\ghalb.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">قلب و عروق</h1></b>
-                        <h2>
-                            این کتاب توسط استاد نجفیان در 500 صفحه نوشته شده است
-                        </h2>
-                    </div>
-                    <div class="column is-4 has-text-centered" data-aos="fade-in" data-aos-easing="linear">
-                        <img src="static\images\urology.jpg" style="border-radius: 50%; width: 180px;height: 180px; align-items: center;">
-                        <b><h1 class="subtitle">اورولوژی</h1></b>
-                        <h2>
-                            این کتاب توسط استاد کرمی در 300 صفحه نوشته شده است
-                        </h2>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
-<!-- End Services Content -->
+
+
+
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">جدیدترین نرم افزارها</h1>
+        <div class="section">
+
+            <!-- Developers -->
+            <div class="row columns">
+                {% if newcourseapplications %} {% for newcourseapplication in newcourseapplications %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newcourseapplication.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newcourseapplication.coursename }}</p>
+                                <p class="subtitle is-6">{{ newcourseapplication.modaresinfkey }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            <!-- End Developers -->
+        </div>
+    </div>
+
+</section>
 
 
 <section class="section info-tiles has-background-light">
@@ -375,26 +149,26 @@
     <div class="tile is-ancestor has-text-centered">
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title">439k</p>
-                <p class="subtitle">دانشجویان</p>
+                <p class="title">{{ countvideos }}</p>
+                <p class="subtitle">ویدیو</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title">59k</p>
-                <p class="subtitle">مدرسان</p>
+                <p class="title">{{ countfiles }}</p>
+                <p class="subtitle">فایل</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title">3.4k</p>
-                <p class="subtitle">ویدیوها</p>
+                <p class="title">{{ countbooks }}</p>
+                <p class="subtitle">کتاب</p>
             </article>
         </div>
         <div class="tile is-parent">
             <article class="tile is-child box">
-                <p class="title">190k</p>
-                <p class="subtitle">فایل ها و کتاب ها</p>
+                <p class="title">{{ countapplications }}</p>
+                <p class="subtitle">نرم افزار</p>
             </article>
         </div>
     </div>
