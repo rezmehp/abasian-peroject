@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili, modaresin
+from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili, modaresin,sliderImage
 
 
 
 
-
+admin.site.register(sliderImage)
 
 
 class FooterAdminShow(admin.ModelAdmin):

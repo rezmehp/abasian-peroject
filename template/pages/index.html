@@ -1,5 +1,447 @@
 {% extends 'base.html' %} {% block title %} welcome {% endblock %}
-{% block content %} {% include '_partials/_alerts.html' %} {% include '_partials/_slider.html' %}
+{% block content %} {% include '_partials/_alerts.html' %} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- css -->
+<style>
+    /* Reset */
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    /* Slider */
+    
+    #slider2 {
+        width: 100%;
+        max-height: 500px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .slidese {
+        width: 400%;
+        height: 100%;
+        position: relative;
+        -webkit-animation: slidee 30s infinite;
+        -moz-animation: slidee 30s infinite;
+        animation: slidee 30s infinite;
+    }
+    
+    .slidere {
+        width: 25%;
+        height: 100%;
+        float: left;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+    
+    .image {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .image img {
+        width: 100%;
+        height: auto;
+    }
+    /* Contents */
+    
+    .contentslider {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+    }
+    
+    .contentslider-txte {
+        width: 400px;
+        height: 150px;
+        float: left;
+        position: relative;
+        top: 300px;
+        -webkit-animation: contentslider 7.5s infinite;
+        -moz-animation: contentslider 7.5s infinite;
+        animation: contentslider 7.5s infinite;
+    }
+    
+    .contentslider-txte h1 {
+        font-family: Arial;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: #fff;
+        text-align: left;
+        margin-left: 30px;
+        padding-bottom: 10px;
+    }
+    
+    .contentslider-txte h2 {
+        font-family: arial;
+        font-weight: normal;
+        font-size: 14px;
+        font-style: italic;
+        color: #fff;
+        text-align: left;
+        margin-left: 30px;
+    }
+    /* Switch */
+    
+    .switch {
+        width: 120px;
+        height: 10px;
+        position: absolute;
+        bottom: 50px;
+        z-index: 99;
+        left: 30px;
+    }
+    
+    .switch>ul {
+        list-style: none;
+    }
+    
+    .switch>ul>li {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #333;
+        float: left;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    
+    .switch ul {
+        overflow: hidden;
+    }
+    
+    .on {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background: #f39c12;
+        position: relative;
+        -webkit-animation: on 30s infinite;
+        -moz-animation: on 30s infinite;
+        animation: on 30s infinite;
+    }
+    /* Animation */
+    
+    @-webkit-keyframes slidee {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: -100%;
+        }
+        46% {
+            margin-left: -100%;
+        }
+        50% {
+            margin-left: -200%;
+        }
+        71% {
+            margin-left: -200%;
+        }
+        75% {
+            margin-left: -300%;
+        }
+        96% {
+            margin-left: -300%;
+        }
+    }
+    
+    @-moz-keyframes slidee {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: -100%;
+        }
+        46% {
+            margin-left: -100%;
+        }
+        50% {
+            margin-left: -200%;
+        }
+        71% {
+            margin-left: -200%;
+        }
+        75% {
+            margin-left: -300%;
+        }
+        96% {
+            margin-left: -300%;
+        }
+    }
+    
+    @keyframes slidee {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: -100%;
+        }
+        46% {
+            margin-left: -100%;
+        }
+        50% {
+            margin-left: -200%;
+        }
+        71% {
+            margin-left: -200%;
+        }
+        75% {
+            margin-left: -300%;
+        }
+        96% {
+            margin-left: -300%;
+        }
+    }
+    
+    @-webkit-keyframes contentslider {
+        0% {
+            left: -420px;
+        }
+        10% {
+            left: 0px;
+        }
+        30% {
+            left: 0px;
+        }
+        40% {
+            left: 0px;
+        }
+        50% {
+            left: 0px;
+        }
+        60% {
+            left: 0px;
+        }
+        70% {
+            left: 0;
+        }
+        80% {
+            left: -420px;
+        }
+        90% {
+            left: -420px;
+        }
+        100% {
+            left: -420px;
+        }
+    }
+    
+    @-moz-keyframes contentslider {
+        0% {
+            left: -420px;
+        }
+        10% {
+            left: 0px;
+        }
+        30% {
+            left: 0px;
+        }
+        40% {
+            left: 0px;
+        }
+        50% {
+            left: 0px;
+        }
+        60% {
+            left: 0px;
+        }
+        70% {
+            left: 0;
+        }
+        80% {
+            left: -420px;
+        }
+        90% {
+            left: -420px;
+        }
+        100% {
+            left: -420px;
+        }
+    }
+    
+    @keyframes contentslider {
+        0% {
+            left: -420px;
+        }
+        10% {
+            left: 20px;
+        }
+        15% {
+            left: 0px;
+        }
+        30% {
+            left: 0px;
+        }
+        40% {
+            left: 0px;
+        }
+        50% {
+            left: 0px;
+        }
+        60% {
+            left: 0px;
+        }
+        70% {
+            left: 0;
+        }
+        80% {
+            left: -420px;
+        }
+        90% {
+            left: -420px;
+        }
+        100% {
+            left: -420px;
+        }
+    }
+    
+    @-webkit-keyframes on {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: 15px;
+        }
+        46% {
+            margin-left: 15px;
+        }
+        50% {
+            margin-left: 30px;
+        }
+        71% {
+            margin-left: 30px;
+        }
+        75% {
+            margin-left: 45px;
+        }
+        96% {
+            margin-left: 45px;
+        }
+    }
+    
+    @-moz-keyframes on {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: 15px;
+        }
+        46% {
+            margin-left: 15px;
+        }
+        50% {
+            margin-left: 30px;
+        }
+        71% {
+            margin-left: 30px;
+        }
+        75% {
+            margin-left: 45px;
+        }
+        96% {
+            margin-left: 45px;
+        }
+    }
+    
+    @keyframes on {
+        0%,
+        100% {
+            margin-left: 0%;
+        }
+        21% {
+            margin-left: 0%;
+        }
+        25% {
+            margin-left: 15px;
+        }
+        46% {
+            margin-left: 15px;
+        }
+        50% {
+            margin-left: 30px;
+        }
+        71% {
+            margin-left: 30px;
+        }
+        75% {
+            margin-left: 45px;
+        }
+        96% {
+            margin-left: 45px;
+        }
+    }
+</style>
+
+<!-- Slider -->
+
+<section dir="ltr">
+    <div id="slider2">
+        <div class="slidese">
+            {% if sliderImages %} {% for sliderImage in sliderImages %}
+            <div class="slidere">       
+                <div class="image">
+                    <img src="{{ sliderImage.pic.url }}" />
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <section class="section box has-background-light">
     <div class="container">
@@ -13,7 +455,8 @@
                         <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="{{ newcoursevideo.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                    <img src="{{ newcoursevideo.pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
@@ -49,7 +492,8 @@
                         <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="{{ newcoursefile.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                    <img src="{{ newcoursefile.pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
@@ -85,7 +529,8 @@
                         <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="{{ newcoursebook.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                    <img src="{{ newcoursebook.pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
@@ -121,7 +566,8 @@
                         <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
-                                    <img src="{{ newcourseapplication.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
+                                    <img src="{{ newcourseapplication.pic.url }}"
+                                        style="border-radius: 5%; height:180px" alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">

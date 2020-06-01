@@ -21,6 +21,12 @@ class footerAdmin(models.Model):
 
 
 
+class sliderImage(models.Model):
+    pic = models.ImageField(upload_to='slider/photos/%y/%m/%d/')
+
+
+
+
 class ostanha(models.Model):
     ostanName = models.CharField(max_length=100)
     def __str__(self):
