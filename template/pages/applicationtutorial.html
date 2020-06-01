@@ -93,13 +93,13 @@
                                             success: function (data) {
                                                 console.log(data);
                                                 $('select[name="reshten"]').empty();
-                                               
-                                               
-                                                    $.each(data, function (key, value) {
-                                                        $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
-                                                    });
-                                                
-                                              
+
+
+                                                $.each(data, function (key, value) {
+                                                    $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
+                                                });
+
+
                                             },
                                         })
                                     } else {
@@ -130,7 +130,8 @@
                             <div class="field">
                                 <div class="control">
                                     <button id="maghtanidtempbtn" class="button is-primary">
-                                        {% if tutorialapplicationAdmins %} {% for tutorialapplicationAdmin in tutorialapplicationAdmins %}
+                                        {% if tutorialapplicationAdmins %}
+                                        {% for tutorialapplicationAdmin in tutorialapplicationAdmins %}
                                         {{ tutorialapplicationAdmin.text_click }} {% endfor %}
                                         {% endif %}
                                     </button>
@@ -143,7 +144,6 @@
             {% if searchcourseapplicationshows %}
             <section class="section has-background-light">
                 <div class="container ">
-
                     <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
                     {% for searchcourseapplicationshow in searchcourseapplicationshows %}
                     <a href="{% url 'showapplicationtutorial' searchcourseapplicationshow.id %}" class="columns box">
@@ -178,12 +178,56 @@
                     </a>
                     <br>
                     {% endfor %}
-
+                    {% endif %}
+                    {% if searchcourseapplicationshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if searchcourseapplicationshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcourseapplicationshows.previous_page_number}}"
+                                        class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in searchcourseapplicationshows.paginator.page_range %}
+                                {% if searchcourseapplicationshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if searchcourseapplicationshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcourseapplicationshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
-
             </section>
             <hr>
-            {% endif %}
             {% if bettercourseapplicationshows %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialapplicationAdmins %}
@@ -218,7 +262,8 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box">
                             <img src="{{ newcourseapplicationshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس : {{ newcourseapplicationshow.coursename }}</strong></p>
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ newcourseapplicationshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ newcourseapplicationshow.modaresinfkey }}</p>
                         </a>
                     </div>

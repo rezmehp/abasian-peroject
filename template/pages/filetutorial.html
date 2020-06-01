@@ -143,8 +143,7 @@
             {% if searchcoursefileshows %}
             <section class="section has-background-light">
                 <div class="container ">
-
-                    <h3 class="subtitle has-text-dark">فایل های یافت شده</h3>
+                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
                     {% for searchcoursefileshow in searchcoursefileshows %}
                     <a href="{% url 'showfiletutorial' searchcoursefileshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
@@ -178,12 +177,56 @@
                     </a>
                     <br>
                     {% endfor %}
-
+                    {% endif %}
+                    {% if searchcoursefileshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if searchcoursefileshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursefileshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in searchcoursefileshows.paginator.page_range %}
+                                {% if searchcoursefileshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if searchcoursefileshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursefileshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
-
             </section>
             <hr>
-            {% endif %}
+
             {% if bettercoursefileshows %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialfileAdmins %}

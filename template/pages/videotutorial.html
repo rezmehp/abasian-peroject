@@ -93,13 +93,13 @@
                                             success: function (data) {
                                                 console.log(data);
                                                 $('select[name="reshten"]').empty();
-                                               
-                                               
-                                                    $.each(data, function (key, value) {
-                                                        $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
-                                                    });
-                                                
-                                              
+
+
+                                                $.each(data, function (key, value) {
+                                                    $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
+                                                });
+
+
                                             },
                                         })
                                     } else {
@@ -140,10 +140,10 @@
                     </div>
                 </form>
             </div>
+
             {% if searchcoursevideoshows %}
             <section class="section has-background-light">
                 <div class="container ">
-
                     <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
                     {% for searchcoursevideoshow in searchcoursevideoshows %}
                     <a href="{% url 'showvideotutorial' searchcoursevideoshow.id %}" class="columns box">
@@ -161,9 +161,6 @@
                                     <strong>
                                         استاد : {{ searchcoursevideoshow.modaresinfkey }}
                                     </strong><br>
-                                    <small>
-                                        {{ searchcoursevideoshow.saattadris }} ساعت آموزش
-                                    </small><br>
                                     {% if searchcoursevideoshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcoursevideoshow.hazine }} ریال
@@ -181,12 +178,56 @@
                     </a>
                     <br>
                     {% endfor %}
-
+                    {% endif %}
+                    {% if searchcoursevideoshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if searchcoursevideoshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursevideoshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in searchcoursevideoshows.paginator.page_range %}
+                                {% if searchcoursevideoshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if searchcoursevideoshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursevideoshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
-
             </section>
             <hr>
-            {% endif %}
+
             {% if bettercoursevideoshows %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %}

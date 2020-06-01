@@ -41,6 +41,12 @@ def tutorialapplication(request):
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
                 searchcourseapplicationshows = searchcourseapplicationshows.filter(modaresinfkey__in=modaresnid)
+
+
+    
+    paginator = Paginator(searchcourseapplicationshows, 3)
+    page = request.GET.get('page')
+    paged_searchcourseapplicationshows = paginator.get_page(page)
                 
     bettercourseapplicationshows=""             
     if request.user.username:
@@ -63,7 +69,7 @@ def tutorialapplication(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'courseapplicationshows': courseapplicationshows,
-        'searchcourseapplicationshows': searchcourseapplicationshows,
+        'searchcourseapplicationshows': paged_searchcourseapplicationshows,
         'newcourseapplicationshows': newcourseapplicationshows,
         'bettercourseapplicationshows': bettercourseapplicationshows,
         'values': request.GET,

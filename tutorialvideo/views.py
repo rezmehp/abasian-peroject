@@ -41,7 +41,10 @@ def tutorialvideo(request):
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
                 searchcoursevideoshows = searchcoursevideoshows.filter(modaresinfkey__in=modaresnid)
-                
+    paginator = Paginator(searchcoursevideoshows, 3)
+    page = request.GET.get('page')
+    paged_searchcoursevideoshows = paginator.get_page(page)
+
     bettercoursevideoshows=""             
     if request.user.username:
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
@@ -63,7 +66,7 @@ def tutorialvideo(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'coursevideoshows': coursevideoshows,
-        'searchcoursevideoshows': searchcoursevideoshows,
+        'searchcoursevideoshows': paged_searchcoursevideoshows,
         'newcoursevideoshows': newcoursevideoshows,
         'bettercoursevideoshows': bettercoursevideoshows,
         'values': request.GET,
