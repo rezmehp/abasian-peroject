@@ -6,9 +6,10 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin
 from django.http.response import JsonResponse
-
+from pages.models import sliderImage,footerAdmin 
 
 def tutorialbook(request):
+    footerAdmins = footerAdmin.objects.all()
     tutorialbookAdmins = tutorialbookAdmin.objects.all()
     usernameshows = User.objects.all()
     karbaruser1shows = karbaruser1.objects.filter(username=request.user.username)
@@ -56,6 +57,8 @@ def tutorialbook(request):
         bettercoursebookshows = ""
     newcoursebookshows = coursebook2.objects.all().order_by('-id')[:8]
     context = {
+        
+        'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
         'karbaruser1online': karbaruser1online,
         'tutorialbookAdmins': tutorialbookAdmins,
@@ -76,9 +79,12 @@ def tutorialbook(request):
 
 
 def showbooktutorial(request, coursebook2_id):
+    
+    footerAdmins = footerAdmin.objects.all()
     coursebook = get_object_or_404(coursebook2, pk=coursebook2_id)
     bookss = books.objects.filter(coursenamefkey=coursebook2_id)
     context = {
+        'footerAdmins': footerAdmins,
         'coursebook': coursebook,
         'bookss': bookss
     }

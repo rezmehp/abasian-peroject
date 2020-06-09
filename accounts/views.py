@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from .models import karbaruser1
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import AdminPasswordChangeForm
 from pages.models import ostanha, shahrha, maghtaTahsili, reshteTahsili
 from django.http.response import JsonResponse
+
 
 def register(request):
     ostanhas = ostanha.objects.all()
@@ -15,9 +17,9 @@ def register(request):
     context = {
         'ostanhas': ostanhas,
         'shahrhas': shahrhas,
-        'maghtaTahsilis':maghtaTahsilis,
-        'reshteTahsilis':reshteTahsilis
-        
+        'maghtaTahsilis': maghtaTahsilis,
+        'reshteTahsilis': reshteTahsilis
+
     }
     if request.method == 'POST':
         username = request.POST['username']
@@ -34,20 +36,21 @@ def register(request):
         shahr = request.POST['shahr']
         ostan = request.POST['ostan']
 
+        if password == password2:
 
-        if password ==password2:
-            
             if karbaruser1.objects.filter(username=username).exists():
                 messages.error(request, 'نام کاربری تکراری است')
-                return redirect ('register')
+                return redirect('register')
             else:
 
                 if karbaruser1.objects.filter(email=email).exists():
                     messages.error(request, 'ایمیل تکراری است')
-                    return redirect ('register')
+                    return redirect('register')
                 else:
-                   karbaruser11 = karbaruser1.objects.create(username=username,email=email, first_name=first_name,last_name=last_name,tell=tell,melli_code=melli_code,password=password,gender=gender,maghta=maghta,reshte=reshte,shahr=shahr,ostan=ostan)
-                   user = User.objects.create_user(username=username,email=email, first_name=first_name,last_name=last_name,password=password,)
+                   karbaruser11 = karbaruser1.objects.create(username=username, email=email, first_name=first_name, last_name=last_name,
+                                                             tell=tell, melli_code=melli_code, password="1", gender=gender, maghta=maghta, reshte=reshte, shahr=shahr, ostan=ostan)
+                   user = User.objects.create_user(
+                       username=username, email=email, first_name=first_name, last_name=last_name, password=password,)
                    karbaruser11.save()
                    user.save()
                    messages.success(request, 'ثبت نام شما با موفقیت انجام شد')
@@ -55,8 +58,6 @@ def register(request):
         else:
             messages.error(request, 'پسورد اول و دوم با هم مطابقت ندارد')
             return redirect('register')
-            
-
 
         # messages.error(request, 'test error massege')
         # return redirect('register')
@@ -71,13 +72,14 @@ def login(request):
        username = request.POST['username']
        password = request.POST['password']
 
-       user = auth.authenticate(username=username,password=password)
+       user = auth.authenticate(username=username, password=password)
        if user is not None:
            auth.login(request, user)
            messages.success(request, 'شما به سیستم وارد شدید')
            return redirect('index')
        else:
-            messages.error(request, 'مشخصات کاربری اشتباه است لطفا دوباره امتحان کنید')
+            messages.error(
+                request, 'مشخصات کاربری اشتباه است لطفا دوباره امتحان کنید')
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
@@ -88,11 +90,9 @@ def logout(request):
          auth.logout(request,)
          messages.success(request, 'شما از سیستم خارج شدید')
          return redirect('index')
-    return render(request, 'pages/index.html')
+    return render(request, 'accounts/register.html')
 
 
-def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
 
 
 

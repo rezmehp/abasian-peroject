@@ -37,8 +37,8 @@ class books(models.Model):
     bookname = models.CharField(max_length=1000)
     booklink_is_published = models.BooleanField(default=True)
     booklink = models.CharField(max_length=1000 ,blank=True)
-    bookbook_is_published = models.BooleanField(default=True)
-    bookbook = models.FileField(upload_to='coursebook/books/%y/%m/%d/',blank=True)
+    bookfile_is_published = models.BooleanField(default=True)
+    bookfile = models.FileField(upload_to='coursebook/books/%y/%m/%d/',blank=True)
     
     
     def __str__(self):

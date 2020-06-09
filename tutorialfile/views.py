@@ -4,11 +4,12 @@ from .models import tutorialfileAdmin, coursefile2, files
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from pages.models import maghtaTahsili, reshteTahsili, modaresin
+from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
 
 
 def tutorialfile(request):
+    footerAdmins = footerAdmin.objects.all()
     tutorialfileAdmins = tutorialfileAdmin.objects.all()
     usernameshows = User.objects.all()
     karbaruser1shows = karbaruser1.objects.filter(username=request.user.username)
@@ -56,6 +57,7 @@ def tutorialfile(request):
         bettercoursefileshows = ""
     newcoursefileshows = coursefile2.objects.all().order_by('-id')[:8]
     context = {
+        'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
         'karbaruser1online': karbaruser1online,
         'tutorialfileAdmins': tutorialfileAdmins,
@@ -76,9 +78,11 @@ def tutorialfile(request):
 
 
 def showfiletutorial(request, coursefile2_id):
+    footerAdmins = footerAdmin.objects.all()
     coursefile = get_object_or_404(coursefile2, pk=coursefile2_id)
     filess = files.objects.filter(coursenamefkey=coursefile2_id)
     context = {
+        'footerAdmins': footerAdmins,
         'coursefile': coursefile,
         'filess': filess
     }

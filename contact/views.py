@@ -4,10 +4,11 @@ from accounts.models import karbaruser1
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-
+from pages.models import footerAdmin
 
 def contact(request):
     contactusers = contactAdmin.objects.all()
+    footerAdmins = footerAdmin.objects.all()
 
     contactuserpayam = contactuserpm.objects.filter(usernamefkey=request.user.id).order_by("id").reverse()
     paginator = Paginator(contactuserpayam, 3)
@@ -19,7 +20,7 @@ def contact(request):
     usernameshow = User.objects.all()
 
     context = {
-
+        'footerAdmins':footerAdmins,
         'contactusers': contactusers,
         'contactuserpayam': paged_contactuserpayam,
         'usernameshow': usernameshow,

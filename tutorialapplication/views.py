@@ -6,11 +6,16 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin
 from django.http.response import JsonResponse
+from pages.models import sliderImage,footerAdmin 
 
+        
+        
 
 def tutorialapplication(request):
     tutorialapplicationAdmins = tutorialapplicationAdmin.objects.all()
     usernameshows = User.objects.all()
+    footerAdmins = footerAdmin.objects.all()
+
     karbaruser1shows = karbaruser1.objects.filter(username=request.user.username)
     maghtaTahsilishows = maghtaTahsili.objects.all()
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
@@ -73,6 +78,7 @@ def tutorialapplication(request):
         'newcourseapplicationshows': newcourseapplicationshows,
         'bettercourseapplicationshows': bettercourseapplicationshows,
         'values': request.GET,
+        'footerAdmins':footerAdmins,
 
     }
 
@@ -82,9 +88,12 @@ def tutorialapplication(request):
 def showapplicationtutorial(request, courseapplication2_id):
     courseapplication = get_object_or_404(courseapplication2, pk=courseapplication2_id)
     applicationss = applications.objects.filter(coursenamefkey=courseapplication2_id)
+    footerAdmins = footerAdmin.objects.all()
+
     context = {
         'courseapplication': courseapplication,
-        'applicationss': applicationss
+        'applicationss': applicationss,
+        'footerAdmins':footerAdmins,
     }
     return render(request, 'pages/showapplicationtutorial.html', context)
 
@@ -93,6 +102,7 @@ def showapplicationtutorial(request, courseapplication2_id):
 def maghtatutorialapplication(request, pk):
    
     reshteTahsilishows = reshteTahsili.objects.filter(maghtafkey_id=pk)
+
     data_info = {
     }
     for data in reshteTahsilishows:

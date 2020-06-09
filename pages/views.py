@@ -3,7 +3,7 @@ from tutorialapplication.models import courseapplication2,applications
 from tutorialbook.models import coursebook2,books
 from tutorialfile.models import coursefile2,files
 from tutorialvideo.models import coursevideo2,videos
-from .models import sliderImage
+from .models import sliderImage,footerAdmin
 
 # Create your views here.
 
@@ -18,6 +18,7 @@ def index(request):
     countfiles = files.objects.all().count()
     countvideos = videos.objects.all().count()
     sliderImages = sliderImage.objects.all()
+    footerAdmins = footerAdmin.objects.all()
 
     context={
 
@@ -30,7 +31,9 @@ def index(request):
         'countfiles':countfiles,
         'countvideos':countvideos,
         'sliderImages':sliderImages,
-    }    
+        'footerAdmins':footerAdmins,
+
+    }   
 
     
     return render(request, 'pages/index.html',context)
@@ -48,15 +51,18 @@ def index(request):
 
 
 def exam(request):
-    return render(request, 'pages/exam.html')
+    footerAdmins = footerAdmin.objects.all()
+    return render(request, 'pages/exam.html',{'footerAdmins':footerAdmins,})
 
 
 def examonline(request):
-    return render(request, 'pages/examonline.html')
+    footerAdmins = footerAdmin.objects.all()
+    return render(request, 'pages/examonline.html',{'footerAdmins':footerAdmins,})
 
 
 def examresault(request):
-    return render(request, 'pages/examresault.html')
+    footerAdmins = footerAdmin.objects.all()
+    return render(request, 'pages/examresault.html',{'footerAdmins':footerAdmins,})
 
 
 

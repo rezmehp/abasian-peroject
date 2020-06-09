@@ -4,11 +4,12 @@ from .models import tutorialvideoAdmin, coursevideo2, videos
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from pages.models import maghtaTahsili, reshteTahsili, modaresin
+from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
 
 
 def tutorialvideo(request):
+    footerAdmins = footerAdmin.objects.all()
     tutorialvideoAdmins = tutorialvideoAdmin.objects.all()
     usernameshows = User.objects.all()
     karbaruser1shows = karbaruser1.objects.filter(username=request.user.username)
@@ -57,6 +58,7 @@ def tutorialvideo(request):
         bettercoursevideoshows = ""
     newcoursevideoshows = coursevideo2.objects.all().order_by('-id')[:8]
     context = {
+        'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
         'karbaruser1online': karbaruser1online,
         'tutorialvideoAdmins': tutorialvideoAdmins,
@@ -77,9 +79,11 @@ def tutorialvideo(request):
 
 
 def showvideotutorial(request, coursevideo2_id):
+    footerAdmins = footerAdmin.objects.all()
     coursevideo = get_object_or_404(coursevideo2, pk=coursevideo2_id)
     videoss = videos.objects.filter(coursenamefkey=coursevideo2_id)
     context = {
+        'footerAdmins': footerAdmins,
         'coursevideo': coursevideo,
         'videoss': videoss
     }
