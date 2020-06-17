@@ -22,6 +22,7 @@ from pages.models import footerAdmin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/password_change/done/',include('pages.urls')),
     path('users/',include('django.contrib.auth.urls')),
     path('',include('pages.urls')),
     path('contact/',include('contact.urls')),
