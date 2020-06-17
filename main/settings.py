@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'contact.apps.ContactConfig',
+    'exam.apps.ExamConfig',
     'about.apps.AboutConfig',
     'tutorialapplication.apps.TutorialapplicationConfig',
     'tutorialvideo.apps.TutorialvideoConfig',

@@ -1,33 +1,32 @@
- {% extends 'base.html' %} {% block title %} exam {% endblock %}
- {% block content %}
-<!--test-->
-<div class="hero is-fullheight is-primary has-background">
-    <img alt="Fill Murray" class="hero-background is-transparent" src="static/images/bg.jpg" />
-    <div class="hero-body">
-        <div class="container">
-            <!--        تیتر بالای صفحه بعد از سکشن-->
-            <h1 class="title has-text-centered">آزمون</h1>
-            <!--        عکس تیتر بالای صفحه-->
-            <figure class="image is-3by1">
-                <img src="static/images/exam.jpg">
-            </figure>
+{% extends 'base.html' %}
 
+
+
+{% block title %}{% if tutorialexamAdmins %} {% for tutorialexamAdmin in tutorialexamAdmins %}
+{{ tutorialexamAdmin.title_page }} {% endfor %}
+{% endif %}{% endblock %} {% block content %}
+<!--test-->
+<div class="hero is-fullheight has-background-dark">
+    <div class="hero-body">
+        <section class="container">
+            <figure class="image is-3by1">
+                {% if tutorialexamAdmins %} {% for tutorialexamAdmin in tutorialexamAdmins %}
+                <img src="{{ tutorialexamAdmin.pic.url }}">
+                {% endfor %}
+                {% endif %}
+            </figure>
             <div class="box">
                 <section class="section has-background-light">
-                    <div class="container ">
-                        <!--        تیتر توضیحات زیر عکس اول درباره ما-->
-                        <h1 class="title has-text-dark">ثبت نام</h1><br>
-                        <!--            توضحات زیر عکس اول درباره ما-->
-                        <h2 class="subtitle has-text-dark has-text-justified">
-                            1. ثبت نام به صورت حضوری شما میتوانید برای ثبت ‌نام آزمون‌های آزمایشی (حضوري و مکاتبه‌اي)، به دفاتر مرکزی تهران و یا نمایندگی شهرتان در سراسر کشور مراجعه فرمایید. 2. ثبت نام غیرحضوری و تلفنی حضور داوطلب در مرکز آموزشي ضروری نیست و شما می توانید جهت ثبت
-                            نام غیرحضوری، پس از تماس با موسسه و انجام پیش ثبت نام، هزینه را به روش زیر واریز نمایید: - مبلغ اعلام شده را به شماره حساب …………. یا شماره کارت………… بانک ………..، در وجه ……….، واريز کرده و فيش بانکي آن را همراه با ذکر: "نام و نام‌خانوادگي،
-                            مقطع و رشته آزمون و شماره تلفن همراه" به پست الکترونیکی واحد آزمون ارسال فرمائيد.
+                    <!--        تیتر توضیحات زیر عکس اول درباره ما-->
+                    <h1 class="title has-text-dark">{% if tutorialexamAdmins %}
+                        {% for tutorialexamAdmin in tutorialexamAdmins %}
+                        {{ tutorialexamAdmin.title_search }} {% endfor %}
+                        {% endif %}</h1>
 
-
-                        </h2>
-                    </div>
                 </section>
-                <section class="section has-background-light">
+                <form method="post" id="formidsearch" action="{% url 'tutorialexam' %}"
+                    data-searchselect-url="{% url 'tutorialexam' %}" class="section has-background-light">
+                    {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
                             <div class="column">
@@ -35,11 +34,19 @@
                                     <div class="field-body">
                                         <div class="field">
                                             <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                <select>
-                                                    <option selected>مدرک تحصیلی</option>
-                                                    <option>دیپلم</option>
-                                                    <option>فوق دیپلم</option>
-                                                    <option>لیسانس</option>
+                                                <select id="maghtanidtemp" name="maghtan">
+                                                    <option selected="True" disabled="disabled">مقطع تحصیلی</option>
+                                                    {% if maghtaTahsilishows %}
+                                                    {% for maghtaTahsilishow in maghtaTahsilishows %}
+                                                    <option data-id="{{ maghtaTahsilishow.id }}"
+                                                        value="{{ maghtaTahsilishow.id }}">
+                                                        {{ maghtaTahsilishow.maghta }}</option>
+                                                    {% endfor %}
+                                                    {% else %}
+                                                    <div class="col-md-12">
+                                                        <p>No maghta Available</p>
+                                                    </div>
+                                                    {% endif %}
                                                 </select>
                                             </div>
                                         </div>
@@ -54,11 +61,15 @@
                                         <div class="field">
                                             <div class="field">
                                                 <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>رشته تحصیلی</option>
-                                                        <option>ریاضی</option>
-                                                        <option>تجربی</option>
-                                                        <option>علوم انسانی</option>
+                                                    <select id="reshtenidtemp" name="reshten">
+                                                        <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را
+                                                            انتخاب نمایید</option>
+                                                        {% if reshteTahsilishows %}
+                                                        {% for reshteTahsilishow in reshteTahsilishows %}
+                                                        <option value="{{ reshteTahsilishow.id }}">
+                                                            {{ reshteTahsilishow.reshte }}</option>
+                                                        {% endfor %}
+                                                        {% endif %}
                                                     </select>
                                                 </div>
                                             </div>
@@ -67,167 +78,202 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $('select[name="maghtan"]').on('change', function () {
+                                    var sardaste_id = $("#maghtanidtemp option:selected").attr('data-id');
+
+                                    if (sardaste_id) {
+                                        $.ajax({
+                                            url: '/exam/m/' + sardaste_id,
+                                            type: 'GET',
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                console.log(data);
+                                                $('select[name="reshten"]').empty();
+
+
+                                                $.each(data, function (key, value) {
+                                                    $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
+                                                });
+
+
+                                            },
+                                        })
+                                    } else {
+                                        $('select[name="reshten"]').empty();
+                                    }
+                                })
+                            })
+                        </script>
+
+
+
+
                         <div class="columns">
                             <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>رشته تخصصی</option>
-                                                        <option>ژنتیک پزشکی</option>
-                                                        <option>بیوشیمی بالینی</option>
-                                                        <option>بیوتکنولوژی پزشکی</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="control">
+                                    <input value="{{ values.coursen }}" class="input is-fullwidth" placeholder="نام درس"
+                                        type="text" name="coursen">
                                 </div>
                             </div>
                             <div class="column">
-                                <div class="field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <div class="field">
-                                                <div class="control is-expanded has-icons-right select is-fullwidth">
-                                                    <select>
-                                                        <option selected>آزمون</option>
-                                                        <option>پرتوهای بیولوژیکی</option>
-                                                        <option>باکتری شناسی</option>
-                                                        <option>انگل شناسی</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="control">
+                                    <input value="{{ values.modaresn }}" class="input is-fullwidth"
+                                        placeholder="نام مدرس" type="text" name="modaresn">
                                 </div>
                             </div>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
-                                    <label class="label is-primary has-text-right">هزینه ثبت نام</label>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="control">
-                                    <button class="button is-primary">
-                                        ثبت نام در آزمون
+                                    <button id="maghtanidtempbtn" class="button is-primary">
+                                        {% if tutorialexamAdmins %} {% for tutorialexamAdmin in tutorialexamAdmins %}
+                                        {{ tutorialexamAdmin.text_click }} {% endfor %}
+                                        {% endif %}
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
+                </form>
             </div>
 
-
-            <section class="section has-background-light">
-                <div class="container">
-                    <h1 class="title has-text-dark">آزمون های ثبت نام شده</h1><br>
-                    <table class="table is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th class="has-text-right"><abbr title="Position">ردیف</abbr></th>
-                                <th class="has-text-right">نام آزمون</th>
-                                <th class="has-text-right"><abbr title="Played">تاریخ آزمون</abbr></th>
-                                <th class="has-text-right"><abbr title="Won">مدت زمان آزمون</abbr></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right"><a href="{% url 'examonline' %}">Leicester City</a></td>
-                                <td class="has-text-right">12 خرداد 1398</td>
-                                <td class="has-text-right">23 دقیقه</td>
-                            </tr>
-
-
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right"><a href="{% url 'examonline' %}">Leicester City</a></td>
-                                <td class="has-text-right">12 خرداد 1398</td>
-                                <td class="has-text-right">23 دقیقه</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right"><a href="{% url 'examonline' %}">Leicester City</a></td>
-                                <td class="has-text-right">12 خرداد 1398</td>
-                                <td class="has-text-right">23 دقیقه</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right"><a href="{% url 'examonline' %}">Leicester City</a></td>
-                                <td class="has-text-right">12 خرداد 1398</td>
-                                <td class="has-text-right">23 دقیقه</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right"><a href="{% url 'examonline' %}">Leicester City</a></td>
-                                <td class="has-text-right">12 خرداد 1398</td>
-                                <td class="has-text-right">23 دقیقه</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-
+            {% if searchcourseexamshows %}
             <section class="section has-background-light">
                 <div class="container ">
-                    <h1 class="title has-text-dark">آزمون های گذرانده شده</h1><br>
-                    <table class="table is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th class="has-text-right"><abbr title="Position">ردیف</abbr></th>
-                                <th class="has-text-right">نام آزمون</th>
-                                <th class="has-text-right"><abbr title="Played">نمره از 100</abbr></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                            <tr>
-                                <th class="has-text-right">1</th>
-                                <td class="has-text-right">Leicester City</td>
-                                <td class="has-text-right">38</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    {% for searchcourseexamshow in searchcourseexamshows %}
+                    <a href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
+                        <div class="column is-one-quarter">
+                            <figure class="image">
+                                <img src="{{ searchcourseexamshow.pic.url }}">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-vcentered">
+                                    <strong>
+                                        درس : {{ searchcourseexamshow.coursename }}
+                                    </strong><br>
+                                    <strong>
+                                        استاد : {{ searchcourseexamshow.modaresinfkey }}
+                                    </strong><br>
+                                    {% if searchcourseexamshow.hazine != 0 %}
+                                    <small>
+                                        هزینه : {{ searchcourseexamshow.hazine }} ریال
+                                    </small>
+                                    {% else %}
+                                    <small>
+                                        هزینه : رایگان
+                                    </small>
+                                    {% endif %}
+                                    <br>
+                                    {{ searchcourseexamshow.tozihat }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <br>
+                    {% endfor %}
+                    {% endif %}
+                    {% if searchcourseexamshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if searchcourseexamshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcourseexamshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in searchcourseexamshows.paginator.page_range %}
+                                {% if searchcourseexamshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if searchcourseexamshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcourseexamshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </section>
+            <hr>
 
+            {% if bettercourseexamshows %}
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
+                    {% for tutorialexamAdmin in tutorialexamAdmins %}
+                    {{ tutorialexamAdmin.title_1 }} {% endfor %}
+                    {% endif %}
+                </h3>
+                <div class="columns is-multiline">
+                    {% for bettercourseexamshow in bettercourseexamshows %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
+                            <img src="{{ bettercourseexamshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ bettercourseexamshow.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ bettercourseexamshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ bettercourseexamshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    {% endfor %}
 
-        </div>
+                </div>
 
+            </section>
+            <hr>
+            {% endif %}
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
+                    {% for tutorialexamAdmin in tutorialexamAdmins %}
+                    {{ tutorialexamAdmin.title_2 }} {% endfor %}
+                    {% endif %}</h3>
+                <div class="columns is-multiline">
+                    {% if newcourseexamshows %} {% for newcourseexamshow in newcourseexamshows %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
+                            <img src="{{ newcourseexamshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس : {{ newcourseexamshow.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ newcourseexamshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ newcourseexamshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+        </section>
     </div>
-
 </div>
 
 {% endblock %}

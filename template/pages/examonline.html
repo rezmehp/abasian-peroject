@@ -1,10 +1,12 @@
-{% extends 'base.html' %} {% block title %}  online exam  {% endblock %}
+{% extends 'base.html' %} {% block title %} {{ courseexam.coursename }} {% endblock %}
 {% block content %}
 
 
 <div class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
+
+
         <h1 class="title has-text-centered">آزمون آنلاین</h1>
         <div class="hero-body">
             <div class="container">
@@ -13,34 +15,128 @@
                         <div class="box field is-horizontal">
                             <div class="field-body">
                                 <div class="field">
-                                    عنوان آزمون
+                                    {{ courseexam.coursename }}
                                 </div>
                                 <div class="field">
-                                    زمان باقی مانده
+                                    زمان آزمون {{ courseexam.saattadris }}
                                 </div>
-                                <div class="field button is-success">
-                                    <a href="#karname" rel="modal:open" class="has-text-white">کارنامه آزمون</a>
-                                </div>
+
+
+
                             </div>
                         </div>
+
+
+
+                        {% if examss %}
+                        {% for exams in examss %}
                         <form action="" class="has-background-gray-light">
                             <div class="box" id="changeQC1">
                                 <div class="box field is-horizontal">
                                     <div class="field-body">
-                                        <div class="field button">
-                                            <p><a href="#ex4" rel="modal:open">فایل متن</a></p>
+
+                                        <div class="field">
+                                            <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">فایل متن</a>
+                                            </p>
                                         </div>
-                                        <div class="field button">
-                                            <p><a href="#ex3" rel="modal:open">فایل صوت</a></p>
+                                        <!--متن-->
+                                        <div id="ex4{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex4{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examtext }}
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="field button">
-                                            <p><a href="#ex1" rel="modal:open">فایل عکس</a></p>
+
+                                        <div class="field">
+                                            <p><a href="#ex3{{ exams.id }}" rel="modal:open" class="button">فایل صوت</a>
+                                            </p>
                                         </div>
-                                        <div class="field button">
-                                            <p><a href="#ex2" rel="modal:open">فایل ویدیو</a></p>
+                                        <!--صوت-->
+                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+                                            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+                                            crossorigin="anonymous">
+                                                function audioStop() {
+                                                    alert("q");
+                                                }
+                                            </script>
+
+                                        <div id="ex3{{ exams.id }}" class="modal">
+                                            <div class="hero-body" >
+                                                <a href="#ex3{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background" onclick="audioStop()"></div>
+                                                    <div class="modal-content">
+                                                        <audio controls="controls">
+                                                            <source src="{{ exams.examlinkaudio }}" type="audio/mpeg" />
+                                                        </audio>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
-                                        <div class="field button is-success">
-                                            <a href="#" class="has-text-white">پاسخ</a>
+
+
+                                        <div class="field">
+                                            <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">فایل عکس</a>
+                                            </p>
+                                        </div>
+                                        <!--عکس-->
+                                        <div id="ex1{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex1{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="slideshow-container">
+                                                        <div id="numbertext" class="numbertext"></div>
+                                                        <img style="width:800px" src="{{ exams.examlinkpic }}">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">فایل
+                                                    ویدیو</a></p>
+                                        </div>
+                                        <!--فیلم-->
+                                        <div id="ex2{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex2{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <figure class="image is-16by9">
+                                                            <iframe class="has-ratio" width="640" height="360"
+                                                                src="{{ exams.examlinkvideo }}" frameborder="0"
+                                                                allowfullscreen></iframe>
+                                                        </figure>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="field">
+                                            <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
+                                            </p>
+                                        </div>
+                                        <!--پاسخ-->
+                                        <div id="ex5{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex5{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examanswer }}
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -48,247 +144,80 @@
                                     <div class="field is-horizontal">
                                         <div class="field-body">
                                             <div class="field">
-                                                <label class="label">سوال 1 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
+                                                <label class="label">{{ exams.examquestion }}</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1" onclick="qc1()"> <b>الف
-                                                    - </b>عددی بزرگ تر از 5
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-
-                                        <div class="field">
-                                            <input type="radio" name="test" value="1" onclick="qc1()"> <b>ب - </b>4
+                                            <input type="radio" name="test" value="1"> <b>الف -
+                                            </b>{{ exams.examanswer1 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1" onclick="qc1()"> <b>ج - </b>عددی کوچکتر از 3
+                                            <input type="radio" name="test" value="1"> <b>ب -
+                                            </b>{{ exams.examanswer2 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1" onclick="qc1()"> <b>د - </b>جواب نامعلوم
+                                            <input type="radio" name="test" value="1"> <b>ج -
+                                            </b>{{ exams.examanswer3 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input id="input1" type="checkbox" name="test" onclick="shak1()"> به جواب این سوال شک دارم
+                                            <input type="radio" name="test" value="1"> <b>د -
+                                            </b>{{ exams.examanswer4 }}
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="box" id="changeQC2">
-                                <div class="box field is-horizontal">
-                                    <div class="field-body">
-                                        <div class="field button">
-                                            <p><a href="#ex4" rel="modal:open">فایل متن</a></p>
-                                        </div>
-                                        <div class="field button">
-                                            <p><a href="#ex3" rel="modal:open">فایل صوت</a></p>
-                                        </div>
-                                        <div class="field button">
-                                            <p><a href="#ex1" rel="modal:open">فایل عکس</a></p>
-                                        </div>
-                                        <div class="field button">
-                                            <p><a href="#ex2" rel="modal:open">فایل ویدیو</a></p>
-                                        </div>
-                                        <div class="field button is-success">
-                                            <a href="#" class="has-text-white">پاسخ</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="field">
-                                    <div class="field is-horizontal">
-                                        <div class="field-body">
-                                            <div class="field">
-                                                <label class="label">سوال 1 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <input type="radio" name="test2" value="1" onclick="qc2()"> <b>الف - </b>عددی بزرگ تر از 5
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <input type="radio" name="test2" value="1" onclick="qc2()"> <b>ب - </b>4
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <input type="radio" name="test2" value="1" onclick="qc2()"> <b>ج - </b>عددی کوچکتر از 3
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <input type="radio" name="test2" value="1" onclick="qc2()"> <b>د - </b>جواب نامعلوم
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <input id="input2" type="checkbox" name="test" onclick="shak2()"> به جواب این سوال شک دارم
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+
+                            {% endfor %}
+                            {% endif %}
+
                             <div class="field">
-                                <a class="button is-warning" href="{% url 'examresault' %}">
-                                            پایان آزمون
-                                        </a>
+                                <p><a href="#endexam" rel="modal:open" class="button">پایان آزمون</a>
+                                </p>
+                            </div>
+
+                            <div id="endexam" class="modal">
+                                <div class="hero-body">
+
+                                    <a href="#endexam" rel="modal:close">
+                                        <div class="modal-background"></div>
+                                        <div class="modal-content">
+                                            <article class="message">
+                                                <div class="message-body">
+                                                    آیا نسبت به پایان دادن آزمون اطمینان دارید
+                                                </div>
+                                            </article>
+
+                                            <div class="message-body box is-warning">
+                                                خیر
+                                            </div><br>
+                                            <a class="is-5 button is-warning" href="{% url 'examresault' %}">
+                                                بله پایان آزمون
+                                            </a>
+
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 </div>
 
-<!-- کارنامه آزمون -->
-<div id="karname" class="modal">
-    <div class="hero-body">
-        <a href="#karname" rel="modal:close">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <div class="columns is-11-widescreen is-multiline" style="overflow: hidden;">
-                    <div class="column is-1" id="karname1">1</div>
-                    <div class="column is-1" id="karname2">2</div>
-                </div>
-            </div>
-        </a>
-    </div>
-</div>
-<!--عکس-->
-<div id="ex1" class="modal">
-    <div class="hero-body">
-        <a href="#ex1" rel="modal:close">
-            <div class="modal-background"></div>
-            <div class="slideshow-container">
-                <div id="numbertext" class="numbertext"></div>
-                <div class="mySlides fade">
-                    <img style="width:800px" src="static/images/pic08.jpg">
-                </div>
-                <div class="mySlides fade">
-                    <img style="width:800px" src="static/images/pic07.jpg">
-                </div>
-                <div class="mySlides fade">
-                    <img style="width:800px" src="static/images/bg.jpg">
-                </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </a>
-    </div>
-</div>
-<!--فیلم-->
-<div id="ex2" class="modal">
-    <div class="hero-body">
-        <a href="#ex1" rel="modal:close">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <figure class="image is-16by9">
-                    <iframe class="has-ratio" width="640" height="360" src="https://www.aparat.com/video/video/embed/videohash/Bbyu9/vt/frame" frameborder="0" allowfullscreen></iframe>
-                </figure>
-            </div>
-        </a>
-    </div>
-</div>
-<!--متن-->
-<div id="ex4" class="modal">
-    <div class="hero-body">
-        <a href="#ex1" rel="modal:close">
-            <div class="modal-background"></div>
-            <div class="modal-content">
-                <article class="message">
-                    <div class="message-body">
-                        قبل از اینکه ویژگی های این تگ رو بررسی کنیم می خوام دلیل متنی که براتون نوشتم رو بگم ، این متن رو برای این می نویسیم که اگه مرورگری این تگ رو ساپورت نکرد این نوشته براش به نمایش در بیاد و بفهمه که مرورگرش این فایل صوتی رو ساپورت نمیکنه ، شما می تونید
-                        به جای نوشته بالا هرچی که می خواید بنویسید
-                    </div>
-                </article>
-            </div>
-        </a>
-    </div>
-</div>
-<!--صوت-->
-<div id="ex3" class="modal">
-    <div class="hero-body">
-        <a href="#ex1" rel="modal:close">
-            <div class="modal-background" onclick="audioStop()"></div>
-            <div class="modal-content">
-                <audio id="audio" controls="controls">
-                    <source src="http://ir.vavmusic.com/download/B/Babak%20Jahanbakhsh/Single/320/Babak%20Jahanbakhsh%20-%20Az%20Khoshi%20Mimiram.mp3"
-                            type="audio/mpeg"/>
-                </audio>
-            </div>
-        </a>
-    </div>
-</div>
 
 
-<script>
-    var slideIndex = 1;
-    showSlides(slideIndex);
-
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {
-            slideIndex = 1
-        }
-        if (n < 1) {
-            slideIndex = slides.length
-        }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
-
-        var numbertext = document.getElementById("numbertext").innerText = slideIndex + " / " + slides.length
-    }
-
-    function audioStop() {
-        var audio = document.getElementById('audio');
-        audio.pause();
-    }
-
-    function qc1() {
-        var changeQC = document.getElementById('changeQC1');
-        changeQC.style.backgroundColor = 'yellow';
-        karname1.style.color = (input1.checked) ? 'green' : 'yellow';
-    }
-
-    function shak1() {
-        input1.parentNode.style.backgroundColor = (input1.checked) ? 'green' : 'yellow';
-        karname1.style.color = (input1.checked) ? 'green' : 'yellow';
-    }
-
-
-    function qc2() {
-        var changeQC = document.getElementById('changeQC2');
-        changeQC.style.backgroundColor = 'yellow';
-        karname2.style.color = (input2.checked) ? 'green' : 'yellow';
-    }
-
-    function shak2() {
-        input2.parentNode.style.backgroundColor = (input2.checked) ? 'green' : 'yellow';
-        karname2.style.color = (input2.checked) ? 'green' : 'yellow';
-    }
-</script>
 
 {% endblock %}

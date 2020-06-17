@@ -35,34 +35,4 @@ def index(request):
 
     }   
 
-    
     return render(request, 'pages/index.html',context)
-
-
-
-
-
-
-
-
-
-
-
-
-
-def exam(request):
-    footerAdmins = footerAdmin.objects.all()
-    return render(request, 'pages/exam.html',{'footerAdmins':footerAdmins,})
-
-
-def examonline(request):
-    footerAdmins = footerAdmin.objects.all()
-    return render(request, 'pages/examonline.html',{'footerAdmins':footerAdmins,})
-
-
-def examresault(request):
-    footerAdmins = footerAdmin.objects.all()
-    return render(request, 'pages/examresault.html',{'footerAdmins':footerAdmins,})
-
-
-
