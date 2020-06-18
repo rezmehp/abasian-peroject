@@ -5,8 +5,6 @@
 <div class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
-
-
         <h1 class="title has-text-centered">آزمون آنلاین</h1>
         <div class="hero-body">
             <div class="container">
@@ -18,25 +16,24 @@
                                     {{ courseexam.coursename }}
                                 </div>
                                 <div class="field">
-                                    زمان آزمون {{ courseexam.saattadris }}
+                                    زمان آزمون {{ courseexam.saattadris }} دقیقه
                                 </div>
-
-
-
                             </div>
                         </div>
-
-
-
-                        {% if examss %}
-                        {% for exams in examss %}
-                        <form action="" class="has-background-gray-light">
-                            <div class="box" id="changeQC1">
+                        <form action="" method="POST" class="has-background-gray-light">
+                            {% csrf_token %}
+                            {% if examss %}
+                            {% for exams in examss %}
+                            {% if exams.examquestion_published == True %}
+                            <div class="box">
                                 <div class="box field is-horizontal">
                                     <div class="field-body">
 
+
+                                        {% if exams.examtext %}
+                                        {% if exams.examtext_published == True %}
                                         <div class="field">
-                                            <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">فایل متن</a>
+                                            <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">متن</a>
                                             </p>
                                         </div>
                                         <!--متن-->
@@ -54,22 +51,28 @@
                                                 </a>
                                             </div>
                                         </div>
-
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if exams.examfiletext %}
+                                        {% if exams.examfiletext_published == True %}
                                         <div class="field">
-                                            <p><a href="#ex3{{ exams.id }}" rel="modal:open" class="button">فایل صوت</a>
+                                            <p><a href="{{ exams.examfiletext.url }}" target="_blank" class="button">فایل متن</a>
+                                            </p>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
+
+
+
+                                        {% if exams.examlinkaudio %}
+                                        {% if exams.examlinkaudio_published == True %}
+                                        <div class="field">
+                                            <p><a href="#exexams.examlinkaudio3{{ exams.id }}" rel="modal:open" class="button">صوت</a>
                                             </p>
                                         </div>
                                         <!--صوت-->
-                                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
-                                            integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-                                            crossorigin="anonymous">
-                                                function audioStop() {
-                                                    alert("q");
-                                                }
-                                            </script>
-
                                         <div id="ex3{{ exams.id }}" class="modal">
-                                            <div class="hero-body" >
+                                            <div class="hero-body">
                                                 <a href="#ex3{{ exams.id }}" rel="modal:close">
                                                     <div class="modal-background" onclick="audioStop()"></div>
                                                     <div class="modal-content">
@@ -80,10 +83,26 @@
                                                 </a>
                                             </div>
                                         </div>
-
-
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if exams.examfileaudio  %}
+                                        {% if exams.examfileaudio_published == True %}
                                         <div class="field">
-                                            <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">فایل عکس</a>
+                                            <p><a href="{{ exams.examfileaudio.url }}" target="_blank" class="button">فایل صوت</a>
+                                            </p>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
+
+
+
+
+
+                                        
+                                        {% if exams.examlinkpic %}
+                                        {% if exams.examlinkpic_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">عکس</a>
                                             </p>
                                         </div>
                                         <!--عکس-->
@@ -98,10 +117,25 @@
                                                 </a>
                                             </div>
                                         </div>
-
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if exams.examfilepic  %}
+                                        {% if exams.examfilepic_published == True %}
                                         <div class="field">
-                                            <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">فایل
-                                                    ویدیو</a></p>
+                                            <p><a href="{{ exams.examfilepic.url }}" target="_blank" class="button">فایل عکس</a>
+                                            </p>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
+
+
+
+
+                                        
+                                        {% if exams.examlinkvideo %}
+                                        {% if exams.examlinkvideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">ویدیو</a></p>
                                         </div>
                                         <!--فیلم-->
                                         <div id="ex2{{ exams.id }}" class="modal">
@@ -118,7 +152,21 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if exams.examfilevideo  %}
+                                        {% if exams.examfilevideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfilevideo.url }}" target="_blank" class="button">فایل ویدئو</a>
+                                            </p>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
 
+
+                                            
+                                        {% if exams.examanswer %}
+                                        {% if exams.examanswer_published == True %}
                                         <div class="field">
                                             <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
                                             </p>
@@ -138,8 +186,21 @@
                                                 </a>
                                             </div>
                                         </div>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% if exams.examfileanswer  %}
+                                        {% if exams.examfileanswer_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfileanswer.url }}" target="_blank" class="button">فایل پاسخ</a>
+                                            </p>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
                                     </div>
                                 </div>
+
+
+
                                 <div class="field">
                                     <div class="field is-horizontal">
                                         <div class="field-body">
@@ -150,25 +211,25 @@
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1"> <b>الف -
+                                            <input type="radio" name="userexamanswer" value="1"> <b>الف -
                                             </b>{{ exams.examanswer1 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1"> <b>ب -
+                                            <input type="radio" name="userexamanswer" value="2"> <b>ب -
                                             </b>{{ exams.examanswer2 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1"> <b>ج -
+                                            <input type="radio" name="userexamanswer" value="3"> <b>ج -
                                             </b>{{ exams.examanswer3 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="test" value="1"> <b>د -
+                                            <input type="radio" name="userexamanswer" value="4"> <b>د -
                                             </b>{{ exams.examanswer4 }}
                                         </div>
                                     </div>
@@ -176,18 +237,19 @@
 
                             </div>
 
-
+                            {% endif %}
                             {% endfor %}
                             {% endif %}
+
 
                             <div class="field">
                                 <p><a href="#endexam" rel="modal:open" class="button">پایان آزمون</a>
                                 </p>
                             </div>
 
+
                             <div id="endexam" class="modal">
                                 <div class="hero-body">
-
                                     <a href="#endexam" rel="modal:close">
                                         <div class="modal-background"></div>
                                         <div class="modal-content">
@@ -200,9 +262,9 @@
                                             <div class="message-body box is-warning">
                                                 خیر
                                             </div><br>
-                                            <a class="is-5 button is-warning" href="{% url 'examresault' %}">
+                                            <button class="button is-primary">
                                                 بله پایان آزمون
-                                            </a>
+                                            <button>
 
                                         </div>
                                     </a>
@@ -213,11 +275,16 @@
                 </div>
             </div>
         </div>
-
     </section>
 </div>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
+        function audioStop() {
+            alert("q");
+        }
+    </script>
 
 
 {% endblock %}

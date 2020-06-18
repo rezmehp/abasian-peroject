@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialexamAdmin, courseexam2, exams
+from .models import tutorialexamAdmin, courseexam2, exams, UserAnswerTest
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -78,6 +78,11 @@ def tutorialexam(request):
     return render(request, 'pages/exam.html', context)
 
 
+def examresault(request):
+    footerAdmins = footerAdmin.objects.all()
+    return render(request, 'pages/examresault.html',{'footerAdmins':footerAdmins,})
+
+
 
 
 def showexamtutorial(request, courseexam2_id):
@@ -89,7 +94,15 @@ def showexamtutorial(request, courseexam2_id):
         'courseexam': courseexam,
         'examss': examss
     }
+
+    if request.method == 'POST':
+        
+            useranswersave = UserAnswerTest.objects.create(courseexamfkey=" ",usernamefkey=" ",examquestionfkey=" ", userexamanswer="1",)
+            useranswersave.save()
+            
+    
     return render(request, 'pages/examonline.html', context)
+    
 
 
 
@@ -101,9 +114,4 @@ def maghtatutorialexam(request, pk):
     for data in reshteTahsilishows:
         data_info[data.id] = str(data.reshte)
     return JsonResponse(data_info, content_type='application/json')
-
-
-def examresault(request):
-    footerAdmins = footerAdmin.objects.all()
-    return render(request, 'pages/examresault.html',{'footerAdmins':footerAdmins,})
 

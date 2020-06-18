@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from pages.models import maghtaTahsili, modaresin, reshteTahsili
 
 class tutorialexamAdmin(models.Model):
@@ -38,40 +39,56 @@ class exams(models.Model):
     examquestion_published = models.BooleanField(default=True)
     examquestion = models.TextField(max_length=50000)
 
-    examanswer1_true = models.BooleanField(default=True)
+    examanswer1_true = models.BooleanField(default=False)
     examanswer1 = models.TextField(max_length=50000)
-    examanswer2_true = models.BooleanField(default=True)
+    examanswer2_true = models.BooleanField(default=False)
     examanswer2 = models.TextField(max_length=50000)
-    examanswer3_true = models.BooleanField(default=True)
+    examanswer3_true = models.BooleanField(default=False)
     examanswer3 = models.TextField(max_length=50000)
-    examanswer4_true = models.BooleanField(default=True)
+    examanswer4_true = models.BooleanField(default=False)
     examanswer4 = models.TextField(max_length=50000)
     
 
-
+    examtext_published = models.BooleanField(default=False)
     examtext = models.TextField(max_length=50000, blank=True)
-    
-    examlinkpic_published = models.BooleanField(default=True)
+    examfiletext_published = models.BooleanField(default=False)
+    examfiletext = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True)
+
+
+    examlinkpic_published = models.BooleanField(default=False)
     examlinkpic = models.TextField(max_length=2000 ,blank=True)
-    examfilepic_published = models.BooleanField(default=True)
+    examfilepic_published = models.BooleanField(default=False)
     examfilepic = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True)
 
     
-    examlinkvideo_published = models.BooleanField(default=True)
+    examlinkvideo_published = models.BooleanField(default=False)
     examlinkvideo = models.TextField(max_length=2000 ,blank=True)
-    examfilevideo_published = models.BooleanField(default=True)
+    examfilevideo_published = models.BooleanField(default=False)
     examfilevideo = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True)
 
     
-    examlinkaudio_published = models.BooleanField(default=True)
+    examlinkaudio_published = models.BooleanField(default=False)
     examlinkaudio = models.TextField(max_length=2000 ,blank=True)
-    examfileaudio_published = models.BooleanField(default=True)
+    examfileaudio_published = models.BooleanField(default=False)
     examfileaudio = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True)
     
   
-    examanswer_published = models.BooleanField(default=True)
+    examanswer_published = models.BooleanField(default=False)
     examanswer = models.TextField(max_length=50000, blank=True)  
-
+    examfileanswer_published = models.BooleanField(default=False)
+    examfileanswer = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True)
 
     def __str__(self):
         return self.examquestion
+
+
+
+class UserAnswerTest(models.Model):
+    
+    courseexamfkey = models.ForeignKey(courseexam2, on_delete=models.DO_NOTHING)
+    usernamefkey = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    examquestionfkey = models.ForeignKey(exams, on_delete=models.DO_NOTHING)
+    userexamanswer = models.IntegerField()
+    
+
+    
