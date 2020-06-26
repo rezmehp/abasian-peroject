@@ -11,7 +11,12 @@
                         <div class="box field is-horizontal">
                             <div class="field-body">
                                 <div class="field">
-                                    عنوان آزمون
+                                    {% if answers %}
+                                    {% for answer in answers %}
+                                    {{ answer.courseexamfkey }} عنوان آزمون
+
+                                    {% endfor %}
+                                    {% endif %}
                                 </div>
                                 <div class="field">
                                     نمره از 100 -> 85
@@ -38,122 +43,32 @@
 
                             <div class="box">
                                 <div class="field">
+
+
                                     <div class="field is-horizontal">
                                         <div class="field-body">
                                             <div class="field">
-                                                <label class="label">سوال 1 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
+
+                                                {% if answers %}
+                                                {% for answer in answers %}
+                                                <label class="label">سوال - {{ answer.examquestionfkey }} جواب شما گزینه
+                                                    : {{ answer.userexamanswer }} ــــ جواب صحیح گزینه :</label>
+
+                                                {% endfor %}
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر از 5
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>ب - </b>4
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-check-square has-text-success"></span> <b>ج - </b>عددی کوچکتر از 3
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-minus-square has-text-danger"></span> <b>د - </b>جواب نامعلوم
-                                        </div>
-                                    </div>
+
+
                                 </div>
-
                             </div>
-
-
-
-
-
-                            <div class="box">
-                                <div class="field">
-                                    <div class="field is-horizontal">
-                                        <div class="field-body">
-                                            <div class="field">
-                                                <label class="label">سوال 2 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>الف - </b>عددی بزرگ تر از 5
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>ب - </b>4
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-check-square has-text-link"></span> <b>ج - </b>عددی کوچکتر از 3
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-
-
-
-
-                            <div class="box">
-                                <div class="field">
-                                    <div class="field is-horizontal">
-                                        <div class="field-body">
-                                            <div class="field">
-                                                <label class="label">سوال 3 - ضرب عدد 2 در 2 چند می
-                                                            شود؟ </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-check-square has-text-success"></span> <b>الف - </b>عددی بزرگ تر از 5
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>ب - </b>4
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>ج - </b>عددی کوچکتر از 3
-                                        </div>
-                                    </div>
-                                    <div class="field is-horizontal">
-                                        <div class="field">
-                                            <span class="far fa-square"></span> <b>د - </b>جواب نامعلوم
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-
 
                             <div class="field">
                                 <div class="field">
-                                    <a class="button is-warning" href="{% url 'exam' %}">
-                                                بازگشت به صفحه آزمون ها
-                                            </a>
+                                    <a class="button is-warning" href="{% url 'tutorialexam' %}">
+                                        بازگشت به صفحه آزمون ها
+                                    </a>
                                 </div>
                             </div>
                         </form>

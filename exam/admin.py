@@ -24,5 +24,5 @@ admin.site.register(exams, examsshow)
 
 
 class UserAnswerTestshow(admin.ModelAdmin):
-    list_display = ('userexamanswer','examquestionfkey',)
+    list_display = ('usernamefkey','courseexamfkey','examquestionfkey','userexamanswer',)
 admin.site.register(UserAnswerTest, UserAnswerTestshow)

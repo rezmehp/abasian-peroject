@@ -85,9 +85,9 @@ class exams(models.Model):
 
 class UserAnswerTest(models.Model):
     
-    courseexamfkey = models.ForeignKey(courseexam2, on_delete=models.DO_NOTHING)
-    usernamefkey = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    examquestionfkey = models.ForeignKey(exams, on_delete=models.DO_NOTHING)
+    courseexamfkey = models.IntegerField()
+    usernamefkey = models.IntegerField()
+    examquestionfkey = models.IntegerField()
     userexamanswer = models.IntegerField()
     
 
