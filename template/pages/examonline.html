@@ -1,7 +1,5 @@
 {% extends 'base.html' %} {% block title %} {{ courseexam.coursename }} {% endblock %}
 {% block content %}
-
-
 <div class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
@@ -16,27 +14,26 @@
                                     {{ courseexam.coursename }}
                                 </div>
                                 <div class="field">
-                                    زمان آزمون {{ courseexam.saattadris }} دقیقه
+                                    <label id="questiontime"  style="color: red; font-weight: bold;"></label>
+                                    <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
                                 </div>
+                                سوال شماره  &nbsp;<label id="questionnumber" style="color: red; font-weight: bold;"></label>
                             </div>
                         </div>
                         <form action="{% url 'examresault' %}" method="POST" class="has-background-gray-light">
                             {% csrf_token %}
                             {% if examss %}
+                            
                             {% for exams in examss %}
                             {% if exams.examquestion_published == True %}
-                            <input type="text" name="courseexamid" value="{{ courseexam.id }}"/>
-                            <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}"/>
-                            <input type="text" name="userid" value="{{ user.id }}"/>
-
-
-
+                            <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
+                            <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
+                            <input type="text" name="userid" value="{{ user.id }}" hidden />
                             
-                            <div class="box">
+                            <div id="questions" class="box">
+
                                 <div class="box field is-horizontal">
                                     <div class="field-body">
-
-
                                         {% if exams.examtext %}
                                         {% if exams.examtext_published == True %}
                                         <div class="field">
@@ -69,9 +66,6 @@
                                         </div>
                                         {% endif %}
                                         {% endif %}
-
-
-
                                         {% if exams.examlinkaudio %}
                                         {% if exams.examlinkaudio_published == True %}
                                         <div class="field">
@@ -103,12 +97,6 @@
                                         </div>
                                         {% endif %}
                                         {% endif %}
-
-
-
-
-
-
                                         {% if exams.examlinkpic %}
                                         {% if exams.examlinkpic_published == True %}
                                         <div class="field">
@@ -138,11 +126,6 @@
                                         </div>
                                         {% endif %}
                                         {% endif %}
-
-
-
-
-
                                         {% if exams.examlinkvideo %}
                                         {% if exams.examlinkvideo_published == True %}
                                         <div class="field">
@@ -175,9 +158,6 @@
                                         </div>
                                         {% endif %}
                                         {% endif %}
-
-
-
                                         {% if exams.examanswer %}
                                         {% if exams.examanswer_published == True %}
                                         <div class="field">
@@ -212,9 +192,6 @@
                                         {% endif %}
                                     </div>
                                 </div>
-
-
-
                                 <div class="field">
                                     <div class="field is-horizontal">
                                         <div class="field-body">
@@ -223,48 +200,54 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                            
-                                    
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="1"  required> <b>الف -
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="1" required>
+                                            <b>الف -
                                             </b>{{ exams.examanswer1 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="2" required> <b>ب -
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="2" required>
+                                            <b>ب -
                                             </b>{{ exams.examanswer2 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="3" required> <b>ج -
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="3" required>
+                                            <b>ج -
                                             </b>{{ exams.examanswer3 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="4" required> <b>د -
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="4" required>
+                                            <b>د -
                                             </b>{{ exams.examanswer4 }}
                                         </div>
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required> <b>
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required>
+                                            <b>
                                             </b>به این سوال پاسخ نمی دهم
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
 
                             {% endif %}
                             {% endfor %}
-                            {% endif %}
+                            {% endif %} <div name="backq" id="backq" class="button"><span
+                                    class="fas fa-angle-double-right"
+                                    style="color: mediumseagreen;"></span>&nbsp;&nbsp;قبلی</div>
+                            <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span
+                                    class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
 
-                            <button class="button is-primary">پایان آزمون</button>
+                            <button id="button" class="button is-primary  is-pulled-left"
+                                onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
                         </form>
                     </div>
                 </div>
@@ -272,14 +255,69 @@
         </div>
     </section>
 </div>
+                                <script>
+                               
 
+                                
+                                    function audioStop() {
+                                        alert("q");
+                                    }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous">
-        function audioStop() {
-            alert("q");
-        }
-    </script>
+                                    function warning() {
+                                        var check = confirm('آیا نسبت به پایان آزمون مطمعن هستید؟');
+                                        if (check == false) {
+                                            history.back();
+                                        }
+                                    }
 
+                                    
+                                </script>
+                                <script>
+                                    time = document.getElementById('questiontimeset').textContent*5;
+                                    interval = setInterval(function () {
+                                        
+                                        time--;
+                                        document.getElementById('questiontime').innerHTML = "زمان باقی مانده : " + time + " ثانیه"
+                                        if (time == 0) {
+                                            // stop timer
+                                            clearInterval(interval);
+                                            // click
+                                            document.getElementById('button').click();
+                                        }
+                                    }, 1000)      
+                                    
+                                    let x = document.body.querySelectorAll('#questions');
+                                    let index = 0;
+                                    let thisquestion = 0;
+                                    document.getElementById("questionnumber").innerText=thisquestion+1;                                        
+                                    for (index = 0; index < x.length; index++) {
+                                        x[index].style.display = 'none';
+                                        console.log(index);
+                                        x[thisquestion].style.display = 'block';
+                                        
+                                    }
+                                    document.getElementById('nextq').addEventListener('click', function () {
+                                      
 
-{% endblock %}
+                                        if (thisquestion < x.length - 1) {
+                                            for (index = 0; index < x.length; index++) {
+                                                x[index].style.display = 'none';
+                                            }
+                                            thisquestion = thisquestion + 1;
+                                            document.getElementById("questionnumber").innerText=thisquestion+1;
+                                            x[thisquestion].style.display = 'block';
+                                            }
+                                    })
+                                    document.getElementById('backq').addEventListener('click', function () {
+                                        if (thisquestion > 0) {
+                                            for (index = 0; index < x.length; index++) {
+                                                x[index].style.display = 'none';
+                                            }
+                                            thisquestion = thisquestion - 1;
+                                            document.getElementById("questionnumber").innerText=thisquestion+1;   
+                                            x[thisquestion].style.display = 'block';
+                                            }
+                                    })
+
+                                </script>
+                                {% endblock %}

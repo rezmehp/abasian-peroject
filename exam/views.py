@@ -138,10 +138,14 @@ def showexamtutorial(request, courseexam2_id):
     footerAdmins = footerAdmin.objects.all()
     courseexam = get_object_or_404(courseexam2, pk=courseexam2_id)
     examss = exams.objects.filter(coursenamefkey=courseexam2_id)
+    countq = exams.objects.filter(coursenamefkey=courseexam2_id).count()
+
+
     context = {
         'footerAdmins': footerAdmins,
         'courseexam': courseexam,
-        'examss': examss
+        'examss': examss,
+        'countq':countq,
     }
 
     return render(request, 'pages/examonline.html', context)
