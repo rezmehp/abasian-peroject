@@ -3,6 +3,7 @@ from tutorialapplication.models import courseapplication2,applications
 from tutorialbook.models import coursebook2,books
 from tutorialfile.models import coursefile2,files
 from tutorialvideo.models import coursevideo2,videos
+from exam.models import courseexam2
 from .models import sliderImage,footerAdmin
 
 # Create your views here.
@@ -13,6 +14,7 @@ def index(request):
     newcoursebooks = coursebook2.objects.all().order_by('-id')[:3]
     newcoursefiles = coursefile2.objects.all().order_by('-id')[:3]
     newcoursevideos = coursevideo2.objects.all().order_by('-id')[:3]
+    newexams = courseexam2.objects.all().order_by('-id')[:3]
     countapplications = applications.objects.all().count()
     countbooks = books.objects.all().count()
     countfiles = files.objects.all().count()
@@ -21,7 +23,7 @@ def index(request):
     footerAdmins = footerAdmin.objects.all()
 
     context={
-
+        'newexams':newexams,
         'newcourseapplications':newcourseapplications,
         'newcoursebooks':newcoursebooks,
         'newcoursefiles':newcoursefiles,

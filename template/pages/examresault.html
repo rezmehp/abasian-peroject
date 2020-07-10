@@ -1,6 +1,6 @@
 {% extends 'base.html' %} exam resault {% block content %}
 <!--test-->
-<div class="container  has-background-white-ter">
+<div onmousemove="answershow()" class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
         <h1 class="title has-text-centered">نتیجه آزمون</h1>
@@ -11,71 +11,85 @@
                         <div class="box field is-horizontal">
                             <div class="field-body">
                                 <div class="field">
-                                    {% if answers %}
-                                    {% for answer in answers %}
-                                    {{ answer.courseexamfkey }} عنوان آزمون
+                                    
+                                    عنوان آزمون:  {{ courseexam }}
 
-                                    {% endfor %}
-                                    {% endif %}
                                 </div>
                                 <div class="field">
-                                    نمره از 100 -> 85
+                                    تعداد سوالات  : <span id="questionnumber"></span> عدد
+                                </div>
+                                <div class="field">
+                                    نمره از 100 -> <span id="resoult"></span>
                                 </div>
                             </div>
                         </div>
-                        <form action="" class="box">
-                            <div class="box field is-horizontal">
-                                <div class="field-body">
-                                    <div class="field has-text-success">
-                                        <b>تعداد پاسخ درست - 17</b>
-                                    </div>
-                                    <div class="field has-text-danger">
-                                        <b>تعداد پاسخ نادرست - 2</b>
-                                    </div>
-                                    <div class="field has-text-link">
-                                        <b>تعداد سوال بی پاسخ - 1</b>
-                                    </div>
+
+                        
+                            {% if useranswerexam %}
+                            {% for useranswerexams in useranswerexam %}
+                            {% for exams in examss %}
+                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer == 0 %}
+                            <span id="na" class="nonea" hidden>1</span>
+                            {% endif %}
+                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer == exams.trueanswer %}
+                            <span id="ta" class="truea" hidden>1</span>
+                            {% endif %}
+                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer != exams.trueanswer and useranswerexams.userexamanswer != 0 %}
+                            <span id="fa" class="falsea" hidden>1</span>
+                            
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            {% endif %}
+
+                        <script>
+                            na = parseInt($(".nonea").text().length);
+                            ta = parseInt($(".truea").text().length);
+                            fa = parseInt($(".falsea").text().length);
+                            questionnumber = na+ta+fa;
+                            resoult = parseFloat((ta * 100) / questionnumber).toFixed(2)
+                            function answershow() {
+                                
+                                document.getElementById("countna").innerHTML=na;
+                            
+                                
+                                document.getElementById("countta").innerHTML=ta;
+                            
+                                
+                                document.getElementById("countfa").innerHTML=fa;
+
+                                document.getElementById("questionnumber").innerHTML=questionnumber;
+
+                                document.getElementById("resoult").innerHTML=resoult;
+                            }
+                        </script>
+
+                        <div class="box field is-horizontal">
+                            <div class="field-body">
+                                <div class="field has-text-success">
+                                    <b>تعداد پاسخ درست : </b><span id="countta"></span>
+                                </div>
+                                <div class="field has-text-danger">
+                                    <b>تعداد پاسخ نادرست : </b><span id="countfa"></span>
+                                </div>
+                                <div class="field has-text-link">
+                                    <b>تعداد سوال بی پاسخ : </b><span id="countna"></span>
                                 </div>
                             </div>
+                        </div>
 
 
-
-
-                            <div class="box">
-                                <div class="field">
-
-
-                                    <div class="field is-horizontal">
-                                        <div class="field-body">
-                                            <div class="field">
-
-                                                {% if answers %}
-                                                {% for answer in answers %}
-                                                <label class="label">سوال - {{ answer.examquestionfkey }} جواب شما گزینه
-                                                    : {{ answer.userexamanswer }} ــــ جواب صحیح گزینه :</label>
-
-                                                {% endfor %}
-                                                {% endif %}
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-
+                        <div class="field">
                             <div class="field">
-                                <div class="field">
-                                    <a class="button is-warning" href="{% url 'tutorialexam' %}">
-                                        بازگشت به صفحه آزمون ها
-                                    </a>
-                                </div>
+                                <a class="button is-warning" href="{% url 'tutorialexam' %}">
+                                    بازگشت به صفحه آزمون ها
+                                </a>
                             </div>
-                        </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
 </div>

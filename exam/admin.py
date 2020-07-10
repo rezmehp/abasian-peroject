@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tutorialexamAdmin,courseexam2 , exams ,UserAnswerTest
+from .models import tutorialexamAdmin,courseexam2 , exams2 ,UserAnswerTest
 
 
 class tutorialexamAdminshow(admin.ModelAdmin):
@@ -14,11 +14,11 @@ admin.site.register(courseexam2, courseexam2show)
 
 
 
-class examsshow(admin.ModelAdmin):
+class exams2show(admin.ModelAdmin):
     list_display = ('examquestion',)
     list_filter = ('coursenamefkey',)
     search_fields = ('examquestion',)
-admin.site.register(exams, examsshow)
+admin.site.register(exams2, exams2show)
 
 
 

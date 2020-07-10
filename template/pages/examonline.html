@@ -5,6 +5,7 @@
         <br><br>
         <h1 class="title has-text-centered">آزمون آنلاین</h1>
         <div class="hero-body">
+            {% if user.is_authenticated %}
             <div class="container">
                 <div class="columns is-primary is-centered" style="border: none;">
                     <div class="column  is-11-widescreen">
@@ -14,22 +15,24 @@
                                     {{ courseexam.coursename }}
                                 </div>
                                 <div class="field">
-                                    <label id="questiontime"  style="color: red; font-weight: bold;"></label>
+                                    <label id="questiontime" style="color: red; font-weight: bold;"></label>
                                     <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
                                 </div>
-                                سوال شماره  &nbsp;<label id="questionnumber" style="color: red; font-weight: bold;"></label>
+                                سوال شماره &nbsp;<label id="questionnumber"
+                                    style="color: red; font-weight: bold;"></label>
                             </div>
                         </div>
-                        <form action="{% url 'examresault' %}" method="POST" class="has-background-gray-light">
+                        <form action="{% url 'examresault' %}" method="POST"
+                            data-confirm="Are you sure you want to submit the form?" class="has-background-gray-light">
                             {% csrf_token %}
                             {% if examss %}
-                            
+
                             {% for exams in examss %}
                             {% if exams.examquestion_published == True %}
                             <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
                             <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
                             <input type="text" name="userid" value="{{ user.id }}" hidden />
-                            
+
                             <div id="questions" class="box">
 
                                 <div class="box field is-horizontal">
@@ -230,7 +233,8 @@
                                     </div>
                                     <div class="field is-horizontal">
                                         <div class="field">
-                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required>
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required
+                                                checked>
                                             <b>
                                             </b>به این سوال پاسخ نمی دهم
                                         </div>
@@ -246,78 +250,83 @@
                             <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span
                                     class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
 
-                            <button id="button" class="button is-primary  is-pulled-left"
+                            <button class="button is-primary  is-pulled-left"
                                 onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
+
+
+                            <button id="button" class="button is-primary  is-pulled-left" type="submit"
+                                style="display: none;">پایان آزمون</button>
                         </form>
                     </div>
                 </div>
             </div>
+            {% else %}
+
+            <h1 class="title has-text-centered hero is-fullheight">لطفا ابتدا لاگین کنید</h1>
+            {% endif %}
+            
         </div>
     </section>
 </div>
-                                <script>
-                               
 
-                                
-                                    function audioStop() {
-                                        alert("q");
-                                    }
+<script>
 
-                                    function warning() {
-                                        var check = confirm('آیا نسبت به پایان آزمون مطمعن هستید؟');
-                                        if (check == false) {
-                                            history.back();
-                                        }
-                                    }
 
-                                    
-                                </script>
-                                <script>
-                                    time = document.getElementById('questiontimeset').textContent*5;
-                                    interval = setInterval(function () {
-                                        
-                                        time--;
-                                        document.getElementById('questiontime').innerHTML = "زمان باقی مانده : " + time + " ثانیه"
-                                        if (time == 0) {
-                                            // stop timer
-                                            clearInterval(interval);
-                                            // click
-                                            document.getElementById('button').click();
-                                        }
-                                    }, 1000)      
-                                    
-                                    let x = document.body.querySelectorAll('#questions');
-                                    let index = 0;
-                                    let thisquestion = 0;
-                                    document.getElementById("questionnumber").innerText=thisquestion+1;                                        
-                                    for (index = 0; index < x.length; index++) {
-                                        x[index].style.display = 'none';
-                                        console.log(index);
-                                        x[thisquestion].style.display = 'block';
-                                        
-                                    }
-                                    document.getElementById('nextq').addEventListener('click', function () {
-                                      
 
-                                        if (thisquestion < x.length - 1) {
-                                            for (index = 0; index < x.length; index++) {
-                                                x[index].style.display = 'none';
-                                            }
-                                            thisquestion = thisquestion + 1;
-                                            document.getElementById("questionnumber").innerText=thisquestion+1;
-                                            x[thisquestion].style.display = 'block';
-                                            }
-                                    })
-                                    document.getElementById('backq').addEventListener('click', function () {
-                                        if (thisquestion > 0) {
-                                            for (index = 0; index < x.length; index++) {
-                                                x[index].style.display = 'none';
-                                            }
-                                            thisquestion = thisquestion - 1;
-                                            document.getElementById("questionnumber").innerText=thisquestion+1;   
-                                            x[thisquestion].style.display = 'block';
-                                            }
-                                    })
 
-                                </script>
-                                {% endblock %}
+    time = document.getElementById('questiontimeset').textContent * 10;
+    minuts =Math.floor(time / 60);
+    minuts--
+
+
+    time = 59;
+    interval = setInterval(function () {
+        
+        time--;
+        document.getElementById('questiontime').innerHTML = "زمان باقی مانده ــ  "+ minuts + ":" + time
+        if (time == 0) {
+            minuts--
+            time = 59;
+            if (minuts<0){
+            clearInterval(interval);
+                document.getElementById('button').click();
+            }
+            
+        }
+    }, 1000)
+
+    let x = document.body.querySelectorAll('#questions');
+    let index = 0;
+    let thisquestion = 0;
+    document.getElementById("questionnumber").innerText = thisquestion + 1;
+    for (index = 0; index < x.length; index++) {
+        x[index].style.display = 'none';
+        console.log(index);
+        x[thisquestion].style.display = 'block';
+
+    }
+    document.getElementById('nextq').addEventListener('click', function () {
+
+
+        if (thisquestion < x.length - 1) {
+            for (index = 0; index < x.length; index++) {
+                x[index].style.display = 'none';
+            }
+            thisquestion = thisquestion + 1;
+            document.getElementById("questionnumber").innerText = thisquestion + 1;
+            x[thisquestion].style.display = 'block';
+        }
+    })
+    document.getElementById('backq').addEventListener('click', function () {
+        if (thisquestion > 0) {
+            for (index = 0; index < x.length; index++) {
+                x[index].style.display = 'none';
+            }
+            thisquestion = thisquestion - 1;
+            document.getElementById("questionnumber").innerText = thisquestion + 1;
+            x[thisquestion].style.display = 'block';
+        }
+    })
+
+</script>
+{% endblock %}

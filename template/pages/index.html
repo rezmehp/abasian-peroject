@@ -589,6 +589,39 @@
 
 </section>
 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">جدیدترین آزمون ها</h1>
+        <div class="section">
+            <!-- Developers -->
+            <div class="row columns">
+                {% if newexams %} {% for newexam in newexams %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showexamtutorial' newexam.id %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newexam.pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newexam.coursename }}</p>
+                                <p class="subtitle is-6">{{ newexam.modaresinfkey }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div> <!-- End Developers -->
+</section>
+
 
 <section class="section info-tiles has-background-light">
     <h1 class="title has-text-centered section-title">آمار سایت</h1>

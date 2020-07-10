@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialexamAdmin, courseexam2, exams, UserAnswerTest
+from .models import tutorialexamAdmin, courseexam2, exams2, UserAnswerTest
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -67,6 +67,45 @@ def tutorialexam(request):
         reshteTahsiliid = ""
         bettercourseexamshows = ""
     newcourseexamshows = courseexam2.objects.all().order_by('-id')[:8]
+
+
+
+
+
+    
+    passexams = UserAnswerTest.objects.filter(usernamefkey=request.user.id).values_list('courseexamfkey', flat=True).distinct()
+
+    passexamscourses = []
+    for passexam in passexams:
+        mylist = courseexam2.objects.filter(id=passexam)
+        passexamscourses.extend(mylist)
+    
+
+
+
+
+    # userExamsNameShow = []
+    # for passexam in passexams:
+    #     mylist = courseexam2.objects.filter(id=passexam).values_list('coursename', flat=True).distinct()
+    #     userExamsNameShow.extend(mylist)
+   
+    # questionExamsShow = []
+    # for passexam in passexams:
+    #     mylist2 = UserAnswerTest.objects.filter(courseexamfkey=passexam).values_list('examquestionfkey', flat=True).distinct()
+    #     questionExamsShow.extend(mylist2)
+     
+
+
+
+
+
+
+
+
+
+
+
+
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -82,9 +121,12 @@ def tutorialexam(request):
         'newcourseexamshows': newcourseexamshows,
         'bettercourseexamshows': bettercourseexamshows,
         'values': request.GET,
-
+        'passexams':passexams,
+        'passexamscourses':passexamscourses,
+        # 'userExamsNameShow':userExamsNameShow,
+        # 'questionExamsShow':questionExamsShow,
     }
-
+    
     return render(request, 'pages/exam.html', context)
 
 
@@ -125,7 +167,6 @@ def examresault(request):
                                 context = {
                                     'footerAdmins': footerAdmins,
                                     'answers': answers,
-
                                 }
         return render(request, 'pages/examresault.html', context)
     else:
@@ -137,8 +178,8 @@ def examresault(request):
 def showexamtutorial(request, courseexam2_id):
     footerAdmins = footerAdmin.objects.all()
     courseexam = get_object_or_404(courseexam2, pk=courseexam2_id)
-    examss = exams.objects.filter(coursenamefkey=courseexam2_id)
-    countq = exams.objects.filter(coursenamefkey=courseexam2_id).count()
+    examss = exams2.objects.filter(coursenamefkey=courseexam2_id)
+    countq = exams2.objects.filter(coursenamefkey=courseexam2_id).count()
 
 
     context = {
@@ -149,6 +190,29 @@ def showexamtutorial(request, courseexam2_id):
     }
 
     return render(request, 'pages/examonline.html', context)
+
+
+
+
+
+def examresaultshow(request, courseexam2_id):
+    footerAdmins = footerAdmin.objects.all()
+    courseexam = get_object_or_404(courseexam2, pk=courseexam2_id)
+    examss = exams2.objects.filter(coursenamefkey=courseexam2_id)
+    countq = exams2.objects.filter(coursenamefkey=courseexam2_id).count()
+    useranswerexam = UserAnswerTest.objects.filter(courseexamfkey=courseexam2_id , usernamefkey=request.user.id)
+
+
+    context = {
+        'useranswerexam':useranswerexam,
+        'footerAdmins': footerAdmins,
+        'courseexam': courseexam,
+        'examss': examss,
+        'countq':countq,
+    }
+
+    return render(request, 'pages/examresault.html', context)
+
 
 
 def maghtatutorialexam(request, pk):

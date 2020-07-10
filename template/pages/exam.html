@@ -144,7 +144,7 @@
             {% if searchcourseexamshows %}
             <section class="section has-background-light">
                 <div class="container ">
-                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    <h3 class="subtitle has-text-dark">آزمون های یافت شده</h3>
                     {% for searchcourseexamshow in searchcourseexamshows %}
                     <a href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
@@ -272,6 +272,71 @@
                     {% endif %}
                 </div>
             </section>
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
+                    {% for tutorialexamAdmin in tutorialexamAdmins %}
+                    آزمون های گذرانده شده {{useranswerexam}} {% endfor %}
+                    {% endif %}</h3>
+                <div class="columns is-multiline">
+                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'examresaultshow' passexamscourse.id %}" class="box">
+                            <img src="{{ passexamscourse.pic.url }}">
+                            <p class="has-text-centered"><strong> درس : {{ passexamscourse.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ passexamscourse.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ passexamscourse.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+            <section class="section has-background-light">
+                
+                {% if questionExamsShow %}
+               
+                    {% for questionExamsShow2 in questionExamsShow %}
+                    
+
+                        <h3 class="title has-text-centered has-text-dark">
+                    
+                        {{ questionExamsShow2 }} 
+                        </h3>
+                      
+                {% endfor %} {% endif %}
+               
+            </section>
+
+            
+            <section class="section has-background-light">
+                
+                {% if userExamsNameShow %}
+               
+                    {% for userExamsNameShow2 in userExamsNameShow %}
+                    
+
+                        <h3 class="title has-text-centered has-text-dark">
+                    
+                        {{ userExamsNameShow2 }} 
+                        </h3>
+                      
+                {% endfor %} {% endif %}
+               
+            </section>
+
+
+
+
+
+
         </section>
     </div>
 </div>
