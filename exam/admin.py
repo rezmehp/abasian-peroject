@@ -8,16 +8,19 @@ admin.site.register(tutorialexamAdmin, tutorialexamAdminshow)
 
 
 class courseexam2show(admin.ModelAdmin):
-    list_display = ('coursename',)
+    list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','saattadris',)
+    list_filter = ('modaresinfkey','maghtafkey','reshteTahsilifkey',)
     search_fields = ('coursename',)
 admin.site.register(courseexam2, courseexam2show)
 
 
 
 class exams2show(admin.ModelAdmin):
-    list_display = ('examquestion',)
+    list_display = ('examquestion','coursenamefkey','trueanswer',)
+    list_per_page = 10 
     list_filter = ('coursenamefkey',)
     search_fields = ('examquestion',)
+    
 admin.site.register(exams2, exams2show)
 
 

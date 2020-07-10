@@ -7,3 +7,47 @@
 #branding h1 {
     color: #fff;
 }
+
+#changelist-filter li.selected {
+    border-left: 5px solid #10284e !important;
+}
+
+thead th {   
+    color: #fff !important;
+    background: #10284e;
+}
+thead th.sorted {
+    background: #1f318a !important;
+}
+thead th:hover {   
+    color: #fff !important;
+    background: #10284e;
+}
+thead th.sorted:hover {
+    background: #1f318a !important;
+}
+
+thead th a:link, thead th a:visited {
+    color: #fff !important;
+}
+
+#changelist-filter h2{
+    background: #10284e !important;
+}
+
+div.breadcrumbs {
+    background: #10284e !important;
+}
+
+.object-tools a.addlink {
+    background: #1f318a !important;
+}
+
+
+h1 {
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 20px;
+    font-weight: bold;
+    color: #111;
+}

@@ -6,7 +6,7 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin, footerAdmin
 from django.http.response import JsonResponse
-
+from django.db.models import Q
 
 def tutorialexam(request):
     footerAdmins = footerAdmin.objects.all()
@@ -17,8 +17,28 @@ def tutorialexam(request):
     maghtaTahsilishows = maghtaTahsili.objects.all()
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
     modaresinshows = modaresin.objects.all()
+
+
+    passexams = UserAnswerTest.objects.filter(usernamefkey=request.user.id).values_list('courseexamfkey', flat=True).distinct()
+    if not passexams:
+        passexams = "0"
+
+
+  
+   
+    passexamscourses = []
+    for passexam in passexams:
+        mylist = courseexam2.objects.filter(id=passexam)
+        passexamscourses.extend(mylist)
+    
+
     courseexamshows = courseexam2.objects.all()
+
+
+   
     searchcourseexamshows = courseexam2.objects.all()
+  
+
     # سرج
     if 'maghtan' in request.POST:
         maghtan = request.POST['maghtan']
@@ -49,9 +69,15 @@ def tutorialexam(request):
             if modaresnid:
                 searchcourseexamshows = searchcourseexamshows.filter(
                     modaresinfkey__in=modaresnid)
-    paginator = Paginator(searchcourseexamshows, 3)
+    
+    searchcourseexamshowss=[]
+    for passexam in passexams:
+        mylist = searchcourseexamshows.filter(~Q(id=passexam))
+        searchcourseexamshowss.extend(mylist)
+
+    paginator = Paginator(searchcourseexamshowss, 3)
     page = request.GET.get('page')
-    paged_searchcourseexamshows = paginator.get_page(page)
+    paged_searchcourseexamshowss = paginator.get_page(page)
 
     bettercourseexamshows = ""
     if request.user.username:
@@ -61,51 +87,14 @@ def tutorialexam(request):
             reshte=karbaruser1online[0]).values_list('id', flat=True)
         if reshteTahsiliid:
             bettercourseexamshows = courseexam2.objects.filter(
-                reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')[:4]
+                reshteTahsilifkey=reshteTahsiliid[0] and (~Q(id=passexam))).order_by('-id')[:4]
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercourseexamshows = ""
-    newcourseexamshows = courseexam2.objects.all().order_by('-id')[:8]
-
-
-
-
-
     
-    passexams = UserAnswerTest.objects.filter(usernamefkey=request.user.id).values_list('courseexamfkey', flat=True).distinct()
-
-    passexamscourses = []
-    for passexam in passexams:
-        mylist = courseexam2.objects.filter(id=passexam)
-        passexamscourses.extend(mylist)
+    newcourseexamshowss = courseexam2.objects.filter(~Q(id=passexam)).order_by('-id')[:8]
     
-
-
-
-
-    # userExamsNameShow = []
-    # for passexam in passexams:
-    #     mylist = courseexam2.objects.filter(id=passexam).values_list('coursename', flat=True).distinct()
-    #     userExamsNameShow.extend(mylist)
-   
-    # questionExamsShow = []
-    # for passexam in passexams:
-    #     mylist2 = UserAnswerTest.objects.filter(courseexamfkey=passexam).values_list('examquestionfkey', flat=True).distinct()
-    #     questionExamsShow.extend(mylist2)
-     
-
-
-
-
-
-
-
-
-
-
-
-
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -117,14 +106,12 @@ def tutorialexam(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'courseexamshows': courseexamshows,
-        'searchcourseexamshows': paged_searchcourseexamshows,
-        'newcourseexamshows': newcourseexamshows,
+        'searchcourseexamshows': paged_searchcourseexamshowss,
+        'newcourseexamshows': newcourseexamshowss,
         'bettercourseexamshows': bettercourseexamshows,
         'values': request.GET,
         'passexams':passexams,
         'passexamscourses':passexamscourses,
-        # 'userExamsNameShow':userExamsNameShow,
-        # 'questionExamsShow':questionExamsShow,
     }
     
     return render(request, 'pages/exam.html', context)
@@ -138,11 +125,9 @@ def examresault(request):
         'answers': answers,
 
     }
-
     if request.method == 'POST':
         courseexamfkey1 = request.POST['courseexamid']
         usernamefkey1 = request.POST['userid']
-        # if not UserAnswerTest.objects.filter(courseexamfkey=int(courseexamfkey1)).exists() and UserAnswerTest.objects.filter(usernamefkey=int(usernamefkey1)).exists():
         for exams in request.POST:
                 if "examsid" in exams:
                     for answer in request.POST:
@@ -168,11 +153,18 @@ def examresault(request):
                                     'footerAdmins': footerAdmins,
                                     'answers': answers,
                                 }
-        return render(request, 'pages/examresault.html', context)
+        return redirect('examfinish')
     else:
-
         footerAdmins = footerAdmin.objects.all()
         return render(request, 'pages/examresault.html', {'footerAdmins': footerAdmins, })
+
+
+def examfinish(request):
+    footerAdmins = footerAdmin.objects.all()
+    context = {
+        'footerAdmins': footerAdmins,
+    }
+    return render(request, 'pages/examfinish.html',context)
 
 
 def showexamtutorial(request, courseexam2_id):

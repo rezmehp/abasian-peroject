@@ -8,6 +8,7 @@ urlpatterns = [
 path('', views.tutorialexam , name='tutorialexam'),
 path('<int:courseexam2_id>', views.showexamtutorial, name='showexamtutorial'),
 path('examresault', views.examresault, name='examresault'),
+path('examfinish', views.examfinish, name='examfinish'),
 path('examresaultshow/<int:courseexam2_id>', views.examresaultshow, name='examresaultshow'),
 path('m/<int:pk>', views.maghtatutorialexam, name='maghtan')
 ]

@@ -8,7 +8,8 @@ admin.site.register(tutorialapplicationAdmin, tutorialapplicationAdminshow)
 
 
 class courseapplication2show(admin.ModelAdmin):
-    list_display = ('coursename',)
+    list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','saattadris',)
+    list_filter = ('modaresinfkey','maghtafkey','reshteTahsilifkey',)
     search_fields = ('coursename',)
 admin.site.register(courseapplication2, courseapplication2show)
 
