@@ -7,6 +7,7 @@ class tutorialvideoAdminshow(admin.ModelAdmin):
 admin.site.register(tutorialvideoAdmin, tutorialvideoAdminshow)
 
 
+
 class coursevideo2show(admin.ModelAdmin):
     list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','saattadris',)
     list_filter = ('modaresinfkey','maghtafkey','reshteTahsilifkey',)
@@ -16,7 +17,8 @@ admin.site.register(coursevideo2, coursevideo2show)
 
 
 class videosshow(admin.ModelAdmin):
-    list_display = ('videoname',)
+    list_display = ('videoname','coursenamefkey','videolink_is_published','videofile_is_published',)
     list_filter = ('coursenamefkey',)
     search_fields = ('videoname',)
+    list_per_page = 10
 admin.site.register(videos, videosshow)

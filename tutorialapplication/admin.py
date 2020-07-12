@@ -16,7 +16,7 @@ admin.site.register(courseapplication2, courseapplication2show)
 
 
 class applicationsshow(admin.ModelAdmin):
-    list_display = ('applicationname',)
+    list_display = ('applicationname','coursenamefkey','applicationlink_is_published','applicationapplication_is_published',)
     list_filter = ('coursenamefkey',)
     search_fields = ('applicationname',)
 admin.site.register(applications, applicationsshow)

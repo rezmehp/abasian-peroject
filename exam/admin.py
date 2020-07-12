@@ -16,9 +16,9 @@ admin.site.register(courseexam2, courseexam2show)
 
 
 class exams2show(admin.ModelAdmin):
-    list_display = ('examquestion','coursenamefkey','trueanswer',)
+    list_display = ('examquestion','coursenamefkey','trueanswer','examquestion_published',)
     list_per_page = 10 
-    list_filter = ('coursenamefkey',)
+    list_filter = ('coursenamefkey','examquestion_published',)
     search_fields = ('examquestion',)
     
 admin.site.register(exams2, exams2show)

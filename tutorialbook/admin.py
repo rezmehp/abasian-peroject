@@ -16,7 +16,8 @@ admin.site.register(coursebook2, coursebook2show)
 
 
 class booksshow(admin.ModelAdmin):
-    list_display = ('bookname',)
+    list_display = ('bookname','coursenamefkey','booklink_is_published','bookfile_is_published',)
     list_filter = ('coursenamefkey',)
     search_fields = ('bookname',)
+    list_per_page = 10
 admin.site.register(books, booksshow)

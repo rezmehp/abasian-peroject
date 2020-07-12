@@ -15,6 +15,7 @@ class contactuserpmshow(admin.ModelAdmin):
     list_display = ('usernamefkey', 'javabadmin')
     list_display_links = ( 'usernamefkey', )
     list_filter = ('usernamefkey',)
+    list_per_page = 10
     search_fields = ('javabadmin',)
 
 admin.site.register(contactuserpm, contactuserpmshow)
