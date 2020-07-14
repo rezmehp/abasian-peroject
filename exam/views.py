@@ -67,17 +67,13 @@ def tutorialexam(request):
             modaresnid = modaresin.objects.filter(
                 modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
-                searchcourseexamshows = searchcourseexamshows.filter(
-                    modaresinfkey__in=modaresnid)
+                searchcourseexamshows = searchcourseexamshows.filter(modaresinfkey__in=modaresnid)
     
-    searchcourseexamshowss=[]
-    for passexam in passexams:
-        mylist = searchcourseexamshows.filter(~Q(id=passexam))
-        searchcourseexamshowss.extend(mylist)
+    
 
-    paginator = Paginator(searchcourseexamshowss, 3)
+    paginator = Paginator(searchcourseexamshows, 3)
     page = request.GET.get('page')
-    paged_searchcourseexamshowss = paginator.get_page(page)
+    paged_searchcourseexamshows = paginator.get_page(page)
 
     bettercourseexamshows = ""
     if request.user.username:
@@ -87,14 +83,23 @@ def tutorialexam(request):
             reshte=karbaruser1online[0]).values_list('id', flat=True)
         if reshteTahsiliid:
             bettercourseexamshows = courseexam2.objects.filter(
-                reshteTahsilifkey=reshteTahsiliid[0] and (~Q(id=passexam))).order_by('-id')[:4]
+                reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercourseexamshows = ""
     
-    newcourseexamshowss = courseexam2.objects.filter(~Q(id=passexam)).order_by('-id')[:8]
-    
+
+    paginator = Paginator(bettercourseexamshows, 4)
+    page3 = request.GET.get('page3')
+    paged_bettercourseexamshows = paginator.get_page(page3)
+
+    newcourseexamshows = courseexam2.objects.all().order_by('-id')
+    paginator = Paginator(newcourseexamshows, 4)
+    page2 = request.GET.get('page2')
+    paged_newcourseexamshows = paginator.get_page(page2)
+
+
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -106,9 +111,9 @@ def tutorialexam(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'courseexamshows': courseexamshows,
-        'searchcourseexamshows': paged_searchcourseexamshowss,
-        'newcourseexamshows': newcourseexamshowss,
-        'bettercourseexamshows': bettercourseexamshows,
+        'searchcourseexamshows': paged_searchcourseexamshows,
+        'newcourseexamshows': paged_newcourseexamshows,
+        'bettercourseexamshows': paged_bettercourseexamshows,
         'values': request.GET,
         'passexams':passexams,
         'passexamscourses':passexamscourses,

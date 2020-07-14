@@ -11,12 +11,12 @@
                         <div class="box field is-horizontal">
                             <div class="field-body">
                                 <div class="field">
-                                    
-                                    عنوان آزمون:  {{ courseexam }}
+
+                                    عنوان آزمون: {{ courseexam }}
 
                                 </div>
                                 <div class="field">
-                                    تعداد سوالات  : <span id="questionnumber"></span> عدد
+                                    تعداد سوالات : <span id="questionnumber"></span> عدد
                                 </div>
                                 <div class="field">
                                     نمره از 100 -> <span id="resoult"></span>
@@ -24,43 +24,43 @@
                             </div>
                         </div>
 
-                        
-                            {% if useranswerexam %}
-                            {% for useranswerexams in useranswerexam %}
-                            {% for exams in examss %}
-                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer == 0 %}
-                            <span id="na" class="nonea" hidden>1</span>
-                            {% endif %}
-                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer == exams.trueanswer %}
-                            <span id="ta" class="truea" hidden>1</span>
-                            {% endif %}
-                            {% if useranswerexams.examquestionfkey ==  exams.id and useranswerexams.userexamanswer != exams.trueanswer and useranswerexams.userexamanswer != 0 %}
-                            <span id="fa" class="falsea" hidden>1</span>
-                            
-                            {% endif %}
-                            {% endfor %}
-                            {% endfor %}
-                            {% endif %}
+
+                        {% if useranswerexam %}
+                        {% for useranswerexams in useranswerexam %}
+                        {% for exams in examss %}
+                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer == "0" %}
+                        <span id="na" class="nonea" hidden>1</span>
+                        {% endif %}
+                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer == exams.trueanswer|slugify %}
+                        <span id="ta" class="truea" hidden>1</span>
+                        {% endif %}
+                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer != exams.trueanswer|slugify and useranswerexams.userexamanswer != "0" %}
+                        <span id="fa" class="falsea" hidden>1</span>
+
+                        {% endif %}
+                        {% endfor %}
+                        {% endfor %}
+                        {% endif %}
 
                         <script>
                             na = parseInt($(".nonea").text().length);
                             ta = parseInt($(".truea").text().length);
                             fa = parseInt($(".falsea").text().length);
-                            questionnumber = na+ta+fa;
+                            questionnumber = na + ta + fa;
                             resoult = parseFloat((ta * 100) / questionnumber).toFixed(2)
                             function answershow() {
-                                
-                                document.getElementById("countna").innerHTML=na;
-                            
-                                
-                                document.getElementById("countta").innerHTML=ta;
-                            
-                                
-                                document.getElementById("countfa").innerHTML=fa;
 
-                                document.getElementById("questionnumber").innerHTML=questionnumber;
+                                document.getElementById("countna").innerHTML = na;
 
-                                document.getElementById("resoult").innerHTML=resoult;
+
+                                document.getElementById("countta").innerHTML = ta;
+
+
+                                document.getElementById("countfa").innerHTML = fa;
+
+                                document.getElementById("questionnumber").innerHTML = questionnumber;
+
+                                document.getElementById("resoult").innerHTML = resoult;
                             }
                         </script>
 

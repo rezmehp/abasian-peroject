@@ -98,7 +98,7 @@ class exams2(models.Model):
     examanswer2 = models.TextField(max_length=50000,verbose_name="گزینه 2")
     examanswer3 = models.TextField(max_length=50000,verbose_name="گزینه 3")
     examanswer4 = models.TextField(max_length=50000,verbose_name="گزینه 4")
-    trueanswer = models.IntegerField(max_length=1,verbose_name="شماره گزینه صحیح از 1 تا 4")
+    trueanswer = models.TextField(max_length=1,verbose_name="شماره گزینه صحیح از 1 تا 4")
 
 
     examtext_published = models.BooleanField(default=False,verbose_name="نمایش یا عدم نمایش متن برای سوال")
@@ -141,10 +141,10 @@ class exams2(models.Model):
 
 class UserAnswerTest(models.Model):
     
-    courseexamfkey = models.IntegerField(verbose_name="آیدی درس")
-    usernamefkey = models.IntegerField(verbose_name="آیدی کاربر")
-    examquestionfkey = models.IntegerField(verbose_name="آیدی سوال")
-    userexamanswer = models.IntegerField(verbose_name="جواب کاربر")
+    courseexamfkey = models.TextField(verbose_name="آیدی درس")
+    usernamefkey = models.TextField(verbose_name="آیدی کاربر")
+    examquestionfkey = models.TextField(verbose_name="آیدی سوال")
+    userexamanswer = models.TextField(verbose_name="جواب کاربر")
     
     def __str__(self):
         return self.userexamanswer

@@ -146,36 +146,43 @@
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">آزمون های یافت شده</h3>
                     {% for searchcourseexamshow in searchcourseexamshows %}
-                    <a href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
-                        <div class="column is-one-quarter">
-                            <figure class="image">
-                                <img src="{{ searchcourseexamshow.pic.url }}">
-                            </figure>
-                        </div>
-                        <div class="column">
-                            <div class="content has-text-right">
-                                <p class="has-text-dark is-vcentered">
-                                    <strong>
-                                        درس : {{ searchcourseexamshow.coursename }}
-                                    </strong><br>
-                                    <strong>
-                                        استاد : {{ searchcourseexamshow.modaresinfkey }}
-                                    </strong><br>
-                                    {% if searchcourseexamshow.hazine != 0 %}
-                                    <small>
-                                        هزینه : {{ searchcourseexamshow.hazine }} ریال
-                                    </small>
-                                    {% else %}
-                                    <small>
-                                        هزینه : رایگان
-                                    </small>
-                                    {% endif %}
-                                    <br>
-                                    {{ searchcourseexamshow.tozihat }}
-                                </p>
+                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                    {% if searchcourseexamshow.id == passexamscourse.id %}
+                    <span hidden>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <a href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
+                            <div class="column is-one-quarter">
+                                <figure class="image">
+                                    <img src="{{ searchcourseexamshow.pic.url }}">
+                                </figure>
                             </div>
-                        </div>
-                    </a>
+                            <div class="column">
+                                <div class="content has-text-right">
+                                    <p class="has-text-dark is-vcentered">
+                                        <strong>
+                                            درس : {{ searchcourseexamshow.coursename }}
+                                        </strong><br>
+                                        <strong>
+                                            استاد : {{ searchcourseexamshow.modaresinfkey }}
+                                        </strong><br>
+                                        {% if searchcourseexamshow.hazine != 0 %}
+                                        <small>
+                                            هزینه : {{ searchcourseexamshow.hazine }} ریال
+                                        </small>
+                                        {% else %}
+                                        <small>
+                                            هزینه : رایگان
+                                        </small>
+                                        {% endif %}
+                                        <br>
+                                        {{ searchcourseexamshow.tozihat }}
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    </span>
                     <br>
                     {% endfor %}
                     {% endif %}
@@ -237,20 +244,74 @@
                 </h3>
                 <div class="columns is-multiline">
                     {% for bettercourseexamshow in bettercourseexamshows %}
-                    <div class="column is-one-quarter">
-                        <a href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
-                            <img src="{{ bettercourseexamshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس :
-                                    {{ bettercourseexamshow.coursename }}</strong></p>
-                            <p class="has-text-centered">استاد : {{ bettercourseexamshow.modaresinfkey }}</p>
-                            <p class="has-text-centered">{{ bettercourseexamshow.saattadris }} ساعت آموزش</p>
-                        </a>
-                    </div>
+                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                    {% if bettercourseexamshow.id == passexamscourse.id %}
+                    <span hidden>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        <div class="column is-one-quarter">
+                            <a href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
+                                <img src="{{ bettercourseexamshow.pic.url }}">
+                                <p class="has-text-centered"><strong> درس :
+                                        {{ bettercourseexamshow.coursename }}</strong></p>
+                                <p class="has-text-centered">استاد : {{ bettercourseexamshow.modaresinfkey }}</p>
+                                <p class="has-text-centered">{{ bettercourseexamshow.saattadris }} ساعت آموزش</p>
+                            </a>
+                        </div>
+                    </span>
                     {% endfor %}
 
                 </div>
 
             </section>
+            <br>
+
+            {% if bettercourseexamshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if bettercourseexamshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page3={{bettercourseexamshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in bettercourseexamshows.paginator.page_range %}
+                                {% if bettercourseexamshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page3={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if bettercourseexamshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page3={{bettercourseexamshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
             <hr>
             {% endif %}
             <section class="section has-background-light">
@@ -260,23 +321,78 @@
                     {% endif %}</h3>
                 <div class="columns is-multiline">
                     {% if newcourseexamshows %} {% for newcourseexamshow in newcourseexamshows %}
-                    <div class="column is-one-quarter">
-                        <a href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
-                            <img src="{{ newcourseexamshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس : {{ newcourseexamshow.coursename }}</strong></p>
-                            <p class="has-text-centered">استاد : {{ newcourseexamshow.modaresinfkey }}</p>
-                            <p class="has-text-centered">{{ newcourseexamshow.saattadris }} ساعت آموزش</p>
-                        </a>
-                    </div>
+                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                    {% if newcourseexamshow.id == passexamscourse.id %}
+                    <span hidden>
+                    {% endif %}
                     {% endfor %}
                     {% endif %}
-                </div>
+                    <div class="column is-one-quarter">
+                               <a href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
+                                    <img src="{{ newcourseexamshow.pic.url }}">
+                                    <p class="has-text-centered"><strong> درس :
+                                            {{ newcourseexamshow.coursename }}</strong>
+                                    </p>
+                                    <p class="has-text-centered">استاد : {{ newcourseexamshow.modaresinfkey }}</p>
+                                    <p class="has-text-centered">{{ newcourseexamshow.saattadris }} ساعت آموزش</p>
+                                </a>
+                            </div>
+                    </span>
+                        {% endfor %}
+                        {% endif %}
+                        
+
             </section>
+<br>
+
+            {% if newcourseexamshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if newcourseexamshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page2={{newcourseexamshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in newcourseexamshows.paginator.page_range %}
+                                {% if newcourseexamshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page2={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if newcourseexamshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page2={{newcourseexamshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+            <hr>
             <section class="section has-background-light">
-                <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
-                    {% for tutorialexamAdmin in tutorialexamAdmins %}
-                    آزمون های گذرانده شده {% endfor %}
-                    {% endif %}</h3>
+                <h3 class="title has-text-centered has-text-dark">آزمون های گذرانده شده</h3>
                 <div class="columns is-multiline">
                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                     <div class="column is-one-quarter">
@@ -300,36 +416,36 @@
 
 
             <section class="section has-background-light">
-                
-                {% if questionExamsShow %}
-               
-                    {% for questionExamsShow2 in questionExamsShow %}
-                    
 
-                        <h3 class="title has-text-centered has-text-dark">
-                    
-                        {{ questionExamsShow2 }} 
-                        </h3>
-                      
+                {% if questionExamsShow %}
+
+                {% for questionExamsShow2 in questionExamsShow %}
+
+
+                <h3 class="title has-text-centered has-text-dark">
+
+                    {{ questionExamsShow2 }}
+                </h3>
+
                 {% endfor %} {% endif %}
-               
+
             </section>
 
-            
-            <section class="section has-background-light">
-                
-                {% if userExamsNameShow %}
-               
-                    {% for userExamsNameShow2 in userExamsNameShow %}
-                    
 
-                        <h3 class="title has-text-centered has-text-dark">
-                    
-                        {{ userExamsNameShow2 }} 
-                        </h3>
-                      
+            <section class="section has-background-light">
+
+                {% if userExamsNameShow %}
+
+                {% for userExamsNameShow2 in userExamsNameShow %}
+
+
+                <h3 class="title has-text-centered has-text-dark">
+
+                    {{ userExamsNameShow2 }}
+                </h3>
+
                 {% endfor %} {% endif %}
-               
+
             </section>
 
 
