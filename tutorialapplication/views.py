@@ -15,7 +15,6 @@ def tutorialapplication(request):
     tutorialapplicationAdmins = tutorialapplicationAdmin.objects.all()
     usernameshows = User.objects.all()
     footerAdmins = footerAdmin.objects.all()
-
     karbaruser1shows = karbaruser1.objects.filter(username=request.user.username)
     maghtaTahsilishows = maghtaTahsili.objects.all()
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
@@ -58,12 +57,18 @@ def tutorialapplication(request):
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
         reshteTahsiliid = reshteTahsili.objects.filter(reshte=karbaruser1online[0]).values_list('id', flat=True)
         if reshteTahsiliid:
-            bettercourseapplicationshows = courseapplication2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')[:4]
+            bettercourseapplicationshows = courseapplication2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercourseapplicationshows = ""
-    newcourseapplicationshows = courseapplication2.objects.all().order_by('-id')[:8]
+    paginator = Paginator(bettercourseapplicationshows, 4)
+    page2 = request.GET.get('page2')
+    paged_bettercourseapplicationshows = paginator.get_page(page2)
+    newcourseapplicationshows = courseapplication2.objects.all().order_by('-id')
+    paginator = Paginator(newcourseapplicationshows, 4)
+    page3 = request.GET.get('page3')
+    paged_newcourseapplicationshows = paginator.get_page(page3)
     context = {
         'reshteTahsiliid': reshteTahsiliid,
         'karbaruser1online': karbaruser1online,
@@ -75,8 +80,8 @@ def tutorialapplication(request):
         'modaresinshows': modaresinshows,
         'courseapplicationshows': courseapplicationshows,
         'searchcourseapplicationshows': paged_searchcourseapplicationshows,
-        'newcourseapplicationshows': newcourseapplicationshows,
-        'bettercourseapplicationshows': bettercourseapplicationshows,
+        'newcourseapplicationshows': paged_newcourseapplicationshows,
+        'bettercourseapplicationshows': paged_bettercourseapplicationshows,
         'values': request.GET,
         'footerAdmins':footerAdmins,
 

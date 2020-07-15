@@ -51,12 +51,19 @@ def tutorialvideo(request):
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
         reshteTahsiliid = reshteTahsili.objects.filter(reshte=karbaruser1online[0]).values_list('id', flat=True)
         if reshteTahsiliid:
-            bettercoursevideoshows = coursevideo2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')[:4]
+            bettercoursevideoshows = coursevideo2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercoursevideoshows = ""
-    newcoursevideoshows = coursevideo2.objects.all().order_by('-id')[:8]
+
+    paginator = Paginator(bettercoursevideoshows, 4)
+    page2 = request.GET.get('page2')
+    paged_bettercoursevideoshows = paginator.get_page(page2)
+    newcoursevideoshows = coursevideo2.objects.all().order_by('-id')
+    paginator = Paginator(newcoursevideoshows, 4)
+    page3 = request.GET.get('page3')
+    paged_newcoursevideoshows = paginator.get_page(page3)
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -69,8 +76,8 @@ def tutorialvideo(request):
         'modaresinshows': modaresinshows,
         'coursevideoshows': coursevideoshows,
         'searchcoursevideoshows': paged_searchcoursevideoshows,
-        'newcoursevideoshows': newcoursevideoshows,
-        'bettercoursevideoshows': bettercoursevideoshows,
+        'newcoursevideoshows': paged_newcoursevideoshows,
+        'bettercoursevideoshows': paged_bettercoursevideoshows,
         'values': request.GET,
 
     }

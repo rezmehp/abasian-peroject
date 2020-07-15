@@ -50,12 +50,18 @@ def tutorialfile(request):
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
         reshteTahsiliid = reshteTahsili.objects.filter(reshte=karbaruser1online[0]).values_list('id', flat=True)
         if reshteTahsiliid:
-            bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')[:4]
+            bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercoursefileshows = ""
-    newcoursefileshows = coursefile2.objects.all().order_by('-id')[:8]
+    paginator = Paginator(bettercoursefileshows, 4)
+    page2 = request.GET.get('page2')
+    paged_bettercoursefileshows = paginator.get_page(page2)
+    newcoursefileshows = coursefile2.objects.all().order_by('-id')
+    paginator = Paginator(newcoursefileshows, 4)
+    page3 = request.GET.get('page3')
+    paged_newcoursefileshows = paginator.get_page(page3)
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -68,8 +74,8 @@ def tutorialfile(request):
         'modaresinshows': modaresinshows,
         'coursefileshows': coursefileshows,
         'searchcoursefileshows': paged_searchcoursefileshows,
-        'newcoursefileshows': newcoursefileshows,
-        'bettercoursefileshows': bettercoursefileshows,
+        'newcoursefileshows': paged_newcoursefileshows,
+        'bettercoursefileshows': paged_bettercoursefileshows,
         'values': request.GET,
 
     }
