@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -42,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'accounts.apps.AccountsConfig',
     'links.apps.LinksConfig',
+    'classlinks.apps.ClasslinksConfig',
+    'news.apps.NewsConfig',
+    'galery.apps.GaleryConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -64,7 +68,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'template')],
+        'DIRS': [os.path.join(BASE_DIR, 'template')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,17 +84,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'main.wsgi.application'
 
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'abasiandb',
-        'USER':'postgres',
-        'PASSWORD':'123',
-        'HOST':'localhost',
+        'NAME': 'abasiandb',
+        'USER': 'postgres',
+        'PASSWORD': '123',
+        'HOST': 'localhost',
     }
 }
 
@@ -133,16 +136,15 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'main/static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'main/static')
 ]
 
 # media folder settings
-MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
-    messages.ERROR:'danger',
+    messages.ERROR: 'danger',
 }

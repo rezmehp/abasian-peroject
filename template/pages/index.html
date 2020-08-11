@@ -475,7 +475,53 @@
         </div>
     </div> <!-- End Developers -->
 </section>
-
+<br>
+{% if newcoursevideos.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newcoursevideos.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page1={{newcoursevideos.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newcoursevideos.paginator.page_range %}
+                    {% if newcoursevideos.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page1={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newcoursevideos.has_next %}
+                    <li class="page-item">
+                        <a href="?page1={{newcoursevideos.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
 
 
 
@@ -512,6 +558,53 @@
         </div> <!-- End Developers -->
     </div>
 </section>
+<br>
+{% if newcoursefiles.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newcoursefiles.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page2={{newcoursefiles.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newcoursefiles.paginator.page_range %}
+                    {% if newcoursefiles.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page2={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newcoursefiles.has_next %}
+                    <li class="page-item">
+                        <a href="?page2={{newcoursefiles.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
 
 
 
@@ -550,7 +643,53 @@
         </div>
     </div>
 </section>
-
+<br>
+{% if newcoursebooks.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newcoursebooks.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page3={{newcoursebooks.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newcoursebooks.paginator.page_range %}
+                    {% if newcoursebooks.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page3={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newcoursebooks.has_next %}
+                    <li class="page-item">
+                        <a href="?page3={{newcoursebooks.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
 
 
 <section class="section box has-background-light">
@@ -588,6 +727,54 @@
     </div>
 
 </section>
+<br>
+{% if newcourseapplications.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newcourseapplications.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page4={{newcourseapplications.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newcourseapplications.paginator.page_range %}
+                    {% if newcourseapplications.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page4={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newcourseapplications.has_next %}
+                    <li class="page-item">
+                        <a href="?page4={{newcourseapplications.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
 
 <section class="section box has-background-light">
     <div class="container">
@@ -598,7 +785,7 @@
                 {% if newexams %} {% for newexam in newexams %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showexamtutorial' newexam.id %}" class="box">
+                        <a href="{% url 'tutorialexam' %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="{{ newexam.pic.url }}" style="border-radius: 5%; height:180px"
@@ -621,6 +808,54 @@
         </div>
     </div> <!-- End Developers -->
 </section>
+<br>
+{% if newexams.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newexams.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page5={{newexams.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newexams.paginator.page_range %}
+                    {% if newexams.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page5={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newexams.has_next %}
+                    <li class="page-item">
+                        <a href="?page5={{newexams.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
 
 
 <section class="section info-tiles has-background-light">
@@ -648,6 +883,12 @@
             <article class="tile is-child box">
                 <p class="title">{{ countapplications }}</p>
                 <p class="subtitle">نرم افزار</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">{{ countexams }}</p>
+                <p class="subtitle">آزمون</p>
             </article>
         </div>
     </div>

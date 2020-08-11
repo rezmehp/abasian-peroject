@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}
+{% if classlinksAdmins %}
+{% for classlinksAdmin in classlinksAdmins %}
+{{ classlinksAdmin.title_page }}
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <!--        تیتر بالای صفحه بعد از سکشن-->
+            <br><br>
+            <h1 class="title has-text-centered">{% if classlinksAdmins %} {% for classlinksAdmin in classlinksAdmins %}
+                {{ classlinksAdmin.title_page }}
+                {% endfor %}
+                {% endif %}</h1>
+            <!--        عکس تیتر بالای صفحه-->
+            <figure class="image is-3by1">
+                {% if classlinksAdmins %} {% for classlinksAdmin in classlinksAdmins %}
+                <img src=" {{ classlinksAdmin.pic.url }}">
+                {% endfor %}
+                {% endif %}
+            </figure>
+
+            <section class="section has-background-light">
+                <div class="container ">
+                    <!--        تیتر توضیحات زیر عکس اول درباره ما-->
+                    <h1 class="title has-text-dark has-text-centered">{% if classlinksAdmins %}
+                        {% for classlinksAdmin in classlinksAdmins %}
+                        {{ classlinksAdmin.title_classlinks }}
+                        {% endfor %}
+                        {% endif %}</h1><br><br><br>
+                    <!--            توضحات زیر عکس اول درباره ما-->
+                    <h2 class="subtitle has-text-dark has-text-justified">
+                        {% if allclassLinkss %} {% for allclasslinks in allclassLinkss %}                   
+                        <a href="{{ allclasslinks.link_url }}" class="columns box">
+                            <div class="column  is-one-quarter content has-text-centred">
+                                <figure class="image">
+                                    <img src=" {{ allclasslinks.link_pic.url }}">
+                                </figure>
+                            </div>
+                            <div class="column content has-text-centred">
+                                <p class="column has-text-dark is-vcentered">
+                                   <b> {{ allclasslinks.link_title }}</b>
+                                </p>
+                                <p class="column has-text-dark is-vcentered">
+                                    {{ allclasslinks.link_about }}
+                                </p>
+                                <p class="column has-text-dark is-vcentered">
+                                    <b>ساعت برگزاری : </b>{{ allclasslinks.link_time }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>تاریخ برگزاری :  </b>{{ allclasslinks.link_date }}
+                                </p>
+                                <p class="column has-text-dark is-vcentered">
+                                    <b>هزینه شرکت در کلاس : </b> {{ allclasslinks.link_price }} ریال
+                                </p>
+                            </div>
+                        </a>
+                        <br>
+                        {% endfor %}
+                        {% endif %}
+                    </h2>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

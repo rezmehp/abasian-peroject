@@ -17,8 +17,6 @@
     </div>
 
     <div id="navbarBasicExample" class="navbar-menu">
-
-
         <div class="navbar-end">
             <a class="navbar-item is-link is-right" href="{% url 'index' %}">
                 <span class="fas fa-home"></span>&nbsp;صفحه اصلی
@@ -41,6 +39,9 @@
                     <a class="navbar-item" href="{% url 'tutorialapplication' %}">
                         <span class="fas fa-cogs"></span>&nbsp; نرم افزار های آموزشی
                     </a>
+                    <a class="navbar-item" href="{% url 'classlinks' %}">
+                        <span class="fas fa-link"></span>&nbsp; لینک کلاس های آنلاین
+                    </a>
                     <a class="navbar-item" href="{% url 'links' %}">
                         <span class="fas fa-link"></span>&nbsp; لینک های مفید
                     </a>
@@ -51,10 +52,24 @@
                 <span class="far fa-edit"></span>&nbsp; آزمون
             </a>
 
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    <span></span>&nbsp; درباره ما
+                </a>
 
-            <a class="navbar-item" href="{% url 'about' %}">
-                <span class="fas fa-info"></span>&nbsp; درباره ما
-            </a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="{% url 'about' %}">
+                        <span class="fas fa-info"></span>&nbsp; درباره ما
+                    </a>
+                    <a class="navbar-item" href="{% url 'news' %}">
+                        <span class="fas fa-book-open"></span>&nbsp; اخبار
+                    </a>
+                    <a class="navbar-item" href="{% url 'galery' %}">
+                        <span class="far fa-file-alt"></span>&nbsp; گالری
+                    </a>                  
+                </div>
+            </div>
+            
 
             <a class="navbar-item" href="{% url 'contact' %}">
                 <span class="fas fa-phone"></span>&nbsp; تماس باما

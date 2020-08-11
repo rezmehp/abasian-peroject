@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block title %}
+{% if galerysAdmins %}
+{% for galerysAdmin in galerysAdmins %}
+{{ galerysAdmin.title_page }}
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block content %}
+<!--test-->
+<div class="hero is-fullheight is-primary has-background-dark">
+    <div class="hero-body">
+        <div class="container">
+            <!--        تیتر بالای صفحه بعد از سکشن-->
+            <br><br>
+            <h1 class="title has-text-centered">{% if galerysAdmins %} {% for galerysAdmin in galerysAdmins %}
+                {{ galerysAdmin.title_page }}
+                {% endfor %}
+                {% endif %}</h1>
+            <!--        عکس تیتر بالای صفحه-->
+            <figure class="image is-3by1">
+                {% if galerysAdmins %} {% for galerysAdmin in galerysAdmins %}
+                <img src=" {{ galerysAdmin.pic.url }}">
+                {% endfor %}
+                {% endif %}
+            </figure>
+
+            <section class="section has-background-light">
+                <div class="container ">
+                    <!--        تیتر توضیحات زیر عکس اول -->
+                    <h1 class="title has-text-dark has-text-centered">{% if galerysAdmins %}
+                        {% for galerysAdmin in galerysAdmins %}
+                        {{ galerysAdmin.title_galerys }}
+                        {% endfor %}
+                        {% endif %}</h1><br><br><br>
+                    <!--            توضحات زیر عکس اول -->
+                    <h2 class="subtitle has-text-dark has-text-justified">
+                        {% if galeryss %} {% for galerys in galeryss %}                   
+                        <div class="columns box">
+                            <div class="column  is-one-half content has-text-centred">
+                                <a href="#ex1{{ galerys.id }}" rel="modal:open"> 
+                                    <figure class="image">
+                                        <img src=" {{ galerys.pic.url }}">
+                                    </figure>
+                                </a> 
+                            </div>
+                            <div class="column content has-text-centred">
+                                <p class="column has-text-dark is-vcentered">
+                                   <b> {{ galerys.title }}</b>
+                                </p>
+                                <p class="column has-text-dark is-vcentered">
+                                    {{ galerys.about }}
+                                </p>
+                            </div>
+                                <!--عکس-->
+                                <div id="ex1{{ galerys.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#ex1{{ galerys.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="slideshow-container">
+                                                <div id="numbertext" class="numbertext"></div>
+                                                <img style="width:800px" src="{{ galerys.pic.url }}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+                        {% endif %}
+                    </h2>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
