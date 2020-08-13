@@ -1,5 +1,33 @@
 from django.db import models
 
+
+class advertise(models.Model):
+    pic_hru = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس هدر سمت راست بالا")
+    hru = models.CharField(max_length=2000,verbose_name="لینک هدر سمت راست بالا")
+    pic_hlu = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس هدر سمت چپ بالا")
+    hlu = models.CharField(max_length=2000,verbose_name="لینک هدر سمت چپ بالا")
+    pic_hrd = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس هدر سمت راست پایین")
+    hrd = models.CharField(max_length=2000,verbose_name="لینک هدر سمت راست پایین")
+    pic_hld = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس هدر سمت چپ پایین")
+    hld = models.CharField(max_length=2000,verbose_name="لینک هدر سمت چپ پایین")
+    pic_fru = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس فوتر سمت راست بالا")
+    fru = models.CharField(max_length=2000,verbose_name="لینک فوتر سمت راست بالا")
+    pic_flu = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس فوتر سمت چپ بالا")
+    flu = models.CharField(max_length=2000,verbose_name="لینک فوتر سمت چپ بالا")
+    pic_frd = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس فوتر سمت راست پایین")
+    frd = models.CharField(max_length=2000,verbose_name="لینک فوتر سمت راست پایین")
+    pic_fld = models.ImageField(upload_to='advertise/photos/%y/%m/%d/',verbose_name="عکس فوتر سمت چپ پایین")
+    fld = models.CharField(max_length=2000,verbose_name="لینک فوتر سمت چپ پایین")
+
+
+    def __str__(self):
+        return self.hru
+    class Meta:
+        verbose_name_plural="تبلیغات"
+
+
+
+
 class footerAdmin(models.Model):
     title = models.CharField(max_length=2000,verbose_name="تیتر فوتر صفحات")
     twitter = models.CharField(max_length=2000,verbose_name="لینک توئیتر")

@@ -430,10 +430,212 @@
 
 
 
+<section class="section has-background-light">
+    <div class="container ">
+        <!-- تبلیغات -->   
+        <h2 class="subtitle has-text-dark has-text-justified">
+            {% if advertises %} {% for advertise in advertises %}                   
+            <div class="columns box">
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.hru }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_hru.url }}">
+                        </figure>
+                    </a> 
+                </div>
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.hlu }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_hlu.url }}">
+                        </figure>
+                    </a> 
+                </div>
+            </div>
+            <div class="columns box">
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.hrd }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_hrd.url }}">
+                        </figure>
+                    </a> 
+                </div>
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.hld }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_hld.url }}">
+                        </figure>
+                    </a> 
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            {% endif %}
+        </h2>
+    </div>
+</section>
 
 
 
 
+
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">جدیدترین اخبار</h1>
+        <div class="section">
+            <!-- Developers -->
+            <div class="row columns">
+                {% if  newnews %} {% for newnew in newnews %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'news' %}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newnew.pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newnew.title }}</p><br>
+                                <p class="subtitle is-6">ساعت بارگذاری : {{ newnew.time }}</p>
+                                <p class="subtitle is-6">تاریخ بارگذاری : {{ newnew.date }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div> <!-- End Developers -->
+</section>
+<br>
+{% if newnews.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newnews.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page7={{newnews.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newnews.paginator.page_range %}
+                    {% if newnews.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page7={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newnews.has_next %}
+                    <li class="page-item">
+                        <a href="?page=7{{newnews.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">جدیدترین کلاس های آنلاین</h1>
+        <div class="section">
+            <!-- Developers -->
+            <div class="row columns">
+                {% if  newclassLinks %} {% for newclassLink in newclassLinks %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{{ newclassLink.link_url }}" class="box">
+                            <div class="card-image">
+                                <figure class="image">
+                                    <img src="{{ newclassLink.link_pic.url }}" style="border-radius: 5%; height:180px"
+                                        alt="Image">
+                                </figure>
+                            </div>
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ newclassLink.link_title }}</p>
+                                <p class="subtitle is-6">ساعت برگزاری : {{ newclassLink.link_time }}</p>
+                                <p class="subtitle is-6">تاریخ برگزاری : {{ newclassLink.link_date }}</p>
+                                <p class="subtitle is-6">هزینه : {{ newclassLink.link_price }}</p>
+                                <div class="content">
+                                    <div class="background-icon"><span class="icon-barcode"></span></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div> <!-- End Developers -->
+</section>
+<br>
+{% if newclassLinks.has_other_pages %}
+        <div class="row columns is-centered">
+            <div class="box column is-3">
+                <ul class="pagination">
+                    {% if newclassLinks.has_pervious %}
+                    <li class="page-item">
+                        <a href="?page6={{newclassLinks.previous_page_number}}"
+                            class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &laquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% for i in newclassLinks.paginator.page_range %}
+                    {% if newclassLinks.number == i %}
+                    <li class="page-item active">
+                        <a class="page-link">{{i}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a href="?page6={{i}}" class="page-link">{{i}}</a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if newclassLinks.has_next %}
+                    <li class="page-item">
+                        <a href="?page6={{newclassLinks.next_page_number}}" class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disable">
+                        <a class="page-link">
+                            &raquo;
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
 
 
 
@@ -858,6 +1060,55 @@
 
 
 
+
+
+
+<section class="section has-background-light">
+    <div class="container ">
+        <!-- تبلیغات -->   
+        <h2 class="subtitle has-text-dark has-text-justified">
+            {% if advertises %} {% for advertise in advertises %}                   
+            <div class="columns box">
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.fru }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_fru.url }}">
+                        </figure>
+                    </a> 
+                </div>
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.flu }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_flu.url }}">
+                        </figure>
+                    </a> 
+                </div>
+            </div>
+            <div class="columns box">
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.frd }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_frd.url }}">
+                        </figure>
+                    </a> 
+                </div>
+                <div class="column  is-one-half has-text-centred">
+                    <a href="{{ advertise.fld }}"> 
+                        <figure class="image">
+                            <img src=" {{ advertise.pic_fld.url }}">
+                        </figure>
+                    </a> 
+                </div>
+            </div>
+            <br>
+            {% endfor %}
+            {% endif %}
+        </h2>
+    </div>
+</section>
+
+
+
 <section class="section info-tiles has-background-light">
     <h1 class="title has-text-centered section-title">آمار سایت</h1>
     <div class="tile is-ancestor has-text-centered">
@@ -893,8 +1144,6 @@
         </div>
     </div>
 </section>
-
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="../js/showcase.js"></script>

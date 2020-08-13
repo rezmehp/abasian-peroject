@@ -4,10 +4,24 @@ from tutorialbook.models import coursebook2,books
 from tutorialfile.models import coursefile2,files
 from tutorialvideo.models import coursevideo2,videos
 from exam.models import courseexam2
-from .models import sliderImage,footerAdmin
+from news.models import news
+from classlinks.models import allclassLinks3
+from .models import sliderImage,footerAdmin,advertise
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def index(request):
+    advertises = advertise.objects.all()
+
+    newnews = news.objects.all().order_by('-id')[:15]
+    paginator = Paginator(newnews, 3)
+    page7 = request.GET.get('page7')
+    paged_newnews = paginator.get_page(page7)    
+    
+    newclassLinks = allclassLinks3.objects.all().order_by('-id')[:15]
+    paginator = Paginator(newclassLinks, 3)
+    page6 = request.GET.get('page6')
+    paged_newclassLinks = paginator.get_page(page6)
+
     newexams = courseexam2.objects.all().order_by('-id')[:15]
     paginator = Paginator(newexams, 3)
     page5 = request.GET.get('page5')
@@ -47,6 +61,9 @@ def index(request):
         'newcoursebooks':paged_newcoursebooks,
         'newcoursefiles':paged_newcoursefiles,
         'newcoursevideos':paged_newcoursevideos,
+        'newclassLinks':paged_newclassLinks,
+        'newnews':paged_newnews,
+        'advertises':advertises,
         'countapplications':countapplications,
         'countbooks':countbooks,
         'countfiles':countfiles,
