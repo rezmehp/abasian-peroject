@@ -21,6 +21,7 @@ from pages.models import footerAdmin
 
 
 urlpatterns = [
+    path('zarinpal/',include('zarinpal.urls')),
     path('',include('pages.urls')),
     path('admin/', admin.site.urls),
     path('users/password_change/done/',include('pages.urls')),

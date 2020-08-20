@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'zarinpal.apps.ZarinpalConfig',
     'pages.apps.PagesConfig',
     'contact.apps.ContactConfig',
     'exam.apps.ExamConfig',
