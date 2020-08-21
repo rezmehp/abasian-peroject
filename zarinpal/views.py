@@ -6,7 +6,7 @@ from zeep import Client
 
 MERCHANT = 'e90fa27c-e6af-11e6-9974-000c295eb8fc'
 client = Client('https://www.zarinpal.com/pg/services/WebGate/wsdl')
-# amount = 5000  # Toman / Required
+amount = 5000  # Toman / Required باید اینو درست کنیممممممممممممممممممممممممممممممممممممممممممممممم
 description = "توضیحات مربوط به تراکنش  666 را در این قسمت وارد کنید"  # Required
 email = 'email666@example.com'  # Optional
 mobile = '09123456666'  # Optional
