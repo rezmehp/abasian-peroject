@@ -45,7 +45,7 @@
                     <div id="mybook" class="column" style="overflow-y:scroll;">
                         <nav class="panel">
                             <p class="panel-heading">
-                                لیست فیلم های این مبحث
+                                لیست کتاب های این مبحث
                             </p>
                             {% if bookss %} {% for books in bookss %}
                             {% if books.booklink_is_published == True %}
@@ -58,7 +58,7 @@
                             {% endif %}
                             {% if books.bookfile_is_published == True %}
 
-                            <a href="{{ books.bookfile.url }}" class="panel-block">
+                            <a href="{{ books.bookfile }}" class="panel-block">
                                 <span class="panel-icon">
                                     <i class="fas fa-book" aria-hidden="true"></i>
                                 </span>

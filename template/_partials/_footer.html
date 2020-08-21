@@ -1,74 +1,76 @@
 <div class="hero has-background-dark">
-      <section class="section has-background-dark">
-        
-        {% if footerAdmins %} {% for footerAdmin in footerAdmins %}
-        <h1 class="has-text-light has-text-centered">{{ footerAdmin.title }}</h1>     
-        <br>
-        <div class="tabs is-centered">
-          <ul>
-            {% if footerAdmin.twitter_published == True %}
-            
-            <li>
-              <a href="{{ footerAdmin.twitter }}">
-                <span class="icon is-small has-text-light"
-                  ><i class="fab fa-twitter fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-            {% if footerAdmin.linkedin_published == True %}
-            <li>
-              <a href="{{ footerAdmin.linkedin }}">
-                <span class="icon is-small has-text-light"
-                  ><i class="fab fa-linkedin-in fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-            {% if footerAdmin.instagram_published == True %}
-            <li>
-              <a href="{{ footerAdmin.instagram }}">
-                <span class="icon is-small has-text-light"
-                  ><i class="fab fa-instagram fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-            {% if footerAdmin.mail_published == True %}
-            <li>
-              <a href="mailto:{{ footerAdmin.mail }}">
-                <span class="icon is-small has-text-light"
-                  ><i class="far fa-envelope fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-            {% if footerAdmin.whatsapp_published == True %}
-            <li>
-              <a href="{{ footerAdmin.whatsapp }}"> 
-                <span class="icon is-small has-text-light"
-                  ><i class="fab fa-whatsapp fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-            {% if footerAdmin.telegram_published == True %}
-            <li>
-              <a href="{{ footerAdmin.telegram }}">
-                <span class="icon is-small  has-text-light"
-                  ><i class="fab fa-telegram-plane fa-2x" aria-hidden="true"></i
-                ></span>
-              </a>
-            </li>
-            {% endif %}
-           
-          </ul>
-        </div>
-        {% endfor %}
+  <section class="section has-background-dark">
+
+    {% if footerAdmins %} {% for footerAdmin in footerAdmins %}
+    <h1 class="has-text-light has-text-centered">{{ footerAdmin.title }}</h1>
+    <br>
+    <div class="tabs is-centered">
+      <ul>
+        {% if footerAdmin.twitter_published == True %}
+
+        <li>
+          <a href="{{ footerAdmin.twitter }}">
+            <span class="icon is-small has-text-light"><i class="fab fa-twitter fa-2x" aria-hidden="true"></i></span>
+          </a>
+        </li>
         {% endif %}
-        <br>
-        
-        <script src="https://cdn.zarinpal.com/trustlogo/v1/trustlogo.js" type="text/javascript"></script>
-          
-      </section>
+        {% if footerAdmin.linkedin_published == True %}
+        <li>
+          <a href="{{ footerAdmin.linkedin }}">
+            <span class="icon is-small has-text-light"><i class="fab fa-linkedin-in fa-2x"
+                aria-hidden="true"></i></span>
+          </a>
+        </li>
+        {% endif %}
+        {% if footerAdmin.instagram_published == True %}
+        <li>
+          <a href="{{ footerAdmin.instagram }}">
+            <span class="icon is-small has-text-light"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        {% endif %}
+        {% if footerAdmin.mail_published == True %}
+        <li>
+          <a href="mailto:{{ footerAdmin.mail }}">
+            <span class="icon is-small has-text-light"><i class="far fa-envelope fa-2x" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        {% endif %}
+        {% if footerAdmin.whatsapp_published == True %}
+        <li>
+          <a href="#whatsapp" rel="modal:open">
+            <span class="icon is-small has-text-light"><i class="fab fa-whatsapp fa-2x" aria-hidden="true"></i></span>
+          </a>
+        </li>
+        <div id="whatsapp" class="modal">
+            <a href="#whatsapp" rel="modal:close">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <article class="message">
+                  <div class="message-body">
+                     شماره تماس و شماره پیام واتس اپ : <strong style="color: darkblue;">{{ footerAdmin.whatsapp }}</strong>
+                  </div>
+                </article>
+              </div>
+            </a>
+        </div>
+        {% endif %}
+        {% if footerAdmin.telegram_published == True %}
+        <li>
+          <a href="{{ footerAdmin.telegram }}">
+            <span class="icon is-small  has-text-light"><i class="fab fa-telegram-plane fa-2x"
+                aria-hidden="true"></i></span>
+          </a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <br>
+
+    <script src="https://cdn.zarinpal.com/trustlogo/v1/trustlogo.js" type="text/javascript"></script>
+
+  </section>
 </div>

@@ -1,7 +1,4 @@
 {% extends 'base.html' %}
-
-
-
 {% block title %}{% if tutorialvideoAdmins %} {% for tutorialvideoAdmin in tutorialvideoAdmins %}
 {{ tutorialvideoAdmin.title_page }} {% endfor %}
 {% endif %}{% endblock %} {% block content %}
@@ -22,7 +19,6 @@
                         {% for tutorialvideoAdmin in tutorialvideoAdmins %}
                         {{ tutorialvideoAdmin.title_search }} {% endfor %}
                         {% endif %}</h1>
-
                 </section>
                 <form method="post" id="formidsearch" action="{% url 'tutorialvideo' %}"
                     data-searchselect-url="{% url 'tutorialvideo' %}" class="section has-background-light">
@@ -53,8 +49,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="column">
                                 <div class="field is-horizontal">
                                     <div class="field-body">
@@ -78,13 +72,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
                         <script>
                             $(document).ready(function () {
                                 $('select[name="maghtan"]').on('change', function () {
                                     var sardaste_id = $("#maghtanidtemp option:selected").attr('data-id');
-
                                     if (sardaste_id) {
                                         $.ajax({
                                             url: '/tutorialvideo/m/' + sardaste_id,
@@ -93,8 +85,6 @@
                                             success: function (data) {
                                                 console.log(data);
                                                 $('select[name="reshten"]').empty();
-
-
                                                 $.each(data, function (key, value) {
                                                     $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
                                                 });
@@ -108,10 +98,6 @@
                                 })
                             })
                         </script>
-
-
-
-
                         <div class="columns">
                             <div class="column">
                                 <div class="control">
@@ -140,7 +126,6 @@
                     </div>
                 </form>
             </div>
-
             {% if searchcoursevideoshows %}
             <section class="section has-background-light">
                 <div class="container ">
@@ -227,7 +212,6 @@
                 </div>
             </section>
             <hr>
-
             {% if bettercoursevideoshows %}
             <section class="section has-background-light">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialvideoAdmins %}
@@ -247,9 +231,7 @@
                         </a>
                     </div>
                     {% endfor %}
-
                 </div>
-
             </section>
             <br>
             {% if bettercoursevideoshows.has_other_pages %}
@@ -309,9 +291,19 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showvideotutorial' newcoursevideoshow.id %}" class="box">
                             <img src="{{ newcoursevideoshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس : {{ newcoursevideoshow.coursename }}</strong></p>
+                            <p class="has-text-centered"><strong> درس : {{ newcoursevideoshow.coursename }}</strong>
+                            </p>
                             <p class="has-text-centered">استاد : {{ newcoursevideoshow.modaresinfkey }}</p>
                             <p class="has-text-centered">{{ newcoursevideoshow.saattadris }} ساعت آموزش</p>
+                            {% if newcoursevideoshow.hazine != 0 %}
+                            <small>
+                                هزینه : {{ newcoursevideoshow.hazine }} تومان
+                            </small>
+                            {% else %}
+                            <small>
+                                هزینه : رایگان
+                            </small>
+                            {% endif %}
                         </a>
                     </div>
                     {% endfor %}
@@ -367,5 +359,4 @@
         </section>
     </div>
 </div>
-
 {% endblock %}

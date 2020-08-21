@@ -38,7 +38,7 @@ class footerAdmin(models.Model):
     instagram_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش اینستاگرام")
     mail = models.CharField(max_length=2000,verbose_name="لینک ایمیل")
     mail_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش ایمیل")
-    whatsapp = models.CharField(max_length=2000,verbose_name="لینک واتس اپ")
+    whatsapp = models.CharField(max_length=2000,verbose_name="شماره واتس اپ")
     whatsapp_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش واتس اپ")
     telegram = models.CharField(max_length=2000,verbose_name="لینک تلگرام")
     telegram_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش تلگرام")

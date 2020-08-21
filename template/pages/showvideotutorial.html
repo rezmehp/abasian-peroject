@@ -9,8 +9,6 @@
     }
     outputsize()
 </script>
-
-
 <div class="hero is-fullheight  has-background-dark">
     <div class="hero-body">
         <div class="container">
@@ -37,57 +35,121 @@
                                     <h5 class="has-text-dark">{{ coursevideo.tozihat }}</h5>
                                 </p>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </section>
             <section class="section has-background-light">
-                <div class="columns">
-                    <div id="myvideo" class="column" style="overflow-y:scroll;">
-                        <nav class="panel">
-                            <p class="panel-heading">
-                                لیست فیلم های این مبحث
-                            </p>
-                            {% if videoss %} {% for videos in videoss %}
-                            {% if videos.videolink_is_published == True %}
-                            <a href="{{ videos.videolink }}" class="panel-block">
-                                <span class="panel-icon">
-                                    <i class="fas fa-book" aria-hidden="true"></i>
-                                </span>
-                                {{ videos.videoname }}
+                <div class="columns is-multiline">
+                    <div class="column">
+                        {% if user.is_authenticated %}
+                            {% if coursevideo.hazine != 0 %}
+
+                            <!-- اگر هزینه پرداخت نکرده بود -->
+                            <h3>هزینه پرداخت نکرده بود</h3>
+                            <form action="{% url 'request' %}" method="POST">
+                                {% csrf_token %}
+                                    <button class="panel" style="width: 100%;">
+                                        
+                                        <p class="panel-heading">
+                                            برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
+                                            <br><br><strong style="text-align: center; color: crimson;">برای پرداخت اینجا کلیک کنید</strong><br><br>
+                                            <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه : {{ coursevideo.hazine }} تومان
+                                        </p>
+                                    </button>
+                            </form>
+                            <!-- اگر هزینه پرداخت کرده بود -->
+                            <h3>هزینه پرداخت کرده بود</h3>
+
+                            <nav class="panel">
+                                <p class="panel-heading">
+                                    لیست فیلم های این مبحث
+                                </p>
+                                {% if videoss %} {% for videos in videoss %}
+                                {% if videos.videolink_is_published == True %}
+                                <a href="{{ videos.videolink }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }}
+                                </a>
+                                {% endif %}
+                                {% if videos.videofile_is_published == True %}
+                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }} (لینک مستقیم)
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </nav>
+                            {% else %}
+                            <nav class="panel">
+                                <p class="panel-heading">
+                                    لیست فیلم های این مبحث
+                                </p>
+                                {% if videoss %} {% for videos in videoss %}
+                                {% if videos.videolink_is_published == True %}
+                                <a href="{{ videos.videolink }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }}
+                                </a>
+                                {% endif %}
+                                {% if videos.videofile_is_published == True %}
+                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }} (لینک مستقیم)
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </nav>
+                            {% endif %}
+                        {% else %}
+                            {% if coursevideo.hazine != 0 %}
+                            <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
+                                برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید 
+                                <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک کنید</strong><br><br>
+                                <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه : {{ coursevideo.hazine }} تومان
                             </a>
+                            {% else %}
+                            <nav class="panel">
+                                <p class="panel-heading">
+                                    لیست فیلم های این مبحث
+                                </p>
+                                {% if videoss %} {% for videos in videoss %}
+                                {% if videos.videolink_is_published == True %}
+                                <a href="{{ videos.videolink }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }}
+                                </a>
+                                {% endif %}
+                                {% if videos.videofile_is_published == True %}
+                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                    <span class="panel-icon">
+                                        <i class="fas fa-book" aria-hidden="true"></i>
+                                    </span>
+                                    {{ videos.videoname }} (لینک مستقیم)
+                                </a>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </nav>
                             {% endif %}
-                            {% if videos.videofile_is_published == True %}
-
-                            <a href="{{ videos.videofile.url }}" class="panel-block">
-                                <span class="panel-icon">
-                                    <i class="fas fa-book" aria-hidden="true"></i>
-                                </span>
-                                {{ videos.videoname }} (لینک مستقیم)
-                            </a>
-                            {% endif %}
-
-                            {% endfor %}
-                            {% endif %}
-
-
-
-
-
-
-
-
-
-
-                        </nav>
+                        {% endif %}
                     </div>
-
                 </div>
-
-            </section>
+            </section>     
         </div>
     </div>
 </div>
-
 {% endblock %}
+
