@@ -42,7 +42,7 @@ def send_request(request):
         global courseid
         courseid = request.POST['courseid'] # آی دی درس
         global coursename
-        courseid = request.POST['coursename'] # نام درس
+        coursename = request.POST['coursename'] # نام درس
         global description
         description = request.POST['description'] # توضیحات مربوط به تراکنش 
         global amount

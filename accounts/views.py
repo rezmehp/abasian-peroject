@@ -47,10 +47,8 @@ def register(request):
                     messages.error(request, 'ایمیل تکراری است')
                     return redirect('register')
                 else:
-                   karbaruser11 = karbaruser1.objects.create(username=username, email=email, first_name=first_name, last_name=last_name,
-                                                             tell=tell, melli_code=melli_code, password="1", gender=gender, maghta=maghta, reshte=reshte, shahr=shahr, ostan=ostan)
-                   user = User.objects.create_user(
-                       username=username, email=email, first_name=first_name, last_name=last_name, password=password,)
+                   karbaruser11 = karbaruser1.objects.create(username=username, email=email, first_name=first_name, last_name=last_name, tell=tell, melli_code=melli_code, password="1", gender=gender, maghta=maghta, reshte=reshte, shahr=shahr, ostan=ostan)
+                   user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name, password=password,)
                    karbaruser11.save()
                    user.save()
                    messages.success(request, 'ثبت نام شما با موفقیت انجام شد')
