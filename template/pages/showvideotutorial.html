@@ -44,9 +44,39 @@
                     <div class="column">
                         {% if user.is_authenticated %}
                             {% if coursevideo.hazine != 0 %}
+                                
+    <!-- خرید انجام شده باشد -->
 
-                            <!-- اگر هزینه پرداخت نکرده بود -->
-                            <h3>هزینه پرداخت نکرده بود</h3>
+                                <nav class="panel">
+                                    <p class="panel-heading">
+                                        لیست فیلم های این مبحث
+                                    </p>
+                                    {% if videoss %} {% for videos in videoss %}
+                                    {% if videos.videolink_is_published == True %}
+                                    <a href="{{ videos.videolink }}" class="panel-block">
+                                        <span class="panel-icon">
+                                            <i class="fas fa-book" aria-hidden="true"></i>
+                                        </span>
+                                        {{ videos.videoname }}
+                                    </a>
+                                    {% endif %}
+                                    {% if videos.videofile_is_published == True %}
+                                    <a href="{{ videos.videofile.url }}" class="panel-block">
+                                        <span class="panel-icon">
+                                            <i class="fas fa-book" aria-hidden="true"></i>
+                                        </span>
+                                        {{ videos.videoname }} (لینک مستقیم)
+                                    </a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                                </nav>
+                                
+
+                                <!-- وگرنه هزینه باید بپردازد -->
+
+
+
                             <form action="{% url 'request' %}" method="POST">
                                 {% csrf_token %}
                                     <div class="panel" style="width: 100%;">
@@ -54,10 +84,14 @@
                                         <p class="panel-heading">
                                             برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                             <br><br>
-                                            <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه : {{ coursevideo.hazine }} تومان
+                                            هزینه : {{ coursevideo.hazine }} تومان
                                             <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                            <input type="text" name="username" value="{{ user.username }}" hidden />
                                             <input type="number" name="courseid" value="{{ coursevideo.id }}" hidden />
                                             <input type="text" name="coursename" value="{{ coursevideo.coursename }}" hidden />
+                                            
+                                            <input type="text" name="coursetype" value="1" hidden />
+                                            <input type="text" name="description" value="  ویدیو {{ coursevideo.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />
                                             <p class="control is-expanded has-icons-right">
                                                 <input class="input" type="text" name="address"
                                                     placeholder="آدرس دریافت کالای خریداری شده" required />
@@ -84,33 +118,9 @@
                                         <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
                                     </div>
                             </form>
-                            <!-- اگر هزینه پرداخت کرده بود -->
-                            <h3>هزینه پرداخت کرده بود</h3>
+                            
 
-                            <nav class="panel">
-                                <p class="panel-heading">
-                                    لیست فیلم های این مبحث
-                                </p>
-                                {% if videoss %} {% for videos in videoss %}
-                                {% if videos.videolink_is_published == True %}
-                                <a href="{{ videos.videolink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ videos.videoname }}
-                                </a>
-                                {% endif %}
-                                {% if videos.videofile_is_published == True %}
-                                <a href="{{ videos.videofile.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ videos.videoname }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
+                            
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">

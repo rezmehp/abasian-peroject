@@ -3,6 +3,7 @@ from tutorialapplication.models import courseapplication2,applications
 from tutorialbook.models import coursebook2,books
 from tutorialfile.models import coursefile2,files
 from tutorialvideo.models import coursevideo2,videos
+from tutorialvoice.models import coursevoice2,voices
 from exam.models import courseexam2
 from news.models import news
 from classlinks.models import allclassLinks3
@@ -11,6 +12,11 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def index(request):
     advertises = advertise.objects.all()
+
+    newcoursevoices = coursevoice2.objects.all().order_by('-id')[:15]
+    paginator = Paginator(newcoursevoices, 3)
+    page8 = request.GET.get('page8')
+    paged_newcoursevoices = paginator.get_page(page8)
 
     newnews = news.objects.all().order_by('-id')[:15]
     paginator = Paginator(newnews, 3)
@@ -51,6 +57,7 @@ def index(request):
     countbooks = books.objects.all().count()
     countfiles = files.objects.all().count()
     countvideos = videos.objects.all().count()
+    countvoices = voices.objects.all().count()
     countexams = courseexam2.objects.all().count()
     sliderImages = sliderImage.objects.all()
     footerAdmins = footerAdmin.objects.all()
@@ -61,6 +68,7 @@ def index(request):
         'newcoursebooks':paged_newcoursebooks,
         'newcoursefiles':paged_newcoursefiles,
         'newcoursevideos':paged_newcoursevideos,
+        'newcoursevoices':paged_newcoursevoices,
         'newclassLinks':paged_newclassLinks,
         'newnews':paged_newnews,
         'advertises':advertises,
@@ -68,6 +76,7 @@ def index(request):
         'countbooks':countbooks,
         'countfiles':countfiles,
         'countvideos':countvideos,
+        'countvoices':countvoices,
         'sliderImages':sliderImages,
         'footerAdmins':footerAdmins,
         'countexams':countexams,

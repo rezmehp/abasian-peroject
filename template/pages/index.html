@@ -725,7 +725,86 @@
         </div>
         {% endif %}
 
-
+        <section class="section box has-background-light">
+            <div class="container">
+                <h1 class="title has-text-centered section-title">جدیدترین صوت ها</h1>
+                <div class="section">
+                    <!-- Developers -->
+                    <div class="row columns">
+                        {% if newcoursevoices %} {% for newcoursevoice in newcoursevoices %}
+                        <div class="column is-one-third">
+                            <div class="card large" style="border-radius: 5%;">
+                                <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box">
+                                    <div class="card-image">
+                                        <figure class="image">
+                                            <img src="{{ newcoursevoice.pic.url }}" style="border-radius: 5%; height:180px"
+                                                alt="Image">
+                                        </figure>
+                                    </div>
+                                    <div class="card-content">
+                                        <p class="title is-4 no-padding">{{ newcoursevoice.coursename }}</p>
+                                        <p class="subtitle is-6">{{ newcoursevoice.modaresinfkey }}</p>
+                                        <div class="content">
+                                            <div class="background-icon"><span class="icon-barcode"></span></div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div> <!-- End Developers -->
+        </section>
+        <br>
+        {% if newcoursevoices.has_other_pages %}
+                <div class="row columns is-centered">
+                    <div class="box column is-3">
+                        <ul class="pagination">
+                            {% if newcoursevoices.has_pervious %}
+                            <li class="page-item">
+                                <a href="?page8={{newcoursevoices.previous_page_number}}"
+                                    class="page-link">
+                                    &laquo;
+                                </a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disable">
+                                <a class="page-link">
+                                    &laquo;
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% for i in newcoursevoices.paginator.page_range %}
+                            {% if newcoursevoices.number == i %}
+                            <li class="page-item active">
+                                <a class="page-link">{{i}}</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item">
+                                <a href="?page8={{i}}" class="page-link">{{i}}</a>
+                            </li>
+                            {% endif %}
+                            {% endfor %}
+                            {% if newcoursevoices.has_next %}
+                            <li class="page-item">
+                                <a href="?page8={{newcoursevoices.next_page_number}}" class="page-link">
+                                    &raquo;
+                                </a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disable">
+                                <a class="page-link">
+                                    &raquo;
+                                </a>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+        
 
 <section class="section box has-background-light">
     <div class="container">
@@ -1116,6 +1195,12 @@
             <article class="tile is-child box">
                 <p class="title">{{ countvideos }}</p>
                 <p class="subtitle">ویدیو</p>
+            </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child box">
+                <p class="title">{{ countvoices }}</p>
+                <p class="subtitle">صوت</p>
             </article>
         </div>
         <div class="tile is-parent">
