@@ -31,6 +31,7 @@ urlpatterns = [
     path('about/',include('about.urls')),
     path('tutorialapplication/',include('tutorialapplication.urls')),
     path('tutorialvideo/',include('tutorialvideo.urls')),
+    path('tutorialvoice/',include('tutorialvoice.urls')),
     path('tutorialfile/',include('tutorialfile.urls')),
     path('tutorialbook/',include('tutorialbook.urls')),
     path('links/',include('links.urls')),

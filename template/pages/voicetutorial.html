@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+{% block title %}{% if tutorialvoiceAdmins %} {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+{{ tutorialvoiceAdmin.title_page }} {% endfor %}
+{% endif %}{% endblock %} {% block content %}
+<!--test-->
+<div class="hero is-fullheight has-background-dark">
+    <div class="hero-body">
+        <section class="container">
+            <figure class="image is-3by1">
+                {% if tutorialvoiceAdmins %} {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+                <img src="{{ tutorialvoiceAdmin.pic.url }}">
+                {% endfor %}
+                {% endif %}
+            </figure>
+            <div class="box">
+                <section class="section has-background-light">
+                    <!--        تیتر توضیحات زیر عکس اول درباره ما-->
+                    <h1 class="title has-text-dark">{% if tutorialvoiceAdmins %}
+                        {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+                        {{ tutorialvoiceAdmin.title_search }} {% endfor %}
+                        {% endif %}</h1>
+                </section>
+                <form method="post" id="formidsearch" action="{% url 'tutorialvoice' %}"
+                    data-searchselect-url="{% url 'tutorialvoice' %}" class="section has-background-light">
+                    {% csrf_token %}
+                    <div class="container ">
+                        <div class="columns">
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                <select id="maghtanidtemp" name="maghtan">
+                                                    <option selected="True" disabled="disabled">مقطع تحصیلی</option>
+                                                    {% if maghtaTahsilishows %}
+                                                    {% for maghtaTahsilishow in maghtaTahsilishows %}
+                                                    <option data-id="{{ maghtaTahsilishow.id }}"
+                                                        value="{{ maghtaTahsilishow.id }}">
+                                                        {{ maghtaTahsilishow.maghta }}</option>
+                                                    {% endfor %}
+                                                    {% else %}
+                                                    <div class="col-md-12">
+                                                        <p>No maghta Available</p>
+                                                    </div>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="field is-horizontal">
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <div class="field">
+                                                <div class="control is-expanded has-icons-right select is-fullwidth">
+                                                    <select id="reshtenidtemp" name="reshten">
+                                                        <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را
+                                                            انتخاب نمایید</option>
+                                                        {% if reshteTahsilishows %}
+                                                        {% for reshteTahsilishow in reshteTahsilishows %}
+                                                        <option value="{{ reshteTahsilishow.id }}">
+                                                            {{ reshteTahsilishow.reshte }}</option>
+                                                        {% endfor %}
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                        <script>
+                            $(document).ready(function () {
+                                $('select[name="maghtan"]').on('change', function () {
+                                    var sardaste_id = $("#maghtanidtemp option:selected").attr('data-id');
+                                    if (sardaste_id) {
+                                        $.ajax({
+                                            url: '/tutorialvoice/m/' + sardaste_id,
+                                            type: 'GET',
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                console.log(data);
+                                                $('select[name="reshten"]').empty();
+                                                $.each(data, function (key, value) {
+                                                    $('select[name="reshten"]').append('<option value="' + value + '">' + value + '</option>');
+                                                });
+
+
+                                            },
+                                        })
+                                    } else {
+                                        $('select[name="reshten"]').empty();
+                                    }
+                                })
+                            })
+                        </script>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="control">
+                                    <input value="{{ values.coursen }}" class="input is-fullwidth" placeholder="نام درس"
+                                        type="text" name="coursen">
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="control">
+                                    <input value="{{ values.modaresn }}" class="input is-fullwidth"
+                                        placeholder="نام مدرس" type="text" name="modaresn">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control">
+                                    <button id="maghtanidtempbtn" class="button is-primary">
+                                        {% if tutorialvoiceAdmins %} {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+                                        {{ tutorialvoiceAdmin.text_click }} {% endfor %}
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {% if searchcoursevoiceshows %}
+            <section class="section has-background-light">
+                <div class="container ">
+                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    {% for searchcoursevoiceshow in searchcoursevoiceshows %}
+                    <a href="{% url 'showvoicetutorial' searchcoursevoiceshow.id %}" class="columns box">
+                        <div class="column is-one-quarter">
+                            <figure class="image">
+                                <img src="{{ searchcoursevoiceshow.pic.url }}">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-vcentered">
+                                    <strong>
+                                        درس : {{ searchcoursevoiceshow.coursename }}
+                                    </strong><br>
+                                    <strong>
+                                        استاد : {{ searchcoursevoiceshow.modaresinfkey }}
+                                    </strong><br>
+                                    {% if searchcoursevoiceshow.hazine != 0 %}
+                                    <small>
+                                        هزینه : {{ searchcoursevoiceshow.hazine }} ریال
+                                    </small>
+                                    {% else %}
+                                    <small>
+                                        هزینه : رایگان
+                                    </small>
+                                    {% endif %}
+                                    <br>
+                                    {{ searchcoursevoiceshow.tozihat }}
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                    <br>
+                    {% endfor %}
+                    {% endif %}
+                    {% if searchcoursevoiceshows.has_other_pages %}
+                    <div class="row columns is-centered">
+                        <div class="box column is-3">
+                            <ul class="pagination">
+                                {% if searchcoursevoiceshows.has_pervious %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursevoiceshows.previous_page_number}}" class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &laquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% for i in searchcoursevoiceshows.paginator.page_range %}
+                                {% if searchcoursevoiceshows.number == i %}
+                                <li class="page-item active">
+                                    <a class="page-link">{{i}}</a>
+                                </li>
+                                {% else %}
+                                <li class="page-item">
+                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                {% if searchcoursevoiceshows.has_next %}
+                                <li class="page-item">
+                                    <a href="?page={{searchcoursevoiceshows.next_page_number}}" class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% else %}
+                                <li class="page-item disable">
+                                    <a class="page-link">
+                                        &raquo;
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </section>
+            <hr>
+            {% if bettercoursevoiceshows %}
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialvoiceAdmins %}
+                    {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+                    {{ tutorialvoiceAdmin.title_1 }} {% endfor %}
+                    {% endif %}
+                </h3>
+                <div class="columns is-multiline">
+                    {% for bettercoursevoiceshow in bettercoursevoiceshows %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showvoicetutorial' bettercoursevoiceshow.id %}" class="box">
+                            <img src="{{ bettercoursevoiceshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ bettercoursevoiceshow.coursename }}</strong></p>
+                            <p class="has-text-centered">استاد : {{ bettercoursevoiceshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ bettercoursevoiceshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <br>
+            {% if bettercoursevoiceshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if bettercoursevoiceshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page2={{searchcoursevoiceshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in bettercoursevoiceshows.paginator.page_range %}
+                        {% if bettercoursevoiceshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page2={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if bettercoursevoiceshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page2={{bettercoursevoiceshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            <hr>
+            {% endif %}
+            <section class="section has-background-light">
+                <h3 class="title has-text-centered has-text-dark">{% if tutorialvoiceAdmins %}
+                    {% for tutorialvoiceAdmin in tutorialvoiceAdmins %}
+                    {{ tutorialvoiceAdmin.title_2 }} {% endfor %}
+                    {% endif %}</h3>
+                <div class="columns is-multiline">
+                    {% if newcoursevoiceshows %} {% for newcoursevoiceshow in newcoursevoiceshows %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showvoicetutorial' newcoursevoiceshow.id %}" class="box">
+                            <img src="{{ newcoursevoiceshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس : {{ newcoursevoiceshow.coursename }}</strong>
+                            </p>
+                            <p class="has-text-centered">استاد : {{ newcoursevoiceshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ newcoursevoiceshow.saattadris }} ساعت آموزش</p>
+                            {% if newcoursevoiceshow.hazine != 0 %}
+                            <small>
+                                هزینه : {{ newcoursevoiceshow.hazine }} تومان
+                            </small>
+                            {% else %}
+                            <small>
+                                هزینه : رایگان
+                            </small>
+                            {% endif %}
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
+            <br>
+            {% if newcoursevoiceshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if newcoursevoiceshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page3={{newcoursevoiceshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in newcoursevoiceshows.paginator.page_range %}
+                        {% if newcoursevoiceshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page3={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if newcoursevoiceshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page3={{newcoursevoiceshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+        </section>
+    </div>
+</div>
+{% endblock %}

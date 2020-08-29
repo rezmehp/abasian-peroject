@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}{{ coursevideo.coursename }} {% endblock %}
+{% block title %}{{ coursevoice.coursename }} {% endblock %}
 {% block content %}
 <script defer>
     function outputsize() {
         let s = document.getElementById("columnssize").clientHeight;
-        let videosize = document.getElementById('myvideo').style.height = s + "px";
+        let voicesize = document.getElementById('myvoice').style.height = s + "px";
         console.log(s)
     }
     outputsize()
@@ -16,23 +16,23 @@
                 <div class="container ">
                     <div class="columns">
                         <div class="column is-centered has-text-centered">
-                            <img class="is-centered has-text-centered" src="{{ coursevideo.pic.url }}">
+                            <img class="is-centered has-text-centered" src="{{ coursevoice.pic.url }}">
                         </div>
                     </div>
                     <div class="columns">
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevideo.coursename }}
+                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevoice.coursename }}
                                     </h3><br>
-                                    <h4 class="has-text-dark">مدرس : {{ coursevideo.modaresinfkey }}</h4><br>
-                                    <small class="has-text-dark">مدت زمان آموزش : {{ coursevideo.saattadris }} دقیقه
+                                    <h4 class="has-text-dark">مدرس : {{ coursevoice.modaresinfkey }}</h4><br>
+                                    <small class="has-text-dark">مدت زمان آموزش : {{ coursevoice.saattadris }} دقیقه
                                     </small><br>
-                                    {% if coursevideo.hazine != 0 %}
-                                    <small class="has-text-dark">هزینه :{{ coursevideo.hazine }} ریال </small>
+                                    {% if coursevoice.hazine != 0 %}
+                                    <small class="has-text-dark">هزینه :{{ coursevoice.hazine }} ریال </small>
                                     {% endif %}
                                     <br>
-                                    <h5 class="has-text-dark">{{ coursevideo.tozihat }}</h5>
+                                    <h5 class="has-text-dark">{{ coursevoice.tozihat }}</h5>
                                 </p>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                 <div class="columns is-multiline">
                     <div class="column">
                         {% if user.is_authenticated %}
-                            {% if coursevideo.hazine != 0 %}
+                            {% if coursevoice.hazine != 0 %}
 
                             <!-- اگر هزینه پرداخت نکرده بود -->
                             <h3>هزینه پرداخت نکرده بود</h3>
@@ -54,10 +54,10 @@
                                         <p class="panel-heading">
                                             برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                             <br><br>
-                                            <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه : {{ coursevideo.hazine }} تومان
+                                            <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه : {{ coursevoice.hazine }} تومان
                                             <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                            <input type="number" name="courseid" value="{{ coursevideo.id }}" hidden />
-                                            <input type="text" name="coursename" value="{{ coursevideo.coursename }}" hidden />
+                                            <input type="number" name="courseid" value="{{ coursevoice.id }}" hidden />
+                                            <input type="text" name="coursename" value="{{ coursevoice.coursename }}" hidden />
                                             <p class="control is-expanded has-icons-right">
                                                 <input class="input" type="text" name="address"
                                                     placeholder="آدرس دریافت کالای خریداری شده" required />
@@ -91,21 +91,21 @@
                                 <p class="panel-heading">
                                     لیست فیلم های این مبحث
                                 </p>
-                                {% if videoss %} {% for videos in videoss %}
-                                {% if videos.videolink_is_published == True %}
-                                <a href="{{ videos.videolink }}" class="panel-block">
+                                {% if voicess %} {% for voices in voicess %}
+                                {% if voices.voicelink_is_published == True %}
+                                <a href="{{ voices.voicelink }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }}
+                                    {{ voices.voicename }}
                                 </a>
                                 {% endif %}
-                                {% if videos.videofile_is_published == True %}
-                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                {% if voices.voicefile_is_published == True %}
+                                <a href="{{ voices.voicefile.url }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }} (لینک مستقیم)
+                                    {{ voices.voicename }} (لینک مستقیم)
                                 </a>
                                 {% endif %}
                                 {% endfor %}
@@ -116,21 +116,21 @@
                                 <p class="panel-heading">
                                     لیست فیلم های این مبحث
                                 </p>
-                                {% if videoss %} {% for videos in videoss %}
-                                {% if videos.videolink_is_published == True %}
-                                <a href="{{ videos.videolink }}" class="panel-block">
+                                {% if voicess %} {% for voices in voicess %}
+                                {% if voices.voicelink_is_published == True %}
+                                <a href="{{ voices.voicelink }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }}
+                                    {{ voices.voicename }}
                                 </a>
                                 {% endif %}
-                                {% if videos.videofile_is_published == True %}
-                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                {% if voices.voicefile_is_published == True %}
+                                <a href="{{ voices.voicefile.url }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }} (لینک مستقیم)
+                                    {{ voices.voicename }} (لینک مستقیم)
                                 </a>
                                 {% endif %}
                                 {% endfor %}
@@ -138,32 +138,32 @@
                             </nav>
                             {% endif %}
                         {% else %}
-                            {% if coursevideo.hazine != 0 %}
+                            {% if coursevoice.hazine != 0 %}
                             <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
                                 برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید 
                                 <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک کنید</strong><br><br>
-                                <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه : {{ coursevideo.hazine }} تومان
+                                <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه : {{ coursevoice.hazine }} تومان
                             </a>
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">
                                     لیست فیلم های این مبحث
                                 </p>
-                                {% if videoss %} {% for videos in videoss %}
-                                {% if videos.videolink_is_published == True %}
-                                <a href="{{ videos.videolink }}" class="panel-block">
+                                {% if voicess %} {% for voices in voicess %}
+                                {% if voices.voicelink_is_published == True %}
+                                <a href="{{ voices.voicelink }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }}
+                                    {{ voices.voicename }}
                                 </a>
                                 {% endif %}
-                                {% if videos.videofile_is_published == True %}
-                                <a href="{{ videos.videofile.url }}" class="panel-block">
+                                {% if voices.voicefile_is_published == True %}
+                                <a href="{{ voices.voicefile.url }}" class="panel-block">
                                     <span class="panel-icon">
                                         <i class="fas fa-book" aria-hidden="true"></i>
                                     </span>
-                                    {{ videos.videoname }} (لینک مستقیم)
+                                    {{ voices.voicename }} (لینک مستقیم)
                                 </a>
                                 {% endif %}
                                 {% endfor %}

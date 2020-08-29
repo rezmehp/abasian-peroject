@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'about.apps.AboutConfig',
     'tutorialapplication.apps.TutorialapplicationConfig',
     'tutorialvideo.apps.TutorialvideoConfig',
+    'tutorialvoice.apps.TutorialvoiceConfig',
     'tutorialfile.apps.TutorialfileConfig',
     'tutorialbook.apps.TutorialbookConfig',
     'django.contrib.admin',
