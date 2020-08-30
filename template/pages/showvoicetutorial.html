@@ -45,22 +45,52 @@
                         {% if user.is_authenticated %}
                             {% if coursevoice.hazine != 0 %}
 
-                            <!-- اگر هزینه پرداخت نکرده بود -->
-                            <h3>هزینه پرداخت نکرده بود</h3>
+
+
+                            {% if buyss %}
+                            <!-- خرید انجام شده باشد -->
+                            <nav class="panel">
+                                    <p class="panel-heading">
+                                        لیست صوت های این مبحث
+                                    </p>
+                                    {% if voicess %} {% for voices in voicess %}
+                                    {% if voices.voicelink_is_published == True %}
+                                    <a href="{{ voices.voicelink }}" class="panel-block">
+                                        <span class="panel-icon">
+                                            <i class="fas fa-book" aria-hidden="true"></i>
+                                        </span>
+                                        {{ voices.voicename }}
+                                    </a>
+                                    {% endif %}
+                                    {% if voices.voicefile_is_published == True %}
+                                    <a href="{{ voices.voicefile.url }}" class="panel-block">
+                                        <span class="panel-icon">
+                                            <i class="fas fa-book" aria-hidden="true"></i>
+                                        </span>
+                                        {{ voices.voicename }} (لینک مستقیم)
+                                    </a>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+                            </nav>                       
+                            {% else %}
+                            <!-- وگرنه هزینه باید بپردازد -->
                             <form action="{% url 'request' %}" method="POST">
                                 {% csrf_token %}
                                     <div class="panel" style="width: 100%;">
-                                        
                                         <p class="panel-heading">
                                             برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                             <br><br>
-                                            <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه : {{ coursevoice.hazine }} تومان
+                                            هزینه : {{ coursevoice.hazine }} تومان
                                             <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                            <input type="text" name="username" value="{{ user.username }}" hidden />
                                             <input type="number" name="courseid" value="{{ coursevoice.id }}" hidden />
                                             <input type="text" name="coursename" value="{{ coursevoice.coursename }}" hidden />
+                                            <input type="text" name="coursetype" value="1" hidden />
+                                            <input type="text" name="description" value="  ویدیو {{ coursevoice.coursename }} با آیدی {{ coursevoice.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />
                                             <p class="control is-expanded has-icons-right">
                                                 <input class="input" type="text" name="address"
-                                                    placeholder="آدرس دریافت کالای خریداری شده" required />
+                                                    placeholder="آدرس و کدپستی محل دریافت کالای خریداری شده" required />
                                                 <span class="icon is-small is-right">
                                                     <i class="fas fa-home"></i>
                                                 </span>
@@ -84,37 +114,14 @@
                                         <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
                                     </div>
                             </form>
-                            <!-- اگر هزینه پرداخت کرده بود -->
-                            <h3>هزینه پرداخت کرده بود</h3>
+                            {% endif %}
 
-                            <nav class="panel">
-                                <p class="panel-heading">
-                                    لیست فیلم های این مبحث
-                                </p>
-                                {% if voicess %} {% for voices in voicess %}
-                                {% if voices.voicelink_is_published == True %}
-                                <a href="{{ voices.voicelink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ voices.voicename }}
-                                </a>
-                                {% endif %}
-                                {% if voices.voicefile_is_published == True %}
-                                <a href="{{ voices.voicefile.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ voices.voicename }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
+
+
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">
-                                    لیست فیلم های این مبحث
+                                    لیست صوت های این مبحث
                                 </p>
                                 {% if voicess %} {% for voices in voicess %}
                                 {% if voices.voicelink_is_published == True %}
@@ -147,7 +154,7 @@
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">
-                                    لیست فیلم های این مبحث
+                                    لیست صوت های این مبحث
                                 </p>
                                 {% if voicess %} {% for voices in voicess %}
                                 {% if voices.voicelink_is_published == True %}
@@ -173,7 +180,7 @@
                         {% endif %}
                     </div>
                 </div>
-            </section>     
+            </section>      
         </div>
     </div>
 </div>

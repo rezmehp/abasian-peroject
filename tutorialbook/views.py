@@ -7,6 +7,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin
 from django.http.response import JsonResponse
 from pages.models import sliderImage,footerAdmin 
+from zarinpal.models import buys
 
 def tutorialbook(request):
     footerAdmins = footerAdmin.objects.all()
@@ -88,11 +89,13 @@ def showbooktutorial(request, coursebook2_id):
     
     footerAdmins = footerAdmin.objects.all()
     coursebook = get_object_or_404(coursebook2, pk=coursebook2_id)
+    buyss = buys.objects.filter(courseid=coursebook2_id,coursetype="4",userid=request.user.id)
     bookss = books.objects.filter(coursenamefkey=coursebook2_id)
     context = {
         'footerAdmins': footerAdmins,
         'coursebook': coursebook,
-        'bookss': bookss
+        'bookss': bookss,
+        'buyss':buyss,
     }
     return render(request, 'pages/showbooktutorial.html', context)
 

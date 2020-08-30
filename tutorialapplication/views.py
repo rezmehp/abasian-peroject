@@ -7,7 +7,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin
 from django.http.response import JsonResponse
 from pages.models import sliderImage,footerAdmin 
-
+from zarinpal.models import buys
         
         
 
@@ -92,6 +92,7 @@ def tutorialapplication(request):
 
 def showapplicationtutorial(request, courseapplication2_id):
     courseapplication = get_object_or_404(courseapplication2, pk=courseapplication2_id)
+    buyss = buys.objects.filter(courseid=courseapplication2_id,coursetype="5",userid=request.user.id)
     applicationss = applications.objects.filter(coursenamefkey=courseapplication2_id)
     footerAdmins = footerAdmin.objects.all()
 
@@ -99,6 +100,7 @@ def showapplicationtutorial(request, courseapplication2_id):
         'courseapplication': courseapplication,
         'applicationss': applicationss,
         'footerAdmins':footerAdmins,
+        'buyss':buyss,
     }
     return render(request, 'pages/showapplicationtutorial.html', context)
 

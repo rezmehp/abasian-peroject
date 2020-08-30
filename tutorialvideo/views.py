@@ -6,7 +6,7 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
-
+from zarinpal.models import buys
 
 def tutorialvideo(request):
     footerAdmins = footerAdmin.objects.all()
@@ -18,6 +18,7 @@ def tutorialvideo(request):
     modaresinshows = modaresin.objects.all()
     coursevideoshows = coursevideo2.objects.all()
     searchcoursevideoshows = coursevideo2.objects.all()
+
     # سرج
     if 'maghtan' in request.POST:
         maghtan = request.POST['maghtan']
@@ -79,7 +80,7 @@ def tutorialvideo(request):
         'newcoursevideoshows': paged_newcoursevideoshows,
         'bettercoursevideoshows': paged_bettercoursevideoshows,
         'values': request.GET,
-
+        
     }
 
     return render(request, 'pages/videotutorial.html', context)
@@ -88,11 +89,14 @@ def tutorialvideo(request):
 def showvideotutorial(request, coursevideo2_id):
     footerAdmins = footerAdmin.objects.all()
     coursevideo = get_object_or_404(coursevideo2, pk=coursevideo2_id)
+    buyss = buys.objects.filter(courseid=coursevideo2_id,coursetype="1",userid=request.user.id)
     videoss = videos.objects.filter(coursenamefkey=coursevideo2_id)
+
     context = {
         'footerAdmins': footerAdmins,
         'coursevideo': coursevideo,
-        'videoss': videoss
+        'videoss': videoss,
+        'buyss':buyss,
     }
     return render(request, 'pages/showvideotutorial.html', context)
 

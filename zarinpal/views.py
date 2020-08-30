@@ -12,6 +12,7 @@ from exam.models import courseexam2
 from news.models import news
 from classlinks.models import allclassLinks3
 from pages.models import sliderImage,footerAdmin,advertise
+from .models import buys
 
 MERCHANT = 'cc66a505-a2fe-4278-b3e0-e6ade891e6e2'
 client = Client('https://www.zarinpal.com/pg/services/WebGate/wsdl')
@@ -69,18 +70,19 @@ def send_request(request):
             amount = amountall[0]
 
         result = client.service.PaymentRequest(MERCHANT, amount, description, email, mobile, CallbackURL) # ارسال به درگاه پرداخت
-       
+           
    
     if result.Status == 100:
         return redirect('https://www.zarinpal.com/pg/StartPay/' + str(result.Authority))
     else:
-        return HttpResponse('Error code: ' + str(result.Status)) # مشکل در باز شدن درگاه بانکی لطفا مجدد اقدام کنید
+        return redirect('index')#return HttpResponse('Error code: ' + str(result.Status)) # مشکل در باز شدن درگاه بانکی لطفا مجدد اقدام کنید
 
 def verify(request):
     if request.GET.get('Status') == 'OK':
         result = client.service.PaymentVerification(MERCHANT, request.GET['Authority'], amount)
-        
+        buysss = buys.objects.create(userid=userid, username=username, address=address, email=email, mobile=mobile,coursetype=coursetype,courseid=courseid,coursename=coursename,description=description,amount=amount,)
+        buysss.save()
 
         return redirect('index')
     else:
-        return HttpResponse('Transaction failed or canceled by user')# تراکنش توسط شما کنسل شد یا مشکل در انجام تراکنش
+        return redirect('index')# تراکنش توسط شما کنسل شد یا مشکل در انجام تراکنش

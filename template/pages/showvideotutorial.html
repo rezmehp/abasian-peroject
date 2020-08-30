@@ -44,10 +44,12 @@
                     <div class="column">
                         {% if user.is_authenticated %}
                             {% if coursevideo.hazine != 0 %}
-                                
-    <!-- خرید انجام شده باشد -->
 
-                                <nav class="panel">
+
+
+                            {% if buyss %}
+                            <!-- خرید انجام شده باشد -->
+                            <nav class="panel">
                                     <p class="panel-heading">
                                         لیست فیلم های این مبحث
                                     </p>
@@ -70,17 +72,12 @@
                                     {% endif %}
                                     {% endfor %}
                                     {% endif %}
-                                </nav>
-                                
-
-                                <!-- وگرنه هزینه باید بپردازد -->
-
-
-
+                            </nav>                       
+                            {% else %}
+                            <!-- وگرنه هزینه باید بپردازد -->
                             <form action="{% url 'request' %}" method="POST">
                                 {% csrf_token %}
                                     <div class="panel" style="width: 100%;">
-                                        
                                         <p class="panel-heading">
                                             برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                             <br><br>
@@ -89,12 +86,11 @@
                                             <input type="text" name="username" value="{{ user.username }}" hidden />
                                             <input type="number" name="courseid" value="{{ coursevideo.id }}" hidden />
                                             <input type="text" name="coursename" value="{{ coursevideo.coursename }}" hidden />
-                                            
                                             <input type="text" name="coursetype" value="1" hidden />
                                             <input type="text" name="description" value="  ویدیو {{ coursevideo.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />
                                             <p class="control is-expanded has-icons-right">
                                                 <input class="input" type="text" name="address"
-                                                    placeholder="آدرس دریافت کالای خریداری شده" required />
+                                                    placeholder="آدرس و کدپستی محل دریافت کالای خریداری شده" required />
                                                 <span class="icon is-small is-right">
                                                     <i class="fas fa-home"></i>
                                                 </span>
@@ -118,9 +114,10 @@
                                         <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
                                     </div>
                             </form>
-                            
+                            {% endif %}
 
-                            
+
+
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">

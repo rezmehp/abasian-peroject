@@ -6,7 +6,7 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
-
+from zarinpal.models import buys
 
 def tutorialvoice(request):
     footerAdmins = footerAdmin.objects.all()
@@ -88,11 +88,13 @@ def tutorialvoice(request):
 def showvoicetutorial(request, coursevoice2_id):
     footerAdmins = footerAdmin.objects.all()
     coursevoice = get_object_or_404(coursevoice2, pk=coursevoice2_id)
+    buyss = buys.objects.filter(courseid=coursevoice2_id,coursetype="2",userid=request.user.id)
     voicess = voices.objects.filter(coursenamefkey=coursevoice2_id)
     context = {
         'footerAdmins': footerAdmins,
         'coursevoice': coursevoice,
-        'voicess': voicess
+        'voicess': voicess,
+        'buyss':buyss,
     }
     return render(request, 'pages/showvoicetutorial.html', context)
 

@@ -6,7 +6,7 @@ from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
-
+from zarinpal.models import buys
 
 def tutorialfile(request):
     footerAdmins = footerAdmin.objects.all()
@@ -86,11 +86,13 @@ def tutorialfile(request):
 def showfiletutorial(request, coursefile2_id):
     footerAdmins = footerAdmin.objects.all()
     coursefile = get_object_or_404(coursefile2, pk=coursefile2_id)
+    buyss = buys.objects.filter(courseid=coursefile2_id,coursetype="3",userid=request.user.id)
     filess = files.objects.filter(coursenamefkey=coursefile2_id)
     context = {
         'footerAdmins': footerAdmins,
         'coursefile': coursefile,
-        'filess': filess
+        'filess': filess,
+        'buyss':buyss,
     }
     return render(request, 'pages/showfiletutorial.html', context)
 

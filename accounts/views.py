@@ -10,8 +10,6 @@ from django.http.response import JsonResponse
 def register(request):
     ostanhas = ostanha.objects.all()
     shahrhas = shahrha.objects.all()
-    # shahrhas = shahrha.objects.filter(ostanNamefkey='2').values('shahrNames')
-
     maghtaTahsilis = maghtaTahsili.objects.all()
     reshteTahsilis = reshteTahsili.objects.all()
     context = {
