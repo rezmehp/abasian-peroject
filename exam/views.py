@@ -7,6 +7,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin, footerAdmin
 from django.http.response import JsonResponse
 from django.db.models import Q
+from zarinpal.models import buys
 
 def tutorialexam(request):
     footerAdmins = footerAdmin.objects.all()
@@ -98,7 +99,7 @@ def tutorialexam(request):
     paginator = Paginator(newcourseexamshows, 4)
     page2 = request.GET.get('page2')
     paged_newcourseexamshows = paginator.get_page(page2)
-
+    
 
     context = {
         'footerAdmins': footerAdmins,
@@ -175,6 +176,7 @@ def examfinish(request):
 def showexamtutorial(request, courseexam2_id):
     footerAdmins = footerAdmin.objects.all()
     courseexam = get_object_or_404(courseexam2, pk=courseexam2_id)
+    buyss = buys.objects.filter(courseid=courseexam2_id,coursetype="7",userid=request.user.id)
     examss = exams2.objects.filter(coursenamefkey=courseexam2_id)
     countq = exams2.objects.filter(coursenamefkey=courseexam2_id).count()
 
@@ -184,6 +186,7 @@ def showexamtutorial(request, courseexam2_id):
         'courseexam': courseexam,
         'examss': examss,
         'countq':countq,
+        'buyss':buyss,
     }
 
     return render(request, 'pages/examonline.html', context)

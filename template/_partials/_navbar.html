@@ -11,7 +11,7 @@
 
 
         <a class="navbar-item" href="{% url 'index' %}">
-            <img style="border-radius: 3px;" src="{% static 'images/logo.png' %}" width="112" height="28">
+            <img style="border-radius: 3px;" src="{% static 'images/logo.png' %}" width="160" height="40">
 
         </a>
     </div>
@@ -94,6 +94,9 @@
                             <span class="fas fa-user"></span>&nbsp;سلام {{ user.username }}
                         </a>
                         <div class="navbar-dropdown is-boxed">
+                            <a class="navbar-item" href="{% url 'buy' %}">
+                                لیست خرید ها
+                            </a>
                             <a class="navbar-item" href="{% url 'password_change' %}">
                                 تغییر رمز عبور
                             </a>

@@ -1,0 +1,144 @@
+{% extends 'base.html' %} {% block title %} لیست خریدها {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if videoss %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">ویدیوها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for videos in videoss %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showvideotutorial' videos.courseid %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ videos.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if voicess %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">صوت ها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for voices in voicess %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showvoicetutorial' voices.courseid %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ voices.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if filess %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">فایل ها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for files in filess %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showfiletutorial' files.courseid %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ files.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if bookss %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">کتاب ها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for books in bookss %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showbooktutorial' books.courseid %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ books.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if applicationss %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">نرم افزار ها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for applications in applicationss %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'showbooktutorial' applications.courseid %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ applications.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% if examss %} 
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">آزمون ها</h1>
+        <div class="section">
+            <div class="row columns">
+                {% for exams in examss %}
+                <div class="column is-one-third">
+                    <div class="card large" style="border-radius: 5%;">
+                        <a href="{% url 'tutorialexam' %}" class="box">
+                            <div class="card-content">
+                                <p class="title is-4 no-padding">{{ exams.coursename }}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% else %}
+<section class="section box has-background-light">
+    <div class="container">
+        <h1 class="title has-text-centered section-title">لطفا ابتدا وارد حساب کاربری خود شوید</h1>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

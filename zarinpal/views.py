@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Github.com/Rasooll
 from django.http import HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from zeep import Client
 from tutorialapplication.models import courseapplication2,applications
 from tutorialbook.models import coursebook2,books
@@ -86,3 +86,22 @@ def verify(request):
         return redirect('index')
     else:
         return redirect('index')# تراکنش توسط شما کنسل شد یا مشکل در انجام تراکنش
+
+def buy(request):
+    footerAdmins = footerAdmin.objects.all()
+    videoss = buys.objects.filter(coursetype="1",userid=request.user.id)
+    voicess = buys.objects.filter(coursetype="2",userid=request.user.id)
+    filess = buys.objects.filter(coursetype="3",userid=request.user.id)
+    bookss = buys.objects.filter(coursetype="4",userid=request.user.id)
+    applicationss = buys.objects.filter(coursetype="5",userid=request.user.id)
+    examss = buys.objects.filter(coursetype="7",userid=request.user.id)
+    context = {
+        'footerAdmins': footerAdmins,
+        'videoss': videoss,
+        'voicess': voicess,
+        'filess': filess,
+        'bookss': bookss,
+        'applicationss': applicationss,
+        'examss': examss,
+    }
+    return render(request, 'pages/buy.html', context)
