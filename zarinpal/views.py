@@ -33,7 +33,7 @@ def send_request(request):
         global username
         username = request.POST['username'] # نام کاربری
         global address
-        address = request.POST['address'] # آدرس
+        address = "NO" # آدرس
         global email
         email = request.POST['email']  # ایمیل
         global mobile

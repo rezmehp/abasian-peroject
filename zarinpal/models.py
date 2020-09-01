@@ -11,7 +11,7 @@ class buys(models.Model):
     courseid = models.CharField(max_length=5000,verbose_name="آیدی درس")
     coursename = models.CharField(max_length=5000,verbose_name="نام درس")
     description = models.CharField(max_length=5000,verbose_name="توضیحات فروش ")
-    amount = models.CharField(max_length=5000,verbose_name="هزینه")
+    amount = models.CharField(max_length=5000,verbose_name="هزینه به تومان")
 
     
     def __str__(self):

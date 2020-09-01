@@ -26,7 +26,7 @@ class courseapplication2(models.Model):
     coursename = models.CharField(max_length=1000,verbose_name="نام نرم افزار")
     saattadris = models.CharField(max_length=1000,verbose_name="زمان نزم افزار")
     tozihat = models.TextField(verbose_name="توضیحات")
-    hazine = models.IntegerField(verbose_name="هزینه به ریال")
+    hazine = models.IntegerField(verbose_name="هزینه به تومان")
     
     def __str__(self):
         return self.coursename
