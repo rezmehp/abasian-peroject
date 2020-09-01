@@ -166,7 +166,7 @@
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
                                             <select id="maghtaidtemp" name="maghta">
-                                                <option selected="True" disabled="disabled">مقطع تحصیلی</option>
+                                                <option selected="True" value="M">مقطع تحصیلی(سایر)</option>
                                                 {% if maghtaTahsilis %} {% for maghtaTahsili in maghtaTahsilis %}
                                                 <option data-id="{{ maghtaTahsili.id }}"
                                                  value="{{ maghtaTahsili.id }}">
@@ -193,8 +193,8 @@
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
                                             <select id="reshtenidtemp" name="reshte">
-                                                <option selected="True" disabled="disabled">ابتدا مقطع تحصیلی را
-                                                    انتخاب نمایید</option>
+                                                <option selected="True" value="R">ابتدا مقطع تحصیلی را
+                                                    انتخاب نمایید(سایر)</option>
                                                 {% if reshteTahsilis %}
                                                 {% for reshteTahsili in reshteTahsilis %}
                                                 <option value="{{ reshteTahsili.id }}">
@@ -253,7 +253,7 @@
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
                                             <select id="ostanidtemp" name="ostan">
-                                                <option selected="True" disabled="disabled">استان</option>
+                                                <option selected="True"  value="O">استان(سایر)</option>
                                                 {% if ostanhas %} {% for ostanha in ostanhas %}
                                                 <option data-id="{{ ostanha.id }}"
                                                 value="{{ ostanha.id }}">
@@ -279,7 +279,7 @@
                                     <div class="field">
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
                                             <select id="shahridtemp" name="shahr">
-                                                <option selected="True" disabled="disabled">ابتدا استان را انتخاب کنید
+                                                <option selected="True" value="SH">ابتدا استان را انتخاب کنید(سایر)
 
                                                 </option>
                                                 {% if shahrhas %}
