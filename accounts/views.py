@@ -50,7 +50,7 @@ def register(request):
                    karbaruser11.save()
                    user.save()
                    messages.success(request, 'ثبت نام شما با موفقیت انجام شد')
-                   return redirect('register')
+                   return redirect('login')
         else:
             messages.error(request, 'پسورد اول و دوم با هم مطابقت ندارد')
             return redirect('register')

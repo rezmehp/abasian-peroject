@@ -164,9 +164,12 @@
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
+                                        <div class="control is-expanded has-text-right has-text-dark is-fullwidth">
+                                            <label>مقطع تحصیلی</label>                                         
+                                        </div>
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select id="maghtaidtemp" name="maghta">
-                                                <option selected="True" value="M">مقطع تحصیلی(سایر)</option>
+                                            <select id="maghtaidtemp" name="maghta" required>
+                                               
                                                 {% if maghtaTahsilis %} {% for maghtaTahsili in maghtaTahsilis %}
                                                 <option data-id="{{ maghtaTahsili.id }}"
                                                  value="{{ maghtaTahsili.id }}">
@@ -191,10 +194,12 @@
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
+                                        <div class="control is-expanded has-text-right has-text-dark is-fullwidth">
+                                            <label>رشته تحصیلی</label>                                         
+                                        </div>
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select id="reshtenidtemp" name="reshte">
-                                                <option selected="True" value="R">ابتدا مقطع تحصیلی را
-                                                    انتخاب نمایید(سایر)</option>
+                                            <select id="reshtenidtemp" name="reshte" required>
+                                                
                                                 {% if reshteTahsilis %}
                                                 {% for reshteTahsili in reshteTahsilis %}
                                                 <option value="{{ reshteTahsili.id }}">
@@ -251,9 +256,11 @@
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
+                                        <div class="control is-expanded has-text-right has-text-dark is-fullwidth">
+                                            <label>استان</label>                                         
+                                        </div>
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select id="ostanidtemp" name="ostan">
-                                                <option selected="True"  value="O">استان(سایر)</option>
+                                            <select id="ostanidtemp" name="ostan" required>
                                                 {% if ostanhas %} {% for ostanha in ostanhas %}
                                                 <option data-id="{{ ostanha.id }}"
                                                 value="{{ ostanha.id }}">
@@ -277,11 +284,11 @@
                             <div class="field is-horizontal">
                                 <div class="field-body">
                                     <div class="field">
+                                        <div class="control is-expanded has-text-right has-text-dark is-fullwidth">
+                                            <label>شهر</label>                                         
+                                        </div>
                                         <div class="control is-expanded has-icons-right select is-fullwidth">
-                                            <select id="shahridtemp" name="shahr">
-                                                <option selected="True" value="SH">ابتدا استان را انتخاب کنید(سایر)
-
-                                                </option>
+                                            <select id="shahridtemp" name="shahr" required>
                                                 {% if shahrhas %}
                                                 {% for shahrha in shahrhas %}
                                                 <option value="{{ shahrha.id }}">{{ shahrha.shahrNames }}</option>

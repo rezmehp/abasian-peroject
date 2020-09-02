@@ -144,7 +144,7 @@
             {% if searchcourseapplicationshows %}
             <section class="section has-background-light">
                 <div class="container ">
-                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    <h3 class="subtitle has-text-dark">نرم افزار های یافت شده</h3>
                     {% for searchcourseapplicationshow in searchcourseapplicationshows %}
                     <a href="{% url 'showapplicationtutorial' searchcourseapplicationshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
@@ -163,7 +163,7 @@
                                     </strong><br>
                                     {% if searchcourseapplicationshow.hazine != 0 %}
                                     <small>
-                                        هزینه : {{ searchcourseapplicationshow.hazine }} ریال
+                                        هزینه : {{ searchcourseapplicationshow.hazine }} تومان
                                     </small>
                                     {% else %}
                                     <small>

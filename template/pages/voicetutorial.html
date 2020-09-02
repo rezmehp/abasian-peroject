@@ -129,7 +129,7 @@
             {% if searchcoursevoiceshows %}
             <section class="section has-background-light">
                 <div class="container ">
-                    <h3 class="subtitle has-text-dark">ویدیو های یافت شده</h3>
+                    <h3 class="subtitle has-text-dark">صوت های یافت شده</h3>
                     {% for searchcoursevoiceshow in searchcoursevoiceshows %}
                     <a href="{% url 'showvoicetutorial' searchcoursevoiceshow.id %}" class="columns box">
                         <div class="column is-one-quarter">
@@ -148,7 +148,7 @@
                                     </strong><br>
                                     {% if searchcoursevoiceshow.hazine != 0 %}
                                     <small>
-                                        هزینه : {{ searchcoursevoiceshow.hazine }} ریال
+                                        هزینه : {{ searchcoursevoiceshow.hazine }} تومان
                                     </small>
                                     {% else %}
                                     <small>
