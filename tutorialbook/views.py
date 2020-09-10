@@ -60,7 +60,7 @@ def tutorialbook(request):
     page2 = request.GET.get('page2')
     paged_bettercoursebookshows = paginator.get_page(page2)
     newcoursebookshows = coursebook2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursebookshows, 4)
+    paginator = Paginator(newcoursebookshows, 8)
     page3 = request.GET.get('page3')
     paged_newcoursebookshows = paginator.get_page(page3)
     context = {

@@ -47,7 +47,7 @@
                                    <b> {{ news.title }}</b>
                                 </p>
                                 <p class="column has-text-dark is-vcentered">
-                                    {{ news.about }}
+                                    {{ news.about|safe }}
                                 </p>
                                 <p class="column has-text-dark is-vcentered">
                                     <b>ساعت انتشار خبر : </b>{{ news.time }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>تاریخ انتشار خبر :  </b>{{ news.date }}

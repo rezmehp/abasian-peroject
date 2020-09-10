@@ -66,7 +66,7 @@ def tutorialapplication(request):
     page2 = request.GET.get('page2')
     paged_bettercourseapplicationshows = paginator.get_page(page2)
     newcourseapplicationshows = courseapplication2.objects.all().order_by('-id')
-    paginator = Paginator(newcourseapplicationshows, 4)
+    paginator = Paginator(newcourseapplicationshows, 8)
     page3 = request.GET.get('page3')
     paged_newcourseapplicationshows = paginator.get_page(page3)
     context = {

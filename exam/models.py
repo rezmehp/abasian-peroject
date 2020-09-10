@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from pages.models import maghtaTahsili, modaresin, reshteTahsili
+from ckeditor.fields import RichTextField
+
 
 class tutorialexamAdmin(models.Model):
     
@@ -26,7 +28,7 @@ class courseexam2(models.Model):
     pic = models.ImageField(upload_to='courseexam/photos/%y/%m/%d/',verbose_name="عکس")
     coursename = models.CharField(max_length=1000,verbose_name="نام آزمون")
     saattadris = models.CharField(max_length=1000,verbose_name="مدت آزمون به دقیقه")
-    tozihat = models.TextField(verbose_name="توضیحات")
+    tozihat = RichTextField(verbose_name="توضیحات")
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
     
     def __str__(self):
@@ -39,7 +41,7 @@ class exams(models.Model):
     coursenamefkey = models.ForeignKey(courseexam2, on_delete=models.DO_NOTHING,verbose_name="انتخاب آزمون")
    
     examquestion_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش سوال")
-    examquestion = models.TextField(max_length=50000,verbose_name="متن سوال")
+    examquestion = RichTextField(verbose_name="متن سوال")
     
     
     examanswer1_true = models.BooleanField(default=False)
@@ -91,7 +93,7 @@ class exams2(models.Model):
     coursenamefkey = models.ForeignKey(courseexam2, on_delete=models.DO_NOTHING,verbose_name="انتخاب آزمون")
    
     examquestion_published = models.BooleanField(default=True,verbose_name="نمایش یا عدم نمایش سوال")
-    examquestion = models.TextField(max_length=50000,verbose_name="متن سوال")
+    examquestion = RichTextField(verbose_name="متن سوال")
     
     
     examanswer1 = models.TextField(max_length=50001,verbose_name="گزینه 1")
@@ -102,7 +104,7 @@ class exams2(models.Model):
 
 
     examtext_published = models.BooleanField(default=False,verbose_name="نمایش یا عدم نمایش متن برای سوال")
-    examtext = models.TextField(max_length=50000, blank=True,verbose_name="متن توضیحات برای سوال")
+    examtext = RichTextField(verbose_name="متن توضیحات برای سوال")
     examfiletext_published = models.BooleanField(default=False,verbose_name="نمایش یا عدم نمایش فایل متن برای سوال")
     examfiletext = models.FileField(upload_to='courseexam/exams/%y/%m/%d/',blank=True,verbose_name="فایل متن توضیحات برای سوال")
 

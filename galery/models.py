@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 class galerysAdmin(models.Model):
     
@@ -15,7 +17,7 @@ class galerysAdmin(models.Model):
 
 class galerys(models.Model):
     title = models.CharField(max_length=3000,verbose_name="تیتر عکس")
-    about = models.TextField(max_length=5000,verbose_name="توضیحات عکس")
+    about = RichTextField(verbose_name="توضیحات عکس")
     pic = models.ImageField(upload_to='news/photos/%y/%m/%d/',verbose_name="عکس")
     def __str__(self):
         return self.title

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tutorialfile.apps.TutorialfileConfig',
     'tutorialbook.apps.TutorialbookConfig',
     'django.contrib.admin',
+    'ckeditor',
     'accounts.apps.AccountsConfig',
     'links.apps.LinksConfig',
     'classlinks.apps.ClasslinksConfig',

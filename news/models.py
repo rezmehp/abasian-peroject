@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor.fields import RichTextField
 
 class newsAdmin(models.Model):
     
@@ -15,7 +16,7 @@ class newsAdmin(models.Model):
 
 class news(models.Model):
     title = models.CharField(max_length=3000,verbose_name="تیتر خبر")
-    about = models.TextField(max_length=5000,verbose_name="توضیحات خبر")
+    about = RichTextField(verbose_name="توضیحات خبر")
     pic = models.ImageField(upload_to='news/photos/%y/%m/%d/',verbose_name="عکس خبر")
     time = models.TimeField(verbose_name="ساعت انتشار خبر")
     date = models.DateField(verbose_name="تاریخ انتشار خبر")

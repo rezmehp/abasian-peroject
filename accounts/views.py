@@ -24,15 +24,15 @@ def register(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         tell = request.POST['tell']
-        melli_code = request.POST['melli_code']
+        # melli_code = request.POST['melli_code']
         password = request.POST['password']
         password2 = request.POST['password2']
-        gender = request.POST['gender']
+        # gender = request.POST['gender']
         email = request.POST['email']
-        maghta = request.POST['maghta']
-        reshte = request.POST['reshte']
-        shahr = request.POST['shahr']
-        ostan = request.POST['ostan']
+        # maghta = request.POST['maghta']
+        # reshte = request.POST['reshte']
+        # shahr = request.POST['shahr']
+        # ostan = request.POST['ostan']
 
         if password == password2:
 
@@ -45,7 +45,7 @@ def register(request):
                     messages.error(request, 'ایمیل تکراری است')
                     return redirect('register')
                 else:
-                   karbaruser11 = karbaruser1.objects.create(username=username, email=email, first_name=first_name, last_name=last_name, tell=tell, melli_code=melli_code, password="1", gender=gender, maghta=maghta, reshte=reshte, shahr=shahr, ostan=ostan)
+                   karbaruser11 = karbaruser1.objects.create(username=username, email=email, first_name=first_name, last_name=last_name, tell=tell, melli_code="999999999", password="1", gender="999999999", maghta="999999999", reshte="999999999", shahr="999999999", ostan="999999999")
                    user = User.objects.create_user(username=username, email=email, first_name=first_name, last_name=last_name, password=password,)
                    karbaruser11.save()
                    user.save()

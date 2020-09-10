@@ -59,7 +59,7 @@ def tutorialfile(request):
     page2 = request.GET.get('page2')
     paged_bettercoursefileshows = paginator.get_page(page2)
     newcoursefileshows = coursefile2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursefileshows, 4)
+    paginator = Paginator(newcoursefileshows, 8)
     page3 = request.GET.get('page3')
     paged_newcoursefileshows = paginator.get_page(page3)
     context = {

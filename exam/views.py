@@ -96,7 +96,7 @@ def tutorialexam(request):
     paged_bettercourseexamshows = paginator.get_page(page3)
 
     newcourseexamshows = courseexam2.objects.all().order_by('-id')
-    paginator = Paginator(newcourseexamshows, 4)
+    paginator = Paginator(newcourseexamshows, 8)
     page2 = request.GET.get('page2')
     paged_newcourseexamshows = paginator.get_page(page2)
     

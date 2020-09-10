@@ -62,7 +62,7 @@ def tutorialvideo(request):
     page2 = request.GET.get('page2')
     paged_bettercoursevideoshows = paginator.get_page(page2)
     newcoursevideoshows = coursevideo2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursevideoshows, 4)
+    paginator = Paginator(newcoursevideoshows, 8)
     page3 = request.GET.get('page3')
     paged_newcoursevideoshows = paginator.get_page(page3)
     context = {

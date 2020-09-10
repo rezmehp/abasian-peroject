@@ -1,4 +1,6 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 class classlinksAdmin(models.Model):
     
@@ -15,7 +17,7 @@ class classlinksAdmin(models.Model):
 
 class allclassLinks3(models.Model):
     link_title = models.CharField(max_length=3000,verbose_name="تیتر کلاس")
-    link_about = models.CharField(max_length=3000,verbose_name="توضیحات کلاس")
+    link_about = RichTextField(verbose_name="توضیحات کلاس")
     link_url = models.CharField(max_length=3000,verbose_name="لینک کلاس")
     link_pic = models.ImageField(upload_to='classlinks/photos/%y/%m/%d/',verbose_name="عکس کلاس")
     link_time = models.TimeField(verbose_name="ساعت برگزاری کلاس")

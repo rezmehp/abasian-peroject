@@ -61,7 +61,7 @@ def tutorialvoice(request):
     page2 = request.GET.get('page2')
     paged_bettercoursevoiceshows = paginator.get_page(page2)
     newcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursevoiceshows, 4)
+    paginator = Paginator(newcoursevoiceshows, 8)
     page3 = request.GET.get('page3')
     paged_newcoursevoiceshows = paginator.get_page(page3)
     context = {

@@ -1,5 +1,8 @@
 from django.db import models
 from pages.models import maghtaTahsili, modaresin, reshteTahsili
+from ckeditor.fields import RichTextField
+
+
 
 class tutorialapplicationAdmin(models.Model):
     
@@ -25,7 +28,7 @@ class courseapplication2(models.Model):
     pic = models.ImageField(upload_to='courseapplication/photos/%y/%m/%d/',verbose_name="فایل عکس")
     coursename = models.CharField(max_length=1000,verbose_name="نام نرم افزار")
     saattadris = models.CharField(max_length=1000,verbose_name="زمان نزم افزار")
-    tozihat = models.TextField(verbose_name="توضیحات")
+    tozihat = RichTextField(verbose_name="توضیحات")
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
     
     def __str__(self):

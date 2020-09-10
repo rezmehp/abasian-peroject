@@ -1,11 +1,13 @@
 from django.db import models
+from ckeditor.fields import RichTextField
+
 
 class aboutAdmin(models.Model):
     
     title_page = models.CharField(max_length=500,verbose_name="تیتر صفحه")
     pic = models.ImageField(upload_to='contact/photos/%y/%m/%d/',verbose_name="عکس بالای صفحه")
     title_text = models.CharField(max_length=500,verbose_name="تیتر توضیحات شرکت")
-    text_about = models.TextField(blank=True,verbose_name="توضیحات شرکت")
+    text_about = RichTextField(blank=True,verbose_name="توضیحات شرکت")
     modir1_pic=models.ImageField(upload_to='about/photos/%y/%m/%d/',verbose_name="عکس مدیر 1")
     modir1_semat=models.CharField(max_length=300,verbose_name="سمت مدیر 1")
     modir1_name=models.CharField(max_length=300,verbose_name="نام و نام خانوادگی مدیر 1")
