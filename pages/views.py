@@ -13,45 +13,29 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 def index(request):
     advertises = advertise.objects.all()
 
-    newcoursevoices = coursevoice2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newcoursevoices, 3)
-    page8 = request.GET.get('page8')
-    paged_newcoursevoices = paginator.get_page(page8)
-
-    newnews = news.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newnews, 3)
-    page7 = request.GET.get('page7')
-    paged_newnews = paginator.get_page(page7)    
+    newcoursevoices = coursevoice2.objects.all().order_by('-id')[:20]
     
-    newclassLinks = allclassLinks3.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newclassLinks, 3)
-    page6 = request.GET.get('page6')
-    paged_newclassLinks = paginator.get_page(page6)
 
-    newexams = courseexam2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newexams, 3)
-    page5 = request.GET.get('page5')
-    paged_newexams = paginator.get_page(page5)
+    newnews = news.objects.all().order_by('-id')[:20]
+      
+    
+    newclassLinks = allclassLinks3.objects.all().order_by('-id')[:20]
+    
 
-    newcourseapplications = courseapplication2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newcourseapplications, 3)
-    page4 = request.GET.get('page4')
-    paged_newcourseapplications = paginator.get_page(page4)
+    newexams = courseexam2.objects.all().order_by('-id')[:20]
+    
 
-    newcoursebooks = coursebook2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newcoursebooks, 3)
-    page3 = request.GET.get('page3')
-    paged_newcoursebooks = paginator.get_page(page3)
+    newcourseapplications = courseapplication2.objects.all().order_by('-id')[:20]
+    
 
-    newcoursefiles = coursefile2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newcoursefiles, 3)
-    page2 = request.GET.get('page2')
-    paged_newcoursefiles = paginator.get_page(page2)
+    newcoursebooks = coursebook2.objects.all().order_by('-id')[:20]
+    
 
-    newcoursevideos = coursevideo2.objects.all().order_by('-id')[:15]
-    paginator = Paginator(newcoursevideos, 3)
-    page1 = request.GET.get('page1')
-    paged_newcoursevideos = paginator.get_page(page1)
+    newcoursefiles = coursefile2.objects.all().order_by('-id')[:20]
+  
+
+    newcoursevideos = coursevideo2.objects.all().order_by('-id')[:20]
+
 
     countapplications = applications.objects.all().count()
     countbooks = books.objects.all().count()
@@ -63,14 +47,14 @@ def index(request):
     footerAdmins = footerAdmin.objects.all()
 
     context={
-        'newexams':paged_newexams,
-        'newcourseapplications':paged_newcourseapplications,
-        'newcoursebooks':paged_newcoursebooks,
-        'newcoursefiles':paged_newcoursefiles,
-        'newcoursevideos':paged_newcoursevideos,
-        'newcoursevoices':paged_newcoursevoices,
-        'newclassLinks':paged_newclassLinks,
-        'newnews':paged_newnews,
+        'newexams':newexams,
+        'newcourseapplications':newcourseapplications,
+        'newcoursebooks':newcoursebooks,
+        'newcoursefiles':newcoursefiles,
+        'newcoursevideos':newcoursevideos,
+        'newcoursevoices':newcoursevoices,
+        'newclassLinks':newclassLinks,
+        'newnews':newnews,
         'advertises':advertises,
         'countapplications':countapplications,
         'countbooks':countbooks,

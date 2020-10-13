@@ -483,7 +483,7 @@
         <h1 class="title has-text-centered section-title">جدیدترین اخبار</h1>
         <div class="section">
             <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if  newnews %} {% for newnew in newnews %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -508,59 +508,14 @@
         </div>
     </div> <!-- End Developers -->
 </section>
-<br>
-{% if newnews.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newnews.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page7={{newnews.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newnews.paginator.page_range %}
-                    {% if newnews.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page7={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newnews.has_next %}
-                    <li class="page-item">
-                        <a href="?page=7{{newnews.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
+
+
 <section class="section box has-background-light">
     <div class="container">
         <h1 class="title has-text-centered section-title">جدیدترین کلاس های آنلاین</h1>
         <div class="section">
             <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if  newclassLinks %} {% for newclassLink in newclassLinks %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -589,53 +544,6 @@
         </div>
     </div> <!-- End Developers -->
 </section>
-<br>
-{% if newclassLinks.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newclassLinks.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page6={{newclassLinks.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newclassLinks.paginator.page_range %}
-                    {% if newclassLinks.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page6={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newclassLinks.has_next %}
-                    <li class="page-item">
-                        <a href="?page6={{newclassLinks.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
 
 
 
@@ -650,7 +558,7 @@
         <h1 class="title has-text-centered section-title">جدیدترین ویدیوها</h1>
         <div class="section">
             <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursevideos %} {% for newcoursevideo in newcoursevideos %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -677,60 +585,14 @@
         </div>
     </div> <!-- End Developers -->
 </section>
-<br>
-{% if newcoursevideos.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newcoursevideos.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page1={{newcoursevideos.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newcoursevideos.paginator.page_range %}
-                    {% if newcoursevideos.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page1={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newcoursevideos.has_next %}
-                    <li class="page-item">
-                        <a href="?page1={{newcoursevideos.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
+
 
         <section class="section box has-background-light">
             <div class="container">
                 <h1 class="title has-text-centered section-title">جدیدترین صوت ها</h1>
                 <div class="section">
                     <!-- Developers -->
-                    <div class="row columns">
+                    <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                         {% if newcoursevoices %} {% for newcoursevoice in newcoursevoices %}
                         <div class="column is-one-third">
                             <div class="card large" style="border-radius: 5%;">
@@ -757,53 +619,7 @@
                 </div>
             </div> <!-- End Developers -->
         </section>
-        <br>
-        {% if newcoursevoices.has_other_pages %}
-                <div class="row columns is-centered">
-                    <div class="box column is-3">
-                        <ul class="pagination">
-                            {% if newcoursevoices.has_pervious %}
-                            <li class="page-item">
-                                <a href="?page8={{newcoursevoices.previous_page_number}}"
-                                    class="page-link">
-                                    &laquo;
-                                </a>
-                            </li>
-                            {% else %}
-                            <li class="page-item disable">
-                                <a class="page-link">
-                                    &laquo;
-                                </a>
-                            </li>
-                            {% endif %}
-                            {% for i in newcoursevoices.paginator.page_range %}
-                            {% if newcoursevoices.number == i %}
-                            <li class="page-item active">
-                                <a class="page-link">{{i}}</a>
-                            </li>
-                            {% else %}
-                            <li class="page-item">
-                                <a href="?page8={{i}}" class="page-link">{{i}}</a>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                            {% if newcoursevoices.has_next %}
-                            <li class="page-item">
-                                <a href="?page8={{newcoursevoices.next_page_number}}" class="page-link">
-                                    &raquo;
-                                </a>
-                            </li>
-                            {% else %}
-                            <li class="page-item disable">
-                                <a class="page-link">
-                                    &raquo;
-                                </a>
-                            </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                {% endif %}
+      
         
 
 <section class="section box has-background-light">
@@ -812,7 +628,7 @@
         <div class="section">
 
             <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursefiles %} {% for newcoursefile in newcoursefiles %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -839,53 +655,6 @@
         </div> <!-- End Developers -->
     </div>
 </section>
-<br>
-{% if newcoursefiles.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newcoursefiles.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page2={{newcoursefiles.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newcoursefiles.paginator.page_range %}
-                    {% if newcoursefiles.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page2={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newcoursefiles.has_next %}
-                    <li class="page-item">
-                        <a href="?page2={{newcoursefiles.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
 
 
 
@@ -896,7 +665,7 @@
         <div class="section">
 
             <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursebooks %} {% for newcoursebook in newcoursebooks %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -924,62 +693,14 @@
         </div>
     </div>
 </section>
-<br>
-{% if newcoursebooks.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newcoursebooks.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page3={{newcoursebooks.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newcoursebooks.paginator.page_range %}
-                    {% if newcoursebooks.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page3={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newcoursebooks.has_next %}
-                    <li class="page-item">
-                        <a href="?page3={{newcoursebooks.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
+
 
 
 <section class="section box has-background-light">
     <div class="container">
         <h1 class="title has-text-centered section-title">جدیدترین نرم افزارها</h1>
         <div class="section">
-
-            <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcourseapplications %} {% for newcourseapplication in newcourseapplications %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -1008,61 +729,14 @@
     </div>
 
 </section>
-<br>
-{% if newcourseapplications.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newcourseapplications.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page4={{newcourseapplications.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newcourseapplications.paginator.page_range %}
-                    {% if newcourseapplications.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page4={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newcourseapplications.has_next %}
-                    <li class="page-item">
-                        <a href="?page4={{newcourseapplications.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
+
 
 
 <section class="section box has-background-light">
     <div class="container">
         <h1 class="title has-text-centered section-title">جدیدترین آزمون ها</h1>
         <div class="section">
-            <!-- Developers -->
-            <div class="row columns">
+            <div class="row columns"  style="overflow-x: scroll; max-height: 1200px;">
                 {% if newexams %} {% for newexam in newexams %}
                 <div class="column is-one-third">
                     <div class="card large" style="border-radius: 5%;">
@@ -1089,53 +763,7 @@
         </div>
     </div> <!-- End Developers -->
 </section>
-<br>
-{% if newexams.has_other_pages %}
-        <div class="row columns is-centered">
-            <div class="box column is-3">
-                <ul class="pagination">
-                    {% if newexams.has_pervious %}
-                    <li class="page-item">
-                        <a href="?page5={{newexams.previous_page_number}}"
-                            class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &laquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% for i in newexams.paginator.page_range %}
-                    {% if newexams.number == i %}
-                    <li class="page-item active">
-                        <a class="page-link">{{i}}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a href="?page5={{i}}" class="page-link">{{i}}</a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                    {% if newexams.has_next %}
-                    <li class="page-item">
-                        <a href="?page5={{newexams.next_page_number}}" class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disable">
-                        <a class="page-link">
-                            &raquo;
-                        </a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
-        {% endif %}
+
 
 
 
@@ -1144,7 +772,6 @@
 
 <section class="section has-background-light">
     <div class="container ">
-        <!-- تبلیغات -->   
         <h2 class="subtitle has-text-dark has-text-justified">
             {% if advertises %} {% for advertise in advertises %}                   
             <div class="columns box">

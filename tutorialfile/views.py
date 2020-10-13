@@ -41,10 +41,8 @@ def tutorialfile(request):
         if modaresn != "":
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
-                searchcoursefileshows = searchcoursefileshows.filter(modaresinfkey__in=modaresnid)
-    paginator = Paginator(searchcoursefileshows, 3)
-    page = request.GET.get('page')
-    paged_searchcoursefileshows = paginator.get_page(page)           
+                searchcoursefileshows = searchcoursefileshows.filter(modaresinfkey__in=modaresnid)[:50]
+             
     bettercoursefileshows=""             
     if request.user.username:
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
@@ -73,7 +71,7 @@ def tutorialfile(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'coursefileshows': coursefileshows,
-        'searchcoursefileshows': paged_searchcoursefileshows,
+        'searchcoursefileshows': searchcoursefileshows,
         'newcoursefileshows': paged_newcoursefileshows,
         'bettercoursefileshows': paged_bettercoursefileshows,
         'values': request.GET,

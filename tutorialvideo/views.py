@@ -42,10 +42,8 @@ def tutorialvideo(request):
         if modaresn != "":
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
-                searchcoursevideoshows = searchcoursevideoshows.filter(modaresinfkey__in=modaresnid)
-    paginator = Paginator(searchcoursevideoshows, 3)
-    page = request.GET.get('page')
-    paged_searchcoursevideoshows = paginator.get_page(page)
+                searchcoursevideoshows = searchcoursevideoshows.filter(modaresinfkey__in=modaresnid)[:50]
+    
 
     bettercoursevideoshows=""             
     if request.user.username:
@@ -76,7 +74,7 @@ def tutorialvideo(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'coursevideoshows': coursevideoshows,
-        'searchcoursevideoshows': paged_searchcoursevideoshows,
+        'searchcoursevideoshows': searchcoursevideoshows,
         'newcoursevideoshows': paged_newcoursevideoshows,
         'bettercoursevideoshows': paged_bettercoursevideoshows,
         'values': request.GET,

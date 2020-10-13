@@ -16,7 +16,7 @@
                 {% endif %}
             </figure>
             <div class="box">
-                <section class="section has-background-light">
+                <section class="section " style="background-color:snow;">
                     <!--        تیتر توضیحات زیر عکس اول درباره ما-->
                     <h1 class="title has-text-dark">{% if tutorialbookAdmins %}
                         {% for tutorialbookAdmin in tutorialbookAdmins %}
@@ -25,7 +25,7 @@
 
                 </section>
                 <form method="post" id="formidsearch" action="{% url 'tutorialbook' %}"
-                    data-searchselect-url="{% url 'tutorialbook' %}" class="section has-background-light">
+                    data-searchselect-url="{% url 'tutorialbook' %}" class="section " style="background-color:snow;">
                     {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
@@ -141,7 +141,7 @@
                 </form>
             </div>
             {% if searchcoursebookshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow; overflow-y: scroll; max-height: 1200px;">
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">کتاب های یافت شده</h3>
                     {% for searchcoursebookshow in searchcoursebookshows %}
@@ -176,57 +176,12 @@
                     <br>
                     {% endfor %}
                     {% endif %}
-                    {% if searchcoursebookshows.has_other_pages %}
-                    <div class="row columns is-centered">
-                        <div class="box column is-3">
-                            <ul class="pagination">
-                                {% if searchcoursebookshows.has_pervious %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcoursebookshows.previous_page_number}}" class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for i in searchcoursebookshows.paginator.page_range %}
-                                {% if searchcoursebookshows.number == i %}
-                                <li class="page-item active">
-                                    <a class="page-link">{{i}}</a>
-                                </li>
-                                {% else %}
-                                <li class="page-item">
-                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if searchcoursebookshows.has_next %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcoursebookshows.next_page_number}}" class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% endif %}
                 </div>
             </section>
             <hr>
 
             {% if bettercoursebookshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialbookAdmins %}
                     {% for tutorialbookAdmin in tutorialbookAdmins %}
                     {{ tutorialbookAdmin.title_1 }} {% endfor %}
@@ -295,7 +250,7 @@
             {% endif %}
             <hr>
             {% endif %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialbookAdmins %}
                     {% for tutorialbookAdmin in tutorialbookAdmins %}
                     {{ tutorialbookAdmin.title_2 }} {% endfor %}

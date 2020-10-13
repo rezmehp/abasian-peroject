@@ -41,10 +41,7 @@ def tutorialvoice(request):
         if modaresn != "":
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
-                searchcoursevoiceshows = searchcoursevoiceshows.filter(modaresinfkey__in=modaresnid)
-    paginator = Paginator(searchcoursevoiceshows, 3)
-    page = request.GET.get('page')
-    paged_searchcoursevoiceshows = paginator.get_page(page)
+                searchcoursevoiceshows = searchcoursevoiceshows.filter(modaresinfkey__in=modaresnid)[:50]
 
     bettercoursevoiceshows=""             
     if request.user.username:
@@ -75,7 +72,7 @@ def tutorialvoice(request):
         'reshteTahsilishows': reshteTahsilishows,
         'modaresinshows': modaresinshows,
         'coursevoiceshows': coursevoiceshows,
-        'searchcoursevoiceshows': paged_searchcoursevoiceshows,
+        'searchcoursevoiceshows': searchcoursevoiceshows,
         'newcoursevoiceshows': paged_newcoursevoiceshows,
         'bettercoursevoiceshows': paged_bettercoursevoiceshows,
         'values': request.GET,

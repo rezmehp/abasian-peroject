@@ -8,12 +8,12 @@
 {% endblock %}
 {% block content %}
 <!--test-->
-<div class="hero is-fullheight is-primary has-background-dark">
+<div class="hero is-fullheight is-primary" style="background-color:snow;">
     <div class="hero-body">
         <div class="container">
             <!--        تیتر بالای صفحه بعد از سکشن-->
             <br><br>
-            <h1 class="title has-text-centered">{% if newsAdmins %} {% for newsAdmin in newsAdmins %}
+            <h1 class="title has-text-dark has-text-centered">{% if newsAdmins %} {% for newsAdmin in newsAdmins %}
                 {{ newsAdmin.title_page }}
                 {% endfor %}
                 {% endif %}</h1>
@@ -25,7 +25,7 @@
                 {% endif %}
             </figure>
 
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <div class="container ">
                     <!--        تیتر توضیحات زیر عکس اول -->
                     <h1 class="title has-text-dark has-text-centered">{% if newsAdmins %}

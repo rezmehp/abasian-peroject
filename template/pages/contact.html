@@ -12,11 +12,11 @@
 {% endblock %}
 {% block content %}
 <!--test-->
-<div class="hero is-fullheight is-primary has-background-dark">
+<div class="hero is-fullheight is-primary" style="background-color:snow;">
     <div class="hero-body">
         <div class="container">
             <!--        تیتر بالای صفحه بعد از سکشن-->
-            <h1 class="title has-text-centered">
+            <h1 class="title has-text-dark has-text-centered">
                 {% if contactusers %} {% for contactuser in contactusers %}
                 {{ contactuser.title_page }}
                 {% endfor %}
@@ -32,7 +32,7 @@
 
             </figure>
 
-            <form action="{% url 'contact' %}" method="POST" class="section has-background-light">
+            <form action="{% url 'contact' %}" method="POST" class="section" style="background-color:snow;">
                 {% csrf_token %}
                 {% if user.is_authenticated %}
                 <div class="container ">
@@ -153,7 +153,7 @@
 
             <!--            نقشه گوگل-->
 
-            <section class="section has-background-dark">
+            <section class="section"  style="background-color:snow;">
                 <div class="container">
                     {% if contactusers %} {% for contactuser in contactusers %}
                     <iframe class="map-responsive" src="{{ contactuser.address }}"></iframe>

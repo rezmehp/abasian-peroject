@@ -6,7 +6,7 @@
 {{ tutorialexamAdmin.title_page }} {% endfor %}
 {% endif %}{% endblock %} {% block content %}
 <!--test-->
-<div class="hero is-fullheight has-background-dark">
+<div class="hero is-fullheight" style="background-color:snow;">
     <div class="hero-body">
         <section class="container">
             <figure class="image is-3by1">
@@ -16,16 +16,16 @@
                 {% endif %}
             </figure>
             <div class="box">
-                <section class="section has-background-light">
+                <section class="section " style="background-color:snow;">
                     <!--        تیتر توضیحات زیر عکس اول درباره ما-->
-                    <h1 class="title has-text-dark">{% if tutorialexamAdmins %}
+                    <h1 class="title  has-text-dark">{% if tutorialexamAdmins %}
                         {% for tutorialexamAdmin in tutorialexamAdmins %}
                         {{ tutorialexamAdmin.title_search }} {% endfor %}
                         {% endif %}</h1>
 
                 </section>
                 <form method="post" id="formidsearch" action="{% url 'tutorialexam' %}"
-                    data-searchselect-url="{% url 'tutorialexam' %}" class="section has-background-light">
+                    data-searchselect-url="{% url 'tutorialexam' %}" class="section " style="background-color:snow;">
                     {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
@@ -142,7 +142,7 @@
             </div>
 
             {% if searchcourseexamshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow; overflow-y: scroll; max-height: 1200px;">
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">آزمون های یافت شده</h3>
                     {% for searchcourseexamshow in searchcourseexamshows %}
@@ -195,57 +195,12 @@
                     <br>
                     {% endfor %}
                     {% endif %}
-                    {% if searchcourseexamshows.has_other_pages %}
-                    <div class="row columns is-centered">
-                        <div class="box column is-3">
-                            <ul class="pagination">
-                                {% if searchcourseexamshows.has_pervious %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcourseexamshows.previous_page_number}}" class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for i in searchcourseexamshows.paginator.page_range %}
-                                {% if searchcourseexamshows.number == i %}
-                                <li class="page-item active">
-                                    <a class="page-link">{{i}}</a>
-                                </li>
-                                {% else %}
-                                <li class="page-item">
-                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if searchcourseexamshows.has_next %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcourseexamshows.next_page_number}}" class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% endif %}
                 </div>
             </section>
             <hr>
 
             {% if bettercourseexamshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
                     {% for tutorialexamAdmin in tutorialexamAdmins %}
                     {{ tutorialexamAdmin.title_1 }} {% endfor %}
@@ -333,7 +288,7 @@
                     {% endif %}
             <hr>
             {% endif %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialexamAdmins %}
                     {% for tutorialexamAdmin in tutorialexamAdmins %}
                     {{ tutorialexamAdmin.title_2 }} {% endfor %}
@@ -424,7 +379,7 @@
                     </div>
                     {% endif %}
             <hr>
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">آزمون های گذرانده شده</h3>
                 <div class="columns is-multiline">
                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
@@ -448,7 +403,7 @@
 
 
 
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
 
                 {% if questionExamsShow %}
 
@@ -465,7 +420,7 @@
             </section>
 
 
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
 
                 {% if userExamsNameShow %}
 

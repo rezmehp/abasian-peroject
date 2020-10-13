@@ -6,7 +6,7 @@
 {{ tutorialfileAdmin.title_page }} {% endfor %}
 {% endif %}{% endblock %} {% block content %}
 <!--test-->
-<div class="hero is-fullheight has-background-dark">
+<div class="hero is-fullheight" style="background-color:snow;">
     <div class="hero-body">
         <section class="container">
             <figure class="image is-3by1">
@@ -16,7 +16,7 @@
                 {% endif %}
             </figure>
             <div class="box">
-                <section class="section has-background-light">
+                <section class="section " style="background-color:snow;">
                     <!--        تیتر توضیحات زیر عکس اول درباره ما-->
                     <h1 class="title has-text-dark">{% if tutorialfileAdmins %}
                         {% for tutorialfileAdmin in tutorialfileAdmins %}
@@ -25,7 +25,7 @@
 
                 </section>
                 <form method="post" id="formidsearch" action="{% url 'tutorialfile' %}"
-                    data-searchselect-url="{% url 'tutorialfile' %}" class="section has-background-light">
+                    data-searchselect-url="{% url 'tutorialfile' %}" class="section " style="background-color:snow;">
                     {% csrf_token %}
                     <div class="container ">
                         <div class="columns">
@@ -141,7 +141,7 @@
                 </form>
             </div>
             {% if searchcoursefileshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow; overflow-y: scroll; max-height: 1200px;">
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">فایل های یافت شده</h3>
                     {% for searchcoursefileshow in searchcoursefileshows %}
@@ -177,57 +177,12 @@
                     <br>
                     {% endfor %}
                     {% endif %}
-                    {% if searchcoursefileshows.has_other_pages %}
-                    <div class="row columns is-centered">
-                        <div class="box column is-3">
-                            <ul class="pagination">
-                                {% if searchcoursefileshows.has_pervious %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcoursefileshows.previous_page_number}}" class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for i in searchcoursefileshows.paginator.page_range %}
-                                {% if searchcoursefileshows.number == i %}
-                                <li class="page-item active">
-                                    <a class="page-link">{{i}}</a>
-                                </li>
-                                {% else %}
-                                <li class="page-item">
-                                    <a href="?page={{i}}" class="page-link">{{i}}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if searchcoursefileshows.has_next %}
-                                <li class="page-item">
-                                    <a href="?page={{searchcoursefileshows.next_page_number}}" class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% endif %}
                 </div>
             </section>
             <hr>
 
             {% if bettercoursefileshows %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialfileAdmins %}
                     {% for tutorialfileAdmin in tutorialfileAdmins %}
                     {{ tutorialfileAdmin.title_1 }} {% endfor %}
@@ -294,7 +249,7 @@
                     {% endif %}
             <hr>
             {% endif %}
-            <section class="section has-background-light">
+            <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">{% if tutorialfileAdmins %}
                     {% for tutorialfileAdmin in tutorialfileAdmins %}
                     {{ tutorialfileAdmin.title_2 }} {% endfor %}
