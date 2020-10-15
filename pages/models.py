@@ -98,3 +98,8 @@ class modaresin(models.Model):
         return self.modares
     class Meta:
         verbose_name_plural="ثبت مدرسین"
+
+class pagecunter(models.Model):
+    counter = models.IntegerField(verbose_name="تعداد بازدید کننده")
+    class Meta:
+        verbose_name_plural="تعداد بازدید"

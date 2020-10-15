@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili, modaresin,sliderImage,advertise
+from .models import footerAdmin, ostanha, shahrha, maghtaTahsili, reshteTahsili, modaresin,sliderImage,advertise,pagecunter
 
 
 
@@ -11,7 +11,12 @@ admin.site.register(advertise, advertiseShow)
     
 
 admin.site.register(sliderImage)
-    
+
+
+class pagecuntershow(admin.ModelAdmin):
+    list_display = ('counter',)
+
+admin.site.register(pagecunter, pagecuntershow)    
 
 class FooterAdminShow(admin.ModelAdmin):
     list_display = ('mail', 'whatsapp','instagram')
