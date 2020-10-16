@@ -7,6 +7,11 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from pages.models import maghtaTahsili, reshteTahsili, modaresin,footerAdmin
 from django.http.response import JsonResponse
 from zarinpal.models import buys
+from tutorialvideo.models import coursevideo2
+from tutorialbook.models import coursebook2
+from tutorialapplication.models import courseapplication2
+from tutorialvoice.models import coursevoice2
+from exam.models import exams2
 
 def tutorialfile(request):
     footerAdmins = footerAdmin.objects.all()
@@ -42,18 +47,86 @@ def tutorialfile(request):
             modaresnid = modaresin.objects.filter(modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
                 searchcoursefileshows = searchcoursefileshows.filter(modaresinfkey__in=modaresnid)[:50]
-             
+     
+
+
+
+
+
+
+
+
+
+    reshteTahsiliid = ""
     bettercoursefileshows=""             
     if request.user.username:
         karbaruser1online = karbaruser1.objects.filter(username=request.user.username).values_list('reshte', flat=True)
-        reshteTahsiliid = reshteTahsili.objects.filter(reshte=karbaruser1online[0]).values_list('id', flat=True)
-        if reshteTahsiliid:
-            bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+        buysCourseid = buys.objects.filter(userid=request.user.id).values_list('courseid', flat=True).order_by('-id')
+        print ('buysCourseid=',buysCourseid)
+        buysid = buys.objects.filter(userid=request.user.id).values_list('id', flat=True).order_by('-id')
+        print ('buysid=',buysid)
+        if buysid:
+            buysCoursetype = buys.objects.filter(id=buysid[0]).values_list('coursetype', flat=True).order_by('-id')
+            print ('buysCoursetype=',buysCoursetype)
+            if buysCoursetype:
+                if buysCoursetype[0] == '1':
+                    if buysCourseid:
+                        reshteTahsiliid = coursevideo2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+                if buysCoursetype[0] == '2':
+                    if buysCourseid:
+                        reshteTahsiliid = coursevoice2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+                if buysCoursetype[0] == '3':
+                    if buysCourseid:
+                        reshteTahsiliid = coursefile2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+                if buysCoursetype[0] == '4':
+                    if buysCourseid:
+                        reshteTahsiliid = coursebook2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+                if buysCoursetype[0] == '5':
+                    if buysCourseid:
+                        reshteTahsiliid = courseapplication2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+                if buysCoursetype[0] == '7':
+                    if buysCourseid:
+                        reshteTahsiliid = exams2.objects.filter(id=buysCourseid[0]).values_list('reshteTahsilifkey', flat=True)
+                    if reshteTahsiliid:
+                        bettercoursefileshows = coursefile2.objects.filter(reshteTahsilifkey=reshteTahsiliid[0]).order_by('-id')
+            else:
+                karbaruser1online = ""
+                reshteTahsiliid = ""
+                bettercoursefileshows = ""    
+            
+        else:
+            karbaruser1online = ""
+            reshteTahsiliid = ""
+            bettercoursefileshows = ""
     else:
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercoursefileshows = ""
-    paginator = Paginator(bettercoursefileshows, 4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    paginator = Paginator(bettercoursefileshows, 8)
     page2 = request.GET.get('page2')
     paged_bettercoursefileshows = paginator.get_page(page2)
     newcoursefileshows = coursefile2.objects.all().order_by('-id')
