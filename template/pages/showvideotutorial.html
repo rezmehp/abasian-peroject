@@ -17,30 +17,47 @@
                     <div class="columns">
                         <div class="column is-centered has-text-centered">
                             <img class="is-centered has-text-centered" src="{{ coursevideo.pic.url }}">
+                            <br><br><h3 class="has-text-dark has-text-centered">نام درس : {{ coursevideo.coursename }}
+                            </h3><br>
                         </div>
                     </div>
+                </div>
+                <hr>
+                <div class="container ">
                     <div class="columns">
-                        <div class="column">
+                        <div class="column is-right">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevideo.coursename }}
-                                    </h3><br>
+                                    <br><br>
                                     <h4 class="has-text-dark">مدرس : {{ coursevideo.modaresinfkey }}</h4><br>
                                     <small class="has-text-dark">مدت زمان آموزش : {{ coursevideo.saattadris }} دقیقه
                                     </small><br>
                                     {% if coursevideo.hazine != 0 %}
                                     <small class="has-text-dark">هزینه :{{ coursevideo.hazine }} تومان </small>
                                     {% endif %}
-                                    <br>
-                                    <h5 class="has-text-dark">{{ coursevideo.tozihat|safe }}</h5>
-                                    <br>
-                                    {% if coursevideo.tizer_is_published == True %}
-                                    <figure class="image is-16by9">
-                                        <iframe class="has-ratio" width="640" height="360"
+                                </p>
+                            </div>
+                        </div>
+                        {% if coursevideo.tizer_is_published == True %}
+                        <div class="column is-left">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                    <figure class="image" style="max-width: 280px; max-height: 280px;">
+                                        <iframe class="has-ratio"
                                             src="{{ coursevideo.tizer }}" frameborder="0"
                                             allowfullscreen></iframe>
                                     </figure>
-                                    {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <hr>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                <h5 class="has-text-dark">{{ coursevideo.tozihat|safe }}</h5>
                                 </p>
                             </div>
                         </div>
@@ -52,9 +69,6 @@
                     <div class="column">
                         {% if user.is_authenticated %}
                             {% if coursevideo.hazine != 0 %}
-
-
-
                             {% if buyss %}
                             <!-- خرید انجام شده باشد -->
                             <nav class="panel">
