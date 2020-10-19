@@ -115,14 +115,14 @@
                         <div class="columns">
                             <div class="column">
                                 <div class="control">
-                                    <input value="{{ values.coursen }}" class="input is-fullwidth" placeholder="نام درس"
+                                    <input value="{{ values.coursen }}" class="input is-fullwidth" placeholder="نام فایل "
                                         type="text" name="coursen">
                                 </div>
                             </div>
                             <div class="column">
                                 <div class="control">
                                     <input value="{{ values.modaresn }}" class="input is-fullwidth"
-                                        placeholder="نام مدرس" type="text" name="modaresn">
+                                        placeholder="نام تولید کننده" type="text" name="modaresn">
                                 </div>
                             </div>
                         </div>
@@ -156,10 +156,10 @@
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-vcentered">
                                     <strong>
-                                        درس : {{ searchcourseapplicationshow.coursename }}
+                                        نام فایل : {{ searchcourseapplicationshow.coursename }}
                                     </strong><br>
                                     <strong>
-                                        استاد : {{ searchcourseapplicationshow.modaresinfkey }}
+                                        تولید کننده : {{ searchcourseapplicationshow.modaresinfkey }}
                                     </strong><br>
                                     {% if searchcourseapplicationshow.hazine != 0 %}
                                     <small>
@@ -193,9 +193,9 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' bettercourseapplicationshow.id %}" class="box">
                             <img src="{{ bettercourseapplicationshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس :
+                            <p class="has-text-centered"><strong> نام فایل :
                                     {{ bettercourseapplicationshow.coursename }}</strong></p>
-                            <p class="has-text-centered">استاد : {{ bettercourseapplicationshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">تولید کننده : {{ bettercourseapplicationshow.modaresinfkey }}</p>
                         </a>
                     </div>
                     {% endfor %}
@@ -262,9 +262,9 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box">
                             <img src="{{ newcourseapplicationshow.pic.url }}">
-                            <p class="has-text-centered"><strong> درس :
+                            <p class="has-text-centered"><strong> نام فایل :
                                     {{ newcourseapplicationshow.coursename }}</strong></p>
-                            <p class="has-text-centered">استاد : {{ newcourseapplicationshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">تولید کننده : {{ newcourseapplicationshow.modaresinfkey }}</p>
                         </a>
                     </div>
                     {% endfor %}

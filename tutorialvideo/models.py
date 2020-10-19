@@ -27,6 +27,8 @@ class coursevideo2(models.Model):
     coursename = models.CharField(max_length=1000,verbose_name="نام درس")
     saattadris = models.CharField(max_length=1000,verbose_name="زمان درس")
     tozihat = RichTextField(verbose_name="توضیحات")
+    tizer = models.CharField(max_length=1000,verbose_name="لینک فایل تیزر")
+    tizer_is_published = models.BooleanField(default=True,verbose_name="نمایش فایل تیزر")
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
     
     def __str__(self):

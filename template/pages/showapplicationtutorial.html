@@ -25,9 +25,9 @@
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ courseapplication.coursename }}
+                                    <h3 class="has-text-dark has-text-centered">نام فایل : {{ courseapplication.coursename }}
                                     </h3><br>
-                                    <h4 class="has-text-dark">مدرس : {{ courseapplication.modaresinfkey }}</h4><br>
+                                    <h4 class="has-text-dark">تولید کننده : {{ courseapplication.modaresinfkey }}</h4><br>
                                     {% if courseapplication.hazine != 0 %}
                                     <small class="has-text-dark">هزینه :{{ courseapplication.hazine }} تومان </small>
                                     {% endif %}
@@ -52,7 +52,7 @@
                             <!-- خرید انجام شده باشد -->
                             <nav class="panel">
                                     <p class="panel-heading">
-                                        لیست فیلم های این مبحث
+                                        لیست فایل های این مبحث
                                     </p>
                                     {% if applicationss %} {% for applications in applicationss %}
                                     {% if applications.applicationlink_is_published == True %}
@@ -115,7 +115,7 @@
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">
-                                    لیست فیلم های این مبحث
+                                    لیست فایل های این مبحث
                                 </p>
                                 {% if applicationss %} {% for applications in applicationss %}
                                 {% if applications.applicationlink_is_published == True %}
@@ -148,7 +148,7 @@
                             {% else %}
                             <nav class="panel">
                                 <p class="panel-heading">
-                                    لیست فیلم های این مبحث
+                                    لیست فایل های این مبحث
                                 </p>
                                 {% if applicationss %} {% for applications in applicationss %}
                                 {% if applications.applicationlink_is_published == True %}

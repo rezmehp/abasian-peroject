@@ -33,6 +33,14 @@
                                     {% endif %}
                                     <br>
                                     <h5 class="has-text-dark">{{ coursevideo.tozihat|safe }}</h5>
+                                    <br>
+                                    {% if coursevideo.tizer_is_published == True %}
+                                    <figure class="image is-16by9">
+                                        <iframe class="has-ratio" width="640" height="360"
+                                            src="{{ coursevideo.tizer }}" frameborder="0"
+                                            allowfullscreen></iframe>
+                                    </figure>
+                                    {% endif %}
                                 </p>
                             </div>
                         </div>
