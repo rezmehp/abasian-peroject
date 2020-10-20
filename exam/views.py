@@ -45,8 +45,21 @@ def tutorialexam(request):
 
 
    
-    searchcourseexamshows = courseexam2.objects.all()
-  
+    
+    searchcourseexamshows = ""
+
+    if 'maghtan' in request.POST:
+        searchcourseexamshows = courseexam2.objects.all().order_by('-id')
+    
+    if 'reshten' in request.POST:
+        searchcourseexamshows = courseexam2.objects.all().order_by('-id')
+    
+    if 'coursen' in request.POST:
+        searchcourseexamshows = courseexam2.objects.all().order_by('-id')
+    
+    if 'modaresn' in request.POST:
+        searchcourseexamshows = courseexam2.objects.all().order_by('-id')
+    
 
     # سرج
     if 'maghtan' in request.POST:
@@ -182,7 +195,7 @@ def tutorialexam(request):
     paged_bettercourseexamshows = paginator.get_page(page3)
 
     newcourseexamshows = courseexam2.objects.all().order_by('-id')
-    paginator = Paginator(newcourseexamshows, 8)
+    paginator = Paginator(newcourseexamshows, 20)
     page2 = request.GET.get('page2')
     paged_newcourseexamshows = paginator.get_page(page2)
     

@@ -24,7 +24,21 @@ def tutorialvoice(request):
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
     modaresinshows = modaresin.objects.all()
     coursevoiceshows = coursevoice2.objects.all()
-    searchcoursevoiceshows = coursevoice2.objects.all()
+    searchcoursevoiceshows = ""
+
+    if 'maghtan' in request.POST:
+        searchcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
+    
+    if 'reshten' in request.POST:
+        searchcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
+    
+    if 'coursen' in request.POST:
+        searchcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
+    
+    if 'modaresn' in request.POST:
+        searchcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
+
+    # سرج
     # سرج
     if 'maghtan' in request.POST:
         maghtan = request.POST['maghtan']
@@ -138,7 +152,7 @@ def tutorialvoice(request):
     page2 = request.GET.get('page2')
     paged_bettercoursevoiceshows = paginator.get_page(page2)
     newcoursevoiceshows = coursevoice2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursevoiceshows, 8)
+    paginator = Paginator(newcoursevoiceshows, 20)
     page3 = request.GET.get('page3')
     paged_newcoursevoiceshows = paginator.get_page(page3)
     context = {

@@ -137,7 +137,7 @@
                                 <img src="{{ searchcoursevideoshow.pic.url }}">
                             </figure>
                         </div>
-                        <div class="column">
+                        <div class="column ">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-vcentered">
                                     <strong>
@@ -160,6 +160,19 @@
                                 </p>
                             </div>
                         </div>
+                        {% if searchcoursevideoshow.tizer_is_published == True %}
+                        <div class="column is-left ">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                    <video width="320" height="240" controls="controls" style="border-radius: 10px;">
+                                        <source src="{{ searchcoursevideoshow.tizer }}" type="video/mp4" />
+                                        <source src="{{ searchcoursevideoshow.tizer }}" type="video/ogg" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </p>
+                            </div>
+                        </div>
+                        {% endif %}
                     </a>
                     <br>
                     {% endfor %}

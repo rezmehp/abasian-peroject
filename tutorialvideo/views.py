@@ -24,7 +24,19 @@ def tutorialvideo(request):
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
     modaresinshows = modaresin.objects.all()
     coursevideoshows = coursevideo2.objects.all()
-    searchcoursevideoshows = coursevideo2.objects.all()
+    searchcoursevideoshows = ""
+
+    if 'maghtan' in request.POST:
+        searchcoursevideoshows = coursevideo2.objects.all().order_by('-id')
+    
+    if 'reshten' in request.POST:
+        searchcoursevideoshows = coursevideo2.objects.all().order_by('-id')
+    
+    if 'coursen' in request.POST:
+        searchcoursevideoshows = coursevideo2.objects.all().order_by('-id')
+    
+    if 'modaresn' in request.POST:
+        searchcoursevideoshows = coursevideo2.objects.all().order_by('-id')
 
     # سرج
     if 'maghtan' in request.POST:
@@ -51,17 +63,6 @@ def tutorialvideo(request):
             if modaresnid:
                 searchcoursevideoshows = searchcoursevideoshows.filter(modaresinfkey__in=modaresnid)[:50]
     
-
-
-
-
-
-
-
-
-
-
-
 
     reshteTahsiliid = ""
     bettercoursevideoshows=""             
@@ -119,21 +120,11 @@ def tutorialvideo(request):
         reshteTahsiliid = ""
         bettercoursevideoshows = ""
 
-
-
-
-
-
-
-
-
-
-
     paginator = Paginator(bettercoursevideoshows, 8)
     page2 = request.GET.get('page2')
     paged_bettercoursevideoshows = paginator.get_page(page2)
     newcoursevideoshows = coursevideo2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursevideoshows, 8)
+    paginator = Paginator(newcoursevideoshows, 20)
     page3 = request.GET.get('page3')
     paged_newcoursevideoshows = paginator.get_page(page3)
     context = {

@@ -28,7 +28,19 @@ def tutorialbook(request):
     reshteTahsilishows = "ابتدا استان را انتخاب نمایید"
     modaresinshows = modaresin.objects.all()
     coursebookshows = coursebook2.objects.all()
-    searchcoursebookshows = coursebook2.objects.all()
+    searchcoursebookshows = ""
+
+    if 'maghtan' in request.POST:
+        searchcoursebookshows = coursebook2.objects.all().order_by('-id')
+    
+    if 'reshten' in request.POST:
+        searchcoursebookshows = coursebook2.objects.all().order_by('-id')
+    
+    if 'coursen' in request.POST:
+        searchcoursebookshows = coursebook2.objects.all().order_by('-id')
+    
+    if 'modaresn' in request.POST:
+        searchcoursebookshows = coursebook2.objects.all().order_by('-id')
     # سرج
     if 'maghtan' in request.POST:
         maghtan = request.POST['maghtan']
@@ -139,7 +151,7 @@ def tutorialbook(request):
     page2 = request.GET.get('page2')
     paged_bettercoursebookshows = paginator.get_page(page2)
     newcoursebookshows = coursebook2.objects.all().order_by('-id')
-    paginator = Paginator(newcoursebookshows, 8)
+    paginator = Paginator(newcoursebookshows, 20)
     page3 = request.GET.get('page3')
     paged_newcoursebookshows = paginator.get_page(page3)
     context = {
