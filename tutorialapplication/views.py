@@ -25,6 +25,13 @@ def tutorialapplication(request):
     modaresinshows = modaresin.objects.all()
     courseapplicationshows = courseapplication2.objects.all()
     searchcourseapplicationshows = ""
+    maghtaTahsilishowsall = maghtaTahsili.objects.all()
+    reshteTahsilishowsall = reshteTahsili.objects.all()
+    coursevideoshowsall = coursevideo2.objects.all()
+    courseapplicationshowsall = courseapplication2.objects.all()
+    coursebookshowsall = coursebook2.objects.all()
+    coursefileshowsall = coursefile2.objects.all()
+    coursevoiceshowsall = coursevoice2.objects.all()
 
     if 'maghtan' in request.POST:
         searchcourseapplicationshows = courseapplication2.objects.all().order_by('-id')
@@ -169,7 +176,13 @@ def tutorialapplication(request):
         'bettercourseapplicationshows': paged_bettercourseapplicationshows,
         'values': request.GET,
         'footerAdmins':footerAdmins,
-
+        'coursevideoshowsall':coursevideoshowsall,
+        'courseapplicationshowsall':courseapplicationshowsall,
+        'coursebookshowsall':coursebookshowsall,
+        'coursefileshowsall':coursefileshowsall,
+        'coursevoiceshowsall':coursevoiceshowsall,
+        'reshteTahsilishowsall':reshteTahsilishowsall,
+        'maghtaTahsilishowsall':maghtaTahsilishowsall,
     }
 
     return render(request, 'pages/applicationtutorial.html', context)

@@ -29,6 +29,13 @@ def tutorialbook(request):
     modaresinshows = modaresin.objects.all()
     coursebookshows = coursebook2.objects.all()
     searchcoursebookshows = ""
+    maghtaTahsilishowsall = maghtaTahsili.objects.all()
+    reshteTahsilishowsall = reshteTahsili.objects.all()
+    coursevideoshowsall = coursevideo2.objects.all()
+    courseapplicationshowsall = courseapplication2.objects.all()
+    coursebookshowsall = coursebook2.objects.all()
+    coursefileshowsall = coursefile2.objects.all()
+    coursevoiceshowsall = coursevoice2.objects.all()
 
     if 'maghtan' in request.POST:
         searchcoursebookshows = coursebook2.objects.all().order_by('-id')
@@ -170,6 +177,13 @@ def tutorialbook(request):
         'newcoursebookshows': paged_newcoursebookshows,
         'bettercoursebookshows': paged_bettercoursebookshows,
         'values': request.GET,
+        'coursevideoshowsall':coursevideoshowsall,
+        'courseapplicationshowsall':courseapplicationshowsall,
+        'coursebookshowsall':coursebookshowsall,
+        'coursefileshowsall':coursefileshowsall,
+        'coursevoiceshowsall':coursevoiceshowsall,
+        'reshteTahsilishowsall':reshteTahsilishowsall,
+        'maghtaTahsilishowsall':maghtaTahsilishowsall,
 
     }
 

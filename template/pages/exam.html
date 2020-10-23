@@ -142,7 +142,7 @@
             </div>
 
             {% if searchcourseexamshows %}
-            <section class="section " style="background-color:snow; overflow-y: scroll; max-height: 1200px;">
+            <section class="section " style="background-color:snow;">
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">آزمون های یافت شده</h3>
                     {% for searchcourseexamshow in searchcourseexamshows %}
@@ -156,7 +156,7 @@
                         href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
                             <div class="column is-one-quarter">
                                 <figure class="image">
-                                    <img src="{{ searchcourseexamshow.pic.url }}">
+                                    <img style="max-height: 150px;" src="{{ searchcourseexamshow.pic.url }}">
                                 </figure>
                             </div>
                             <div class="column">

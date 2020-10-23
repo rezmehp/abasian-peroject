@@ -25,6 +25,14 @@ def tutorialvideo(request):
     modaresinshows = modaresin.objects.all()
     coursevideoshows = coursevideo2.objects.all()
     searchcoursevideoshows = ""
+    maghtaTahsilishowsall = maghtaTahsili.objects.all()
+    reshteTahsilishowsall = reshteTahsili.objects.all()
+    coursevideoshowsall = coursevideo2.objects.all()
+    courseapplicationshowsall = courseapplication2.objects.all()
+    coursebookshowsall = coursebook2.objects.all()
+    coursefileshowsall = coursefile2.objects.all()
+    coursevoiceshowsall = coursevoice2.objects.all()
+
 
     if 'maghtan' in request.POST:
         searchcoursevideoshows = coursevideo2.objects.all().order_by('-id')
@@ -142,6 +150,13 @@ def tutorialvideo(request):
         'newcoursevideoshows': paged_newcoursevideoshows,
         'bettercoursevideoshows': paged_bettercoursevideoshows,
         'values': request.GET,
+        'coursevideoshowsall':coursevideoshowsall,
+        'courseapplicationshowsall':courseapplicationshowsall,
+        'coursebookshowsall':coursebookshowsall,
+        'coursefileshowsall':coursefileshowsall,
+        'coursevoiceshowsall':coursevoiceshowsall,
+        'reshteTahsilishowsall':reshteTahsilishowsall,
+        'maghtaTahsilishowsall':maghtaTahsilishowsall,
         
     }
 
