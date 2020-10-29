@@ -7,7 +7,7 @@ from tutorialvoice.models import coursevoice2,voices
 from exam.models import courseexam2
 from news.models import news
 from classlinks.models import allclassLinks3
-from .models import sliderImage,footerAdmin,advertise,pagecunter
+from .models import sliderImage,footerAdmin,advertise,pagecunter,maghtaTahsili,reshteTahsili
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 def index(request):
@@ -20,6 +20,13 @@ def index(request):
     newcoursebooks = coursebook2.objects.all().order_by('-id')[:20]
     newcoursefiles = coursefile2.objects.all().order_by('-id')[:20]
     newcoursevideos = coursevideo2.objects.all().order_by('-id')[:20]
+    maghtaTahsilishowsall = maghtaTahsili.objects.all()
+    reshteTahsilishowsall = reshteTahsili.objects.all()
+    coursevideoshowsall = coursevideo2.objects.all()
+    courseapplicationshowsall = courseapplication2.objects.all()
+    coursebookshowsall = coursebook2.objects.all()
+    coursefileshowsall = coursefile2.objects.all()
+    coursevoiceshowsall = coursevoice2.objects.all()
     
     
     cunt = pagecunter.objects.all().values_list('counter', flat=True)
@@ -58,6 +65,13 @@ def index(request):
         'footerAdmins':footerAdmins,
         'countexams':countexams,
         'cuntview': cuntview,
+        'coursevideoshowsall':coursevideoshowsall,
+        'courseapplicationshowsall':courseapplicationshowsall,
+        'coursebookshowsall':coursebookshowsall,
+        'coursefileshowsall':coursefileshowsall,
+        'coursevoiceshowsall':coursevoiceshowsall,
+        'reshteTahsilishowsall':reshteTahsilishowsall,
+        'maghtaTahsilishowsall':maghtaTahsilishowsall,
     }   
 
     return render(request, 'pages/index.html',context)

@@ -77,6 +77,7 @@ class shahrha(models.Model):
 
 class maghtaTahsili(models.Model):
     maghta = models.CharField(max_length=100,verbose_name="نام مقطع تحصیلی")
+    logo = models.CharField(max_length=100,verbose_name="لوگوی مقطع تحصیلی")
     def __str__(self):
         return self.maghta
     class Meta:
@@ -84,6 +85,7 @@ class maghtaTahsili(models.Model):
 
 
 class reshteTahsili(models.Model):
+    logo = models.CharField(max_length=100,verbose_name="لوگوی رشته تحصیلی")
     maghtafkey = models.ForeignKey(maghtaTahsili, on_delete=models.DO_NOTHING,verbose_name="انتخاب مقطع تحصیلی")
     reshte = models.CharField(max_length=100,verbose_name="نام رشته")
     def __str__(self):
