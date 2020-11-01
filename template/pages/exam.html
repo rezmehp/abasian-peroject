@@ -146,51 +146,47 @@
                 <div class="container ">
                     <h3 class="subtitle has-text-dark">آزمون های یافت شده</h3>
                     {% for searchcourseexamshow in searchcourseexamshows %}
-                        <a  
-                        {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                    <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                         {% if searchcourseexamshow.id == passexamscourse.id %}
-                          style="pointer-events: none; border: orangered 2px solid;"
-                        {% endif %}
-                        {% endfor %}
-                        {% endif %} 
+                        style="pointer-events: none; border: orangered 2px solid;" {% endif %} {% endfor %} {% endif %}
                         href="{% url 'showexamtutorial' searchcourseexamshow.id %}" class="columns box">
-                            <div class="column is-one-quarter">
-                                <figure class="image">
-                                    <img style="max-height: 150px;" src="{{ searchcourseexamshow.pic.url }}">
-                                </figure>
-                            </div>
-                            <div class="column">
-                                <div class="content has-text-right">
-                                    <p class="has-text-dark is-vcentered">
-                                        <strong>
-                                            درس : {{ searchcourseexamshow.coursename }}
-                                        </strong>
-                                            {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
-                                            {% if searchcourseexamshow.id == passexamscourse.id %}
-                                            <strong style="color: red;">
-                                            <br>
-                                            آزمون گذرانده شده است
-                                            <br>
-                                            {% endif %}
-                                            {% endfor %}
-                                            {% endif %} </strong>
-                                        <strong>
-                                            استاد : {{ searchcourseexamshow.modaresinfkey }}
-                                        </strong><br>
-                                        {% if searchcourseexamshow.hazine != 0 %}
-                                        <small>
-                                            هزینه : {{ searchcourseexamshow.hazine }} تومان
-                                        </small>
-                                        {% else %}
-                                        <small>
-                                            هزینه : رایگان
-                                        </small>
-                                        {% endif %}
+                        <div class="column is-one-quarter">
+                            <figure class="image">
+                                <img style="max-height: 150px;" src="{{ searchcourseexamshow.pic.url }}">
+                            </figure>
+                        </div>
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-vcentered">
+                                    <strong>
+                                        درس : {{ searchcourseexamshow.coursename }}
+                                    </strong>
+                                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                                    {% if searchcourseexamshow.id == passexamscourse.id %}
+                                    <strong style="color: red;">
                                         <br>
-                                    </p>
-                                </div>
+                                        آزمون گذرانده شده است
+                                        <br>
+                                        {% endif %}
+                                        {% endfor %}
+                                        {% endif %} </strong>
+                                    <strong>
+                                        استاد : {{ searchcourseexamshow.modaresinfkey }}
+                                    </strong><br>
+                                    {% if searchcourseexamshow.hazine != 0 %}
+                                    <small>
+                                        هزینه : {{ searchcourseexamshow.hazine }} تومان
+                                    </small>
+                                    {% else %}
+                                    <small>
+                                        هزینه : رایگان
+                                    </small>
+                                    {% endif %}
+                                    <br>
+                                </p>
                             </div>
-                        </a>
+                        </div>
+                    </a>
                     </span>
                     <br>
                     {% endfor %}
@@ -208,31 +204,36 @@
                 </h3>
                 <div class="columns is-multiline">
                     {% for bettercourseexamshow in bettercourseexamshows %}
-                    
-                        <div class="column is-one-quarter">
-                            <a 
-                            {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+
+                    <div class="column is-one-quarter">
+                        <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                             {% if bettercourseexamshow.id == passexamscourse.id %}
-                              style="pointer-events: none; border: orangered 2px solid;"
+                            style="pointer-events: none; border: orangered 2px solid;" {% endif %} {% endfor %}
+                            {% endif %} href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
+
+                            {% if bettercourseexamshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ bettercourseexamshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
                             {% endif %}
-                            {% endfor %}
-                            {% endif %} 
-                            href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
-                                <img src="{{ bettercourseexamshow.pic.url }}">
-                                <p class="has-text-centered"><strong> درس :
-                                        {{ bettercourseexamshow.coursename }}</strong><strong style="color: red;">
-                                            {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
-                                            {% if bettercourseexamshow.id == passexamscourse.id %}
-                                            <br>
-                                            آزمون گذرانده شده است
-                                              <br>
-                                            {% endif %}
-                                            {% endfor %}
-                                            {% endif %} </p></strong>
-                                <p class="has-text-centered">استاد : {{ bettercourseexamshow.modaresinfkey }}</p>
-                                <p class="has-text-centered">{{ bettercourseexamshow.saattadris }} ساعت آموزش</p>
-                            </a>
-                        </div>
+
+                            <img src="{{ bettercourseexamshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ bettercourseexamshow.coursename }}</strong><strong style="color: red;">
+                                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                                    {% if bettercourseexamshow.id == passexamscourse.id %}
+                                    <br>
+                                    آزمون گذرانده شده است
+                                    <br>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %} </p></strong>
+                            <p class="has-text-centered">استاد : {{ bettercourseexamshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ bettercourseexamshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
                     </span>
                     {% endfor %}
 
@@ -242,50 +243,50 @@
             <br>
 
             {% if bettercourseexamshows.has_other_pages %}
-                    <div class="row columns is-centered">
-                        <div class="box column is-3">
-                            <ul class="pagination">
-                                {% if bettercourseexamshows.has_pervious %}
-                                <li class="page-item">
-                                    <a href="?page3={{bettercourseexamshows.previous_page_number}}" class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for i in bettercourseexamshows.paginator.page_range %}
-                                {% if bettercourseexamshows.number == i %}
-                                <li class="page-item active">
-                                    <a class="page-link">{{i}}</a>
-                                </li>
-                                {% else %}
-                                <li class="page-item">
-                                    <a href="?page3={{i}}" class="page-link">{{i}}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if bettercourseexamshows.has_next %}
-                                <li class="page-item">
-                                    <a href="?page3={{bettercourseexamshows.next_page_number}}" class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% endif %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if bettercourseexamshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page3={{bettercourseexamshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in bettercourseexamshows.paginator.page_range %}
+                        {% if bettercourseexamshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page3={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if bettercourseexamshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page3={{bettercourseexamshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
             <hr>
             {% endif %}
             <section class="section " style="background-color:snow;">
@@ -295,89 +296,94 @@
                     {% endif %}</h3>
                 <div class="columns is-multiline">
                     {% if newcourseexamshows %} {% for newcourseexamshow in newcourseexamshows %}
-                    
-                    
+
+
                     <div class="column is-one-quarter">
-                                <a  
-                                {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
-                                {% if newcourseexamshow.id == passexamscourse.id %}
-                                  style="pointer-events: none; border: orangered 3px solid;"
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %} 
-                                href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
-                                    <img src="{{ newcourseexamshow.pic.url }}">
-                                    <p class="has-text-centered"><strong> درس :
-                                            {{ newcourseexamshow.coursename }}</strong><strong style="color: red;">
-                                                {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
-                                                {% if newcourseexamshow.id == passexamscourse.id %}
-                                                <br>
-                                                  آزمون گذرانده شده است
-                                                  <br>
-                                                {% endif %}
-                                                {% endfor %}
-                                                {% endif %} 
+                        <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                            {% if newcourseexamshow.id == passexamscourse.id %}
+                            style="pointer-events: none; border: orangered 3px solid;" {% endif %} {% endfor %}
+                            {% endif %} href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
+
+                            {% if newcourseexamshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ newcourseexamshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+
+                            <img src="{{ newcourseexamshow.pic.url }}">
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ newcourseexamshow.coursename }}</strong><strong style="color: red;">
+                                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                                    {% if newcourseexamshow.id == passexamscourse.id %}
+                                    <br>
+                                    آزمون گذرانده شده است
+                                    <br>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
 
 
-                                            </strong>
-                                    </p>
-                                    <p class="has-text-centered">استاد : {{ newcourseexamshow.modaresinfkey }}</p>
-                                    <p class="has-text-centered">{{ newcourseexamshow.saattadris }} ساعت آموزش</p>
-                                </a>
-                            </div>
+                                </strong>
+                            </p>
+                            <p class="has-text-centered">استاد : {{ newcourseexamshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ newcourseexamshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
                     </span>
-                        {% endfor %}
-                        {% endif %}
-                        
+                    {% endfor %}
+                    {% endif %}
+
 
             </section>
-<br>
+            <br>
 
             {% if newcourseexamshows.has_other_pages %}
-                    <div class="row columns is-centered">
-                        <div class="box column is-3">
-                            <ul class="pagination">
-                                {% if newcourseexamshows.has_pervious %}
-                                <li class="page-item">
-                                    <a href="?page2={{newcourseexamshows.previous_page_number}}" class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &laquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                                {% for i in newcourseexamshows.paginator.page_range %}
-                                {% if newcourseexamshows.number == i %}
-                                <li class="page-item active">
-                                    <a class="page-link">{{i}}</a>
-                                </li>
-                                {% else %}
-                                <li class="page-item">
-                                    <a href="?page2={{i}}" class="page-link">{{i}}</a>
-                                </li>
-                                {% endif %}
-                                {% endfor %}
-                                {% if newcourseexamshows.has_next %}
-                                <li class="page-item">
-                                    <a href="?page2={{newcourseexamshows.next_page_number}}" class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% else %}
-                                <li class="page-item disable">
-                                    <a class="page-link">
-                                        &raquo;
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                        </div>
-                    </div>
-                    {% endif %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if newcourseexamshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page2={{newcourseexamshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in newcourseexamshows.paginator.page_range %}
+                        {% if newcourseexamshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page2={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if newcourseexamshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page2={{newcourseexamshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
             <hr>
             <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">آزمون های گذرانده شده</h3>

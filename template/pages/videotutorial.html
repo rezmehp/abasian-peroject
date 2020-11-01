@@ -154,14 +154,13 @@
 
 
 
-
                 <div class="container ">
-                    <h1 class="title has-text-centered section-title">آموزش های ما در یک قاب</h1>
+                    <h3 class="title has-text-centered section-title">آموزش های ما در یک قاب</h3>
                     <div class="columns is-multiline box" style="background-color: lightslategray;">
                         {% if maghtaTahsilishowsall %}
-            
+
                         {% for maghtaTahsilishowall in maghtaTahsilishowsall %}
-            
+
                         <div class="column is-3">
                             <a class="box " href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:open" class="button">
                                 <span class="{{ maghtaTahsilishowall.logo }}"></span>
@@ -172,14 +171,15 @@
                             <div class="hero-body">
                                 <a href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:close">
                                     <div class="modal-background"></div>
-                                    <div class="modal-content" style="width: 90%; overflow-y: auto; overflow-x: hidden;">
+                                    <div class="modal-content"
+                                        style="width: 90%; overflow-y: auto; overflow-x: hidden;">
                                         <div class="columns is-multiline box" style="background-color: lightslategray;">
                                             {% if reshteTahsilishowsall %}
                                             {% for reshteTahsilishowall in reshteTahsilishowsall %}
                                             {% if reshteTahsilishowall.maghtafkey.id == maghtaTahsilishowall.id %}
                                             <div class="column is-3">
-                                                <a class="box" href="#course{{ reshteTahsilishowall.id }}" rel="modal:open"
-                                                    class="button">
+                                                <a class="box" href="#course{{ reshteTahsilishowall.id }}"
+                                                    rel="modal:open" class="button">
                                                     <span class="{{ reshteTahsilishowall.logo }}"></span>
                                                     &nbsp;&nbsp;{{ reshteTahsilishowall.reshte }}
                                                 </a>
@@ -188,14 +188,17 @@
                                                 <div class="hero-body">
                                                     <a href="#course{{ reshteTahsilishowall.id }}" rel="modal:close">
                                                         <div class="modal-background"></div>
-                                                        <div class="modal-content" style="width: 90%; overflow-y: auto; overflow-x: hidden;">
-                                                            <div class="columns is-multiline box" style="background-color: lightslategray;">
+                                                        <div class="modal-content"
+                                                            style="width: 90%; overflow-y: auto; overflow-x: hidden;">
+                                                            <div class="columns is-multiline box"
+                                                                style="background-color: lightslategray;">
                                                                 {% if coursevideoshowsall %}
                                                                 {% for coursevideoshowall in coursevideoshowsall %}
                                                                 {% if coursevideoshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showvideotutorial' coursevideoshowall.id %}">
+                                                                        <span class="fas fa-video"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursevideoshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -208,6 +211,8 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showvoicetutorial' coursevoiceshowall.id %}">
+                                                                        <span class="fas fas fa-volume-up"></span>
+                                                                        &nbsp;&nbsp;
                                                                         <strong>{{ coursevoiceshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -220,6 +225,7 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showfiletutorial' coursefileshowall.id %}">
+                                                                        <span class="fas fa-file"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursefileshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -232,22 +238,24 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showbooktutorial' coursebookshowall.id %}">
+                                                                        <span class="fas fa-book"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursebookshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
                                                                 {% endif %}
                                                                 {% endfor %}
                                                                 {% endif %}
-            
-            
+
+
                                                                 {% if courseapplicationshowsall %}
                                                                 {% for courseapplicationshowall in courseapplicationshowsall %}
                                                                 {% if courseapplicationshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showapplicationtutorial' courseapplicationshowall.id %}">
+                                                                        <span class="	fab fa-android"></span>
+                                                                        &nbsp;&nbsp;
                                                                         <strong>{{ courseapplicationshowall.coursename }}</strong>
-            
                                                                     </a>
                                                                 </div>
                                                                 {% endif %}
@@ -266,9 +274,9 @@
                                 </a>
                             </div>
                         </div>
-            
+
                         {% endfor %}
-            
+
                         {% endif %}
                     </div>
                 </div>
@@ -368,6 +376,15 @@
             {% for bettercoursevideoshow in bettercoursevideoshows %}
             <div class="column is-one-quarter">
                 <a href="{% url 'showvideotutorial' bettercoursevideoshow.id %}" class="box">
+
+                    {% if bettercoursevideoshow.hazine != 0 %}
+                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                        {{ bettercoursevideoshow.hazine }}<br> تومان </p>
+                    {% else %}
+                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
+                    </p>
+                    {% endif %}
+
                     <img src="{{ bettercoursevideoshow.pic.url }}">
                     <p class="has-text-centered"><strong> درس :
                             {{ bettercoursevideoshow.coursename }}</strong></p>
@@ -435,20 +452,21 @@
             {% if newcoursevideoshows %} {% for newcoursevideoshow in newcoursevideoshows %}
             <div class="column is-one-quarter">
                 <a href="{% url 'showvideotutorial' newcoursevideoshow.id %}" class="box">
+
+                    {% if newcoursevideoshow.hazine != 0 %}
+                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                        {{ newcoursevideoshow.hazine }}<br> تومان </p>
+                    {% else %}
+                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
+                    </p>
+                    {% endif %}
+
                     <img src="{{ newcoursevideoshow.pic.url }}">
                     <p class="has-text-centered"><strong> درس : {{ newcoursevideoshow.coursename }}</strong>
                     </p>
                     <p class="has-text-centered">استاد : {{ newcoursevideoshow.modaresinfkey }}</p>
                     <p class="has-text-centered">{{ newcoursevideoshow.saattadris }} ساعت آموزش</p>
-                    {% if newcoursevideoshow.hazine != 0 %}
-                    <small>
-                        هزینه : {{ newcoursevideoshow.hazine }} تومان
-                    </small>
-                    {% else %}
-                    <small>
-                        هزینه : رایگان
-                    </small>
-                    {% endif %}
+
                 </a>
             </div>
             {% endfor %}

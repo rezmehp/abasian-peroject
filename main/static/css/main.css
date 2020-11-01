@@ -1,7 +1,7 @@
 @font-face {
-    font-family: samim;
-    src: url('http://fonts.codearena.ir/rastikerdar/samim/samim.eot');
-    src: url('http://fonts.codearena.ir/rastikerdar/samim/samim.eot?#iefix') format('embedded-opentype'), url('http://fonts.codearena.ir/rastikerdar/samim/samim.woff') format('woff'), url('http://fonts.codearena.ir/rastikerdar/samim/samim.ttf') format('truetype');
+    font-family: IRANSans;
+    src: url('IRANSansWeb.eot');
+    src: url('IRANSansWeb.eot') format('embedded-opentype'), url('IRANSansWeb.woff') format('woff'), url('IRANSansWeb.ttf') format('truetype');
     font-weight: normal;
     line-height: 3rem;
 }

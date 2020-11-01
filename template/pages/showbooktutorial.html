@@ -17,7 +17,8 @@
             <section class="section " style="background-color:snow;">
                 <div class="container ">
                     <div class="columns">
-                        <div class="column is-centered has-text-centered">
+                        <div class="column is-centered has-text-centered ">
+                            
                             <img class="is-centered has-text-centered" src="{{ coursebook.pic.url }}">
                         </div>
                     </div>
@@ -27,10 +28,15 @@
                                 <p class="has-text-dark is-centered">
                                     <h3 class="has-text-dark has-text-centered">نام درس : {{ coursebook.coursename }}
                                     </h3><br>
-                                    <h4 class="has-text-dark">مدرس : {{ coursebook.modaresinfkey }}</h4><br>
+                                    <h4 class="has-text-dark">نویسنده : {{ coursebook.modaresinfkey }}</h4><br>
+                                    <h5 class="has-text-dark">این کتاب شامل  {{ coursebook.saattadris }} صفحه می باشد</h5><br>
+                                    
                                     {% if coursebook.hazine != 0 %}
-                                    <small class="has-text-dark">هزینه :{{ coursebook.hazine }} تومان </small>
+                                    <h5 class="has-text-dark">هزینه :{{ coursebook.hazine }} تومان </h5>
+                                    {% else %}
+                                    <h5 class="has-text-dark">هزینه : رایگان </h5>
                                     {% endif %}
+
                                     <br>
                                     <h5 class="has-text-dark">{{ coursebook.tozihat|safe }}</h5>
                                 </p>

@@ -161,8 +161,9 @@
 
 
 
+
                 <div class="container ">
-                    <h1 class="title has-text-centered section-title">آموزش های ما در یک قاب</h1>
+                    <h3 class="title has-text-centered section-title">آموزش های ما در یک قاب</h3>
                     <div class="columns is-multiline box" style="background-color: lightslategray;">
                         {% if maghtaTahsilishowsall %}
             
@@ -202,6 +203,7 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showvideotutorial' coursevideoshowall.id %}">
+                                                                        <span class="fas fa-video"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursevideoshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -214,6 +216,7 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showvoicetutorial' coursevoiceshowall.id %}">
+                                                                        <span class="fas fas fa-volume-up"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursevoiceshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -226,6 +229,7 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showfiletutorial' coursefileshowall.id %}">
+                                                                        <span class="fas fa-file"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursefileshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -238,6 +242,7 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showbooktutorial' coursebookshowall.id %}">
+                                                                        <span class="fas fa-book"></span> &nbsp;&nbsp;
                                                                         <strong>{{ coursebookshowall.coursename }}</strong>
                                                                     </a>
                                                                 </div>
@@ -252,8 +257,8 @@
                                                                 <div class="column is-4">
                                                                     <a class="box"
                                                                         href="{% url 'showapplicationtutorial' courseapplicationshowall.id %}">
+                                                                        <span class="	fab fa-android"></span> &nbsp;&nbsp;
                                                                         <strong>{{ courseapplicationshowall.coursename }}</strong>
-            
                                                                     </a>
                                                                 </div>
                                                                 {% endif %}
@@ -355,6 +360,15 @@
                     {% for bettercourseapplicationshow in bettercourseapplicationshows %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' bettercourseapplicationshow.id %}" class="box">
+                            
+                            {% if bettercourseapplicationshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ bettercourseapplicationshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+
                             <img src="{{ bettercourseapplicationshow.pic.url }}">
                             <p class="has-text-centered"><strong> نام فایل :
                                     {{ bettercourseapplicationshow.coursename }}</strong></p>
@@ -424,6 +438,15 @@
                     {% if newcourseapplicationshows %} {% for newcourseapplicationshow in newcourseapplicationshows %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box">
+                            
+                            {% if newcourseapplicationshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ newcourseapplicationshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+
                             <img src="{{ newcourseapplicationshow.pic.url }}">
                             <p class="has-text-centered"><strong> نام فایل :
                                     {{ newcourseapplicationshow.coursename }}</strong></p>

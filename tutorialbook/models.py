@@ -27,7 +27,7 @@ class coursebook2(models.Model):
     modaresinfkey = models.ForeignKey(modaresin, on_delete=models.DO_NOTHING,verbose_name="نام نویسنده")
     pic = models.ImageField(upload_to='coursebook/photos/%y/%m/%d/',verbose_name="فایل عکس")
     coursename = models.CharField(max_length=1000,verbose_name="نام کتاب")
-    saattadris = models.CharField(max_length=1000,verbose_name="زمان درس")
+    saattadris = models.CharField(max_length=1000,verbose_name="تعداد صفحات")
     tozihat = RichTextField(verbose_name="توضیحات")
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
     

@@ -556,7 +556,7 @@
 
 <section class="section has-background-light">
     <div class="container ">
-        <h1 class="title has-text-centered section-title">آموزش های ما در یک قاب</h1>
+        <h3 class="title has-text-centered section-title">آموزش های ما در یک قاب</h3>
         <div class="columns is-multiline box" style="background-color: lightslategray;">
             {% if maghtaTahsilishowsall %}
 
@@ -596,6 +596,7 @@
                                                     <div class="column is-4">
                                                         <a class="box"
                                                             href="{% url 'showvideotutorial' coursevideoshowall.id %}">
+                                                            <span class="fas fa-video"></span> &nbsp;&nbsp;
                                                             <strong>{{ coursevideoshowall.coursename }}</strong>
                                                         </a>
                                                     </div>
@@ -608,6 +609,7 @@
                                                     <div class="column is-4">
                                                         <a class="box"
                                                             href="{% url 'showvoicetutorial' coursevoiceshowall.id %}">
+                                                            <span class="fas fas fa-volume-up"></span> &nbsp;&nbsp;
                                                             <strong>{{ coursevoiceshowall.coursename }}</strong>
                                                         </a>
                                                     </div>
@@ -620,6 +622,7 @@
                                                     <div class="column is-4">
                                                         <a class="box"
                                                             href="{% url 'showfiletutorial' coursefileshowall.id %}">
+                                                            <span class="fas fa-file"></span> &nbsp;&nbsp;
                                                             <strong>{{ coursefileshowall.coursename }}</strong>
                                                         </a>
                                                     </div>
@@ -632,6 +635,7 @@
                                                     <div class="column is-4">
                                                         <a class="box"
                                                             href="{% url 'showbooktutorial' coursebookshowall.id %}">
+                                                            <span class="fas fa-book"></span> &nbsp;&nbsp;
                                                             <strong>{{ coursebookshowall.coursename }}</strong>
                                                         </a>
                                                     </div>
@@ -646,8 +650,8 @@
                                                     <div class="column is-4">
                                                         <a class="box"
                                                             href="{% url 'showapplicationtutorial' courseapplicationshowall.id %}">
+                                                            <span class="	fab fa-android"></span> &nbsp;&nbsp;
                                                             <strong>{{ courseapplicationshowall.coursename }}</strong>
-
                                                         </a>
                                                     </div>
                                                     {% endif %}
@@ -676,7 +680,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین اخبار</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-bullhorn"></span> &nbsp;&nbsp; اخبار</h3>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
@@ -707,7 +711,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین کلاس های آنلاین</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-chalkboard-teacher"></span> &nbsp;&nbsp;کلاس های آنلاین</h3>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
@@ -750,7 +754,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین ویدیوها</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-video"></span> &nbsp;&nbsp;ویدیوها</h3>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
@@ -760,12 +764,25 @@
                         <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
+                                    
+                                    
+                                    
+                                    
+                                        {% if newcoursevideo.hazine != 0 %}
+                                        <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newcoursevideo.hazine }}<br> تومان </p>
+                                        {% else %}
+                                        <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                        {% endif %}
+
+
+
+
                                     <img src="{{ newcoursevideo.pic.url }}" style="border-radius: 5%; height:180px"
                                         alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newcoursevideo.coursename }}</p>
+                                <strong>{{ newcoursevideo.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -784,7 +801,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین صوت ها</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fas fa-volume-up"></span> &nbsp;&nbsp;صوت ها</h3>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
@@ -793,13 +810,20 @@
                     <div class="card large" style="border-radius: 5%;">
                         <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box">
                             <div class="card-image">
+                                          
+                                {% if newcoursevoice.hazine != 0 %}
+                                <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newcoursevoice.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+
                                 <figure class="image">
                                     <img src="{{ newcoursevoice.pic.url }}" style="border-radius: 5%; height:180px"
                                         alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newcoursevoice.coursename }}</p>
+                                <strong>{{ newcoursevoice.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -819,7 +843,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین فایل ها</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-file"></span> &nbsp;&nbsp;فایل ها</h3>
         <div class="section">
 
             <!-- Developers -->
@@ -830,12 +854,19 @@
                         <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
+
+                                    {% if newcoursefile.hazine != 0 %}
+                                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newcoursefile.hazine }}<br> تومان </p>
+                                    {% else %}
+                                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
+    
                                     <img src="{{ newcoursefile.pic.url }}" style="border-radius: 5%; height:180px"
                                         alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newcoursefile.coursename }}</p>
+                                <strong>{{ newcoursefile.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -856,7 +887,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین کتاب ها</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-book"></span> &nbsp;&nbsp;کتاب ها</h3>
         <div class="section">
 
             <!-- Developers -->
@@ -867,12 +898,19 @@
                         <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
+                                    
+                                    {% if newcoursebook.hazine != 0 %}
+                                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newcoursebook.hazine }}<br> تومان </p>
+                                    {% else %}
+                                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
+    
                                     <img src="{{ newcoursebook.pic.url }}" style="border-radius: 5%; height:180px"
                                         alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newcoursebook.coursename }}</p>
+                                <strong>{{ newcoursebook.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -893,7 +931,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین نرم افزارها</h1>
+        <h3 class="title has-text-centered section-title"><span class="	fab fa-android"></span> &nbsp;&nbsp;نرم افزارها</h3>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcourseapplications %} {% for newcourseapplication in newcourseapplications %}
@@ -902,12 +940,19 @@
                         <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
+                                      
+                                    {% if newcourseapplication.hazine != 0 %}
+                                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newcourseapplication.hazine }}<br> تومان </p>
+                                    {% else %}
+                                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
+    
                                     <img src="{{ newcourseapplication.pic.url }}"
                                         style="border-radius: 5%; height:180px" alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newcourseapplication.coursename }}</p>
+                                <strong>{{ newcourseapplication.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -929,7 +974,7 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h1 class="title has-text-centered section-title">جدیدترین آزمون ها</h1>
+        <h3 class="title has-text-centered section-title"><span class="fas fa-edit"></span> &nbsp;&nbsp;آزمون ها</h3>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newexams %} {% for newexam in newexams %}
@@ -938,12 +983,19 @@
                         <a href="{% url 'tutorialexam' %}" class="box">
                             <div class="card-image">
                                 <figure class="image">
+                                    
+                                    {% if newexam.hazine != 0 %}
+                                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">{{ newexam.hazine }}<br> تومان </p>
+                                    {% else %}
+                                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
+    
                                     <img src="{{ newexam.pic.url }}" style="border-radius: 5%; height:180px"
                                         alt="Image">
                                 </figure>
                             </div>
                             <div class="card-content">
-                                <p class="title is-4 no-padding">{{ newexam.coursename }}</p>
+                                <strong>{{ newexam.coursename }}</strong>
 
                                 <div class="content">
                                     <div class="background-icon"><span class="icon-barcode"></span></div>
@@ -1011,7 +1063,7 @@
 
 
 <section class="section info-tiles has-background-light">
-    <h1 class="title has-text-centered section-title">آمار سایت</h1>
+    <h3 class="title has-text-centered section-title">آمار سایت</h3>
     <div class="tile is-ancestor has-text-centered">
         <div class="tile is-parent">
             <article class="tile is-child box">
