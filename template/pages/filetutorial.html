@@ -362,7 +362,7 @@
                 <div class="columns is-multiline">
                     {% for bettercoursefileshow in bettercoursefileshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showfiletutorial' bettercoursefileshow.id %}" class="box">
+                        <a href="{% url 'showfiletutorial' bettercoursefileshow.id %}" class="box" style="height: 320px;">
 
                             {% if bettercoursefileshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
@@ -437,7 +437,7 @@
                 <div class="columns is-multiline">
                     {% if newcoursefileshows %} {% for newcoursefileshow in newcoursefileshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showfiletutorial' newcoursefileshow.id %}" class="box">
+                        <a href="{% url 'showfiletutorial' newcoursefileshow.id %}" class="box" style="height: 320px;">
 
                             {% if newcoursefileshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">

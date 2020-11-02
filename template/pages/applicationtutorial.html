@@ -359,7 +359,7 @@
                 <div class="columns is-multiline">
                     {% for bettercourseapplicationshow in bettercourseapplicationshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showapplicationtutorial' bettercourseapplicationshow.id %}" class="box">
+                        <a href="{% url 'showapplicationtutorial' bettercourseapplicationshow.id %}" class="box" style="height: 320px;">
                             
                             {% if bettercourseapplicationshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
@@ -437,7 +437,7 @@
                 <div class="columns is-multiline">
                     {% if newcourseapplicationshows %} {% for newcourseapplicationshow in newcourseapplicationshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box">
+                        <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box" style="height: 320px;">
                             
                             {% if newcourseapplicationshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">

@@ -209,7 +209,7 @@
                         <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                             {% if bettercourseexamshow.id == passexamscourse.id %}
                             style="pointer-events: none; border: orangered 2px solid;" {% endif %} {% endfor %}
-                            {% endif %} href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box">
+                            {% endif %} href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box" style="height: 320px;">
 
                             {% if bettercourseexamshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
@@ -302,7 +302,7 @@
                         <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                             {% if newcourseexamshow.id == passexamscourse.id %}
                             style="pointer-events: none; border: orangered 3px solid;" {% endif %} {% endfor %}
-                            {% endif %} href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box">
+                            {% endif %} href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box" style="height: 320px;">
 
                             {% if newcourseexamshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
@@ -390,7 +390,7 @@
                 <div class="columns is-multiline">
                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'examresaultshow' passexamscourse.id %}" class="box">
+                        <a href="{% url 'examresaultshow' passexamscourse.id %}" class="box" style="height: 320px;">
                             <img src="{{ passexamscourse.pic.url }}">
                             <p class="has-text-centered"><strong> درس : {{ passexamscourse.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ passexamscourse.modaresinfkey }}</p>

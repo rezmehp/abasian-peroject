@@ -556,7 +556,7 @@
 
 <section class="section has-background-light">
     <div class="container ">
-        <h3 class="title has-text-centered section-title">آموزش های ما در یک قاب</h3>
+        <h3 class="title has-text-centered section-title" style=" color: yellowgreen;">آموزش های ما در یک قاب</h3>
         <div class="columns is-multiline box" style="background-color: lightslategray;">
             {% if maghtaTahsilishowsall %}
 
@@ -680,14 +680,14 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-bullhorn"></span> &nbsp;&nbsp; اخبار</h3>
+        <a   href="{% url 'news' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-bullhorn"></span> &nbsp;&nbsp; اخبار</h3></a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if  newnews %} {% for newnew in newnews %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'news' %}" class="box">
+                        <a href="{% url 'news' %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="{{ newnew.pic.url }}" style="border-radius: 5%; height:180px" alt="Image">
@@ -711,14 +711,14 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-chalkboard-teacher"></span> &nbsp;&nbsp;کلاس های آنلاین</h3>
+        <a   href="{% url 'classlinks' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-chalkboard-teacher"></span> &nbsp;&nbsp;کلاس های آنلاین</h3></a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if  newclassLinks %} {% for newclassLink in newclassLinks %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{{ newclassLink.link_url }}" class="box">
+                        <a href="{{ newclassLink.link_url }}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                     <img src="{{ newclassLink.link_pic.url }}" style="border-radius: 5%; height:180px"
@@ -754,14 +754,14 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-video"></span> &nbsp;&nbsp;ویدیوها</h3>
+        <a   href="{% url 'tutorialvideo' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-video"></span> &nbsp;&nbsp;ویدیوها</h3></a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursevideos %} {% for newcoursevideo in newcoursevideos %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box">
+                        <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                     
@@ -801,14 +801,14 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fas fa-volume-up"></span> &nbsp;&nbsp;صوت ها</h3>
+        <a   href="{% url 'tutorialvoice' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fas fa-volume-up"></span> &nbsp;&nbsp;صوت ها</h3></a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursevoices %} {% for newcoursevoice in newcoursevoices %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box">
+                        <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                           
                                 {% if newcoursevoice.hazine != 0 %}
@@ -843,15 +843,15 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-file"></span> &nbsp;&nbsp;فایل ها</h3>
+        <a   href="{% url 'tutorialfile' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-file"></span> &nbsp;&nbsp;فایل ها</h3></a>
         <div class="section">
 
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursefiles %} {% for newcoursefile in newcoursefiles %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box">
+                        <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
 
@@ -887,15 +887,15 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-book"></span> &nbsp;&nbsp;کتاب ها</h3>
+        <a   href="{% url 'tutorialbook' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-book"></span> &nbsp;&nbsp;کتاب ها</h3></a>
         <div class="section">
 
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcoursebooks %} {% for newcoursebook in newcoursebooks %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box">
+                        <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                     
@@ -931,13 +931,13 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="	fab fa-android"></span> &nbsp;&nbsp;نرم افزارها</h3>
+        <a   href="{% url 'tutorialapplication' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="	fab fa-android"></span> &nbsp;&nbsp;نرم افزارها</h3></a>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newcourseapplications %} {% for newcourseapplication in newcourseapplications %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box">
+                        <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                       
@@ -974,13 +974,13 @@
 
 <section class="section box has-background-light">
     <div class="container">
-        <h3 class="title has-text-centered section-title"><span class="fas fa-edit"></span> &nbsp;&nbsp;آزمون ها</h3>
+        <a href="{% url 'tutorialexam' %}"><h3 class="title has-text-centered section-title" style=" color: yellowgreen;"><span class="fas fa-edit"></span> &nbsp;&nbsp;آزمون ها</h3></a>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height: 1200px;">
                 {% if newexams %} {% for newexam in newexams %}
-                <div class="column is-one-third">
+                <div class="column is-3">
                     <div class="card large" style="border-radius: 5%;">
-                        <a href="{% url 'tutorialexam' %}" class="box">
+                        <a href="{% url 'tutorialexam' %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
                                     
@@ -1063,9 +1063,9 @@
 
 
 <section class="section info-tiles has-background-light">
-    <h3 class="title has-text-centered section-title">آمار سایت</h3>
+    <h3 class="title has-text-centered section-title" style=" color: yellowgreen;">آمار سایت</h3>
     <div class="tile is-ancestor has-text-centered">
-        <div class="tile is-parent">
+        <div class="tile is-parent" >
             <article class="tile is-child box">
                 <p class="title">{{ countvideos }}</p>
                 <p class="subtitle">ویدیو</p>
