@@ -219,7 +219,7 @@
                                 رایگان </p>
                             {% endif %}
 
-                            <img src="{{ bettercourseexamshow.pic.url }}">
+                            <img src="{{ bettercourseexamshow.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس :
                                     {{ bettercourseexamshow.coursename }}</strong><strong style="color: red;">
                                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
@@ -312,7 +312,7 @@
                                 رایگان </p>
                             {% endif %}
 
-                            <img src="{{ newcourseexamshow.pic.url }}">
+                            <img src="{{ newcourseexamshow.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس :
                                     {{ newcourseexamshow.coursename }}</strong><strong style="color: red;">
                                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
@@ -391,7 +391,7 @@
                     {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'examresaultshow' passexamscourse.id %}" class="box" style="height: 320px;">
-                            <img src="{{ passexamscourse.pic.url }}">
+                            <img src="{{ passexamscourse.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس : {{ passexamscourse.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ passexamscourse.modaresinfkey }}</p>
                             <p class="has-text-centered">{{ passexamscourse.saattadris }} ساعت آموزش</p>
