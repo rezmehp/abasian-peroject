@@ -132,133 +132,7 @@
 
 
 
-
-                <div class="container ">
-                    <h3 class="title has-text-centered section-title">آموزش های ما در یک قاب</h3>
-                    <div class="columns is-multiline box" style="background-color: lightslategray;">
-                        {% if maghtaTahsilishowsall %}
-
-                        {% for maghtaTahsilishowall in maghtaTahsilishowsall %}
-
-                        <div class="column is-3">
-                            <a class="box " href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:open" class="button">
-                                <span class="{{ maghtaTahsilishowall.logo }}"></span>
-                                &nbsp;&nbsp;{{ maghtaTahsilishowall.maghta }}
-                            </a>
-                        </div>
-                        <div id="reshte{{ maghtaTahsilishowall.id }}" class="modal">
-                            <div class="hero-body">
-                                <a href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:close">
-                                    <div class="modal-background"></div>
-                                    <div class="modal-content"
-                                        style="width: 90%; overflow-y: auto; overflow-x: hidden;">
-                                        <div class="columns is-multiline box" style="background-color: lightslategray;">
-                                            {% if reshteTahsilishowsall %}
-                                            {% for reshteTahsilishowall in reshteTahsilishowsall %}
-                                            {% if reshteTahsilishowall.maghtafkey.id == maghtaTahsilishowall.id %}
-                                            <div class="column is-3">
-                                                <a class="box" href="#course{{ reshteTahsilishowall.id }}"
-                                                    rel="modal:open" class="button">
-                                                    <span class="{{ reshteTahsilishowall.logo }}"></span>
-                                                    &nbsp;&nbsp;{{ reshteTahsilishowall.reshte }}
-                                                </a>
-                                            </div>
-                                            <div id="course{{ reshteTahsilishowall.id }}" class="modal">
-                                                <div class="hero-body">
-                                                    <a href="#course{{ reshteTahsilishowall.id }}" rel="modal:close">
-                                                        <div class="modal-background"></div>
-                                                        <div class="modal-content"
-                                                            style="width: 90%; overflow-y: auto; overflow-x: hidden;">
-                                                            <div class="columns is-multiline box"
-                                                                style="background-color: lightslategray;">
-                                                                {% if coursevideoshowsall %}
-                                                                {% for coursevideoshowall in coursevideoshowsall %}
-                                                                {% if coursevideoshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
-                                                                <div class="column is-4">
-                                                                    <a class="box"
-                                                                        href="{% url 'showvideotutorial' coursevideoshowall.id %}">
-                                                                        <span class="fas fa-video"></span> &nbsp;&nbsp;
-                                                                        <strong>{{ coursevideoshowall.coursename }}</strong>
-                                                                    </a>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% endfor %}
-                                                                {% endif %}
-                                                                {% if coursevoiceshowsall %}
-                                                                {% for coursevoiceshowall in coursevoiceshowsall %}
-                                                                {% if coursevoiceshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
-                                                                <div class="column is-4">
-                                                                    <a class="box"
-                                                                        href="{% url 'showvoicetutorial' coursevoiceshowall.id %}">
-                                                                        <span class="fas fas fa-volume-up"></span>
-                                                                        &nbsp;&nbsp;
-                                                                        <strong>{{ coursevoiceshowall.coursename }}</strong>
-                                                                    </a>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% endfor %}
-                                                                {% endif %}
-                                                                {% if coursefileshowsall %}
-                                                                {% for coursefileshowall in coursefileshowsall %}
-                                                                {% if coursefileshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
-                                                                <div class="column is-4">
-                                                                    <a class="box"
-                                                                        href="{% url 'showfiletutorial' coursefileshowall.id %}">
-                                                                        <span class="fas fa-file"></span> &nbsp;&nbsp;
-                                                                        <strong>{{ coursefileshowall.coursename }}</strong>
-                                                                    </a>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% endfor %}
-                                                                {% endif %}
-                                                                {% if coursebookshowsall %}
-                                                                {% for coursebookshowall in coursebookshowsall %}
-                                                                {% if coursebookshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
-                                                                <div class="column is-4">
-                                                                    <a class="box"
-                                                                        href="{% url 'showbooktutorial' coursebookshowall.id %}">
-                                                                        <span class="fas fa-book"></span> &nbsp;&nbsp;
-                                                                        <strong>{{ coursebookshowall.coursename }}</strong>
-                                                                    </a>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% endfor %}
-                                                                {% endif %}
-
-
-                                                                {% if courseapplicationshowsall %}
-                                                                {% for courseapplicationshowall in courseapplicationshowsall %}
-                                                                {% if courseapplicationshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
-                                                                <div class="column is-4">
-                                                                    <a class="box"
-                                                                        href="{% url 'showapplicationtutorial' courseapplicationshowall.id %}">
-                                                                        <span class="	fab fa-android"></span>
-                                                                        &nbsp;&nbsp;
-                                                                        <strong>{{ courseapplicationshowall.coursename }}</strong>
-                                                                    </a>
-                                                                </div>
-                                                                {% endif %}
-                                                                {% endfor %}
-                                                                {% endif %}
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            {% endif %}
-                                            {% endfor %}
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        {% endfor %}
-
-                        {% endif %}
-                    </div>
-                </div>
+                {% include '_partials/_ghabsearch.html' %}
 
 
 
@@ -334,7 +208,8 @@
                 <div class="columns is-multiline">
                     {% for bettercoursevoiceshow in bettercoursevoiceshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showvoicetutorial' bettercoursevoiceshow.id %}" class="box" style="height: 320px;">
+                        <a href="{% url 'showvoicetutorial' bettercoursevoiceshow.id %}" class="box"
+                            style="height: 320px;">
 
                             {% if bettercoursevoiceshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
@@ -411,7 +286,8 @@
                 <div class="columns is-multiline">
                     {% if newcoursevoiceshows %} {% for newcoursevoiceshow in newcoursevoiceshows %}
                     <div class="column is-one-quarter">
-                        <a href="{% url 'showvoicetutorial' newcoursevoiceshow.id %}" class="box" style="height: 320px;">
+                        <a href="{% url 'showvoicetutorial' newcoursevoiceshow.id %}" class="box"
+                            style="height: 320px;">
 
                             {% if newcoursevoiceshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">

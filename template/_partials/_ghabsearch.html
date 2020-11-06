@@ -1,0 +1,322 @@
+<section class="section has-background-light">
+    <div class="container ">
+        <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);">آموزش های ما در یک قاب</h3>
+        <div class="columns is-multiline box" style="background-color: lightslategray;">
+            {% if maghtaTahsilishowsall %}
+
+            {% for maghtaTahsilishowall in maghtaTahsilishowsall %}
+
+            <div class="column is-3">
+                <a class="box " href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:open" class="button">
+                    <span class="{{ maghtaTahsilishowall.logo }}"></span>
+                    &nbsp;&nbsp;{{ maghtaTahsilishowall.maghta }}
+                </a>
+            </div>
+            <div id="reshte{{ maghtaTahsilishowall.id }}" class="modal">
+                <div class="hero-body">
+                    <a href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:close">
+                        <div class="modal-background"></div>
+                        <div class="modal-content" style="width: 90%; overflow-y: auto; overflow-x: hidden;">
+                            <div class="columns is-multiline box" style="background-color: lightslategray;">
+                                {% if reshteTahsilishowsall %}
+                                {% for reshteTahsilishowall in reshteTahsilishowsall %}
+                                {% if reshteTahsilishowall.maghtafkey.id == maghtaTahsilishowall.id %}
+                                <div class="column is-3">
+                                    <a class="box" href="#course{{ reshteTahsilishowall.id }}" rel="modal:open"
+                                        class="button">
+                                        <span class="{{ reshteTahsilishowall.logo }}"></span>
+                                        &nbsp;&nbsp;{{ reshteTahsilishowall.reshte }}
+                                    </a>
+                                </div>
+                                <div id="course{{ reshteTahsilishowall.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#course{{ reshteTahsilishowall.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="modal-content"
+                                                style="width: 90%; overflow-y: auto; overflow-x: hidden;">
+                                                <div class="columns is-multiline box"
+                                                    style="background-color: lightslategray;">
+                                                    {% if coursevideoshowsall %}
+                                                    {% for coursevideoshowall in coursevideoshowsall %}
+                                                    {% if coursevideoshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
+                                                    <p>
+                                                    <div class="column is-12" style="background-color: lightslategray;">
+                                                        <p> </p>
+                                                    </div>
+                                                    <div class="column is-12">
+                                                        <a href="{% url 'showvideotutorial' coursevideoshowall.id %}"
+                                                            class="columns box">
+                                                            <div class="column is-one-quarter">
+                                                                <figure class="image">
+                                                                    <img style="max-height: 150px;"
+                                                                        src="{{ coursevideoshowall.pic.url }}">
+                                                                </figure>
+                                                            </div>
+                                                            <div class="column ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-vcentered">
+                                                                        <strong>
+                                                                            <span class="fas fa-video" style="color: rgb(201, 3, 108);"></span>  نام ویدیو :
+                                                                            {{ coursevideoshowall.coursename }}
+                                                                        </strong><br>
+                                                                        <strong>
+                                                                            استاد :
+                                                                            {{ coursevideoshowall.modaresinfkey }}
+                                                                        </strong><br>
+                                                                        {% if coursevideoshowall.hazine != 0 %}
+                                                                        <small>
+                                                                            هزینه : {{ coursevideoshowall.hazine }}
+                                                                            تومان
+                                                                        </small>
+                                                                        {% else %}
+                                                                        <small>
+                                                                            هزینه : رایگان
+                                                                        </small>
+                                                                        {% endif %}
+                                                                        <br>
+                                                                        {{ coursevideoshowall.saattadris }} ساعت
+                                                                        آموزش
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {% if coursevideoshowall.tizer_is_published == True %}
+                                                            <div class="column is-left ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-centered">
+                                                                        <video width="320" height="240"
+                                                                            controls="controls"
+                                                                            style="border-radius: 10px;">
+                                                                            <source src="{{ coursevideoshowall.tizer }}"
+                                                                                type="video/mp4" />
+                                                                            <source src="{{ coursevideoshowall.tizer }}"
+                                                                                type="video/ogg" />
+                                                                            Your browser does not support the video
+                                                                            tag.
+                                                                        </video>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                    </p>
+
+
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    {% if coursevoiceshowsall %}
+                                                    {% for coursevoiceshowall in coursevoiceshowsall %}
+                                                    {% if coursevoiceshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
+                                                    <p>
+                                                    <div class="column is-12" style="background-color: lightslategray;">
+                                                        <p> </p>
+                                                    </div>
+                                                    <div class="column is-12">
+                                                        <a href="{% url 'showvoicetutorial' coursevoiceshowall.id %}"
+                                                            class="columns box">
+                                                            <div class="column is-one-quarter">
+                                                                <figure class="image">
+                                                                    <img style="max-height: 150px;"
+                                                                        src="{{ coursevoiceshowall.pic.url }}">
+                                                                </figure>
+                                                            </div>
+                                                            <div class="column ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-vcentered">
+                                                                        <strong>
+                                                                            <span class="fas fa-volume-up" style="color: rgb(201, 3, 108);"></span>نام صوت :
+                                                                            {{ coursevoiceshowall.coursename }}
+                                                                        </strong><br>
+                                                                        <strong>
+                                                                            استاد :
+                                                                            {{ coursevoiceshowall.modaresinfkey }}
+                                                                        </strong><br>
+                                                                        {% if coursevoiceshowall.hazine != 0 %}
+                                                                        <small>
+                                                                            هزینه : {{ coursevoiceshowall.hazine }}
+                                                                            تومان
+                                                                        </small>
+                                                                        {% else %}
+                                                                        <small>
+                                                                            هزینه : رایگان
+                                                                        </small>
+                                                                        {% endif %}
+                                                                        <br>
+                                                                        {{ coursevoiceshowall.saattadris }} ساعت
+                                                                        آموزش
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    </p>
+
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    {% if coursefileshowsall %}
+                                                    {% for coursefileshowall in coursefileshowsall %}
+                                                    {% if coursefileshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
+                                                    <p>
+                                                    <div class="column is-12" style="background-color: lightslategray;">
+                                                        <p> </p>
+                                                    </div>
+                                                    <div class="column is-12">
+                                                        <a href="{% url 'showfiletutorial' coursefileshowall.id %}"
+                                                            class="columns box">
+                                                            <div class="column is-one-quarter">
+                                                                <figure class="image">
+                                                                    <img style="max-height: 150px;"
+                                                                        src="{{ coursefileshowall.pic.url }}">
+                                                                </figure>
+                                                            </div>
+                                                            <div class="column ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-vcentered">
+                                                                        <strong>
+                                                                            <span class="fas fa-file" style="color: rgb(201, 3, 108);"></span> نام فایل :
+                                                                            {{ coursefileshowall.coursename }}
+                                                                        </strong><br>
+                                                                        <strong>
+                                                                            تولید کننده :
+                                                                            {{ coursefileshowall.modaresinfkey }}
+                                                                        </strong><br>
+                                                                        {% if coursefileshowall.hazine != 0 %}
+                                                                        <small>
+                                                                            هزینه : {{ coursefileshowall.hazine }}
+                                                                            تومان
+                                                                        </small>
+                                                                        {% else %}
+                                                                        <small>
+                                                                            هزینه : رایگان
+                                                                        </small>
+                                                                        {% endif %}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    </p>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                    {% if coursebookshowsall %}
+                                                    {% for coursebookshowall in coursebookshowsall %}
+                                                    {% if coursebookshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
+                                                    <p>
+                                                    <div class="column is-12" style="background-color: lightslategray;">
+                                                        <p> </p>
+                                                    </div>
+                                                    <div class="column is-12">
+                                                        <a href="{% url 'showbooktutorial' coursebookshowall.id %}"
+                                                            class="columns box">
+                                                            <div class="column is-one-quarter">
+                                                                <figure class="image">
+                                                                    <img style="max-height: 150px;"
+                                                                        src="{{ coursebookshowall.pic.url }}">
+                                                                </figure>
+                                                            </div>
+                                                            <div class="column ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-vcentered">
+                                                                        <strong>
+                                                                            <span class="fas fa-book" style="color: rgb(201, 3, 108);"></span> نام کتاب :
+                                                                            {{ coursebookshowall.coursename }}
+                                                                        </strong><br>
+                                                                        <strong>
+                                                                            نویسنده :
+                                                                            {{ coursebookshowall.modaresinfkey }}
+                                                                        </strong><br>
+                                                                        {% if coursebookshowall.hazine != 0 %}
+                                                                        <small>
+                                                                            هزینه : {{ coursebookshowall.hazine }}
+                                                                            تومان
+                                                                        </small>
+                                                                        {% else %}
+                                                                        <small>
+                                                                            هزینه : رایگان
+                                                                        </small>
+                                                                        {% endif %}
+                                                                        <br>
+                                                                        {{ coursebookshowall.saattadris }}
+                                                                        صفحه
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    </p>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+
+
+                                                    {% if courseapplicationshowsall %}
+                                                    {% for courseapplicationshowall in courseapplicationshowsall %}
+                                                    {% if courseapplicationshowall.reshteTahsilifkey.id == reshteTahsilishowall.id %}
+                                                    <p>
+                                                    <div class="column is-12" style="background-color: lightslategray;">
+                                                        <p> </p>
+                                                    </div>
+                                                    <div class="column is-12">
+                                                        <a href="{% url 'showapplicationtutorial' courseapplicationshowall.id %}"
+                                                            class="columns box">
+                                                            <div class="column is-one-quarter">
+                                                                <figure class="image">
+                                                                    <img style="max-height: 150px;"
+                                                                        src="{{ courseapplicationshowall.pic.url }}">
+                                                                </figure>
+                                                            </div>
+                                                            <div class="column ">
+                                                                <div class="content has-text-right">
+                                                                    <p class="has-text-dark is-vcentered">
+                                                                        <strong>
+                                                                            <span class="fab fa-android" style="color: rgb(201, 3, 108);"></span> نام نرم افزار :
+                                                                            {{ courseapplicationshowall.coursename }}
+                                                                        </strong><br>
+                                                                        <strong>
+                                                                            تولید کننده :
+                                                                            {{ courseapplicationshowall.modaresinfkey }}
+                                                                        </strong><br>
+                                                                        {% if courseapplicationshowall.hazine != 0 %}
+                                                                        <small>
+                                                                            هزینه :
+                                                                            {{ courseapplicationshowall.hazine }}
+                                                                            تومان
+                                                                        </small>
+                                                                        {% else %}
+                                                                        <small>
+                                                                            هزینه : رایگان
+                                                                        </small>
+                                                                        {% endif %}
+
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    </p>
+                                                    {% endif %}
+                                                    {% endfor %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+            {% endif %}
+        </div>
+    </div>
+</section>

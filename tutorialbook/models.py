@@ -6,6 +6,7 @@ from ckeditor.fields import RichTextField
 class tutorialbookAdmin(models.Model):
        
     title_page = models.CharField(max_length=500,verbose_name="تیتر صفحه")
+    icon =models.ImageField(upload_to='tutorialbook/photos/%y/%m/%d/',verbose_name="عکس آیکون")
     pic = models.ImageField(upload_to='tutorialbook/photos/%y/%m/%d/',verbose_name="عکس بالای صفحه")
     title_search = models.CharField(max_length=500,verbose_name="تیتر قسمت سرچ")
     text_click =  models.CharField(max_length=500,verbose_name="تیتر دکمه سرچ")
