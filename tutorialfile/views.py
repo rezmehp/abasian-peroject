@@ -185,6 +185,8 @@ def showfiletutorial(request, coursefile2_id):
     coursefile = get_object_or_404(coursefile2, pk=coursefile2_id)
     buyss = buys.objects.filter(courseid=coursefile2_id,coursetype="3",userid=request.user.id)
     filess = files.objects.filter(coursenamefkey=coursefile2_id)
+    thiscourse = coursefile2.objects.filter(id=coursefile2_id).values_list('reshteTahsilifkey', flat=True)
+    otherthiss = coursefile2.objects.filter(reshteTahsilifkey=thiscourse[0])
     context = {
         'footerAdmins': footerAdmins,
         'coursefile': coursefile,

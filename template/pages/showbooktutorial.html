@@ -56,8 +56,8 @@
 
                             {% if buyss %}
                             <!-- خرید انجام شده باشد -->
-                            <nav class="panel">
-                                    <p class="panel-heading">
+                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
+                                <p class="panel-heading" style="background-color: cyan;">
                                         لیست کتاب های این مبحث
                                     </p>
                                     {% if bookss %} {% for books in bookss %}
@@ -119,8 +119,8 @@
 
 
                             {% else %}
-                            <nav class="panel">
-                                <p class="panel-heading">
+                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
+                                <p class="panel-heading" style="background-color: cyan;">
                                     لیست کتاب های این مبحث
                                 </p>
                                 {% if bookss %} {% for books in bookss %}
@@ -152,8 +152,8 @@
                                 <input type="text" name="amount" value="{{ coursebook.hazine }}" hidden />هزینه : {{ coursebook.hazine }} تومان
                             </a>
                             {% else %}
-                            <nav class="panel">
-                                <p class="panel-heading">
+                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
+                                <p class="panel-heading" style="background-color: cyan;">
                                     لیست کتاب های این مبحث
                                 </p>
                                 {% if bookss %} {% for books in bookss %}
@@ -181,6 +181,44 @@
                     </div>
                 </div>
             </section> 
+
+            
+
+
+
+<hr><hr>
+
+
+<section class="section " style="background-color:snow;">
+    <h3 class="title has-text-centered has-text-dark">کتاب های مرتبط</h3>
+    <div class="columns is-multiline">
+        {% if otherthiss %} {% for otherthis in otherthiss %}
+        {% if otherthis.id != coursebook.id %}
+        <div class="column is-one-quarter">
+            <a href="{% url 'showbooktutorial' otherthis.id %}" class="box" style="height: 320px;">
+                {% if otherthis.hazine != 0 %}
+                <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                    {{ otherthis.hazine }}<br> تومان </p>
+                {% else %}
+                <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
+                </p>
+                {% endif %}
+                <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
+                <p class="has-text-centered"><strong> درس : {{ otherthis.coursename }}</strong>
+                </p>
+                <p class="has-text-centered">نویسنده : {{ otherthis.modaresinfkey }}</p>
+                <p class="has-text-centered">{{ otherthis.saattadris }} صفحه</p>
+            </a>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+
+
+
         </div>
     </div>
 </div>

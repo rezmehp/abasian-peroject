@@ -193,12 +193,15 @@ def showapplicationtutorial(request, courseapplication2_id):
     buyss = buys.objects.filter(courseid=courseapplication2_id,coursetype="5",userid=request.user.id)
     applicationss = applications.objects.filter(coursenamefkey=courseapplication2_id)
     footerAdmins = footerAdmin.objects.all()
+    thiscourse = courseapplication2.objects.filter(id=courseapplication2_id).values_list('reshteTahsilifkey', flat=True)
+    otherthiss = courseapplication2.objects.filter(reshteTahsilifkey=thiscourse[0])
 
     context = {
         'courseapplication': courseapplication,
         'applicationss': applicationss,
         'footerAdmins':footerAdmins,
         'buyss':buyss,
+        'otherthiss':otherthiss,
     }
     return render(request, 'pages/showapplicationtutorial.html', context)
 

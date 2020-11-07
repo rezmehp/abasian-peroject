@@ -196,11 +196,14 @@ def showbooktutorial(request, coursebook2_id):
     coursebook = get_object_or_404(coursebook2, pk=coursebook2_id)
     buyss = buys.objects.filter(courseid=coursebook2_id,coursetype="4",userid=request.user.id)
     bookss = books.objects.filter(coursenamefkey=coursebook2_id)
+    thiscourse = coursebook2.objects.filter(id=coursebook2_id).values_list('reshteTahsilifkey', flat=True)
+    otherthiss = coursebook2.objects.filter(reshteTahsilifkey=thiscourse[0])
     context = {
         'footerAdmins': footerAdmins,
         'coursebook': coursebook,
         'bookss': bookss,
         'buyss':buyss,
+        'otherthiss':otherthiss,
     }
     return render(request, 'pages/showbooktutorial.html', context)
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tutorialvideoAdmin,coursevideo2 , videos
+from .models import tutorialvideoAdmin,coursevideo2 , videos ,videopics
 
 
 class tutorialvideoAdminshow(admin.ModelAdmin):
@@ -22,3 +22,11 @@ class videosshow(admin.ModelAdmin):
     search_fields = ('videoname',)
     list_per_page = 10
 admin.site.register(videos, videosshow)
+
+
+class videopicsshow(admin.ModelAdmin):
+    list_display = ('videopicname','coursenamefkey','videopiclink_is_published','videopicfile_is_published',)
+    list_filter = ('coursenamefkey',)
+    search_fields = ('videopicname',)
+    list_per_page = 10
+admin.site.register(videopics, videopicsshow)

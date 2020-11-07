@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialvoiceAdmin, coursevoice2, voices
+from .models import tutorialvoiceAdmin, coursevoice2, voices,voicepics
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -191,16 +191,23 @@ def tutorialvoice(request):
     return render(request, 'pages/voicetutorial.html', context)
 
 
+
+
 def showvoicetutorial(request, coursevoice2_id):
     footerAdmins = footerAdmin.objects.all()
     coursevoice = get_object_or_404(coursevoice2, pk=coursevoice2_id)
     buyss = buys.objects.filter(courseid=coursevoice2_id,coursetype="2",userid=request.user.id)
+    voicepicss = voicepics.objects.filter(coursenamefkey=coursevoice2_id)
     voicess = voices.objects.filter(coursenamefkey=coursevoice2_id)
+    thiscourse = coursevoice2.objects.filter(id=coursevoice2_id).values_list('reshteTahsilifkey', flat=True)
+    otherthiss = coursevoice2.objects.filter(reshteTahsilifkey=thiscourse[0])
     context = {
         'footerAdmins': footerAdmins,
         'coursevoice': coursevoice,
         'voicess': voicess,
+        'voicepicss': voicepicss,
         'buyss':buyss,
+        'otherthiss':otherthiss,
     }
     return render(request, 'pages/showvoicetutorial.html', context)
 
