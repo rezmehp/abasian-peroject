@@ -52,3 +52,22 @@ class files(models.Model):
         return self.filename
     class Meta:
         verbose_name_plural="فایل ها"
+
+
+
+        
+
+class filepics(models.Model):
+    
+    coursenamefkey = models.ForeignKey(coursefile2, on_delete=models.DO_NOTHING,verbose_name="نام درس")
+    filepicname = models.CharField(max_length=1000,verbose_name="نام عکس")
+    filepiclink_is_published = models.BooleanField(default=True,verbose_name="پابلیش لینک عکس")
+    filepiclink = models.CharField(max_length=1000 ,blank=True,verbose_name="لینک عکس")
+    filepicfile_is_published = models.BooleanField(default=True,verbose_name="پابلیش فایل عکس")
+    filepicfile = models.FileField(upload_to='coursefile/files/%y/%m/%d/',blank=True,verbose_name="فایل عکس")
+    
+    
+    def __str__(self):
+        return self.filepicname
+    class Meta:
+        verbose_name_plural="عکس های محصول"

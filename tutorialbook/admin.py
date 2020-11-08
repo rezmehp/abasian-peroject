@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tutorialbookAdmin,coursebook2 , books
+from .models import tutorialbookAdmin,coursebook2 , books,bookpics
 
 
 class tutorialbookAdminshow(admin.ModelAdmin):
@@ -21,3 +21,12 @@ class booksshow(admin.ModelAdmin):
     search_fields = ('bookname',)
     list_per_page = 10
 admin.site.register(books, booksshow)
+
+
+
+class bookpicsshow(admin.ModelAdmin):
+    list_display = ('bookpicname','coursenamefkey','bookpiclink_is_published','bookpicfile_is_published',)
+    list_filter = ('coursenamefkey',)
+    search_fields = ('bookpicname',)
+    list_per_page = 10
+admin.site.register(bookpics, bookpicsshow)

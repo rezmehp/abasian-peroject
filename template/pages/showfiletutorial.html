@@ -11,7 +11,7 @@
 </script>
 
 
-<div class="hero is-fullheight style="background-color:snow;">
+<div class="hero is-fullheight style=" background-color:snow;">
     <div class="hero-body">
         <div class="container">
             <section class="section " style="background-color:snow;">
@@ -25,14 +25,101 @@
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام درس : {{ coursefile.coursename }}
-                                    </h3><br>
-                                    <h4 class="has-text-dark">مدرس : {{ coursefile.modaresinfkey }}</h4><br>                                   
-                                    {% if coursefile.hazine != 0 %}
-                                    <small class="has-text-dark">هزینه :{{ coursefile.hazine }} تومان </small>
-                                    {% endif %}
-                                    <br>
-                                    <h5 class="has-text-dark">{{ coursefile.tozihat|safe }}</h5>
+                                <h3 class="has-text-dark has-text-centered">نام درس : {{ coursefile.coursename }}
+                                </h3><br>
+                                <h4 class="has-text-dark">مدرس : {{ coursefile.modaresinfkey }}</h4><br>
+                                {% if coursefile.hazine != 0 %}
+                                <small class="has-text-dark">هزینه :{{ coursefile.hazine }} تومان </small>
+                                {% endif %}
+                                <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="container">
+                        {% if filepicss %}
+                        <nav class="panel">
+                            <p class="panel-heading">
+                                عکس های محصول
+                            </p>
+                            <div class="columns is-multiline">
+                                {% for filepics in filepicss %}
+                                {% if filepics.filepiclink_is_published == True %}
+
+                                <div class="column  is-2">
+                                    <a href="#ex1{{ filepics.id }}" rel="modal:open">
+                                        <figure class="image">
+                                            <img class="is-centered has-text-centered"
+                                                style="height: 180px; width: 180px;" alt="{{ filepics.filepicname }}"
+                                                src="{{ filepics.filepiclink }}">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div id="ex1{{ filepics.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#ex1{{ filepics.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="slideshow-container">
+                                                <div id="numbertext" class="numbertext"></div>
+                                                <img style="height:600px" alt="{{ filepics.filepicname }}"
+                                                    src="{{ filepics.filepiclink }}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if filepics.filepicfile_is_published == True %}
+                                <div class="column  is-2">
+                                    <a href="#ex2{{ filepics.id }}" rel="modal:open">
+                                        <figure class="image">
+                                            <img class="is-centered has-text-centered"
+                                                style="height: 180px; width: 180px;" alt="{{ filepics.filepicname }}"
+                                                src="{{ filepics.filepicfile.url }}">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div id="ex2{{ filepics.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#ex1{{ filepics.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="slideshow-container">
+                                                <div id="numbertext" class="numbertext"></div>
+                                                <img style="height:600px" alt="{{ filepics.filepicname }}"
+                                                    src="{{ filepics.filepicfile.url }}">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </nav>
+                        <hr>
+                        <hr>
+                        {% endif %}
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                <h5 class="has-text-dark">{{ coursefile.tozihat|safe }}</h5>
                                 </p>
                             </div>
 
@@ -44,171 +131,179 @@
                 <div class="columns is-multiline">
                     <div class="column">
                         {% if user.is_authenticated %}
-                            {% if coursefile.hazine != 0 %}
+                        {% if coursefile.hazine != 0 %}
 
 
 
-                            {% if buyss %}
-                            <!-- خرید انجام شده باشد -->
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                        لیست فایل های این مبحث
-                                    </p>
-                                    {% if filess %} {% for files in filess %}
-                                    {% if files.filelink_is_published == True %}
-                                    <a href="{{ files.filelink }}" class="panel-block">
-                                        <span class="panel-icon">
-                                            <i class="fas fa-book" aria-hidden="true"></i>
-                                        </span>
-                                        {{ files.filename }}
-                                    </a>
-                                    {% endif %}
-                                    {% if files.filefile_is_published == True %}
-                                    <a href="{{ files.filefile.url }}" class="panel-block">
-                                        <span class="panel-icon">
-                                            <i class="fas fa-book" aria-hidden="true"></i>
-                                        </span>
-                                        {{ files.filename }} (لینک مستقیم)
-                                    </a>
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% endif %}
-                            </nav>                       
-                            {% else %}
-                            <!-- وگرنه هزینه باید بپردازد -->
-                            <form action="{% url 'request' %}" method="POST">
-                                {% csrf_token %}
-                                    <div class="panel" style="width: 100%;">
-                                        <p class="panel-heading">
-                                            برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
-                                            <br><br>
-                                            هزینه : {{ coursefile.hazine }} تومان
-                                            <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                            <input type="text" name="username" value="{{ user.username }}" hidden />
-                                            <input type="number" name="courseid" value="{{ coursefile.id }}" hidden />
-                                            <input type="text" name="coursename" value="{{ coursefile.coursename }}" hidden />
-                                            <input type="text" name="coursetype" value="3" hidden />
-                                            <input type="text" name="description" value="  فایل {{ coursefile.coursename }} با آیدی {{ coursefile.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />
-                                            <p class="control is-expanded  has-icons-right">
-                                                <input class="input" type="email" name="email" placeholder="ایمیل" value="{{ user.email }}" required />
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-envelope"></i>
-                                                </span>
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </p>
-                                            <p class="control is-expanded has-icons-right">
-                                                <input class="input" type="number" min="0" max="9999999999999" name="mobile" placeholder="تلفن همراه" required/>
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-phone"></i>
-                                                </span>
-                                            </p>
-                                        </p>
-                                        <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
-                                    </div>
-                            </form>
-                            {% endif %}
-
-
-
-                            {% else %}
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                    لیست فایل های این مبحث
-                                </p>
-                                {% if filess %} {% for files in filess %}
-                                {% if files.filelink_is_published == True %}
-                                <a href="{{ files.filelink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ files.filename }}
-                                </a>
-                                {% endif %}
-                                {% if files.filefile_is_published == True %}
-                                <a href="{{ files.filefile.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ files.filename }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
-                            {% endif %}
-                        {% else %}
-                            {% if coursefile.hazine != 0 %}
-                            <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
-                                برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید 
-                                <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک کنید</strong><br><br>
-                                <input type="text" name="amount" value="{{ coursefile.hazine }}" hidden />هزینه : {{ coursefile.hazine }} تومان
+                        {% if buyss %}
+                        <!-- خرید انجام شده باشد -->
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if filess %} {% for files in filess %}
+                            {% if files.filelink_is_published == True %}
+                            <a href="{{ files.filelink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }}
                             </a>
-                            {% else %}
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                    لیست فایل های این مبحث
-                                </p>
-                                {% if filess %} {% for files in filess %}
-                                {% if files.filelink_is_published == True %}
-                                <a href="{{ files.filelink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ files.filename }}
-                                </a>
-                                {% endif %}
-                                {% if files.filefile_is_published == True %}
-                                <a href="{{ files.filefile.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ files.filename }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
                             {% endif %}
+                            {% if files.filefile_is_published == True %}
+                            <a href="{{ files.filefile.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% else %}
+                        <!-- وگرنه هزینه باید بپردازد -->
+                        <form action="{% url 'request' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="panel" style="width: 100%;">
+                                <p class="panel-heading">
+                                    برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
+                                    <br><br>
+                                    هزینه : {{ coursefile.hazine }} تومان
+                                    <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                    <input type="text" name="username" value="{{ user.username }}" hidden />
+                                    <input type="number" name="courseid" value="{{ coursefile.id }}" hidden />
+                                    <input type="text" name="coursename" value="{{ coursefile.coursename }}" hidden />
+                                    <input type="text" name="coursetype" value="3" hidden />
+                                    <input type="text" name="description"
+                                        value="  فایل {{ coursefile.coursename }} با آیدی {{ coursefile.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
+                                        hidden />
+                                <p class="control is-expanded  has-icons-right">
+                                    <input class="input" type="email" name="email" placeholder="ایمیل"
+                                        value="{{ user.email }}" required />
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </p>
+                                <p class="control is-expanded has-icons-right">
+                                    <input class="input" type="number" min="0" max="9999999999999" name="mobile"
+                                        placeholder="تلفن همراه" required />
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-phone"></i>
+                                    </span>
+                                </p>
+                                </p>
+                                <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
+                            </div>
+                        </form>
+                        {% endif %}
+
+
+
+                        {% else %}
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if filess %} {% for files in filess %}
+                            {% if files.filelink_is_published == True %}
+                            <a href="{{ files.filelink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }}
+                            </a>
+                            {% endif %}
+                            {% if files.filefile_is_published == True %}
+                            <a href="{{ files.filefile.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% endif %}
+                        {% else %}
+                        {% if coursefile.hazine != 0 %}
+                        <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
+                            برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید
+                            <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
+                                کنید</strong><br><br>
+                            <input type="text" name="amount" value="{{ coursefile.hazine }}" hidden />هزینه :
+                            {{ coursefile.hazine }} تومان
+                        </a>
+                        {% else %}
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if filess %} {% for files in filess %}
+                            {% if files.filelink_is_published == True %}
+                            <a href="{{ files.filelink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }}
+                            </a>
+                            {% endif %}
+                            {% if files.filefile_is_published == True %}
+                            <a href="{{ files.filefile.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ files.filename }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% endif %}
                         {% endif %}
                     </div>
                 </div>
-            </section>  
-
-            
+            </section>
 
 
 
-<hr><hr>
 
 
-<section class="section " style="background-color:snow;">
-    <h3 class="title has-text-centered has-text-dark">فایل های مرتبط</h3>
-    <div class="columns is-multiline">
-        {% if otherthiss %} {% for otherthis in otherthiss %}
-        {% if otherthis.id != coursefile.id %}
-        <div class="column is-one-quarter">
-            <a href="{% url 'showfiletutorial' otherthis.id %}" class="box" style="height: 320px;">
-                {% if otherthis.hazine != 0 %}
-                <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
-                    {{ otherthis.hazine }}<br> تومان </p>
-                {% else %}
-                <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
-                </p>
-                {% endif %}
-                <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
-                <p class="has-text-centered"><strong> نام فایل : {{ otherthis.coursename }}</strong>
-                </p>
-                <p class="has-text-centered">تولید کننده : {{ otherthis.modaresinfkey }}</p>
+            <hr>
+            <hr>
 
-            </a>
-        </div>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-    </div>
-</section>
+
+            <section class="section " style="background-color:snow;">
+                <h3 class="title has-text-centered has-text-dark">فایل های مرتبط</h3>
+                <div class="columns is-multiline">
+                    {% if otherthiss %} {% for otherthis in otherthiss %}
+                    {% if otherthis.id != coursefile.id %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showfiletutorial' otherthis.id %}" class="box" style="height: 320px;">
+                            {% if otherthis.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ otherthis.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان
+                            </p>
+                            {% endif %}
+                            <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
+                            <p class="has-text-centered"><strong> نام فایل : {{ otherthis.coursename }}</strong>
+                            </p>
+                            <p class="has-text-centered">تولید کننده : {{ otherthis.modaresinfkey }}</p>
+
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+                </div>
+            </section>
 
 
         </div>

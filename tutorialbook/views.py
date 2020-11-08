@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialbookAdmin, coursebook2, books
+from .models import tutorialbookAdmin, coursebook2, books,bookpics
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -196,6 +196,7 @@ def showbooktutorial(request, coursebook2_id):
     coursebook = get_object_or_404(coursebook2, pk=coursebook2_id)
     buyss = buys.objects.filter(courseid=coursebook2_id,coursetype="4",userid=request.user.id)
     bookss = books.objects.filter(coursenamefkey=coursebook2_id)
+    bookpicss = bookpics.objects.filter(coursenamefkey=coursebook2_id)
     thiscourse = coursebook2.objects.filter(id=coursebook2_id).values_list('reshteTahsilifkey', flat=True)
     otherthiss = coursebook2.objects.filter(reshteTahsilifkey=thiscourse[0])
     context = {

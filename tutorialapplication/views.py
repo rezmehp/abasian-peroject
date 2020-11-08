@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialapplicationAdmin, courseapplication2, applications
+from .models import tutorialapplicationAdmin, courseapplication2, applications,applicationpics
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -192,6 +192,7 @@ def showapplicationtutorial(request, courseapplication2_id):
     courseapplication = get_object_or_404(courseapplication2, pk=courseapplication2_id)
     buyss = buys.objects.filter(courseid=courseapplication2_id,coursetype="5",userid=request.user.id)
     applicationss = applications.objects.filter(coursenamefkey=courseapplication2_id)
+    applicationpicss = applicationpics.objects.filter(coursenamefkey=courseapplication2_id)
     footerAdmins = footerAdmin.objects.all()
     thiscourse = courseapplication2.objects.filter(id=courseapplication2_id).values_list('reshteTahsilifkey', flat=True)
     otherthiss = courseapplication2.objects.filter(reshteTahsilifkey=thiscourse[0])

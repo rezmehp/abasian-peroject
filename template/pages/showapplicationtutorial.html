@@ -25,14 +25,93 @@
                         <div class="column">
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
-                                    <h3 class="has-text-dark has-text-centered">نام فایل : {{ courseapplication.coursename }}
-                                    </h3><br>
-                                    <h4 class="has-text-dark">تولید کننده : {{ courseapplication.modaresinfkey }}</h4><br>
-                                    {% if courseapplication.hazine != 0 %}
-                                    <small class="has-text-dark">هزینه :{{ courseapplication.hazine }} تومان </small>
-                                    {% endif %}
-                                    <br>
-                                    <h5 class="has-text-dark">{{ courseapplication.tozihat|safe }}</h5>
+                                <h3 class="has-text-dark has-text-centered">نام فایل :
+                                    {{ courseapplication.coursename }}
+                                </h3><br>
+                                <h4 class="has-text-dark">تولید کننده : {{ courseapplication.modaresinfkey }}</h4><br>
+                                {% if courseapplication.hazine != 0 %}
+                                <small class="has-text-dark">هزینه :{{ courseapplication.hazine }} تومان </small>
+                                {% endif %}
+                                <br>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
+
+
+                <div class="container">
+                    {% if applicationpicss %}
+                    <nav class="panel" >
+                        <p class="panel-heading">
+                            عکس های محصول
+                        </p>
+                       <div class="columns is-multiline" >
+                        {% for applicationpics in applicationpicss %}
+                        {% if applicationpics.applicationpiclink_is_published == True %}
+
+                        <div class="column  is-2"  >
+                            <a href="#ex1{{ applicationpics.id }}" rel="modal:open"> 
+                                <figure class="image">
+                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpiclink }}">
+                                </figure>
+                            </a> 
+                        </div>
+                        <div id="ex1{{ applicationpics.id }}" class="modal">
+                            <div class="hero-body">
+                                <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
+                                    <div class="modal-background"></div>
+                                    <div class="slideshow-container">
+                                        <div id="numbertext" class="numbertext"></div>
+                                        <img style="height:600px" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpiclink }}">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if applicationpics.applicationpicfile_is_published == True %}
+                        <div class="column  is-2" >
+                            <a href="#ex2{{ applicationpics.id }}" rel="modal:open"> 
+                                <figure class="image">
+                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpicfile.url }}">
+                                </figure>
+                            </a> 
+                        </div>
+                        <div id="ex2{{ applicationpics.id }}" class="modal">
+                            <div class="hero-body">
+                                <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
+                                    <div class="modal-background"></div>
+                                    <div class="slideshow-container">
+                                        <div id="numbertext" class="numbertext"></div>
+                                        <img style="height:600px" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpicfile.url }}">
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    </nav>
+                    <hr><hr>
+                    {% endif %}
+                </div>
+
+
+
+
+
+
+
+                <div class="container ">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="content has-text-right">
+                                <p class="has-text-dark is-centered">
+                                <h5 class="has-text-dark">{{ courseapplication.tozihat|safe }}</h5>
                                 </p>
                             </div>
 
@@ -44,144 +123,152 @@
                 <div class="columns is-multiline">
                     <div class="column">
                         {% if user.is_authenticated %}
-                            {% if courseapplication.hazine != 0 %}
+                        {% if courseapplication.hazine != 0 %}
 
 
 
-                            {% if buyss %}
-                            <!-- خرید انجام شده باشد -->
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                        لیست فایل های این مبحث
-                                    </p>
-                                    {% if applicationss %} {% for applications in applicationss %}
-                                    {% if applications.applicationlink_is_published == True %}
-                                    <a href="{{ applications.applicationlink }}" class="panel-block">
-                                        <span class="panel-icon">
-                                            <i class="fas fa-book" aria-hidden="true"></i>
-                                        </span>
-                                        {{ applications.applicationname }}
-                                    </a>
-                                    {% endif %}
-                                    {% if applications.applicationapplication_is_published == True %}
-                                    <a href="{{ applications.applicationapplication.url }}" class="panel-block">
-                                        <span class="panel-icon">
-                                            <i class="fas fa-book" aria-hidden="true"></i>
-                                        </span>
-                                        {{ applications.applicationname }} (لینک مستقیم)
-                                    </a>
-                                    {% endif %}
-                                    {% endfor %}
-                                    {% endif %}
-                            </nav>                       
-                            {% else %}
-                            <!-- وگرنه هزینه باید بپردازد -->
-                            <form action="{% url 'request' %}" method="POST">
-                                {% csrf_token %}
-                                    <div class="panel" style="width: 100%;">
-                                        <p class="panel-heading">
-                                            برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
-                                            <br><br>
-                                            هزینه : {{ courseapplication.hazine }} تومان
-                                            <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                            <input type="text" name="username" value="{{ user.username }}" hidden />
-                                            <input type="number" name="courseid" value="{{ courseapplication.id }}" hidden />
-                                            <input type="text" name="coursename" value="{{ courseapplication.coursename }}" hidden />
-                                            <input type="text" name="coursetype" value="5" hidden />
-                                            <input type="text" name="description" value="  نرم افزار {{ courseapplication.coursename }} با آیدی {{ courseapplication.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />                                           
-                                            <p class="control is-expanded  has-icons-right">
-                                                <input class="input" type="email" name="email" placeholder="ایمیل" value="{{ user.email }}" required />
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-envelope"></i>
-                                                </span>
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                            </p>
-                                            <p class="control is-expanded has-icons-right">
-                                                <input class="input" type="number" min="0" max="9999999999999" name="mobile" placeholder="تلفن همراه" required/>
-                                                <span class="icon is-small is-right">
-                                                    <i class="fas fa-phone"></i>
-                                                </span>
-                                            </p>
-                                        </p>
-                                        <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
-                                    </div>
-                            </form>
-                            {% endif %}
-
-
-
-                            {% else %}
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                    لیست فایل های این مبحث
-                                </p>
-                                {% if applicationss %} {% for applications in applicationss %}
-                                {% if applications.applicationlink_is_published == True %}
-                                <a href="{{ applications.applicationlink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ applications.applicationname }}
-                                </a>
-                                {% endif %}
-                                {% if applications.applicationapplication_is_published == True %}
-                                <a href="{{ applications.applicationapplication.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ applications.applicationname }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
-                            {% endif %}
-                        {% else %}
-                            {% if courseapplication.hazine != 0 %}
-                            <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
-                                برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید 
-                                <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک کنید</strong><br><br>
-                                <input type="text" name="amount" value="{{ courseapplication.hazine }}" hidden />هزینه : {{ courseapplication.hazine }} تومان
+                        {% if buyss %}
+                        <!-- خرید انجام شده باشد -->
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if applicationss %} {% for applications in applicationss %}
+                            {% if applications.applicationlink_is_published == True %}
+                            <a href="{{ applications.applicationlink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }}
                             </a>
-                            {% else %}
-                            <nav class="panel"   style="background-color: rgb(255, 198, 227);">
-                                <p class="panel-heading" style="background-color: cyan;">
-                                    لیست فایل های این مبحث
-                                </p>
-                                {% if applicationss %} {% for applications in applicationss %}
-                                {% if applications.applicationlink_is_published == True %}
-                                <a href="{{ applications.applicationlink }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ applications.applicationname }}
-                                </a>
-                                {% endif %}
-                                {% if applications.applicationapplication_is_published == True %}
-                                <a href="{{ applications.applicationapplication.url }}" class="panel-block">
-                                    <span class="panel-icon">
-                                        <i class="fas fa-book" aria-hidden="true"></i>
-                                    </span>
-                                    {{ applications.applicationname }} (لینک مستقیم)
-                                </a>
-                                {% endif %}
-                                {% endfor %}
-                                {% endif %}
-                            </nav>
                             {% endif %}
+                            {% if applications.applicationapplication_is_published == True %}
+                            <a href="{{ applications.applicationapplication.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% else %}
+                        <!-- وگرنه هزینه باید بپردازد -->
+                        <form action="{% url 'request' %}" method="POST">
+                            {% csrf_token %}
+                            <div class="panel" style="width: 100%;">
+                                <p class="panel-heading">
+                                    برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
+                                    <br><br>
+                                    هزینه : {{ courseapplication.hazine }} تومان
+                                    <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                    <input type="text" name="username" value="{{ user.username }}" hidden />
+                                    <input type="number" name="courseid" value="{{ courseapplication.id }}" hidden />
+                                    <input type="text" name="coursename" value="{{ courseapplication.coursename }}"
+                                        hidden />
+                                    <input type="text" name="coursetype" value="5" hidden />
+                                    <input type="text" name="description"
+                                        value="  نرم افزار {{ courseapplication.coursename }} با آیدی {{ courseapplication.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
+                                        hidden />
+                                <p class="control is-expanded  has-icons-right">
+                                    <input class="input" type="email" name="email" placeholder="ایمیل"
+                                        value="{{ user.email }}" required />
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </p>
+                                <p class="control is-expanded has-icons-right">
+                                    <input class="input" type="number" min="0" max="9999999999999" name="mobile"
+                                        placeholder="تلفن همراه" required />
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-phone"></i>
+                                    </span>
+                                </p>
+                                </p>
+                                <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
+                            </div>
+                        </form>
+                        {% endif %}
+
+
+
+                        {% else %}
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if applicationss %} {% for applications in applicationss %}
+                            {% if applications.applicationlink_is_published == True %}
+                            <a href="{{ applications.applicationlink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }}
+                            </a>
+                            {% endif %}
+                            {% if applications.applicationapplication_is_published == True %}
+                            <a href="{{ applications.applicationapplication.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% endif %}
+                        {% else %}
+                        {% if courseapplication.hazine != 0 %}
+                        <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
+                            برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید
+                            <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
+                                کنید</strong><br><br>
+                            <input type="text" name="amount" value="{{ courseapplication.hazine }}" hidden />هزینه :
+                            {{ courseapplication.hazine }} تومان
+                        </a>
+                        {% else %}
+                        <nav class="panel" style="background-color: rgb(255, 198, 227);">
+                            <p class="panel-heading" style="background-color: cyan;">
+                                لیست فایل های این مبحث
+                            </p>
+                            {% if applicationss %} {% for applications in applicationss %}
+                            {% if applications.applicationlink_is_published == True %}
+                            <a href="{{ applications.applicationlink }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }}
+                            </a>
+                            {% endif %}
+                            {% if applications.applicationapplication_is_published == True %}
+                            <a href="{{ applications.applicationapplication.url }}" class="panel-block">
+                                <span class="panel-icon">
+                                    <i class="fas fa-book" aria-hidden="true"></i>
+                                </span>
+                                {{ applications.applicationname }} (لینک مستقیم)
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                            {% endif %}
+                        </nav>
+                        {% endif %}
                         {% endif %}
                     </div>
                 </div>
-            </section>  
+            </section>
 
 
 
 
 
 
-            <hr><hr>
+            <hr>
+            <hr>
 
 
             <section class="section " style="background-color:snow;">
@@ -195,11 +282,12 @@
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ otherthis.hazine }}<br> تومان </p>
                             {% else %}
-                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان
                             </p>
                             {% endif %}
                             <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
-                            <p class="has-text-centered"><strong>  نرم افزار : {{ otherthis.coursename }}</strong>
+                            <p class="has-text-centered"><strong> نرم افزار : {{ otherthis.coursename }}</strong>
                             </p>
                             <p class="has-text-centered">طراح و سازنده : {{ otherthis.modaresinfkey }}</p>
                         </a>

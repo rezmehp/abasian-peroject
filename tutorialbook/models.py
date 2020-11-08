@@ -52,3 +52,21 @@ class books(models.Model):
         return self.bookname
     class Meta:
         verbose_name_plural="کتاب ها"
+
+
+
+    
+class bookpics(models.Model):
+    
+    coursenamefkey = models.ForeignKey(coursebook2, on_delete=models.DO_NOTHING,verbose_name="نام درس")
+    bookpicname = models.CharField(max_length=1000,verbose_name="نام عکس")
+    bookpiclink_is_published = models.BooleanField(default=True,verbose_name="پابلیش لینک عکس")
+    bookpiclink = models.CharField(max_length=1000 ,blank=True,verbose_name="لینک عکس")
+    bookpicfile_is_published = models.BooleanField(default=True,verbose_name="پابلیش فایل عکس")
+    bookpicfile = models.FileField(upload_to='coursebook/books/%y/%m/%d/',blank=True,verbose_name="فایل عکس")
+    
+    
+    def __str__(self):
+        return self.bookpicname
+    class Meta:
+        verbose_name_plural="عکس های محصول"

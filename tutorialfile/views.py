@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialfileAdmin, coursefile2, files
+from .models import tutorialfileAdmin, coursefile2, files,filepics
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -185,6 +185,7 @@ def showfiletutorial(request, coursefile2_id):
     coursefile = get_object_or_404(coursefile2, pk=coursefile2_id)
     buyss = buys.objects.filter(courseid=coursefile2_id,coursetype="3",userid=request.user.id)
     filess = files.objects.filter(coursenamefkey=coursefile2_id)
+    filepicss = filepics.objects.filter(coursenamefkey=coursefile2_id)
     thiscourse = coursefile2.objects.filter(id=coursefile2_id).values_list('reshteTahsilifkey', flat=True)
     otherthiss = coursefile2.objects.filter(reshteTahsilifkey=thiscourse[0])
     context = {
@@ -192,6 +193,7 @@ def showfiletutorial(request, coursefile2_id):
         'coursefile': coursefile,
         'filess': filess,
         'buyss':buyss,
+        'filepicss':filepicss,
     }
     return render(request, 'pages/showfiletutorial.html', context)
 

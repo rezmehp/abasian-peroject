@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tutorialfileAdmin,coursefile2 , files
+from .models import tutorialfileAdmin,coursefile2 , files,filepics
 
 
 class tutorialfileAdminshow(admin.ModelAdmin):
@@ -24,3 +24,13 @@ class filesshow(admin.ModelAdmin):
     list_per_page = 10
 
 admin.site.register(files, filesshow)
+
+
+
+
+class filepicsshow(admin.ModelAdmin):
+    list_display = ('filepicname','coursenamefkey','filepiclink_is_published','filepicfile_is_published',)
+    list_filter = ('coursenamefkey',)
+    search_fields = ('filepicname',)
+    list_per_page = 10
+admin.site.register(filepics, filepicsshow)

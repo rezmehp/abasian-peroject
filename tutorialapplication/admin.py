@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import tutorialapplicationAdmin,courseapplication2 , applications
+from .models import tutorialapplicationAdmin,courseapplication2 , applications,applicationpics
 
 
 class tutorialapplicationAdminshow(admin.ModelAdmin):
@@ -20,3 +20,13 @@ class applicationsshow(admin.ModelAdmin):
     list_filter = ('coursenamefkey',)
     search_fields = ('applicationname',)
 admin.site.register(applications, applicationsshow)
+
+
+
+
+class applicationpicsshow(admin.ModelAdmin):
+    list_display = ('applicationpicname','coursenamefkey','applicationpiclink_is_published','applicationpicfile_is_published',)
+    list_filter = ('coursenamefkey',)
+    search_fields = ('applicationpicname',)
+    list_per_page = 10
+admin.site.register(applicationpics, applicationpicsshow)
