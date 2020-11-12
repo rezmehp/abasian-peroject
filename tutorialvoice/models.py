@@ -31,7 +31,7 @@ class coursevoice2(models.Model):
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
     off_is_published = models.BooleanField(default=True,verbose_name="تخفیف دارد")
     hazineoff = models.IntegerField(verbose_name="هزینه با تخفیف به تومان")
-
+    size = models.CharField(max_length=1000,verbose_name="حجم فایل به مگابایت")
 
     def __str__(self):
         return self.coursename
