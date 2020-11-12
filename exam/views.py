@@ -200,6 +200,10 @@ def tutorialexam(request):
     paged_newcourseexamshows = paginator.get_page(page2)
     
 
+    paginator = Paginator(newcourseexamshows, 20)
+    page8 = request.GET.get('page8')
+    paged_offcourseexamshows = paginator.get_page(page8)
+
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -213,6 +217,7 @@ def tutorialexam(request):
         'courseexamshows': courseexamshows,
         'searchcourseexamshows': paged_searchcourseexamshows,
         'newcourseexamshows': paged_newcourseexamshows,
+        'offcourseexamshows': paged_offcourseexamshows,
         'bettercourseexamshows': paged_bettercourseexamshows,
         'values': request.GET,
         'passexams':passexams,

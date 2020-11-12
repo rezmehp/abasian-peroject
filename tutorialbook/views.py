@@ -161,6 +161,9 @@ def tutorialbook(request):
     paginator = Paginator(newcoursebookshows, 20)
     page3 = request.GET.get('page3')
     paged_newcoursebookshows = paginator.get_page(page3)
+    paginator = Paginator(newcoursebookshows, 20)
+    page8 = request.GET.get('page8')
+    paged_offcoursebookshows = paginator.get_page(page8)
     context = {
         
         'footerAdmins': footerAdmins,
@@ -175,6 +178,7 @@ def tutorialbook(request):
         'coursebookshows': coursebookshows,
         'searchcoursebookshows': searchcoursebookshows,
         'newcoursebookshows': paged_newcoursebookshows,
+        'offcoursebookshows':paged_offcoursebookshows,
         'bettercoursebookshows': paged_bettercoursebookshows,
         'values': request.GET,
         'coursevideoshowsall':coursevideoshowsall,

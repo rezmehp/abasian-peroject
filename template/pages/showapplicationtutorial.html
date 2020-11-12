@@ -9,8 +9,6 @@
     }
     outputsize()
 </script>
-
-
 <div class="hero is-fullheight " style="background-color:snow;">
     <div class="hero-body">
         <div class="container">
@@ -29,83 +27,115 @@
                                     {{ courseapplication.coursename }}
                                 </h3><br>
                                 <h4 class="has-text-dark">تولید کننده : {{ courseapplication.modaresinfkey }}</h4><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                {% if courseapplication.off_is_published == True %}
+                                <p>
+                                    <strong><s>هزینه : {{ courseapplication.hazine }} تومان</s><br>
+                                        <span style="color: red;">هزینه : {{ courseapplication.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
                                 {% if courseapplication.hazine != 0 %}
                                 <small class="has-text-dark">هزینه :{{ courseapplication.hazine }} تومان </small>
+                                {% else %}
+                                <small class="has-text-dark">هزینه : رایگان</small>
                                 {% endif %}
+                                {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+
+
                                 <br>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-                
-
-
                 <div class="container">
                     {% if applicationpicss %}
-                    <nav class="panel" >
+                    <nav class="panel">
                         <p class="panel-heading">
                             عکس های محصول
                         </p>
-                       <div class="columns is-multiline" >
-                        {% for applicationpics in applicationpicss %}
-                        {% if applicationpics.applicationpiclink_is_published == True %}
-
-                        <div class="column  is-2"  >
-                            <a href="#ex1{{ applicationpics.id }}" rel="modal:open"> 
-                                <figure class="image">
-                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpiclink }}">
-                                </figure>
-                            </a> 
-                        </div>
-                        <div id="ex1{{ applicationpics.id }}" class="modal">
-                            <div class="hero-body">
-                                <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
-                                    <div class="modal-background"></div>
-                                    <div class="slideshow-container">
-                                        <div id="numbertext" class="numbertext"></div>
-                                        <img style="height:600px" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpiclink }}">
-                                    </div>
+                        <div class="columns is-multiline">
+                            {% for applicationpics in applicationpicss %}
+                            {% if applicationpics.applicationpiclink_is_published == True %}
+                            <div class="column  is-2">
+                                <a href="#ex1{{ applicationpics.id }}" rel="modal:open">
+                                    <figure class="image">
+                                        <img class="is-centered has-text-centered" style="height: 180px; width: 180px;"
+                                            alt="{{ applicationpics.applicationpicname }}"
+                                            src="{{ applicationpics.applicationpiclink }}">
+                                    </figure>
                                 </a>
                             </div>
-                        </div>
-                        {% endif %}
-                        {% if applicationpics.applicationpicfile_is_published == True %}
-                        <div class="column  is-2" >
-                            <a href="#ex2{{ applicationpics.id }}" rel="modal:open"> 
-                                <figure class="image">
-                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpicfile.url }}">
-                                </figure>
-                            </a> 
-                        </div>
-                        <div id="ex2{{ applicationpics.id }}" class="modal">
-                            <div class="hero-body">
-                                <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
-                                    <div class="modal-background"></div>
-                                    <div class="slideshow-container">
-                                        <div id="numbertext" class="numbertext"></div>
-                                        <img style="height:600px" alt="{{ applicationpics.applicationpicname }}" src="{{ applicationpics.applicationpicfile.url }}">
-                                    </div>
+                            <div id="ex1{{ applicationpics.id }}" class="modal">
+                                <div class="hero-body">
+                                    <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
+                                        <div class="modal-background"></div>
+                                        <div class="slideshow-container">
+                                            <div id="numbertext" class="numbertext"></div>
+                                            <img style="height:600px" alt="{{ applicationpics.applicationpicname }}"
+                                                src="{{ applicationpics.applicationpiclink }}">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% if applicationpics.applicationpicfile_is_published == True %}
+                            <div class="column  is-2">
+                                <a href="#ex2{{ applicationpics.id }}" rel="modal:open">
+                                    <figure class="image">
+                                        <img class="is-centered has-text-centered" style="height: 180px; width: 180px;"
+                                            alt="{{ applicationpics.applicationpicname }}"
+                                            src="{{ applicationpics.applicationpicfile.url }}">
+                                    </figure>
                                 </a>
                             </div>
+                            <div id="ex2{{ applicationpics.id }}" class="modal">
+                                <div class="hero-body">
+                                    <a href="#ex1{{ applicationpics.id }}" rel="modal:close">
+                                        <div class="modal-background"></div>
+                                        <div class="slideshow-container">
+                                            <div id="numbertext" class="numbertext"></div>
+                                            <img style="height:600px" alt="{{ applicationpics.applicationpicname }}"
+                                                src="{{ applicationpics.applicationpicfile.url }}">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
                         </div>
-                        {% endif %}
-                        {% endfor %}
-                    </div>
                     </nav>
-                    <hr><hr>
+                    <hr>
+                    <hr>
                     {% endif %}
                 </div>
-
-
-
-
-
-
-
                 <div class="container ">
                     <div class="columns">
                         <div class="column">
@@ -161,16 +191,52 @@
                                 <p class="panel-heading">
                                     برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
                                     <br><br>
-                                    هزینه : {{ courseapplication.hazine }} تومان
-                                    <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                    <input type="text" name="username" value="{{ user.username }}" hidden />
-                                    <input type="number" name="courseid" value="{{ courseapplication.id }}" hidden />
-                                    <input type="text" name="coursename" value="{{ courseapplication.coursename }}"
-                                        hidden />
-                                    <input type="text" name="coursetype" value="5" hidden />
-                                    <input type="text" name="description"
-                                        value="  نرم افزار {{ courseapplication.coursename }} با آیدی {{ courseapplication.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
-                                        hidden />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    {% if courseapplication.off_is_published == True %}
+                                <p>
+                                    هزینه : <strong><s>{{ courseapplication.hazine }} تومان</s><br>
+                                        هزینه : <span style="color: red;">{{ courseapplication.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                هزینه : {{ courseapplication.hazine }} تومان
+
+                                {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                <input type="text" name="username" value="{{ user.username }}" hidden />
+                                <input type="number" name="courseid" value="{{ courseapplication.id }}" hidden />
+                                <input type="text" name="coursename" value="{{ courseapplication.coursename }}"
+                                    hidden />
+                                <input type="text" name="coursetype" value="5" hidden />
+                                <input type="text" name="description"
+                                    value="  نرم افزار {{ courseapplication.coursename }} با آیدی {{ courseapplication.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
+                                    hidden />
                                 <p class="control is-expanded  has-icons-right">
                                     <input class="input" type="email" name="email" placeholder="ایمیل"
                                         value="{{ user.email }}" required />
@@ -228,8 +294,39 @@
                             برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید
                             <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
                                 کنید</strong><br><br>
+
+
+
+
+
+
+
+
+
+
+
+                            {% if courseapplication.off_is_published == True %}
+                            <input type="text" name="amount" value="{{ courseapplication.hazine }}" hidden />هزینه :
+                            {{ courseapplication.hazineoff }} تومان
+                            {% else %}
                             <input type="text" name="amount" value="{{ courseapplication.hazine }}" hidden />هزینه :
                             {{ courseapplication.hazine }} تومان
+                            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         </a>
                         {% else %}
                         <nav class="panel" style="background-color: rgb(255, 198, 227);">
@@ -261,16 +358,8 @@
                     </div>
                 </div>
             </section>
-
-
-
-
-
-
             <hr>
             <hr>
-
-
             <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">نرم افزار های مرتبط</h3>
                 <div class="columns is-multiline">
@@ -278,6 +367,22 @@
                     {% if otherthis.id != courseapplication.id %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' otherthis.id %}" class="box" style="height: 320px;">
+
+
+
+
+
+
+
+
+
+                            {% if otherthis.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ otherthis.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ otherthis.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if otherthis.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ otherthis.hazine }}<br> تومان </p>
@@ -286,6 +391,19 @@
                                 رایگان
                             </p>
                             {% endif %}
+                            {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
                             <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> نرم افزار : {{ otherthis.coursename }}</strong>
                             </p>

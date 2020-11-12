@@ -173,6 +173,13 @@
                                     <strong>
                                         استاد : {{ searchcourseexamshow.modaresinfkey }}
                                     </strong><br>
+                                    {% if searchcourseexamshow.off_is_published == True %}
+                                    <strong><s>{{ searchcourseexamshow.hazine }} تومان</s><br>
+                                        <span style="color: red;">
+                                            {{ searchcourseexamshow.hazineoff }} تومان
+                                        </span>
+                                    </strong>
+                                    {% else %}
                                     {% if searchcourseexamshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcourseexamshow.hazine }} تومان
@@ -181,6 +188,7 @@
                                     <small>
                                         هزینه : رایگان
                                     </small>
+                                    {% endif %}
                                     {% endif %}
                                     <br>
                                 </p>
@@ -210,13 +218,20 @@
                             {% if bettercourseexamshow.id == passexamscourse.id %}
                             style="pointer-events: none; border: orangered 2px solid;" {% endif %} {% endfor %}
                             {% endif %} href="{% url 'showexamtutorial' bettercourseexamshow.id %}" class="box" style="height: 320px;">
-
+                            {% if bettercourseexamshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ bettercourseexamshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ bettercourseexamshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if bettercourseexamshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ bettercourseexamshow.hazine }}<br> تومان </p>
                             {% else %}
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
+                            {% endif %}
                             {% endif %}
 
                             <img src="{{ bettercourseexamshow.pic.url }}" style="width: 100%; height:150px">
@@ -296,14 +311,18 @@
                     {% endif %}</h3>
                 <div class="columns is-multiline">
                     {% if newcourseexamshows %} {% for newcourseexamshow in newcourseexamshows %}
-
-
                     <div class="column is-one-quarter">
                         <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
                             {% if newcourseexamshow.id == passexamscourse.id %}
                             style="pointer-events: none; border: orangered 3px solid;" {% endif %} {% endfor %}
                             {% endif %} href="{% url 'showexamtutorial' newcourseexamshow.id %}" class="box" style="height: 320px;">
-
+                            {% if newcourseexamshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ newcourseexamshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ newcourseexamshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if newcourseexamshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ newcourseexamshow.hazine }}<br> تومان </p>
@@ -311,7 +330,7 @@
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
                             {% endif %}
-
+                            {% endif %}
                             <img src="{{ newcourseexamshow.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس :
                                     {{ newcourseexamshow.coursename }}</strong><strong style="color: red;">
@@ -385,6 +404,134 @@
             </div>
             {% endif %}
             <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <section class="section " style="background-color:snow;">
+                <h3 class="title has-text-centered has-text-dark">آزمون های دارای تخفیف</h3>
+                <div class="columns is-multiline">
+                    {% if offcourseexamshows %} {% for offcourseexamshow in offcourseexamshows %}
+                    <div class="column is-one-quarter">
+                        <a {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                            {% if offcourseexamshow.id == passexamscourse.id %}
+                            style="pointer-events: none; border: orangered 3px solid;" {% endif %} {% endfor %}
+                            {% endif %} href="{% url 'showexamtutorial' offcourseexamshow.id %}" class="box" style="height: 320px;">
+                            {% if offcourseexamshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ offcourseexamshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ offcourseexamshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
+                            {% if offcourseexamshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ offcourseexamshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+                            {% endif %}
+                            <img src="{{ offcourseexamshow.pic.url }}" style="width: 100%; height:150px">
+                            <p class="has-text-centered"><strong> درس :
+                                    {{ offcourseexamshow.coursename }}</strong><strong style="color: red;">
+                                    {% if passexamscourses %} {% for passexamscourse in passexamscourses %}
+                                    {% if offcourseexamshow.id == passexamscourse.id %}
+                                    <br>
+                                    آزمون گذرانده شده است
+                                    <br>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endif %}
+
+
+                                </strong>
+                            </p>
+                            <p class="has-text-centered">استاد : {{ offcourseexamshow.modaresinfkey }}</p>
+                            <p class="has-text-centered">{{ offcourseexamshow.saattadris }} ساعت آموزش</p>
+                        </a>
+                    </div>
+                    </span>
+                    {% endfor %}
+                    {% endif %}
+
+
+            </section>
+            <br>
+
+            {% if offcourseexamshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if offcourseexamshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page8={{offcourseexamshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in offcourseexamshows.paginator.page_range %}
+                        {% if offcourseexamshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page8={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if offcourseexamshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page8={{offcourseexamshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+            <hr>
+
+
+
+
+
+
+
             <section class="section " style="background-color:snow;">
                 <h3 class="title has-text-centered has-text-dark">آزمون های گذرانده شده</h3>
                 <div class="columns is-multiline">

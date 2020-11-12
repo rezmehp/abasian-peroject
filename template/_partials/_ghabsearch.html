@@ -56,22 +56,40 @@
                                                                 <div class="content has-text-right">
                                                                     <p class="has-text-dark is-vcentered">
                                                                         <strong>
-                                                                            <span class="fas fa-video" style="color: rgb(201, 3, 108);"></span>  نام ویدیو :
+                                                                            <span class="fas fa-video"
+                                                                                style="color: rgb(201, 3, 108);"></span>
+                                                                            نام ویدیو :
                                                                             {{ coursevideoshowall.coursename }}
                                                                         </strong><br>
                                                                         <strong>
                                                                             استاد :
                                                                             {{ coursevideoshowall.modaresinfkey }}
                                                                         </strong><br>
+                                                                        {% if coursevideoshowall.off_is_published == True %}
+                                                                        <strong>
+                                                                            هزینه :
+                                                                            <del> {{ coursevideoshowall.hazine }}
+                                                                            </del>
+                                                                            تومان
+                                                                        </strong>
+                                                                        <br>
+                                                                        <strong style="color: blueviolet;">
+                                                                            هزینه با تخفیف :
+                                                                            {{ coursevideoshowall.hazineoff }}
+                                                                            تومان
+                                                                        </strong>
+                                                                        {% else %}
                                                                         {% if coursevideoshowall.hazine != 0 %}
                                                                         <small>
-                                                                            هزینه : {{ coursevideoshowall.hazine }}
+                                                                            هزینه :
+                                                                            {{ coursevideoshowall.hazine }}
                                                                             تومان
                                                                         </small>
                                                                         {% else %}
                                                                         <small>
                                                                             هزینه : رایگان
                                                                         </small>
+                                                                        {% endif %}
                                                                         {% endif %}
                                                                         <br>
                                                                         {{ coursevideoshowall.saattadris }} ساعت
@@ -125,22 +143,40 @@
                                                                 <div class="content has-text-right">
                                                                     <p class="has-text-dark is-vcentered">
                                                                         <strong>
-                                                                            <span class="fas fa-volume-up" style="color: rgb(201, 3, 108);"></span>نام صوت :
+                                                                            <span class="fas fa-volume-up"
+                                                                                style="color: rgb(201, 3, 108);"></span>نام
+                                                                            صوت :
                                                                             {{ coursevoiceshowall.coursename }}
                                                                         </strong><br>
                                                                         <strong>
                                                                             استاد :
                                                                             {{ coursevoiceshowall.modaresinfkey }}
                                                                         </strong><br>
+                                                                        {% if coursevoiceshowall.off_is_published == True %}
+                                                                        <strong>
+                                                                            هزینه :
+                                                                            <del> {{ coursevoiceshowall.hazine }}
+                                                                            </del>
+                                                                            تومان
+                                                                        </strong>
+                                                                        <br>
+                                                                        <strong style="color: blueviolet;">
+                                                                            هزینه با تخفیف :
+                                                                            {{ coursevoiceshowall.hazineoff }}
+                                                                            تومان
+                                                                        </strong>
+                                                                        {% else %}
                                                                         {% if coursevoiceshowall.hazine != 0 %}
                                                                         <small>
-                                                                            هزینه : {{ coursevoiceshowall.hazine }}
+                                                                            هزینه :
+                                                                            {{ coursevoiceshowall.hazine }}
                                                                             تومان
                                                                         </small>
                                                                         {% else %}
                                                                         <small>
                                                                             هزینه : رایگان
                                                                         </small>
+                                                                        {% endif %}
                                                                         {% endif %}
                                                                         <br>
                                                                         {{ coursevoiceshowall.saattadris }} ساعت
@@ -175,22 +211,40 @@
                                                                 <div class="content has-text-right">
                                                                     <p class="has-text-dark is-vcentered">
                                                                         <strong>
-                                                                            <span class="fas fa-file" style="color: rgb(201, 3, 108);"></span> نام فایل :
+                                                                            <span class="fas fa-file"
+                                                                                style="color: rgb(201, 3, 108);"></span>
+                                                                            نام فایل :
                                                                             {{ coursefileshowall.coursename }}
                                                                         </strong><br>
                                                                         <strong>
                                                                             تولید کننده :
                                                                             {{ coursefileshowall.modaresinfkey }}
                                                                         </strong><br>
+                                                                        {% if coursefileshowall.off_is_published == True %}
+                                                                        <strong>
+                                                                            هزینه :
+                                                                            <del> {{ coursefileshowall.hazine }}
+                                                                            </del>
+                                                                            تومان
+                                                                        </strong>
+                                                                        <br>
+                                                                        <strong style="color: blueviolet;">
+                                                                            هزینه با تخفیف :
+                                                                            {{ coursefileshowall.hazineoff }}
+                                                                            تومان
+                                                                        </strong>
+                                                                        {% else %}
                                                                         {% if coursefileshowall.hazine != 0 %}
                                                                         <small>
-                                                                            هزینه : {{ coursefileshowall.hazine }}
+                                                                            هزینه :
+                                                                            {{ coursefileshowall.hazine }}
                                                                             تومان
                                                                         </small>
                                                                         {% else %}
                                                                         <small>
                                                                             هزینه : رایگان
                                                                         </small>
+                                                                        {% endif %}
                                                                         {% endif %}
                                                                     </p>
                                                                 </div>
@@ -221,22 +275,40 @@
                                                                 <div class="content has-text-right">
                                                                     <p class="has-text-dark is-vcentered">
                                                                         <strong>
-                                                                            <span class="fas fa-book" style="color: rgb(201, 3, 108);"></span> نام کتاب :
+                                                                            <span class="fas fa-book"
+                                                                                style="color: rgb(201, 3, 108);"></span>
+                                                                            نام کتاب :
                                                                             {{ coursebookshowall.coursename }}
                                                                         </strong><br>
                                                                         <strong>
                                                                             نویسنده :
                                                                             {{ coursebookshowall.modaresinfkey }}
                                                                         </strong><br>
+                                                                        {% if coursebookshowall.off_is_published == True %}
+                                                                        <strong>
+                                                                            هزینه :
+                                                                            <del> {{ coursebookshowall.hazine }}
+                                                                            </del>
+                                                                            تومان
+                                                                        </strong>
+                                                                        <br>
+                                                                        <strong style="color: blueviolet;">
+                                                                            هزینه با تخفیف :
+                                                                            {{ coursebookshowall.hazineoff }}
+                                                                            تومان
+                                                                        </strong>
+                                                                        {% else %}
                                                                         {% if coursebookshowall.hazine != 0 %}
                                                                         <small>
-                                                                            هزینه : {{ coursebookshowall.hazine }}
+                                                                            هزینه :
+                                                                            {{ coursebookshowall.hazine }}
                                                                             تومان
                                                                         </small>
                                                                         {% else %}
                                                                         <small>
                                                                             هزینه : رایگان
                                                                         </small>
+                                                                        {% endif %}
                                                                         {% endif %}
                                                                         <br>
                                                                         {{ coursebookshowall.saattadris }}
@@ -272,13 +344,29 @@
                                                                 <div class="content has-text-right">
                                                                     <p class="has-text-dark is-vcentered">
                                                                         <strong>
-                                                                            <span class="fab fa-android" style="color: rgb(201, 3, 108);"></span> نام نرم افزار :
+                                                                            <span class="fab fa-android"
+                                                                                style="color: rgb(201, 3, 108);"></span>
+                                                                            نام نرم افزار :
                                                                             {{ courseapplicationshowall.coursename }}
                                                                         </strong><br>
                                                                         <strong>
                                                                             تولید کننده :
                                                                             {{ courseapplicationshowall.modaresinfkey }}
                                                                         </strong><br>
+                                                                        {% if courseapplicationshowall.off_is_published == True %}
+                                                                        <strong>
+                                                                            هزینه :
+                                                                            <del> {{ courseapplicationshowall.hazine }}
+                                                                            </del>
+                                                                            تومان
+                                                                        </strong>
+                                                                        <br>
+                                                                        <strong style="color: blueviolet;">
+                                                                            هزینه با تخفیف :
+                                                                            {{ courseapplicationshowall.hazineoff }}
+                                                                            تومان
+                                                                        </strong>
+                                                                        {% else %}
                                                                         {% if courseapplicationshowall.hazine != 0 %}
                                                                         <small>
                                                                             هزینه :
@@ -289,6 +377,7 @@
                                                                         <small>
                                                                             هزینه : رایگان
                                                                         </small>
+                                                                        {% endif %}
                                                                         {% endif %}
 
                                                                     </p>

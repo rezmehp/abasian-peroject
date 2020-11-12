@@ -28,9 +28,31 @@
                                 <h4 class="has-text-dark">مدرس : {{ coursevoice.modaresinfkey }}</h4><br>
                                 <small class="has-text-dark">مدت زمان آموزش : {{ coursevoice.saattadris }} دقیقه
                                 </small><br>
+                                
+
+
+
+                                {% if coursevoice.off_is_published == True %}
+                                <p>
+                                    <strong><s>هزینه : {{ coursevoice.hazine }} تومان</s><br>
+                                        <span style="color: red;">هزینه : {{ coursevoice.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
                                 {% if coursevoice.hazine != 0 %}
                                 <small class="has-text-dark">هزینه :{{ coursevoice.hazine }} تومان </small>
+                                {% else %}
+                                <small class="has-text-dark">هزینه : رایگان</small>
                                 {% endif %}
+                                {% endif %}
+
+
+
+
+
+
+
+
                                 <br>
 
 
@@ -171,7 +193,28 @@
                                 <p class="panel-heading">
                                     برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
                                     <br><br>
-                                    هزینه : {{ coursevoice.hazine }} تومان
+                                    
+                                    
+
+
+
+
+                                    {% if coursevoice.off_is_published == True %}
+                                <p>
+                                    هزینه : <strong><s>{{ coursevoice.hazine }} تومان</s><br>
+                                        هزینه : <span style="color: red;">{{ coursevoice.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                هزینه : {{ coursevoice.hazine }} تومان
+
+                                {% endif %}
+
+
+
+
+
+
                                     <input type="number" name="userid" value="{{ user.id }}" hidden />
                                     <input type="text" name="username" value="{{ user.username }}" hidden />
                                     <input type="number" name="courseid" value="{{ coursevoice.id }}" hidden />
@@ -238,8 +281,27 @@
                             برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید
                             <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
                                 کنید</strong><br><br>
-                            <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه :
-                            {{ coursevoice.hazine }} تومان
+                            
+                                
+
+
+
+
+                                {% if coursevoice.off_is_published == True %}
+                                <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه :
+                                {{ coursevoice.hazineoff }} تومان
+                                {% else %}
+                                <input type="text" name="amount" value="{{ coursevoice.hazine }}" hidden />هزینه :
+                                {{ coursevoice.hazine }} تومان
+                                {% endif %}
+    
+    
+    
+    
+    
+
+
+
                         </a>
                         {% else %}
                         <nav class="panel" style="background-color: rgb(255, 198, 227);">
@@ -280,6 +342,20 @@
                     {% if otherthis.id != coursevoice.id %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showvoicetutorial' otherthis.id %}" class="box" style="height: 320px;">
+                           
+                            
+
+
+
+
+
+                            {% if otherthis.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ otherthis.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ otherthis.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if otherthis.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ otherthis.hazine }}<br> تومان </p>
@@ -288,6 +364,14 @@
                                 رایگان
                             </p>
                             {% endif %}
+                            {% endif %}
+
+
+
+
+
+
+
                             <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس : {{ otherthis.coursename }}</strong>
                             </p>

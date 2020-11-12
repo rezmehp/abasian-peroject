@@ -665,10 +665,14 @@
                         <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
-
-
-
-
+                                    {% if newcoursevideo.off_is_published == True %}
+                                    <p class="button is-warning"
+                                        style="position: absolute; height: 70px; border-radius: 5%;">
+                                        <strong><s>{{ newcoursevideo.hazine }} تومان</s><br>
+                                            <span style="color: red;">{{ newcoursevideo.hazineoff }}
+                                                تومان</span></strong>
+                                    </p>
+                                    {% else %}
                                     {% if newcoursevideo.hazine != 0 %}
                                     <p class="button is-primary"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -677,10 +681,7 @@
                                     <p class="button is-danger"
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
                                     {% endif %}
-
-
-
-
+                                    {% endif %}
                                     <img src="{{ newcoursevideo.pic.url }}" style="border-radius: 5%; height:150px"
                                         alt="Image">
                                 </figure>
@@ -717,7 +718,13 @@
                     <div class="card large" style="border-radius: 5%;">
                         <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
-
+                                {% if newcoursevoice.off_is_published == True %}
+                                <p class="button is-warning"
+                                    style="position: absolute; height: 70px; border-radius: 5%;">
+                                    <strong><s>{{ newcoursevoice.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newcoursevoice.hazineoff }} تومان</span></strong>
+                                </p>
+                                {% else %}
                                 {% if newcoursevoice.hazine != 0 %}
                                 <p class="button is-primary"
                                     style="position: absolute; height: 70px; border-radius: 5%;">
@@ -725,6 +732,7 @@
                                 {% else %}
                                 <p class="button is-danger"
                                     style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
                                 {% endif %}
 
                                 <figure class="image">
@@ -768,7 +776,14 @@
                         <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
-
+                                    {% if newcoursefile.off_is_published == True %}
+                                    <p class="button is-warning"
+                                        style="position: absolute; height: 70px; border-radius: 5%;">
+                                        <strong><s>{{ newcoursefile.hazine }} تومان</s><br>
+                                            <span style="color: red;">{{ newcoursefile.hazineoff }}
+                                                تومان</span></strong>
+                                    </p>
+                                    {% else %}
                                     {% if newcoursefile.hazine != 0 %}
                                     <p class="button is-primary"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -776,6 +791,7 @@
                                     {% else %}
                                     <p class="button is-danger"
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
                                     {% endif %}
 
                                     <img src="{{ newcoursefile.pic.url }}" style="border-radius: 5%; height:150px"
@@ -819,7 +835,14 @@
                         <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
-
+                                    {% if newcoursebook.off_is_published == True %}
+                                    <p class="button is-warning"
+                                        style="position: absolute; height: 70px; border-radius: 5%;">
+                                        <strong><s>{{ newcoursebook.hazine }} تومان</s><br>
+                                            <span style="color: red;">{{ newcoursebook.hazineoff }}
+                                                تومان</span></strong>
+                                    </p>
+                                    {% else %}
                                     {% if newcoursebook.hazine != 0 %}
                                     <p class="button is-primary"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -827,6 +850,7 @@
                                     {% else %}
                                     <p class="button is-danger"
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
                                     {% endif %}
 
                                     <img src="{{ newcoursebook.pic.url }}" style="border-radius: 5%; height:150px"
@@ -868,7 +892,14 @@
                             style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
-
+                                    {% if newcourseapplication.off_is_published == True %}
+                                    <p class="button is-warning"
+                                        style="position: absolute; height: 70px; border-radius: 5%;">
+                                        <strong><s>{{ newcourseapplication.hazine }} تومان</s><br>
+                                            <span style="color: red;">{{ newcourseapplication.hazineoff }}
+                                                تومان</span></strong>
+                                    </p>
+                                    {% else %}
                                     {% if newcourseapplication.hazine != 0 %}
                                     <p class="button is-primary"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -876,6 +907,7 @@
                                     {% else %}
                                     <p class="button is-danger"
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
                                     {% endif %}
 
                                     <img src="{{ newcourseapplication.pic.url }}"
@@ -918,7 +950,14 @@
                         <a href="{% url 'tutorialexam' %}" class="box" style="height: 320px;">
                             <div class="card-image">
                                 <figure class="image">
-
+                                    {% if newexam.off_is_published == True %}
+                                    <p class="button is-warning"
+                                        style="position: absolute; height: 70px; border-radius: 5%;">
+                                        <strong><s>{{ newexam.hazine }} تومان</s><br>
+                                            <span style="color: red;">{{ newexam.hazineoff }}
+                                                تومان</span></strong>
+                                    </p>
+                                    {% else %}
                                     {% if newexam.hazine != 0 %}
                                     <p class="button is-primary"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -926,6 +965,7 @@
                                     {% else %}
                                     <p class="button is-danger"
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
+                                    {% endif %}
                                     {% endif %}
 
                                     <img src="{{ newexam.pic.url }}" style="border-radius: 5%; height:150px"
@@ -1001,7 +1041,8 @@
 
 
 <section class="section info-tiles has-background-light">
-    <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span class="fas fa-chart-line"></span>&nbsp;&nbsp; آمار سایت</h3>
+    <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
+            class="fas fa-chart-line"></span>&nbsp;&nbsp; آمار سایت</h3>
     <div class="tile is-ancestor has-text-centered">
         <div class="tile is-parent">
             <article class="tile is-child box">

@@ -6,7 +6,7 @@
 {{ tutorialbookAdmin.title_page }} {% endfor %}
 {% endif %}{% endblock %} {% block content %}
 <!--test-->
-<div class="hero is-fullheight has-background-dark">
+<div class="hero is-fullheight has-background-light">
     <div class="hero-body">
         <section class="container">
             <figure class="image is-3by1">
@@ -165,19 +165,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
             {% if searchcoursebookshows %}
             <section class="section " style="background-color:snow;">
@@ -202,6 +189,13 @@
                                     <small>
                                         این کتاب دارای{{ searchcoursebookshow.saattadris }} صفحه می باشد
                                     </small><br>
+                                    {% if searchcoursebookshow.off_is_published == True %}
+                                    <strong><s>{{ searchcoursebookshow.hazine }} تومان</s><br>
+                                        <span style="color: red;">
+                                            {{ searchcoursebookshow.hazineoff }} تومان
+                                        </span>
+                                    </strong>
+                                    {% else %}
                                     {% if searchcoursebookshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcoursebookshow.hazine }} تومان
@@ -210,6 +204,7 @@
                                     <small>
                                         هزینه : رایگان
                                     </small>
+                                    {% endif %}
                                     {% endif %}
                                     <br>
                             </div>
@@ -234,7 +229,13 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showbooktutorial' bettercoursebookshow.id %}" class="box"
                             style="height: 320px;">
-
+                            {% if bettercoursebookshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ bettercoursebookshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ bettercoursebookshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if bettercoursebookshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ bettercoursebookshow.hazine }}<br> تومان </p>
@@ -242,7 +243,7 @@
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
                             {% endif %}
-
+                            {% endif %}
                             <img src="{{ bettercoursebookshow.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس :
                                     {{ bettercoursebookshow.coursename }}</strong></p>
@@ -311,7 +312,13 @@
                     {% if newcoursebookshows %} {% for newcoursebookshow in newcoursebookshows %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showbooktutorial' newcoursebookshow.id %}" class="box" style="height: 320px;">
-
+                            {% if newcoursebookshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ newcoursebookshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ newcoursebookshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if newcoursebookshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ newcoursebookshow.hazine }}<br> تومان </p>
@@ -319,7 +326,7 @@
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
                             {% endif %}
-
+                            {% endif %}
                             <img src="{{ newcoursebookshow.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس : {{ newcoursebookshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ newcoursebookshow.modaresinfkey }}</p>
@@ -375,6 +382,96 @@
                 </div>
             </div>
             {% endif %}
+
+
+
+
+
+
+            <section class="section " style="background-color:snow;">
+                <h3 class="title has-text-centered has-text-dark">کتاب های دارای تخفیف</h3>
+                <div class="columns is-multiline">
+                    {% if offcoursebookshows %} 
+                    {% for offcoursebookshow in offcoursebookshows %}
+                    {% if offcoursebookshow.off_is_published == True %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showbooktutorial' offcoursebookshow.id %}" class="box"
+                            style="height: 320px;">
+                            {% if offcoursebookshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ offcoursebookshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ offcoursebookshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
+                            {% if offcoursebookshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ offcoursebookshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+                            {% endif %}
+
+                            <img src="{{ offcoursebookshow.pic.url }}" style="width: 100%; height:150px">
+                            <p class="has-text-centered"><strong> نام فایل :
+                                    {{ offcoursebookshow.coursename }}</strong></p>
+                            <p class="has-text-centered">تولید کننده : {{ offcoursebookshow.modaresinfkey }}</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    {% endif %}
+                </div>
+            </section>
+            <br>
+            {% if offcoursebookshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if offcoursebookshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page8={{offcoursebookshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in offcoursebookshows.paginator.page_range %}
+                        {% if offcoursebookshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page8={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if offcoursebookshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page8={{offcoursebookshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
         </section>
     </div>
 </div>

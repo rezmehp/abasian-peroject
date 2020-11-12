@@ -171,19 +171,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div>
             {% if searchcoursefileshows %}
             <section class="section " style="background-color:snow;">
@@ -200,11 +187,18 @@
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-vcentered">
                                     <strong>
-                                        درس : {{ searchcoursefileshow.coursename }}
+                                        فایل : {{ searchcoursefileshow.coursename }}
                                     </strong><br>
                                     <strong>
                                         استاد : {{ searchcoursefileshow.modaresinfkey }}
                                     </strong><br>
+                                    {% if searchcoursefileshow.off_is_published == True %}
+                                    <strong><s>{{ searchcoursefileshow.hazine }} تومان</s><br>
+                                        <span style="color: red;">
+                                            {{ searchcoursefileshow.hazineoff }} تومان
+                                        </span>
+                                    </strong>
+                                    {% else %}
                                     {% if searchcoursefileshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcoursefileshow.hazine }} تومان
@@ -213,6 +207,7 @@
                                     <small>
                                         هزینه : رایگان
                                     </small>
+                                    {% endif %}
                                     {% endif %}
                                     <br>
                                 </p>
@@ -238,7 +233,13 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showfiletutorial' bettercoursefileshow.id %}" class="box"
                             style="height: 320px;">
-
+                            {% if bettercoursefileshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ bettercoursefileshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ bettercoursefileshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if bettercoursefileshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ bettercoursefileshow.hazine }}<br> تومان </p>
@@ -246,9 +247,9 @@
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
                             {% endif %}
-
+                            {% endif %}
                             <img src="{{ bettercoursefileshow.pic.url }}" style="width: 100%; height:150px">
-                            <p class="has-text-centered"><strong> درس :
+                            <p class="has-text-centered"><strong> فایل :
                                     {{ bettercoursefileshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ bettercoursefileshow.modaresinfkey }}</p>
                         </a>
@@ -313,7 +314,13 @@
                     {% if newcoursefileshows %} {% for newcoursefileshow in newcoursefileshows %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showfiletutorial' newcoursefileshow.id %}" class="box" style="height: 320px;">
-
+                            {% if newcoursefileshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ newcoursefileshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ newcoursefileshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if newcoursefileshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ newcoursefileshow.hazine }}<br> تومان </p>
@@ -321,9 +328,9 @@
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
                             {% endif %}
-
+                            {% endif %}
                             <img src="{{ newcoursefileshow.pic.url }}" style="width: 100%; height:150px">
-                            <p class="has-text-centered"><strong> درس : {{ newcoursefileshow.coursename }}</strong></p>
+                            <p class="has-text-centered"><strong> فایل : {{ newcoursefileshow.coursename }}</strong></p>
                             <p class="has-text-centered">استاد : {{ newcoursefileshow.modaresinfkey }}</p>
                         </a>
                     </div>
@@ -377,6 +384,107 @@
                 </div>
             </div>
             {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+            <section class="section " style="background-color:snow;">
+                <h3 class="title has-text-centered has-text-dark">فایل های دارای تخفیف</h3>
+                <div class="columns is-multiline">
+                    {% if offcoursefileshows %} 
+                    {% for offcoursefileshow in offcoursefileshows %}
+                    {% if offcoursefileshow.off_is_published == True %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showfiletutorial' offcoursefileshow.id %}" class="box"
+                            style="height: 320px;">
+                            {% if offcoursefileshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ offcoursefileshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ offcoursefileshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
+                            {% if offcoursefileshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ offcoursefileshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+                            {% endif %}
+
+                            <img src="{{ offcoursefileshow.pic.url }}" style="width: 100%; height:150px">
+                            <p class="has-text-centered"><strong> نام فایل :
+                                    {{ offcoursefileshow.coursename }}</strong></p>
+                            <p class="has-text-centered">تولید کننده : {{ offcoursefileshow.modaresinfkey }}</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    {% endif %}
+                </div>
+            </section>
+            <br>
+            {% if offcoursefileshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if offcoursefileshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page8={{offcoursefileshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in offcoursefileshows.paginator.page_range %}
+                        {% if offcoursefileshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page8={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if offcoursefileshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page8={{offcoursefileshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+
+
+
+
+
+
         </section>
     </div>
 </div>

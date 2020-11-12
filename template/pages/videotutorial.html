@@ -205,6 +205,13 @@
                             <strong>
                                 استاد : {{ searchcoursevideoshow.modaresinfkey }}
                             </strong><br>
+                            {% if searchcoursevideoshow.off_is_published == True %}
+                            <strong><s>{{ searchcoursevideoshow.hazine }} تومان</s><br>
+                                <span style="color: red;">
+                                    {{ searchcoursevideoshow.hazineoff }} تومان
+                                </span>
+                            </strong>
+                            {% else %}
                             {% if searchcoursevideoshow.hazine != 0 %}
                             <small>
                                 هزینه : {{ searchcoursevideoshow.hazine }} تومان
@@ -213,6 +220,7 @@
                             <small>
                                 هزینه : رایگان
                             </small>
+                            {% endif %}
                             {% endif %}
                             <br>
                             {{ searchcoursevideoshow.saattadris }} ساعت آموزش
@@ -251,7 +259,13 @@
             {% for bettercoursevideoshow in bettercoursevideoshows %}
             <div class="column is-one-quarter">
                 <a href="{% url 'showvideotutorial' bettercoursevideoshow.id %}" class="box" style="height: 320px;">
-
+                    {% if bettercoursevideoshow.off_is_published == True %}
+                    <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                        <strong><s>{{ bettercoursevideoshow.hazine }} تومان</s><br>
+                            <span style="color: red;">{{ bettercoursevideoshow.hazineoff }}
+                                تومان</span></strong>
+                    </p>
+                    {% else %}
                     {% if bettercoursevideoshow.hazine != 0 %}
                     <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                         {{ bettercoursevideoshow.hazine }}<br> تومان </p>
@@ -259,7 +273,7 @@
                     <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
                     </p>
                     {% endif %}
-
+                    {% endif %}
                     <img src="{{ bettercoursevideoshow.pic.url }}" style="width: 100%; height:150px">
                     <p class="has-text-centered"><strong> درس :
                             {{ bettercoursevideoshow.coursename }}</strong></p>
@@ -327,7 +341,13 @@
             {% if newcoursevideoshows %} {% for newcoursevideoshow in newcoursevideoshows %}
             <div class="column is-one-quarter">
                 <a href="{% url 'showvideotutorial' newcoursevideoshow.id %}" class="box" style="height: 320px;">
-
+                    {% if newcoursevideoshow.off_is_published == True %}
+                    <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                        <strong><s>{{ newcoursevideoshow.hazine }} تومان</s><br>
+                            <span style="color: red;">{{ newcoursevideoshow.hazineoff }}
+                                تومان</span></strong>
+                    </p>
+                    {% else %}
                     {% if newcoursevideoshow.hazine != 0 %}
                     <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                         {{ newcoursevideoshow.hazine }}<br> تومان </p>
@@ -335,7 +355,7 @@
                     <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;"> رایگان
                     </p>
                     {% endif %}
-
+                    {% endif %}
                     <img src="{{ newcoursevideoshow.pic.url }}" style="width: 100%; height:150px">
                     <p class="has-text-centered"><strong> درس : {{ newcoursevideoshow.coursename }}</strong>
                     </p>
@@ -394,6 +414,120 @@
         </div>
     </div>
     {% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="section " style="background-color:snow;">
+        <h3 class="title has-text-centered has-text-dark">ویدیو های دارای تخفیف</h3>
+        <div class="columns is-multiline">
+            {% if offcoursevideoshows %}
+            {% for offcoursevideoshow in offcoursevideoshows %}
+            {% if offcoursevideoshow.off_is_published == True %}
+            <div class="column is-one-quarter">
+                <a href="{% url 'showvideotutorial' offcoursevideoshow.id %}" class="box" style="height: 320px;">
+                    {% if offcoursevideoshow.off_is_published == True %}
+                    <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                        <strong><s>{{ offcoursevideoshow.hazine }} تومان</s><br>
+                            <span style="color: red;">{{ offcoursevideoshow.hazineoff }}
+                                تومان</span></strong>
+                    </p>
+                    {% else %}
+                    {% if offcoursevideoshow.hazine != 0 %}
+                    <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                        {{ offcoursevideoshow.hazine }}<br> تومان </p>
+                    {% else %}
+                    <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                        رایگان </p>
+                    {% endif %}
+                    {% endif %}
+
+                    <img src="{{ offcoursevideoshow.pic.url }}" style="width: 100%; height:150px">
+                    <p class="has-text-centered"><strong> نام فایل :
+                            {{ offcoursevideoshow.coursename }}</strong></p>
+                    <p class="has-text-centered">تولید کننده : {{ offcoursevideoshow.modaresinfkey }}</p>
+                </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+            {% endif %}
+        </div>
+    </section>
+    <br>
+    {% if offcoursevideoshows.has_other_pages %}
+    <div class="row columns is-centered">
+        <div class="box column is-3">
+            <ul class="pagination">
+                {% if offcoursevideoshows.has_pervious %}
+                <li class="page-item">
+                    <a href="?page8={{offcoursevideoshows.previous_page_number}}" class="page-link">
+                        &laquo;
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disable">
+                    <a class="page-link">
+                        &laquo;
+                    </a>
+                </li>
+                {% endif %}
+                {% for i in offcoursevideoshows.paginator.page_range %}
+                {% if offcoursevideoshows.number == i %}
+                <li class="page-item active">
+                    <a class="page-link">{{i}}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a href="?page8={{i}}" class="page-link">{{i}}</a>
+                </li>
+                {% endif %}
+                {% endfor %}
+                {% if offcoursevideoshows.has_next %}
+                <li class="page-item">
+                    <a href="?page8={{offcoursevideoshows.next_page_number}}" class="page-link">
+                        &raquo;
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disable">
+                    <a class="page-link">
+                        &raquo;
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -135,6 +135,11 @@ def tutorialvideo(request):
     paginator = Paginator(newcoursevideoshows, 20)
     page3 = request.GET.get('page3')
     paged_newcoursevideoshows = paginator.get_page(page3)
+
+    paginator = Paginator(newcoursevideoshows, 20)
+    page8 = request.GET.get('page8')
+    paged_offcoursevideoshows = paginator.get_page(page8)
+
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -148,6 +153,7 @@ def tutorialvideo(request):
         'coursevideoshows': coursevideoshows,
         'searchcoursevideoshows': searchcoursevideoshows,
         'newcoursevideoshows': paged_newcoursevideoshows,
+        'offcoursevideoshows': paged_offcoursevideoshows,
         'bettercoursevideoshows': paged_bettercoursevideoshows,
         'values': request.GET,
         'coursevideoshowsall':coursevideoshowsall,

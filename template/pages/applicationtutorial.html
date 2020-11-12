@@ -209,6 +209,13 @@
                                     <strong>
                                         تولید کننده : {{ searchcourseapplicationshow.modaresinfkey }}
                                     </strong><br>
+                                    {% if searchcourseapplicationshow.off_is_published == True %}
+                                    <strong><s>{{ searchcourseapplicationshow.hazine }} تومان</s><br>
+                                        <span style="color: red;">
+                                            {{ searchcourseapplicationshow.hazineoff }} تومان
+                                        </span>
+                                    </strong>
+                                    {% else %}
                                     {% if searchcourseapplicationshow.hazine != 0 %}
                                     <small>
                                         هزینه : {{ searchcourseapplicationshow.hazine }} تومان
@@ -217,6 +224,7 @@
                                     <small>
                                         هزینه : رایگان
                                     </small>
+                                    {% endif %}
                                     {% endif %}
                                     <br>
                                 </p>
@@ -241,13 +249,20 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' bettercourseapplicationshow.id %}" class="box"
                             style="height: 320px;">
-
+                            {% if bettercourseapplicationshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ bettercourseapplicationshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ bettercourseapplicationshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if bettercourseapplicationshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ bettercourseapplicationshow.hazine }}<br> تومان </p>
                             {% else %}
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
+                            {% endif %}
                             {% endif %}
 
                             <img src="{{ bettercourseapplicationshow.pic.url }}" style="width: 100%; height:150px">
@@ -320,13 +335,20 @@
                     <div class="column is-one-quarter">
                         <a href="{% url 'showapplicationtutorial' newcourseapplicationshow.id %}" class="box"
                             style="height: 320px;">
-
+                            {% if newcourseapplicationshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ newcourseapplicationshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ newcourseapplicationshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if newcourseapplicationshow.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ newcourseapplicationshow.hazine }}<br> تومان </p>
                             {% else %}
                             <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
                                 رایگان </p>
+                            {% endif %}
                             {% endif %}
 
                             <img src="{{ newcourseapplicationshow.pic.url }}" style="width: 100%; height:150px">
@@ -385,6 +407,97 @@
                 </div>
             </div>
             {% endif %}
+
+
+
+
+
+            <section class="section " style="background-color:snow;">
+                <h3 class="title has-text-centered has-text-dark">نرم افزار های دارای تخفیف</h3>
+                <div class="columns is-multiline">
+                    {% if offcourseapplicationshows %} 
+                    {% for offcourseapplicationshow in offcourseapplicationshows %}
+                    {% if offcourseapplicationshow.off_is_published == True %}
+                    <div class="column is-one-quarter">
+                        <a href="{% url 'showapplicationtutorial' offcourseapplicationshow.id %}" class="box"
+                            style="height: 320px;">
+                            {% if offcourseapplicationshow.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ offcourseapplicationshow.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ offcourseapplicationshow.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
+                            {% if offcourseapplicationshow.hazine != 0 %}
+                            <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
+                                {{ offcourseapplicationshow.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button is-danger" style="position: absolute; height: 70px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+                            {% endif %}
+
+                            <img src="{{ offcourseapplicationshow.pic.url }}" style="width: 100%; height:150px">
+                            <p class="has-text-centered"><strong> نام فایل :
+                                    {{ offcourseapplicationshow.coursename }}</strong></p>
+                            <p class="has-text-centered">تولید کننده : {{ offcourseapplicationshow.modaresinfkey }}</p>
+                        </a>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    
+                    {% endif %}
+                </div>
+            </section>
+            <br>
+            {% if offcourseapplicationshows.has_other_pages %}
+            <div class="row columns is-centered">
+                <div class="box column is-3">
+                    <ul class="pagination">
+                        {% if offcourseapplicationshows.has_pervious %}
+                        <li class="page-item">
+                            <a href="?page4={{offcourseapplicationshows.previous_page_number}}" class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &laquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% for i in offcourseapplicationshows.paginator.page_range %}
+                        {% if offcourseapplicationshows.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{i}}</a>
+                        </li>
+                        {% else %}
+                        <li class="page-item">
+                            <a href="?page4={{i}}" class="page-link">{{i}}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {% if offcourseapplicationshows.has_next %}
+                        <li class="page-item">
+                            <a href="?page4={{offcourseapplicationshows.next_page_number}}" class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disable">
+                            <a class="page-link">
+                                &raquo;
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            {% endif %}
+
+
+
         </section>
     </div>
 </div>

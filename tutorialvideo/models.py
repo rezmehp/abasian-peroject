@@ -30,6 +30,10 @@ class coursevideo2(models.Model):
     tizer = models.CharField(max_length=1000,verbose_name="لینک فایل تیزر")
     tizer_is_published = models.BooleanField(default=True,verbose_name="نمایش فایل تیزر")
     hazine = models.IntegerField(verbose_name="هزینه به تومان")
+    off_is_published = models.BooleanField(default=True,verbose_name="تخفیف دارد")
+    hazineoff = models.IntegerField(verbose_name="هزینه با تخفیف به تومان")
+
+
     
     def __str__(self):
         return self.coursename

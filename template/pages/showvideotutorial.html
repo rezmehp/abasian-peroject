@@ -23,7 +23,8 @@
                         </div>
                     </div>
                 </div>
-                <hr><hr>
+                <hr>
+                <hr>
 
 
 
@@ -39,9 +40,32 @@
                                 <h4 class="has-text-dark">مدرس : {{ coursevideo.modaresinfkey }}</h4><br>
                                 <small class="has-text-dark">مدت زمان آموزش : {{ coursevideo.saattadris }} دقیقه
                                 </small><br>
+
+
+
+
+
+                                {% if coursevideo.off_is_published == True %}
+                                <p>
+                                    <strong><s>هزینه : {{ coursevideo.hazine }} تومان</s><br>
+                                        <span style="color: red;">هزینه : {{ coursevideo.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
                                 {% if coursevideo.hazine != 0 %}
                                 <small class="has-text-dark">هزینه :{{ coursevideo.hazine }} تومان </small>
+                                {% else %}
+                                <small class="has-text-dark">هزینه : رایگان</small>
                                 {% endif %}
+                                {% endif %}
+
+
+
+
+
+
+
+
                                 </p>
                             </div>
                         </div>
@@ -60,66 +84,73 @@
                         {% endif %}
                     </div>
                     <hr>
-                    
 
 
 
 
-                <div class="container">
-                    {% if videopicss %}
-                    <nav class="panel" >
-                        <p class="panel-heading">
-                            عکس های محصول
-                        </p>
-                       <div class="columns is-multiline" >
-                        {% for videopics in videopicss %}
-                        {% if videopics.videopiclink_is_published == True %}
 
-                        <div class="column  is-2"  >
-                            <a href="#ex1{{ videopics.id }}" rel="modal:open"> 
-                                <figure class="image">
-                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ videopics.videopicname }}" src="{{ videopics.videopiclink }}">
-                                </figure>
-                            </a> 
-                        </div>
-                        <div id="ex1{{ videopics.id }}" class="modal">
-                            <div class="hero-body">
-                                <a href="#ex1{{ videopics.id }}" rel="modal:close">
-                                    <div class="modal-background"></div>
-                                    <div class="slideshow-container">
-                                        <div id="numbertext" class="numbertext"></div>
-                                        <img style="height:600px" alt="{{ videopics.videopicname }}" src="{{ videopics.videopiclink }}">
+                    <div class="container">
+                        {% if videopicss %}
+                        <nav class="panel">
+                            <p class="panel-heading">
+                                عکس های محصول
+                            </p>
+                            <div class="columns is-multiline">
+                                {% for videopics in videopicss %}
+                                {% if videopics.videopiclink_is_published == True %}
+
+                                <div class="column  is-2">
+                                    <a href="#ex1{{ videopics.id }}" rel="modal:open">
+                                        <figure class="image">
+                                            <img class="is-centered has-text-centered"
+                                                style="height: 180px; width: 180px;" alt="{{ videopics.videopicname }}"
+                                                src="{{ videopics.videopiclink }}">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div id="ex1{{ videopics.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#ex1{{ videopics.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="slideshow-container">
+                                                <div id="numbertext" class="numbertext"></div>
+                                                <img style="height:600px" alt="{{ videopics.videopicname }}"
+                                                    src="{{ videopics.videopiclink }}">
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
-                            </div>
-                        </div>
-                        {% endif %}
-                        {% if videopics.videopicfile_is_published == True %}
-                        <div class="column  is-2" >
-                            <a href="#ex2{{ videopics.id }}" rel="modal:open"> 
-                                <figure class="image">
-                                    <img class="is-centered has-text-centered" style="height: 180px; width: 180px;" alt="{{ videopics.videopicname }}" src="{{ videopics.videopicfile.url }}">
-                                </figure>
-                            </a> 
-                        </div>
-                        <div id="ex2{{ videopics.id }}" class="modal">
-                            <div class="hero-body">
-                                <a href="#ex1{{ videopics.id }}" rel="modal:close">
-                                    <div class="modal-background"></div>
-                                    <div class="slideshow-container">
-                                        <div id="numbertext" class="numbertext"></div>
-                                        <img style="height:600px" alt="{{ videopics.videopicname }}" src="{{ videopics.videopicfile.url }}">
+                                </div>
+                                {% endif %}
+                                {% if videopics.videopicfile_is_published == True %}
+                                <div class="column  is-2">
+                                    <a href="#ex2{{ videopics.id }}" rel="modal:open">
+                                        <figure class="image">
+                                            <img class="is-centered has-text-centered"
+                                                style="height: 180px; width: 180px;" alt="{{ videopics.videopicname }}"
+                                                src="{{ videopics.videopicfile.url }}">
+                                        </figure>
+                                    </a>
+                                </div>
+                                <div id="ex2{{ videopics.id }}" class="modal">
+                                    <div class="hero-body">
+                                        <a href="#ex1{{ videopics.id }}" rel="modal:close">
+                                            <div class="modal-background"></div>
+                                            <div class="slideshow-container">
+                                                <div id="numbertext" class="numbertext"></div>
+                                                <img style="height:600px" alt="{{ videopics.videopicname }}"
+                                                    src="{{ videopics.videopicfile.url }}">
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
                             </div>
-                        </div>
+                        </nav>
+                        <hr>
+                        <hr>
                         {% endif %}
-                        {% endfor %}
                     </div>
-                    </nav>
-                    <hr><hr>
-                    {% endif %}
-                </div>
 
 
 
@@ -176,15 +207,39 @@
                                 <p class="panel-heading">
                                     برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
                                     <br><br>
-                                    هزینه : {{ coursevideo.hazine }} تومان
-                                    <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                    <input type="text" name="username" value="{{ user.username }}" hidden />
-                                    <input type="number" name="courseid" value="{{ coursevideo.id }}" hidden />
-                                    <input type="text" name="coursename" value="{{ coursevideo.coursename }}" hidden />
-                                    <input type="text" name="coursetype" value="1" hidden />
-                                    <input type="text" name="description"
-                                        value="  ویدیو {{ coursevideo.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
-                                        hidden />
+
+
+
+
+
+                                    {% if coursevideo.off_is_published == True %}
+                                <p>
+                                    هزینه : <strong><s>{{ coursevideo.hazine }} تومان</s><br>
+                                        هزینه : <span style="color: red;">{{ coursevideo.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                هزینه : {{ coursevideo.hazine }} تومان
+
+                                {% endif %}
+
+
+
+
+
+
+
+
+
+
+                                <input type="number" name="userid" value="{{ user.id }}" hidden />
+                                <input type="text" name="username" value="{{ user.username }}" hidden />
+                                <input type="number" name="courseid" value="{{ coursevideo.id }}" hidden />
+                                <input type="text" name="coursename" value="{{ coursevideo.coursename }}" hidden />
+                                <input type="text" name="coursetype" value="1" hidden />
+                                <input type="text" name="description"
+                                    value="  ویدیو {{ coursevideo.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد"
+                                    hidden />
                                 <p class="control is-expanded  has-icons-right">
                                     <input class="input" type="email" name="email" placeholder="ایمیل"
                                         value="{{ user.email }}" required />
@@ -242,8 +297,22 @@
                             برای دیدن لینک های دانلود باید ابتدا وارد حساب کاربری خود شوید
                             <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
                                 کنید</strong><br><br>
+
+
+
+
+                            {% if coursevideo.off_is_published == True %}
+                            <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه :
+                            {{ coursevideo.hazineoff }} تومان
+                            {% else %}
                             <input type="text" name="amount" value="{{ coursevideo.hazine }}" hidden />هزینه :
                             {{ coursevideo.hazine }} تومان
+                            {% endif %}
+
+
+
+
+
                         </a>
                         {% else %}
                         <nav class="panel" style="background-color: rgb(255, 198, 227);">
@@ -291,6 +360,17 @@
                     {% if otherthis.id != coursevideo.id %}
                     <div class="column is-one-quarter">
                         <a href="{% url 'showvideotutorial' otherthis.id %}" class="box" style="height: 320px;">
+                           
+                            
+
+                            
+                            {% if otherthis.off_is_published == True %}
+                            <p class="button is-warning" style="position: absolute; height: 70px; border-radius: 5%;">
+                                <strong><s>{{ otherthis.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ otherthis.hazineoff }}
+                                        تومان</span></strong>
+                            </p>
+                            {% else %}
                             {% if otherthis.hazine != 0 %}
                             <p class="button is-primary" style="position: absolute; height: 70px; border-radius: 5%;">
                                 {{ otherthis.hazine }}<br> تومان </p>
@@ -299,6 +379,12 @@
                                 رایگان
                             </p>
                             {% endif %}
+                            {% endif %}
+
+
+
+
+
                             <img src="{{ otherthis.pic.url }}" style="width: 100%; height:150px">
                             <p class="has-text-centered"><strong> درس : {{ otherthis.coursename }}</strong>
                             </p>

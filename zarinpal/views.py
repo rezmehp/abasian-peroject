@@ -49,25 +49,55 @@ def send_request(request):
         global amount
         if coursetype == "1": # ویدیو ها
             amountall = coursevideo2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = coursevideo2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = coursevideo2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
         if coursetype == "2": # صدا ها
             amountall = coursevoice2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = coursevoice2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = coursevoice2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
         if coursetype == "3": # فایل ها
             amountall = coursefile2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = coursefile2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = coursefile2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
         if coursetype == "4": # کتاب ها
             amountall = coursebook2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = coursebook2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = coursebook2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
         if coursetype == "5": # نرم افزار ها
             amountall = courseapplication2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = courseapplication2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = courseapplication2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
         if coursetype == "6": # کلاس های آنلاین
             amountall = allclassLinks3.objects.filter(id=courseid).values_list('link_price', flat=True)
             amount = amountall[0]
         if coursetype == "7": # آزمون های آنلاین
             amountall = courseexam2.objects.filter(id=courseid).values_list('hazine', flat=True)
-            amount = amountall[0]
+            amountalloff = courseexam2.objects.filter(id=courseid).values_list('hazineoff', flat=True)
+            amountalloffok = courseexam2.objects.filter(id=courseid).values_list('off_is_published', flat=True)
+            if  amountalloffok[0] == True:
+                amount = amountalloff[0]
+            else:
+                amount = amountall[0]
 
         result = client.service.PaymentRequest(MERCHANT, amount, description, email, mobile, CallbackURL) # ارسال به درگاه پرداخت
            

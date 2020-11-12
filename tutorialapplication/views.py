@@ -161,6 +161,9 @@ def tutorialapplication(request):
     paginator = Paginator(newcourseapplicationshows, 20)
     page3 = request.GET.get('page3')
     paged_newcourseapplicationshows = paginator.get_page(page3)
+    paginator = Paginator(newcourseapplicationshows, 20)
+    page4 = request.GET.get('page4')
+    paged_offcourseapplicationshows = paginator.get_page(page4)
     context = {
         'reshteTahsiliid': reshteTahsiliid,
         'karbaruser1online': karbaruser1online,
@@ -173,6 +176,7 @@ def tutorialapplication(request):
         'courseapplicationshows': courseapplicationshows,
         'searchcourseapplicationshows': searchcourseapplicationshows,
         'newcourseapplicationshows': paged_newcourseapplicationshows,
+        'offcourseapplicationshows': paged_offcourseapplicationshows,
         'bettercourseapplicationshows': paged_bettercourseapplicationshows,
         'values': request.GET,
         'footerAdmins':footerAdmins,
