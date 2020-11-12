@@ -172,24 +172,6 @@ def tutorialexam(request):
         bettercourseexamshows = ""
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     paginator = Paginator(bettercourseexamshows, 8)
     page3 = request.GET.get('page3')
     paged_bettercourseexamshows = paginator.get_page(page3)
@@ -200,9 +182,9 @@ def tutorialexam(request):
     paged_newcourseexamshows = paginator.get_page(page2)
     
 
-    paginator = Paginator(newcourseexamshows, 20)
-    page8 = request.GET.get('page8')
-    paged_offcourseexamshows = paginator.get_page(page8)
+    offcourseexamshows = courseexam2.objects.filter(off_is_published = True).order_by('-id')
+    
+    
 
     context = {
         'footerAdmins': footerAdmins,
@@ -217,7 +199,7 @@ def tutorialexam(request):
         'courseexamshows': courseexamshows,
         'searchcourseexamshows': paged_searchcourseexamshows,
         'newcourseexamshows': paged_newcourseexamshows,
-        'offcourseexamshows': paged_offcourseexamshows,
+        'offcourseexamshows': offcourseexamshows,
         'bettercourseexamshows': paged_bettercourseexamshows,
         'values': request.GET,
         'passexams':passexams,

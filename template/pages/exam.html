@@ -463,8 +463,6 @@
                                     {% endif %}
                                     {% endfor %}
                                     {% endif %}
-
-
                                 </strong>
                             </p>
                             <p class="has-text-centered">استاد : {{ offcourseexamshow.modaresinfkey }}</p>
@@ -474,56 +472,10 @@
                     </span>
                     {% endfor %}
                     {% endif %}
-
-
             </section>
             <br>
 
-            {% if offcourseexamshows.has_other_pages %}
-            <div class="row columns is-centered">
-                <div class="box column is-3">
-                    <ul class="pagination">
-                        {% if offcourseexamshows.has_pervious %}
-                        <li class="page-item">
-                            <a href="?page8={{offcourseexamshows.previous_page_number}}" class="page-link">
-                                &laquo;
-                            </a>
-                        </li>
-                        {% else %}
-                        <li class="page-item disable">
-                            <a class="page-link">
-                                &laquo;
-                            </a>
-                        </li>
-                        {% endif %}
-                        {% for i in offcourseexamshows.paginator.page_range %}
-                        {% if offcourseexamshows.number == i %}
-                        <li class="page-item active">
-                            <a class="page-link">{{i}}</a>
-                        </li>
-                        {% else %}
-                        <li class="page-item">
-                            <a href="?page8={{i}}" class="page-link">{{i}}</a>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-                        {% if offcourseexamshows.has_next %}
-                        <li class="page-item">
-                            <a href="?page8={{offcourseexamshows.next_page_number}}" class="page-link">
-                                &raquo;
-                            </a>
-                        </li>
-                        {% else %}
-                        <li class="page-item disable">
-                            <a class="page-link">
-                                &raquo;
-                            </a>
-                        </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-            {% endif %}
+            
             <hr>
 
 

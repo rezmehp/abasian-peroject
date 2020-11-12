@@ -11,6 +11,7 @@ class coursefile2show(admin.ModelAdmin):
     list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','hazineoff','off_is_published','saattadris',)
     list_filter = ('modaresinfkey','maghtafkey','reshteTahsilifkey',)
     search_fields = ('coursename',)
+    list_editable = ('off_is_published',)
     list_per_page = 10
 
 admin.site.register(coursefile2, coursefile2show)

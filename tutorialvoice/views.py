@@ -164,9 +164,7 @@ def tutorialvoice(request):
     page3 = request.GET.get('page3')
     paged_newcoursevoiceshows = paginator.get_page(page3)
 
-    paginator = Paginator(newcoursevoiceshows, 20)
-    page8 = request.GET.get('page8')
-    paged_offcoursevoiceshows = paginator.get_page(page8)
+    offcoursevoiceshows = coursevoice2.objects.filter(off_is_published = True).order_by('-id')
 
     context = {
         'footerAdmins': footerAdmins,
@@ -181,7 +179,7 @@ def tutorialvoice(request):
         'coursevoiceshows': coursevoiceshows,
         'searchcoursevoiceshows': searchcoursevoiceshows,
         'newcoursevoiceshows': paged_newcoursevoiceshows,
-        'offcoursevoiceshows': paged_offcoursevoiceshows,
+        'offcoursevoiceshows': offcoursevoiceshows,
         'bettercoursevoiceshows': paged_bettercoursevoiceshows,
         'values': request.GET,
         'coursevideoshowsall':coursevideoshowsall,

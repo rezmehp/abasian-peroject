@@ -153,9 +153,7 @@ def tutorialfile(request):
     page3 = request.GET.get('page3')
     paged_newcoursefileshows = paginator.get_page(page3)
 
-    paginator = Paginator(newcoursefileshows, 20)
-    page8 = request.GET.get('page8')
-    paged_offcoursefileshows = paginator.get_page(page8)
+    offcoursefileshows = coursefile2.objects.filter(off_is_published = True).order_by('-id')
 
     context = {
         'footerAdmins': footerAdmins,
@@ -170,7 +168,7 @@ def tutorialfile(request):
         'coursefileshows': coursefileshows,
         'searchcoursefileshows': searchcoursefileshows,
         'newcoursefileshows': paged_newcoursefileshows,
-        'offcoursefileshows': paged_offcoursefileshows,
+        'offcoursefileshows': offcoursefileshows,
         'bettercoursefileshows': paged_bettercoursefileshows,
         'values': request.GET,
         'coursevideoshowsall':coursevideoshowsall,

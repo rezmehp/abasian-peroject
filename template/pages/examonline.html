@@ -272,7 +272,35 @@
                                             <p class="panel-heading">
                                                 برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                                 <br><br>
+
+
+
+
+
+
+
+
+
+                                                {% if courseexam.off_is_published == True %}
+                                                <p>
+                                                    هزینه : <strong><s>{{ courseexam.hazine }} تومان</s><br>
+                                                        هزینه : <span style="color: red;">{{ courseexam.hazineoff }}
+                                                            تومان</span></strong>
+                                                </p>
+                                                {% else %}
                                                 هزینه : {{ courseexam.hazine }} تومان
+                
+                                                {% endif %}
+                
+                
+                
+                
+                
+
+
+
+
+                                                
                                                 <input type="number" name="userid" value="{{ user.id }}" hidden />
                                                 <input type="text" name="username" value="{{ user.username }}" hidden />
                                                 <input type="number" name="courseid" value="{{ courseexam.id }}" hidden />
