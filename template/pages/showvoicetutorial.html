@@ -26,9 +26,9 @@
                                 <h3 class="has-text-dark has-text-centered">نام درس : {{ coursevoice.coursename }}
                                 </h3><br>
                                 <h4 class="has-text-dark">مدرس : {{ coursevoice.modaresinfkey }}</h4><br>
-                                <small class="has-text-dark">مدت زمان آموزش : {{ coursevoice.saattadris }} دقیقه
-                                </small><br>
-                                <h4 class="has-text-dark">حجم فایل : {{ courseapplication.size }} مگابایت</h4><br>
+                                <h4 class="has-text-dark">مدت زمان آموزش : {{ coursevoice.saattadris }} دقیقه
+                                </h4><br>
+                                <h4 class="has-text-dark">حجم فایل : {{ coursevoice.size }} گیگابایت</h4><br>
 
 
 
@@ -144,7 +144,7 @@
                             <div class="content has-text-right">
                                 <p class="has-text-dark is-centered">
 
-                                <h5 class="has-text-dark">{{ coursevoice.tozihat|safe }}</h5>
+                                <p class="has-text-dark">{{ coursevoice.tozihat|safe }}</p>
                                 </p>
                             </div>
                         </div>

@@ -9,9 +9,9 @@ admin.site.register(tutorialvoiceAdmin, tutorialvoiceAdminshow)
 
 
 class coursevoice2show(admin.ModelAdmin):
-    list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','hazineoff','off_is_published','saattadris',)
+    list_display = ('coursename','modaresinfkey','reshteTahsilifkey','hazine','hazineoff','off_is_published','saattadris','size',)
     list_filter = ('modaresinfkey','maghtafkey','reshteTahsilifkey',)
-    list_editable = ('off_is_published',)
+    list_editable = ('off_is_published','hazine','hazineoff',)
     search_fields = ('coursename',)
 admin.site.register(coursevoice2, coursevoice2show)
 

@@ -94,6 +94,8 @@
                                                                         <br>
                                                                         {{ coursevideoshowall.saattadris }} ساعت
                                                                         آموزش
+                                                                        <br>
+                                                                        {{ coursevideoshowall.size }} گیگابایت
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -181,6 +183,8 @@
                                                                         <br>
                                                                         {{ coursevoiceshowall.saattadris }} ساعت
                                                                         آموزش
+                                                                        <br>
+                                                                        {{ coursevoiceshowall.size }} گیگابایت
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -216,10 +220,7 @@
                                                                             نام فایل :
                                                                             {{ coursefileshowall.coursename }}
                                                                         </strong><br>
-                                                                        <strong>
-                                                                            تولید کننده :
-                                                                            {{ coursefileshowall.modaresinfkey }}
-                                                                        </strong><br>
+                                                                       
                                                                         {% if coursefileshowall.off_is_published == True %}
                                                                         <strong>
                                                                             هزینه :
@@ -246,6 +247,8 @@
                                                                         </small>
                                                                         {% endif %}
                                                                         {% endif %}
+                                                                        <br>
+                                                                        {{ coursefileshowall.size }} گیگابایت
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -313,6 +316,8 @@
                                                                         <br>
                                                                         {{ coursebookshowall.saattadris }}
                                                                         صفحه
+                                                                        <br>
+                                                                        {{ coursebookshowall.size }} گیگابایت
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -379,7 +384,8 @@
                                                                         </small>
                                                                         {% endif %}
                                                                         {% endif %}
-
+                                                                        <br>
+                                                                        {{ courseapplicationshowall.size }} گیگابایت
                                                                     </p>
                                                                 </div>
                                                             </div>

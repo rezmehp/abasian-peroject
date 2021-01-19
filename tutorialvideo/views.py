@@ -14,7 +14,6 @@ from tutorialvoice.models import coursevoice2
 from exam.models import exams2
 
 
-
 def tutorialvideo(request):
     footerAdmins = footerAdmin.objects.all()
     tutorialvideoAdmins = tutorialvideoAdmin.objects.all()

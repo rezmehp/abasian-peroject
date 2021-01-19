@@ -19,7 +19,6 @@ class tutorialvideoAdmin(models.Model):
 
 
 class coursevideo2(models.Model):
-    
     maghtafkey = models.ForeignKey(maghtaTahsili, on_delete=models.DO_NOTHING,verbose_name="مقطع")
     reshteTahsilifkey = models.ForeignKey(reshteTahsili, on_delete=models.DO_NOTHING,verbose_name="رشته")
     modaresinfkey = models.ForeignKey(modaresin, on_delete=models.DO_NOTHING,verbose_name="نام استاد")
@@ -39,6 +38,8 @@ class coursevideo2(models.Model):
         return self.coursename
     class Meta:
         verbose_name_plural="درس ها"
+        
+
         
 class videos(models.Model):
     
