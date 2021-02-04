@@ -6,7 +6,7 @@
         <h1 class="title has-text-centered">آزمون آنلاین</h1>
         <div class="hero-body">
                         {% if user.is_authenticated %}
-                            {% if coursevideo.hazine != 0 %}
+                            {% if courseexam.hazine != 0 %}
                                 {% if buyss %}
                                 <!-- خرید انجام شده باشد -->
                                     <div class="container">
@@ -273,14 +273,6 @@
                                                 برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
                                                 <br><br>
 
-
-
-
-
-
-
-
-
                                                 {% if courseexam.off_is_published == True %}
                                                 <p>
                                                     هزینه : <strong><s>{{ courseexam.hazine }} تومان</s><br>
@@ -291,16 +283,6 @@
                                                 هزینه : {{ courseexam.hazine }} تومان
                 
                                                 {% endif %}
-                
-                
-                
-                
-                
-
-
-
-
-                                                
                                                 <input type="number" name="userid" value="{{ user.id }}" hidden />
                                                 <input type="text" name="username" value="{{ user.username }}" hidden />
                                                 <input type="number" name="courseid" value="{{ courseexam.id }}" hidden />

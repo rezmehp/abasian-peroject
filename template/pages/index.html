@@ -667,10 +667,9 @@
             <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
                 {% if newcoursevideos %} {% for newcoursevideo in newcoursevideos %}
                 <div class="column is-3">
-                    <div style="border-radius: 5%;">				
+                    <div style="border-radius: 5%; ">				
                         <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box" style="  background-color: #b5ffffe0; ">
-                            
-                                <figure class="image">
+                                <figure  class="image animreza">
                                     {% if newcoursevideo.off_is_published == True %}
                                     <p class="button is-warning"
                                         style="position: absolute; height: 70px; border-radius: 5%;">
@@ -678,6 +677,7 @@
                                             <span style="color: red;">{{ newcoursevideo.hazineoff }}
                                                 تومان</span></strong>
                                     </p>
+                                    
                                     {% else %}
                                     {% if newcoursevideo.hazine != 0 %}
                                     <p class="button is-primary"
@@ -688,12 +688,10 @@
                                         style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
                                     {% endif %}
                                     {% endif %}
-									
-									
-								
-                                    <img style="background-image: url('{{ newcoursevideo.pic.url }}');border-radius: 5%; background-position: center; background-size: contain; background-repeat: no-repeat;"
+                                    <img  style="background-image: url('{{ newcoursevideo.pic.url }}');
+                                    border-radius: 5%; background-position: center; background-size: contain;
+                                     background-repeat: no-repeat;"
                                      src="{% static 'images/Videos-icon2.png' %}" alt="Image">
-                                   
                                 </figure>
                             
                                 <strong>{{ newcoursevideo.coursename }}</strong>

@@ -28,6 +28,10 @@
     opacity: 3.3;
 }
 
+.animreza:hover{
+    transform: rotate(100deg);
+    }
+    
 .map-responsive {
     border: 0;
     left: 0;

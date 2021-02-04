@@ -8,6 +8,12 @@ body {
     margin: auto;
 }
 
+
+.animreza:hover{
+    transform: scale(1.06)
+    }
+    
+
 .prev,
 .next {
     cursor: pointer;

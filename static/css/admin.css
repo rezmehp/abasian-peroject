@@ -12,6 +12,11 @@
     border-left: 5px solid #10284e !important;
 }
 
+
+.animreza:hover{
+    transform: rotate(100deg);
+    }
+    
 thead th {   
     color: #fff !important;
     background: #10284e;
