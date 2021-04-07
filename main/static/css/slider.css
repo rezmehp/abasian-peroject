@@ -1,82 +1,244 @@
 body {
-    margin: 0
+  margin: 0;
 }
 
 .slideshow-container {
-    max-width: 800px;
-    position: relative;
-    margin: auto;
+  max-width: 800px;
+  position: relative;
+  margin: auto;
+}
+
+.animreza:hover {
+  animation: rezascale ease 3s;
+  -webkit-animation: rezascale ease 3s;
+  -moz-animation: rezascale ease 3s;
+  -o-animation: rezascale ease 3s;
+  -ms-animation: rezascale ease 3s;
+  animation: rezascale 3s infinite ease-in-out;
+}
+
+@keyframes rezascale {
+  0%,
+  100% {
+    transform: scale(1);
+    transform: skew(2deg, 2deg);
+  }
+  50% {
+    transform: scale(1.04);
+    transform: skew(-2deg, -2deg);
+  }
 }
 
 
-.animreza:hover{
-    transform: scale(1.06)
-    }
+.animrezabox:hover {
+  animation: rezascalebox ease 3s;
+  -webkit-animation: rezascalebox ease 3s;
+  -moz-animation: rezascalebox ease 3s;
+  -o-animation: rezascalebox ease 3s;
+  -ms-animation: rezascalebox ease 3s;
+  animation: rezascalebox 3s infinite ease-in-out;
+}
+
+@keyframes rezascalebox {
+  0%,
+  100% {
+    transform: scale(1);
     
+  }
+  50% {
+    transform: scale(1.08);
+    
+  }
+}
+
+
+
+
+.animrezarotate {
+  display: inline-block;
+  animation: rezarotate 3s infinite;
+  transform: rotate(30deg);
+}
+
+@keyframes rezarotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animrezaboxshadow {
+
+    box-shadow: 1px 1px 1px #c7c6c6, 1px 2px 1px #c7c6c6, 1px 3px 1px #c7c6c6,
+        1px 4px 1px #c7c6c6, 1px 5px 1px #c7c6c6, 1px 15px 12px rgba(16, 16, 16, 0),
+        1px 17px 11px rgba(16, 16, 16, 0), 1px 18px 23px rgba(16, 16, 16, 0),
+        1px 21px 36px rgba(16, 16, 16, 0);
+}
+    
+
+.animrezatextshadow {
+  text-align: center;
+  color: #f5f5f5;
+  text-shadow: 1px 1px 1px #c7c6c6, 1px 2px 1px #c7c6c6, 1px 3px 1px #c7c6c6,
+    1px 4px 1px #c7c6c6, 1px 5px 1px #c7c6c6, 1px 15px 12px rgba(16, 16, 16, 0),
+    1px 17px 11px rgba(16, 16, 16, 0), 1px 18px 23px rgba(16, 16, 16, 0),
+    1px 21px 36px rgba(16, 16, 16, 0);
+  
+}
+
+.animrezarotatetext {
+  animation: rezarotatetext 3s infinite;
+  transform: rotate(0deg);
+}
+
+@keyframes rezarotatetext {
+  0%,
+  100% {
+    transform: rotate(0);
+    color: rgb(201, 3, 108);
+  }
+  30% {
+    transform: rotate(10deg);
+    color: rgb(3, 161, 201);
+  }
+  60% {
+    transform: rotate(-10deg);
+    color: rgb(0, 172, 29);
+  }
+}
+
+.fade-in:hover {
+  animation: fadeIn ease 3s;
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
+  animation: fadeIn 3s infinite ease-in-out;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .prev,
 .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
 }
 
 .next {
-    left: 0;
-    border-radius: 3px 0 0 3px;
+  left: 0;
+  border-radius: 3px 0 0 3px;
 }
 
 .prev {
-    right: 0;
-    border-radius: 3px 0 0 3px;
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }
 
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .numbertext {
-    color: #ffffff;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
 }
 
 .active {
-    background-color: #111111;
+  background-color: #111111;
 }
 
 .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: .5s;
-    animation-name: fade;
-    animation-duration: .5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 0.5s;
+  animation-name: fade;
+  animation-duration: 0.5s;
 }
 
 @keyframes fade {
-    from {
-        opacity: 1
-    }
-    to {
-        opacity: 3
-    }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 3;
+  }
 }
 
 @media only screen and (max-width: 300px) {
-    .prev,
-    .next,
-    .text {
-        font-size: 11px
-    }
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }

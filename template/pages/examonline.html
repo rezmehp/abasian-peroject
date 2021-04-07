@@ -1,606 +1,457 @@
-{% extends 'base.html' %} {% block title %} {{ courseexam.coursename }} {% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %} {{ courseexam.coursename }} {% endblock %} {% block content %}
 <div class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
         <h1 class="title has-text-centered">آزمون آنلاین</h1>
         <div class="hero-body">
-                        {% if user.is_authenticated %}
-                            {% if courseexam.hazine != 0 %}
-                                {% if buyss %}
-                                <!-- خرید انجام شده باشد -->
-                                    <div class="container">
-                                    <div class="columns is-primary is-centered" style="border: none;">
-                                        <div class="column  is-11-widescreen">
-                                            <div class="box field is-horizontal">
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        {{ courseexam.coursename }}
+            {% if user.is_authenticated %} {% if courseexam.hazine != 0 %} {% if buyss %}
+            <!-- خرید انجام شده باشد -->
+            <div class="container">
+                <div class="columns is-primary is-centered" style="border: none;">
+                    <div class="column  is-11-widescreen">
+                        <div class="box field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    {{ courseexam.coursename }}
+                                </div>
+                                <div class="field">
+                                    <label id="questiontime" style="color: red; font-weight: bold;"></label>
+                                    <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
+                                </div>
+                                سوال شماره &nbsp;<label id="questionnumber" style="color: red; font-weight: bold;"></label>
+                            </div>
+                        </div>
+                        <form action="{% url 'examresault' %}" method="POST" data-confirm="Are you sure you want to submit the form?" class="has-background-gray-light">
+                            {% csrf_token %} {% if examss %} {% for exams in examss %} {% if exams.examquestion_published == True %}
+                            <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
+                            <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
+                            <input type="text" name="userid" value="{{ user.id }}" hidden />
+
+                            <div id="questions" class="box">
+
+                                <div class="box field is-horizontal">
+                                    <div class="field-body">
+                                        {% if exams.examtext %} {% if exams.examtext_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">متن</a>
+                                            </p>
+                                        </div>
+                                        <!--متن-->
+                                        <div id="ex4{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex4{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examtext|safe }}
+                                                            </div>
+                                                        </article>
                                                     </div>
-                                                    <div class="field">
-                                                        <label id="questiontime" style="color: red; font-weight: bold;"></label>
-                                                        <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
-                                                    </div>
-                                                    سوال شماره &nbsp;<label id="questionnumber"
-                                                        style="color: red; font-weight: bold;"></label>
-                                                </div>
+                                                </a>
                                             </div>
-                                            <form action="{% url 'examresault' %}" method="POST"
-                                                data-confirm="Are you sure you want to submit the form?" class="has-background-gray-light">
-                                                {% csrf_token %}
-                                                {% if examss %}
-                    
-                                                {% for exams in examss %}
-                                                {% if exams.examquestion_published == True %}
-                                                <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
-                                                <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
-                                                <input type="text" name="userid" value="{{ user.id }}" hidden />
-                    
-                                                <div id="questions" class="box">
-                    
-                                                    <div class="box field is-horizontal">
-                                                        <div class="field-body">
-                                                            {% if exams.examtext %}
-                                                            {% if exams.examtext_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">متن</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--متن-->
-                                                            <div id="ex4{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex4{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <article class="message">
-                                                                                <div class="message-body">
-                                                                                    {{ exams.examtext|safe }}
-                                                                                </div>
-                                                                            </article>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfiletext %}
-                                                            {% if exams.examfiletext_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfiletext.url }}" target="_blank"
-                                                                        class="button">فایل متن</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkaudio %}
-                                                            {% if exams.examlinkaudio_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#exexams.examlinkaudio3{{ exams.id }}" rel="modal:open"
-                                                                        class="button">صوت</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--صوت-->
-                                                            <div id="ex3{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex3{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background" onclick="audioStop()"></div>
-                                                                        <div class="modal-content">
-                                                                            <audio controls="controls">
-                                                                                <source src="{{ exams.examlinkaudio }}" type="audio/mpeg" />
-                                                                            </audio>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfileaudio  %}
-                                                            {% if exams.examfileaudio_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfileaudio.url }}" target="_blank"
-                                                                        class="button">فایل صوت</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkpic %}
-                                                            {% if exams.examlinkpic_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">عکس</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--عکس-->
-                                                            <div id="ex1{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex1{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="slideshow-container">
-                                                                            <div id="numbertext" class="numbertext"></div>
-                                                                            <img style="width:800px" src="{{ exams.examlinkpic }}">
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfilepic  %}
-                                                            {% if exams.examfilepic_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfilepic.url }}" target="_blank" class="button">فایل
-                                                                        عکس</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkvideo %}
-                                                            {% if exams.examlinkvideo_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">ویدیو</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--فیلم-->
-                                                            <div id="ex2{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex2{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <figure class="image is-16by9">
-                                                                                <iframe class="has-ratio" width="640" height="360"
-                                                                                    src="{{ exams.examlinkvideo }}" frameborder="0"
-                                                                                    allowfullscreen></iframe>
-                                                                            </figure>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfilevideo  %}
-                                                            {% if exams.examfilevideo_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfilevideo.url }}" target="_blank"
-                                                                        class="button">فایل ویدئو</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examanswer %}
-                                                            {% if exams.examanswer_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--پاسخ-->
-                                                            <div id="ex5{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex5{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <article class="message">
-                                                                                <div class="message-body">
-                                                                                    {{ exams.examanswer }}
-                                                                                </div>
-                                                                            </article>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfileanswer  %}
-                                                            {% if exams.examfileanswer_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfileanswer.url }}" target="_blank"
-                                                                        class="button">فایل پاسخ</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                        </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfiletext %} {% if exams.examfiletext_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfiletext.url }}" target="_blank" class="button">فایل متن</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkaudio %} {% if exams.examlinkaudio_published == True %}
+                                        <div class="field">
+                                            <p><a href="#exexams.examlinkaudio3{{ exams.id }}" rel="modal:open" class="button">صوت</a>
+                                            </p>
+                                        </div>
+                                        <!--صوت-->
+                                        <div id="ex3{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex3{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background" onclick="audioStop()"></div>
+                                                    <div class="modal-content">
+                                                        <audio controls="controls">
+                                                            <source src="{{ exams.examlinkaudio }}" type="audio/mpeg" />
+                                                        </audio>
                                                     </div>
-                                                    <div class="field">
-                                                        <div class="field is-horizontal">
-                                                            <div class="field-body">
-                                                                <div class="field">
-                                                                    <label class="label">{{ exams.examquestion }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="1" required>
-                                                                <b>الف -
-                                                                </b>{{ exams.examanswer1 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="2" required>
-                                                                <b>ب -
-                                                                </b>{{ exams.examanswer2 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="3" required>
-                                                                <b>ج -
-                                                                </b>{{ exams.examanswer3 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="4" required>
-                                                                <b>د -
-                                                                </b>{{ exams.examanswer4 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required
-                                                                    checked>
-                                                                <b>
-                                                                </b>به این سوال پاسخ نمی دهم
-                                                            </div>
-                                                        </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfileaudio %} {% if exams.examfileaudio_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfileaudio.url }}" target="_blank" class="button">فایل صوت</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkpic %} {% if exams.examlinkpic_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">عکس</a>
+                                            </p>
+                                        </div>
+                                        <!--عکس-->
+                                        <div id="ex1{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex1{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="slideshow-container">
+                                                        <div id="numbertext" class="numbertext"></div>
+                                                        <img style="width:800px" src="{{ exams.examlinkpic }}">
                                                     </div>
-                                                </div>
-                    
-                                                {% endif %}
-                                                {% endfor %}
-                                                {% endif %} <div name="backq" id="backq" class="button"><span
-                                                        class="fas fa-angle-double-right"
-                                                        style="color: mediumseagreen;"></span>&nbsp;&nbsp;قبلی</div>
-                                                <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span
-                                                        class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
-                    
-                                                <button class="button is-primary  is-pulled-left"
-                                                    onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
-                    
-                    
-                                                <button id="button" class="button is-primary  is-pulled-left" type="submit"
-                                                    style="display: none;">پایان آزمون</button>
-                                            </form>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfilepic %} {% if exams.examfilepic_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfilepic.url }}" target="_blank" class="button">فایل
+                                                    عکس</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkvideo %} {% if exams.examlinkvideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">ویدیو</a>
+                                            </p>
+                                        </div>
+                                        <!--فیلم-->
+                                        <div id="ex2{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex2{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <figure class="image is-16by9">
+                                                            <iframe class="has-ratio" width="640" height="360" src="{{ exams.examlinkvideo }}" frameborder="0" allowfullscreen></iframe>
+                                                        </figure>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfilevideo %} {% if exams.examfilevideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfilevideo.url }}" target="_blank" class="button">فایل ویدئو</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examanswer %} {% if exams.examanswer_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
+                                            </p>
+                                        </div>
+                                        <!--پاسخ-->
+                                        <div id="ex5{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex5{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examanswer }}
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfileanswer %} {% if exams.examfileanswer_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfileanswer.url }}" target="_blank" class="button">فایل پاسخ</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %}
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <label class="label">{{ exams.examquestion }}</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>                      
-                                {% else %}
-                            <!-- وگرنه هزینه باید بپردازد -->
-                            <div class="container">
-                                    <form action="{% url 'request' %}" method="POST">
-                                    {% csrf_token %}
-                                        <div class="panel" style="width: 100%;">
-                                            <p class="panel-heading">
-                                                برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید 
-                                                <br><br>
 
-                                                {% if courseexam.off_is_published == True %}
-                                                <p>
-                                                    هزینه : <strong><s>{{ courseexam.hazine }} تومان</s><br>
-                                                        هزینه : <span style="color: red;">{{ courseexam.hazineoff }}
-                                                            تومان</span></strong>
-                                                </p>
-                                                {% else %}
-                                                هزینه : {{ courseexam.hazine }} تومان
-                
-                                                {% endif %}
-                                                <input type="number" name="userid" value="{{ user.id }}" hidden />
-                                                <input type="text" name="username" value="{{ user.username }}" hidden />
-                                                <input type="number" name="courseid" value="{{ courseexam.id }}" hidden />
-                                                <input type="text" name="coursename" value="{{ courseexam.coursename }}" hidden />
-                                                <input type="text" name="coursetype" value="7" hidden />
-                                                <input type="text" name="description" value="  آزمون {{ courseexam.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />                                            
-                                                <p class="control is-expanded  has-icons-right">
-                                                    <input class="input" type="email" name="email" placeholder="ایمیل" value="{{ user.email }}" required />
-                                                    <span class="icon is-small is-right">
-                                                        <i class="fas fa-envelope"></i>
-                                                    </span>
-                                                    <span class="icon is-small is-right">
-                                                        <i class="fas fa-check"></i>
-                                                    </span>
-                                                </p>
-                                                <p class="control is-expanded has-icons-right">
-                                                    <input class="input" type="number" min="0" max="9999999999999" name="mobile" placeholder="تلفن همراه" required/>
-                                                    <span class="icon is-small is-right">
-                                                        <i class="fas fa-phone"></i>
-                                                    </span>
-                                                </p>
-                                            </p>
-                                            <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
+
+
+
+
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="1" required>
+                                            <b>الف -
+                                            </b>{{ exams.examanswer1 }}
                                         </div>
-                                    </form>
-                            </div> 
-                            {% endif %}
-                            {% else %}
-                                <div class="container">
-                                    <div class="columns is-primary is-centered" style="border: none;">
-                                        <div class="column  is-11-widescreen">
-                                            <div class="box field is-horizontal">
-                                                <div class="field-body">
-                                                    <div class="field">
-                                                        {{ courseexam.coursename }}
-                                                    </div>
-                                                    <div class="field">
-                                                        <label id="questiontime" style="color: red; font-weight: bold;"></label>
-                                                        <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
-                                                    </div>
-                                                    سوال شماره &nbsp;<label id="questionnumber"
-                                                        style="color: red; font-weight: bold;"></label>
-                                                </div>
-                                            </div>
-                                            <form action="{% url 'examresault' %}" method="POST"
-                                                data-confirm="Are you sure you want to submit the form?" class="has-background-gray-light">
-                                                {% csrf_token %}
-                                                {% if examss %}
-                    
-                                                {% for exams in examss %}
-                                                {% if exams.examquestion_published == True %}
-                                                <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
-                                                <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
-                                                <input type="text" name="userid" value="{{ user.id }}" hidden />
-                    
-                                                <div id="questions" class="box">
-                    
-                                                    <div class="box field is-horizontal">
-                                                        <div class="field-body">
-                                                            {% if exams.examtext %}
-                                                            {% if exams.examtext_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">متن</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--متن-->
-                                                            <div id="ex4{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex4{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <article class="message">
-                                                                                <div class="message-body">
-                                                                                    {{ exams.examtext|safe }}
-                                                                                </div>
-                                                                            </article>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfiletext %}
-                                                            {% if exams.examfiletext_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfiletext.url }}" target="_blank"
-                                                                        class="button">فایل متن</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkaudio %}
-                                                            {% if exams.examlinkaudio_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#exexams.examlinkaudio3{{ exams.id }}" rel="modal:open"
-                                                                        class="button">صوت</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--صوت-->
-                                                            <div id="ex3{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex3{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background" onclick="audioStop()"></div>
-                                                                        <div class="modal-content">
-                                                                            <audio controls="controls">
-                                                                                <source src="{{ exams.examlinkaudio }}" type="audio/mpeg" />
-                                                                            </audio>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfileaudio  %}
-                                                            {% if exams.examfileaudio_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfileaudio.url }}" target="_blank"
-                                                                        class="button">فایل صوت</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkpic %}
-                                                            {% if exams.examlinkpic_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">عکس</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--عکس-->
-                                                            <div id="ex1{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex1{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="slideshow-container">
-                                                                            <div id="numbertext" class="numbertext"></div>
-                                                                            <img style="width:800px" src="{{ exams.examlinkpic }}">
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfilepic  %}
-                                                            {% if exams.examfilepic_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfilepic.url }}" target="_blank" class="button">فایل
-                                                                        عکس</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examlinkvideo %}
-                                                            {% if exams.examlinkvideo_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">ویدیو</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--فیلم-->
-                                                            <div id="ex2{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex2{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <figure class="image is-16by9">
-                                                                                <iframe class="has-ratio" width="640" height="360"
-                                                                                    src="{{ exams.examlinkvideo }}" frameborder="0"
-                                                                                    allowfullscreen></iframe>
-                                                                            </figure>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfilevideo  %}
-                                                            {% if exams.examfilevideo_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfilevideo.url }}" target="_blank"
-                                                                        class="button">فایل ویدئو</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examanswer %}
-                                                            {% if exams.examanswer_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
-                                                                </p>
-                                                            </div>
-                                                            <!--پاسخ-->
-                                                            <div id="ex5{{ exams.id }}" class="modal">
-                                                                <div class="hero-body">
-                                                                    <a href="#ex5{{ exams.id }}" rel="modal:close">
-                                                                        <div class="modal-background"></div>
-                                                                        <div class="modal-content">
-                                                                            <article class="message">
-                                                                                <div class="message-body">
-                                                                                    {{ exams.examanswer }}
-                                                                                </div>
-                                                                            </article>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                            {% if exams.examfileanswer  %}
-                                                            {% if exams.examfileanswer_published == True %}
-                                                            <div class="field">
-                                                                <p><a href="{{ exams.examfileanswer.url }}" target="_blank"
-                                                                        class="button">فایل پاسخ</a>
-                                                                </p>
-                                                            </div>
-                                                            {% endif %}
-                                                            {% endif %}
-                                                        </div>
-                                                    </div>
-                                                    <div class="field">
-                                                        <div class="field is-horizontal">
-                                                            <div class="field-body">
-                                                                <div class="field">
-                                                                    <label class="label">{{ exams.examquestion }}</label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="1" required>
-                                                                <b>الف -
-                                                                </b>{{ exams.examanswer1 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="2" required>
-                                                                <b>ب -
-                                                                </b>{{ exams.examanswer2 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="3" required>
-                                                                <b>ج -
-                                                                </b>{{ exams.examanswer3 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="4" required>
-                                                                <b>د -
-                                                                </b>{{ exams.examanswer4 }}
-                                                            </div>
-                                                        </div>
-                                                        <div class="field is-horizontal">
-                                                            <div class="field">
-                                                                <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required
-                                                                    checked>
-                                                                <b>
-                                                                </b>به این سوال پاسخ نمی دهم
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                    
-                                                {% endif %}
-                                                {% endfor %}
-                                                {% endif %} <div name="backq" id="backq" class="button"><span
-                                                        class="fas fa-angle-double-right"
-                                                        style="color: mediumseagreen;"></span>&nbsp;&nbsp;قبلی</div>
-                                                <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span
-                                                        class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
-                    
-                                                <button class="button is-primary  is-pulled-left"
-                                                    onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
-                    
-                    
-                                                <button id="button" class="button is-primary  is-pulled-left" type="submit"
-                                                    style="display: none;">پایان آزمون</button>
-                                            </form>
+                                    </div>
+
+
+
+
+
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <input type="radio" name="userexamanswer{{ exams.id }}" value="0" required checked>
+                                            <b>
+                                            </b>به این سوال پاسخ نمی دهم
                                         </div>
                                     </div>
                                 </div>
-                            {% endif %}
-                        {% else %} 
-                        <div class="container">
-                            <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
-                                برای دیدن آزمون باید ابتدا وارد حساب کاربری خود شوید 
-                                <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک کنید</strong><br><br>
-                            </a>        
+                            </div>
+
+                            {% endif %} {% endfor %} {% endif %}
+                            <div name="backq" id="backq" class="button"><span class="fas fa-angle-double-right" style="color: mediumseagreen;"></span>&nbsp;&nbsp;قبلی</div>
+                            <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
+
+                            <button class="button is-primary  is-pulled-left" onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
+
+
+                            <button id="button" class="button is-primary  is-pulled-left" type="submit" style="display: none;">پایان آزمون</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- وگرنه هزینه باید بپردازد -->
+            <div class="container">
+                <form action="{% url 'request' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="panel" style="width: 100%;">
+                        <p class="panel-heading">
+                            برای دیدن لینک های دانلود باید هزینه آن را پرداخت نمایید
+                            <br><br> {% if courseexam.off_is_published == True %}
+                            <p>
+                                هزینه : <strong><s>{{ courseexam.hazine }} تومان</s><br>
+                                هزینه : <span style="color: red;">{{ courseexam.hazineoff }}
+                                    تومان</span></strong>
+                            </p>
+                            {% else %} هزینه : {{ courseexam.hazine }} تومان {% endif %}
+                            <input type="number" name="userid" value="{{ user.id }}" hidden />
+                            <input type="text" name="username" value="{{ user.username }}" hidden />
+                            <input type="number" name="courseid" value="{{ courseexam.id }}" hidden />
+                            <input type="text" name="coursename" value="{{ courseexam.coursename }}" hidden />
+                            <input type="text" name="coursetype" value="7" hidden />
+                            <input type="text" name="description" value="  آزمون {{ courseexam.coursename }} با آیدی {{ coursevideo.id }} توسط یوزر {{ user.username }} با آیدی {{ user.id }} خریداری شد" hidden />
+                            <p class="control is-expanded  has-icons-right">
+                                <input class="input" type="email" name="email" placeholder="ایمیل" value="{{ user.email }}" required />
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                            </p>
+                            <p class="control is-expanded has-icons-right">
+                                <input class="input" type="number" min="0" max="9999999999999" name="mobile" placeholder="تلفن همراه" required />
+                                <span class="icon is-small is-right">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            </p>
+                        </p>
+                        <br><button>برای پرداخت اینجا کلیک کنید</button><br><br>
+                    </div>
+                </form>
+            </div>
+            {% endif %} {% else %}
+            <div class="container">
+                <div class="columns is-primary is-centered" style="border: none;">
+                    <div class="column  is-11-widescreen">
+                        <div class="box field is-horizontal">
+                            <div class="field-body">
+                                <div class="field">
+                                    {{ courseexam.coursename }}
+                                </div>
+                                <div class="field">
+                                    <label id="questiontime" style="color: red; font-weight: bold;"></label>
+                                    <label id="questiontimeset" hidden>{{ courseexam.saattadris }}</label>
+                                </div>
+                                سوال شماره &nbsp;<label id="questionnumber" style="color: red; font-weight: bold;"></label>
+                            </div>
                         </div>
-                        {% endif %}
+                        <form action="{% url 'examresault' %}" method="POST" data-confirm="Are you sure you want to submit the form?" class="has-background-gray-light">
+                            {% csrf_token %} {% if examss %} {% for exams in examss %} {% if exams.examquestion_published == True %}
+                            <input type="text" name="courseexamid" value="{{ courseexam.id }}" hidden />
+                            <input type="text" name="examsid{{ exams.id }}" value="{{ exams.id }}" hidden />
+                            <input type="text" name="userid" value="{{ user.id }}" hidden />
+
+                            <div id="questions" class="box">
+
+                                <div class="box field is-horizontal">
+                                    <div class="field-body">
+                                        {% if exams.examtext %} {% if exams.examtext_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex4{{ exams.id }}" rel="modal:open" class="button">متن</a>
+                                            </p>
+                                        </div>
+                                        <!--متن-->
+                                        <div id="ex4{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex4{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examtext|safe }}
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfiletext %} {% if exams.examfiletext_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfiletext.url }}" target="_blank" class="button">فایل متن</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkaudio %} {% if exams.examlinkaudio_published == True %}
+                                        <div class="field">
+                                            <p><a href="#exexams.examlinkaudio3{{ exams.id }}" rel="modal:open" class="button">صوت</a>
+                                            </p>
+                                        </div>
+                                        <!--صوت-->
+                                        <div id="ex3{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex3{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background" onclick="audioStop()"></div>
+                                                    <div class="modal-content">
+                                                        <audio controls="controls">
+                                                            <source src="{{ exams.examlinkaudio }}" type="audio/mpeg" />
+                                                        </audio>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfileaudio %} {% if exams.examfileaudio_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfileaudio.url }}" target="_blank" class="button">فایل صوت</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkpic %} {% if exams.examlinkpic_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex1{{ exams.id }}" rel="modal:open" class="button">عکس</a>
+                                            </p>
+                                        </div>
+                                        <!--عکس-->
+                                        <div id="ex1{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex1{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="slideshow-container">
+                                                        <div id="numbertext" class="numbertext"></div>
+                                                        <img style="width:800px" src="{{ exams.examlinkpic }}">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfilepic %} {% if exams.examfilepic_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfilepic.url }}" target="_blank" class="button">فایل
+                                                    عکس</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examlinkvideo %} {% if exams.examlinkvideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex2{{ exams.id }}" rel="modal:open" class="button">ویدیو</a>
+                                            </p>
+                                        </div>
+                                        <!--فیلم-->
+                                        <div id="ex2{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex2{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <figure class="image is-16by9">
+                                                            <iframe class="has-ratio" width="640" height="360" src="{{ exams.examlinkvideo }}" frameborder="0" allowfullscreen></iframe>
+                                                        </figure>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfilevideo %} {% if exams.examfilevideo_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfilevideo.url }}" target="_blank" class="button">فایل ویدئو</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examanswer %} {% if exams.examanswer_published == True %}
+                                        <div class="field">
+                                            <p><a href="#ex5{{ exams.id }}" rel="modal:open" class="button">پاسخ</a>
+                                            </p>
+                                        </div>
+                                        <!--پاسخ-->
+                                        <div id="ex5{{ exams.id }}" class="modal">
+                                            <div class="hero-body">
+                                                <a href="#ex5{{ exams.id }}" rel="modal:close">
+                                                    <div class="modal-background"></div>
+                                                    <div class="modal-content">
+                                                        <article class="message">
+                                                            <div class="message-body">
+                                                                {{ exams.examanswer }}
+                                                            </div>
+                                                        </article>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endif %} {% endif %} {% if exams.examfileanswer %} {% if exams.examfileanswer_published == True %}
+                                        <div class="field">
+                                            <p><a href="{{ exams.examfileanswer.url }}" target="_blank" class="button">فایل پاسخ</a>
+                                            </p>
+                                        </div>
+                                        {% endif %} {% endif %}
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="field is-horizontal">
+                                        <div class="field-body">
+                                            <div class="field">
+                                                <label class="label">{{ exams.examquestion }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {% if answersshows %}{% for answersshow in answersshows %} {% if answersshow.coursequestionfkey.id == exams.id %}
+                                    <div class="field is-horizontal">
+                                        <div class="field">
+                                            <input type="radio" name="" value="{{ answersshow.examanswer_number }}" required> {{ answersshow.examanswer }}
+                                        </div>
+                                    </div>
+                                    {% endif %} {% endfor %} {% endif %}
+                                </div>
+                            </div>
+
+                            {% endif %} {% endfor %} {% endif %}
+                            <div name="backq" id="backq" class="button"><span class="fas fa-angle-double-right" style="color: mediumseagreen;"></span>&nbsp;&nbsp;قبلی</div>
+                            <div name="nextq" id="nextq" class="button">بعدی&nbsp;&nbsp;<span class="fas fa-angle-double-left" style="color:mediumseagreen;"></span></div>
+
+                            <button class="button is-primary  is-pulled-left" onclick="return confirm('آیا نسبت به پایان آزمون مطمعن هستید؟')">پایان آزمون</button>
+
+
+                            <button id="button" class="button is-primary  is-pulled-left" type="submit" style="display: none;">پایان آزمون</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %} {% else %}
+            <div class="container">
+                <a href="{% url 'login' %}" class="panel-heading box" style="text-align: center;">
+                    برای دیدن آزمون باید ابتدا وارد حساب کاربری خود شوید
+                    <br><br><strong style="text-align: center; color: crimson;">برای ورود اینجا کلیک
+                        کنید</strong><br><br>
+                </a>
+            </div>
+            {% endif %}
         </div>
     </section>
 </div>
 
 <script>
-
-
-
-
     time = document.getElementById('questiontimeset').textContent * 60;
-    minuts =Math.floor(time / 60);
+    minuts = Math.floor(time / 60);
     minuts--
 
 
     time = 59;
-    interval = setInterval(function () {
-        
+    interval = setInterval(function() {
+
         time--;
-        document.getElementById('questiontime').innerHTML = "زمان باقی مانده ــ  "+ minuts + ":" + time
+        document.getElementById('questiontime').innerHTML = "زمان باقی مانده ــ  " + minuts + ":" + time
         if (time == 0) {
             minuts--
             time = 59;
-            if (minuts<0){
-            clearInterval(interval);
+            if (minuts < 0) {
+                clearInterval(interval);
                 document.getElementById('button').click();
             }
-            
+
         }
     }, 1000)
 
@@ -614,7 +465,7 @@
         x[thisquestion].style.display = 'block';
 
     }
-    document.getElementById('nextq').addEventListener('click', function () {
+    document.getElementById('nextq').addEventListener('click', function() {
 
 
         if (thisquestion < x.length - 1) {
@@ -626,7 +477,7 @@
             x[thisquestion].style.display = 'block';
         }
     })
-    document.getElementById('backq').addEventListener('click', function () {
+    document.getElementById('backq').addEventListener('click', function() {
         if (thisquestion > 0) {
             for (index = 0; index < x.length; index++) {
                 x[index].style.display = 'none';
@@ -636,6 +487,5 @@
             x[thisquestion].style.display = 'block';
         }
     })
-
 </script>
 {% endblock %}

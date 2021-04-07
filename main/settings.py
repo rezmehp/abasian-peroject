@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+USE_DJANGO_JQUERY = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'tutorialbook.apps.TutorialbookConfig',
     'django.contrib.admin',
     'ckeditor',
-    
+    'smart_selects',
     'accounts.apps.AccountsConfig',
     'links.apps.LinksConfig',
     'classlinks.apps.ClasslinksConfig',

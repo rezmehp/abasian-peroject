@@ -15,7 +15,7 @@ def index(request):
     newcoursevoices = coursevoice2.objects.all().order_by('-id')[:20]
     newnews = news.objects.all().order_by('-id')[:20]
     newclassLinks = allclassLinks3.objects.all().order_by('-id')[:20]
-    newexams = courseexam2.objects.all().order_by('-id')[:20]
+    newexams = courseexam2.objects.all().order_by('-id')[:3]
     newcourseapplications = courseapplication2.objects.all().order_by('-id')[:20]
     newcoursebooks = coursebook2.objects.all().order_by('-id')[:20]
     newcoursefiles = coursefile2.objects.all().order_by('-id')[:20]

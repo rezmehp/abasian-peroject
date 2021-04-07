@@ -1,16 +1,17 @@
 <section class="section has-background-light">
     <div class="container ">
-        <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);">آموزش های ما در یک قاب</h3>
-        <div class="columns is-multiline box" style="background-color: lightslategray;">
+        <h3 class="title has-text-centered section-title animrezatextshadow" style=" color: rgb(156, 29, 97);">آموزش های ما در یک قاب</h3>
+        <div class="columns is-multiline box  " style="background-color: lightslategray;">
             {% if maghtaTahsilishowsall %}
 
             {% for maghtaTahsilishowall in maghtaTahsilishowsall %}
 
-            <div class="column is-3">
-                <a class="box " href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:open" class="button">
+            <div class="column is-3  animrezabox animrezatextshadow"><strong>
+                <a  href="#reshte{{ maghtaTahsilishowall.id }}" rel="modal:open" style="color: black;">
+                    <p class="box animrezaboxshadow  ">
                     <span class="{{ maghtaTahsilishowall.logo }}"></span>
-                    &nbsp;&nbsp;{{ maghtaTahsilishowall.maghta }}
-                </a>
+                    &nbsp;&nbsp;{{ maghtaTahsilishowall.maghta }}</p>
+                </a></strong>
             </div>
             <div id="reshte{{ maghtaTahsilishowall.id }}" class="modal">
                 <div class="hero-body">
@@ -21,12 +22,12 @@
                                 {% if reshteTahsilishowsall %}
                                 {% for reshteTahsilishowall in reshteTahsilishowsall %}
                                 {% if reshteTahsilishowall.maghtafkey.id == maghtaTahsilishowall.id %}
-                                <div class="column is-3">
-                                    <a class="box" href="#course{{ reshteTahsilishowall.id }}" rel="modal:open"
+                                <div class="column is-3 animrezabox animrezatextshadow"><strong>
+                                    <a class="box fade-in" href="#course{{ reshteTahsilishowall.id }}" rel="modal:open"
                                         class="button">
                                         <span class="{{ reshteTahsilishowall.logo }}"></span>
                                         &nbsp;&nbsp;{{ reshteTahsilishowall.reshte }}
-                                    </a>
+                                    </a></strong>
                                 </div>
                                 <div id="course{{ reshteTahsilishowall.id }}" class="modal">
                                     <div class="hero-body">

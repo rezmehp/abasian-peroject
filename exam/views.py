@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from accounts.models import karbaruser1
-from .models import tutorialexamAdmin, courseexam2, exams2, UserAnswerTest
+from .models import tutorialexamAdmin, courseexam2, exams2, UserAnswerTest, examsanswer2
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -31,43 +31,25 @@ def tutorialexam(request):
     passexams = UserAnswerTest.objects.filter(usernamefkey=request.user.id).values_list('courseexamfkey', flat=True).distinct()
     if not passexams:
         passexams = "0"
-
-
-  
-   
     passexamscourses = []
     for passexam in passexams:
         mylist = courseexam2.objects.filter(id=passexam)
         passexamscourses.extend(mylist)
-    
-
     courseexamshows = courseexam2.objects.all()
-
-
-   
-    
     searchcourseexamshows = ""
-
     if 'maghtan' in request.POST:
         searchcourseexamshows = courseexam2.objects.all().order_by('-id')
-    
     if 'reshten' in request.POST:
         searchcourseexamshows = courseexam2.objects.all().order_by('-id')
-    
     if 'coursen' in request.POST:
         searchcourseexamshows = courseexam2.objects.all().order_by('-id')
-    
     if 'modaresn' in request.POST:
         searchcourseexamshows = courseexam2.objects.all().order_by('-id')
-    
-
-    # سرج
     if 'maghtan' in request.POST:
         maghtan = request.POST['maghtan']
         if maghtan:
             searchcourseexamshows = searchcourseexamshows.filter(
                 maghtafkey_id=maghtan)
-
     if 'reshten' in request.POST:
         reshten = request.POST['reshten']
         if reshten != "رشته تحصیلی":
@@ -76,13 +58,11 @@ def tutorialexam(request):
             if reshtenid:
                 searchcourseexamshows = searchcourseexamshows.filter(
                     reshteTahsilifkey_id=reshtenid[0])
-
     if 'coursen' in request.POST:
         coursen = request.POST['coursen']
         if coursen:
             searchcourseexamshows = searchcourseexamshows.filter(
                 coursename__icontains=coursen)
-
     if 'modaresn' in request.POST:
         modaresn = request.POST['modaresn']
         if modaresn != "":
@@ -90,27 +70,11 @@ def tutorialexam(request):
                 modares__icontains=modaresn).values_list('id', flat=True)
             if modaresnid:
                 searchcourseexamshows = searchcourseexamshows.filter(modaresinfkey__in=modaresnid)
-    
-    
-
     paginator = Paginator(searchcourseexamshows, 3)
     page = request.GET.get('page')
     paged_searchcourseexamshows = paginator.get_page(page)
 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -176,6 +140,7 @@ def tutorialexam(request):
     page3 = request.GET.get('page3')
     paged_bettercourseexamshows = paginator.get_page(page3)
 
+    newcourseexamanswersshows = examsanswer2.objects.all()
     newcourseexamshows = courseexam2.objects.all().order_by('-id')
     paginator = Paginator(newcourseexamshows, 20)
     page2 = request.GET.get('page2')
@@ -199,6 +164,7 @@ def tutorialexam(request):
         'courseexamshows': courseexamshows,
         'searchcourseexamshows': paged_searchcourseexamshows,
         'newcourseexamshows': paged_newcourseexamshows,
+        'newcourseexamanswersshows': newcourseexamanswersshows,
         'offcourseexamshows': offcourseexamshows,
         'bettercourseexamshows': paged_bettercourseexamshows,
         'values': request.GET,
@@ -215,8 +181,8 @@ def examresault(request):
     context = {
         'footerAdmins': footerAdmins,
         'answers': answers,
-
     }
+
     if request.method == 'POST':
         courseexamfkey1 = request.POST['courseexamid']
         usernamefkey1 = request.POST['userid']
@@ -224,13 +190,6 @@ def examresault(request):
                 if "examsid" in exams:
                     for answer in request.POST:
                         if "userexamanswer" in answer:
-                            a = exams
-                            b = answer
-                            c = a[7:190000]
-                            d = b[14:190000]
-                            e = int(c)
-                            f = int(d)
-                            if e == f:
                                 userexamanswer = request.POST[answer]
                                 courseexamfkey = request.POST['courseexamid']
                                 usernamefkey = request.POST['userid']
@@ -265,7 +224,8 @@ def showexamtutorial(request, courseexam2_id):
     buyss = buys.objects.filter(courseid=courseexam2_id,coursetype="7",userid=request.user.id)
     examss = exams2.objects.filter(coursenamefkey=courseexam2_id)
     countq = exams2.objects.filter(coursenamefkey=courseexam2_id).count()
-
+    answersshows = examsanswer2.objects.all()
+    
 
     context = {
         'footerAdmins': footerAdmins,
@@ -273,13 +233,10 @@ def showexamtutorial(request, courseexam2_id):
         'examss': examss,
         'countq':countq,
         'buyss':buyss,
+        'answersshows':answersshows,
     }
 
     return render(request, 'pages/examonline.html', context)
-
-
-
-
 
 def examresaultshow(request, courseexam2_id):
     footerAdmins = footerAdmin.objects.all()
@@ -302,7 +259,6 @@ def examresaultshow(request, courseexam2_id):
 
 
 def maghtatutorialexam(request, pk):
-
     reshteTahsilishows = reshteTahsili.objects.filter(maghtafkey_id=pk)
     data_info = {
     }

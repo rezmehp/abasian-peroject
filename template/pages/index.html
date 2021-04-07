@@ -530,14 +530,14 @@
             <div class="columns box">
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.hru }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_hru.url }}">
                         </figure>
                     </a>
                 </div>
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.hlu }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_hlu.url }}">
                         </figure>
                     </a>
@@ -546,14 +546,14 @@
             <div class="columns box">
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.hrd }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_hrd.url }}">
                         </figure>
                     </a>
                 </div>
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.hld }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_hld.url }}">
                         </figure>
                     </a>
@@ -573,38 +573,34 @@
 <section class="section box" style="background-color: #c1eafd;">
     <div class="container">
         <a href="{% url 'news' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-bullhorn"></span> &nbsp;&nbsp; اخبار</h3>
-        </a>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-bullhorn animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp; اخبار</h3>
+        </a>    
         <div class="section">
-            <!-- Developers -->
-			
-            <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
-                {% if  newnews %} {% for newnew in newnews %}
-                <div class="column is-3">
-                    <div class="card large" style="border-radius: 5%;" >
-                        <a href="{% url 'news' %}" class="box" style=" background-color:#ffe5d6; color: #000000">
-                            <div class="card-image">
-                                <figure class="image">
-                                        <img style="background-image: url('{{ newnew.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
-                                     src="{% static 'images/news-icon2.png' %}" alt="Image">
-                                </figure>
-                            </div>
-							<div class="card-content">
-                                <strong>{{ newnew.title }}</strong>
-                                
-                            </div>
-                        </a>
-                    </div>
-					
-			
-					
-					
-					
+            {% if newnews %} {% for newnew in newnews %}
+            <div class="row box">
+                <div style="border-radius: 5%;">
+                    <a href="{% url 'news' %}" style=" background-color:#ffe5d6; color: #000000">
+                        <div class="columns">
+                            <figure class="image animreza column is-2">
+                                <img style="background-image: url('{{ newnew.pic.url }}');
+                                border-radius: 5%; background-position: 
+                                center;background-size: contain; background-repeat: no-repeat;"
+                                    src="{% static 'images/news-icon2.png' %}" alt="Image">
+                            </figure>
+                            
+                            <strong class="column animrezatextshadow is-10" style="color: black;"><br><br>{{ newnew.title }}</strong>
+                        </div>
+                        <hr>
+                        <div class="column is-12">
+                                {{ newnew.about|safe}}
+                        </div>    
+                    </a>
                 </div>
-                {% endfor %}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div> <!-- End Developers -->
 </section>
@@ -613,28 +609,32 @@
 <section class="section box" style="background-color: #feffb6;">
     <div class="container">
         <a href="{% url 'classlinks' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-chalkboard-teacher"></span> &nbsp;&nbsp;کلاس های آنلاین</h3>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-chalkboard-teacher animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp;کلاس های
+                آنلاین</h3>
         </a>
         <div class="section">
             <!-- Developers -->
-            <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
-                {% if  newclassLinks %} {% for newclassLink in newclassLinks %}
-                <div class="column is-3">
+            <div class="row columns is-24" style="overflow-x: scroll; max-height:  1500px;">
+                {% if newclassLinks %} {% for newclassLink in newclassLinks %}
+                <div class="column is-3 fade-in">
                     <div class="card large" style="border-radius: 5%;">
                         <a href="{{ newclassLink.link_url }}" class="box">
-                            <div class="card-image" >
-                                <figure class="image">
-                                    <img style="background-image: url('{{ newclassLink.link_pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+
+                            <figure class="image animreza">
+                                <img style="background-image: url('{{ newclassLink.link_pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
                                     src="{% static 'images/classonline-icon2.png' %}" alt="Image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
+                            </figure>
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
                                 <p class="title is-4 no-padding">{{ newclassLink.link_title }}</p>
                                 <p class="subtitle is-6">{{ newclassLink.link_time }}</p>
                                 <p class="subtitle is-6">{{ newclassLink.link_date }}</p>
                                 <p class="subtitle is-6">{{ newclassLink.link_price }}</p>
-                                
+
                             </div>
                         </a>
                     </div>
@@ -656,46 +656,50 @@
 
 <section class="section" style="background-color: #d3adff;">
     <div class="container">
-	
-	<img src="{% static 'images/Videos-icon.png' %}" style="Opacity:0.7; position: absolute; border-radius: 50%; height:70px" alt="Image">
+
+        <img class="animrezarotate" src="{% static 'images/Videos-icon.png' %}"
+            style="Opacity:0.7; position: absolute; border-radius: 50%; height:70px" alt="Image">
         <a href="{% url 'tutorialvideo' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-video"></span> &nbsp;&nbsp;ویدیوها</h3>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-video animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp;ویدیوها</h3>
         </a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
                 {% if newcoursevideos %} {% for newcoursevideo in newcoursevideos %}
-                <div class="column is-3">
-                    <div style="border-radius: 5%; ">				
-                        <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box" style="  background-color: #b5ffffe0; ">
-                                <figure  class="image animreza">
-                                    {% if newcoursevideo.off_is_published == True %}
-                                    <p class="button is-warning"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        <strong><s>{{ newcoursevideo.hazine }} تومان</s><br>
-                                            <span style="color: red;">{{ newcoursevideo.hazineoff }}
-                                                تومان</span></strong>
-                                    </p>
-                                    
-                                    {% else %}
-                                    {% if newcoursevideo.hazine != 0 %}
-                                    <p class="button is-primary"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        {{ newcoursevideo.hazine }}<br> تومان </p>
-                                    {% else %}
-                                    <p class="button is-danger"
-                                        style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                    {% endif %}
-                                    {% endif %}
-                                    <img  style="background-image: url('{{ newcoursevideo.pic.url }}');
-                                    border-radius: 5%; background-position: center; background-size: contain;
-                                     background-repeat: no-repeat;"
-                                     src="{% static 'images/Videos-icon2.png' %}" alt="Image">
-                                </figure>
-                            
-                                <strong>{{ newcoursevideo.coursename }}</strong>
+                <div class="column is-3  fade-in">
+                    <div style="border-radius: 5%; ">
+                        <a href="{% url 'showvideotutorial' newcoursevideo.id %}" class="box"
+                            style="  background-color: #b5ffffe0; ">
+                            <figure class="image animreza">
+                                {% if newcoursevideo.off_is_published == True %}
+                                <p class="button"
+                                    style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                    <span><s>{{ newcoursevideo.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newcoursevideo.hazineoff }}
+                                            تومان</span></span>
+                                </p>
 
+                                {% else %}
+                                {% if newcoursevideo.hazine != 0 %}
+                                <p class="button"
+                                    style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                    {{ newcoursevideo.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button"
+                                    style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+                                {% endif %}
+                                <img style="background-image: url('{{ newcoursevideo.pic.url }}');
+                                    border-radius: 5%; background-position: center; background-size: contain;
+                                     background-repeat: no-repeat;" src="{% static 'images/Videos-icon2.png' %}"
+                                    alt="Image">
+                            </figure>
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
+                                <strong>{{ newcoursevideo.coursename }}</strong>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -709,46 +713,48 @@
 
 <section class="section box" style="background-color: #ffe1b9;">
     <div class="container">
-	<img src="{% static 'images/voice-icon.jpg' %}" style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px"
-                                        alt="Image">
+        <img class="animrezarotate" src="{% static 'images/voice-icon.jpg' %}"
+            style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px" alt="Image">
         <a href="{% url 'tutorialvoice' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-volume-up"></span> &nbsp;&nbsp;صوت ها</h3>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-volume-up animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp;صوت ها</h3>
         </a>
         <div class="section">
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
                 {% if newcoursevoices %} {% for newcoursevoice in newcoursevoices %}
-                <div class="column is-3">
+                <div class="column is-3 fade-in">
                     <div style="border-radius: 5%;">
-                        <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box" style=" background-color: #fdceef; ">
-							
-                                {% if newcoursevoice.off_is_published == True %}
-                                <p class="button is-warning"
-                                    style="position: absolute; height: 70px; border-radius: 5%;">
-                                    <strong><s>{{ newcoursevoice.hazine }} تومان</s><br>
-                                        <span style="color: red;">{{ newcoursevoice.hazineoff }} تومان</span></strong>
-                                </p>
-                                {% else %}
-                                {% if newcoursevoice.hazine != 0 %}
-                                <p class="button is-primary"
-                                    style="position: absolute; height: 70px; border-radius: 5%;">
-                                    {{ newcoursevoice.hazine }}<br> تومان </p>
-                                {% else %}
-                                <p class="button is-danger"
-                                    style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                {% endif %}
-                                {% endif %}
+                        <a href="{% url 'showvoicetutorial' newcoursevoice.id %}" class="box"
+                            style=" background-color: #fdceef; ">
 
-                                <figure class="image">
-                                    <img style="background-image: url('{{ newcoursevoice.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
-                                     src="{% static 'images/voice-icon2.png' %}" alt="Image">
-										
-                                </figure>
-                           
-							
+                            {% if newcoursevoice.off_is_published == True %}
+                            <p class="button" style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                <strong><s>{{ newcoursevoice.hazine }} تومان</s><br>
+                                    <span style="color: red;">{{ newcoursevoice.hazineoff }} تومان</span></strong>
+                            </p>
+                            {% else %}
+                            {% if newcoursevoice.hazine != 0 %}
+                            <p class="button" style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                {{ newcoursevoice.hazine }}<br> تومان </p>
+                            {% else %}
+                            <p class="button" style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;">
+                                رایگان </p>
+                            {% endif %}
+                            {% endif %}
+
+                            <figure class="image animreza">
+                                <img style="background-image: url('{{ newcoursevoice.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+                                    src="{% static 'images/voice-icon2.png' %}" alt="Image">
+
+                            </figure>
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
                                 <strong>{{ newcoursevoice.coursename }}</strong>
-
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -763,48 +769,53 @@
 
 <section class="section box" style="background-color: #c4c5c0;">
     <div class="container">
-	<img src="{% static 'images/files-icon.png' %}" style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px"
-                                        alt="Image">
+        <img class="animrezarotate" src="{% static 'images/files-icon.png' %}"
+            style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px" alt="Image">
         <a href="{% url 'tutorialfile' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-file"></span>
-                &nbsp;&nbsp;فایل ها</h3>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-volume-up animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp;فایل ها</h3>
         </a>
+
         <div class="section">
 
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
                 {% if newcoursefiles %} {% for newcoursefile in newcoursefiles %}
-                <div class="column is-3">
+                <div class="column is-3 fade-in">
                     <div style="border-radius: 5%;">
-                        <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box" style=" background-color: #fffec1; ">
-                         
-                                <figure class="image">
-                                    {% if newcoursefile.off_is_published == True %}
-                                    <p class="button is-warning"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        <strong><s>{{ newcoursefile.hazine }} تومان</s><br>
-                                            <span style="color: red;">{{ newcoursefile.hazineoff }}
-                                                تومان</span></strong>
-                                    </p>
-                                    {% else %}
-                                    {% if newcoursefile.hazine != 0 %}
-                                    <p class="button is-primary"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        {{ newcoursefile.hazine }}<br> تومان </p>
-                                    {% else %}
-                                    <p class="button is-danger"
-                                        style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                    {% endif %}
-                                    {% endif %}
-                                    <img style="background-image: url('{{ newcoursefile.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
-                                    src="{% static 'images/files-icon2.png' %}" alt="Image">
-										
-                                </figure>
-                           
-							
-                                <strong>{{ newcoursefile.coursename }}</strong>
+                        <a href="{% url 'showfiletutorial' newcoursefile.id %}" class="box"
+                            style=" background-color: #fffec1; ">
 
+                            <figure class="image animreza">
+                                {% if newcoursefile.off_is_published == True %}
+                                <p class="button"
+                                    style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                    <strong><s>{{ newcoursefile.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newcoursefile.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                {% if newcoursefile.hazine != 0 %}
+                                <p class="button"
+                                    style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                    {{ newcoursefile.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button"
+                                    style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+                                {% endif %}
+                                <img style="background-image: url('{{ newcoursefile.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+                                    src="{% static 'images/files-icon2.png' %}" alt="Image">
+
+                            </figure>
+
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
+                                <strong>{{ newcoursefile.coursename }}</strong>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -820,11 +831,12 @@
 
 <section class="section box" style="background-color: #ffb3b3;">
     <div class="container">
-	<img src="{% static 'images/books-icon.jpg' %}" style="Opacity:0.7; position:absolute; border-radius: 50%; height:90px"
-                                        alt="Image">
+        <img class="animrezarotate" src="{% static 'images/books-icon.jpg' %}"
+            style="Opacity:0.7; position:absolute; border-radius: 50%; height:90px" alt="Image">
         <a href="{% url 'tutorialbook' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-book"></span>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-book animrezarotatetext animrezatextshadow"></span>
                 &nbsp;&nbsp;کتاب ها</h3>
         </a>
         <div class="section">
@@ -832,37 +844,41 @@
             <!-- Developers -->
             <div class="row columns" style="overflow-x: scroll; max-height: 1500px;">
                 {% if newcoursebooks %} {% for newcoursebook in newcoursebooks %}
-                <div class="column is-3">
+                <div class="column is-3 fade-in">
                     <div style="border-radius: 5%;">
-                        <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box" style=" background-color: #eafccd;">
-                           
-                                <figure class="image">
-                                    {% if newcoursebook.off_is_published == True %}
-                                    <p class="button is-warning"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        <strong><s>{{ newcoursebook.hazine }} تومان</s><br>
-                                            <span style="color: red;">{{ newcoursebook.hazineoff }}
-                                                تومان</span></strong>
-                                    </p>
-                                    {% else %}
-                                    {% if newcoursebook.hazine != 0 %}
-                                    <p class="button is-primary"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        {{ newcoursebook.hazine }}<br> تومان </p>
-                                    {% else %}
-                                    <p class="button is-danger"
-                                        style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                    {% endif %}
-                                    {% endif %}
-                                    <img style="background-image: url('{{ newcoursebook.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
-                                    src="{% static 'images/books-icon2.png' %}" alt="Image">
-										
-                                </figure>
-                           
-							
-                                <strong>{{ newcoursebook.coursename }}</strong>
+                        <a href="{% url 'showbooktutorial' newcoursebook.id %}" class="box"
+                            style=" background-color: #eafccd;">
 
-                            
+                            <figure class="image animreza">
+                                {% if newcoursebook.off_is_published == True %}
+                                <p class="button"
+                                    style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                    <strong><s>{{ newcoursebook.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newcoursebook.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                {% if newcoursebook.hazine != 0 %}
+                                <p class="button"
+                                    style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                    {{ newcoursebook.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button"
+                                    style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+                                {% endif %}
+                                <img style="background-image: url('{{ newcoursebook.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+                                    src="{% static 'images/books-icon2.png' %}" alt="Image">
+
+                            </figure>
+
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
+                                <strong>{{ newcoursebook.coursename }}</strong>
+                            </div>
+
                         </a>
                     </div>
                 </div>
@@ -878,46 +894,50 @@
 
 <section class="section box" style="background-color: #b99f9f;">
     <div class="container">
-	<img src="{% static 'images/apps-icon.jpg' %}" style="Opacity:0.7; position:absolute; border-radius: 50%; height:90px"
-                                        alt="Image">
+        <img class="animrezarotate" src="{% static 'images/apps-icon.jpg' %}"
+            style="Opacity:0.7; position:absolute; border-radius: 50%; height:90px" alt="Image">
         <a href="{% url 'tutorialapplication' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fab fa-android"></span> &nbsp;&nbsp;نرم افزارها</h3>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fab fa-android animrezarotatetext animrezatextshadow"></span> &nbsp;&nbsp;نرم افزارها</h3>
         </a>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height:  1500px;">
                 {% if newcourseapplications %} {% for newcourseapplication in newcourseapplications %}
-                <div class="column is-3">
+                <div class="column is-3 fade-in">
                     <div style="border-radius: 5%;">
                         <a href="{% url 'showapplicationtutorial' newcourseapplication.id %}" class="box"
                             style=" background-color: #ffddc1; ">
-                           
-                                <figure class="image">
-                                    {% if newcourseapplication.off_is_published == True %}
-                                    <p class="button is-warning"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        <strong><s>{{ newcourseapplication.hazine }} تومان</s><br>
-                                            <span style="color: red;">{{ newcourseapplication.hazineoff }}
-                                                تومان</span></strong>
-                                    </p>
-                                    {% else %}
-                                    {% if newcourseapplication.hazine != 0 %}
-                                    <p class="button is-primary"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        {{ newcourseapplication.hazine }}<br> تومان </p>
-                                    {% else %}
-                                    <p class="button is-danger"
-                                        style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                    {% endif %}
-                                    {% endif %}
-                                    <img style="background-image: url('{{ newcourseapplication.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
-                                    src="{% static 'images/app-icon2.png' %}" alt="Image">
-										
-                                </figure>
-                          
-							
-                                <strong>{{ newcourseapplication.coursename }}</strong>
 
+                            <figure class="image animreza">
+                                {% if newcourseapplication.off_is_published == True %}
+                                <p class="button"
+                                    style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                    <strong><s>{{ newcourseapplication.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newcourseapplication.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                {% if newcourseapplication.hazine != 0 %}
+                                <p class="button"
+                                    style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                    {{ newcourseapplication.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button"
+                                    style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+                                {% endif %}
+                                <img style="background-image: url('{{ newcourseapplication.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+                                    src="{% static 'images/app-icon2.png' %}" alt="Image">
+
+                            </figure>
+
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
+                                <strong>{{ newcourseapplication.coursename }}</strong>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -934,43 +954,49 @@
 
 <section class="section box" style="background-color: #b3ff9b;">
     <div class="container">
-	<img src="{% static 'images/exams-icon.jpg' %}" style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px"
-                                        alt="Image">
+        <img class="animrezarotate" src="{% static 'images/exams-icon.jpg' %}"
+            style="Opacity:0.7; position: absolute; border-radius: 50%; height:90px" alt="Image">
         <a href="{% url 'tutorialexam' %}">
-            <h3 class="title has-text-centered section-title" style=" color: rgb(201, 3, 108);"><span
-                    class="fas fa-edit"></span>
+            <h3 class="title has-text-centered section-title animrezarotatetext animrezatextshadow"
+                style=" color: rgb(201, 3, 108);"><span
+                    class="fas fa-edit animrezarotatetext animrezatextshadow"></span>
                 &nbsp;&nbsp;آزمون ها</h3>
         </a>
         <div class="section">
             <div class="row columns" style="overflow-x: scroll; max-height: 1500px;">
                 {% if newexams %} {% for newexam in newexams %}
-                <div class="column is-3">
+                <div class="column is-3 fade-in">
                     <div style="border-radius: 5%;">
                         <a href="{% url 'tutorialexam' %}" class="box" style="background-color: #fff0f0;">
-                            
-                                <figure class="image">
-                                    {% if newexam.off_is_published == True %}
-                                    <p class="button is-warning"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        <strong><s>{{ newexam.hazine }} تومان</s><br>
-                                            <span style="color: red;">{{ newexam.hazineoff }}
-                                                تومان</span></strong>
-                                    </p>
-                                    {% else %}
-                                    {% if newexam.hazine != 0 %}
-                                    <p class="button is-primary"
-                                        style="position: absolute; height: 70px; border-radius: 5%;">
-                                        {{ newexam.hazine }}<br> تومان </p>
-                                    {% else %}
-                                    <p class="button is-danger"
-                                        style="position: absolute; height: 70px; border-radius: 50%;"> رایگان </p>
-                                    {% endif %}
-                                    {% endif %}
-                                    <img style="background-image: url('{{ newexam.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
+
+                            <figure class="image animreza">
+                                {% if newexam.off_is_published == True %}
+                                <p class="button"
+                                    style="background-color: #00ff739d; position: absolute; height: 60px; border-radius: 5%;">
+                                    <strong><s>{{ newexam.hazine }} تومان</s><br>
+                                        <span style="color: red;">{{ newexam.hazineoff }}
+                                            تومان</span></strong>
+                                </p>
+                                {% else %}
+                                {% if newexam.hazine != 0 %}
+                                <p class="button"
+                                    style="background-color: #00ffffab; position: absolute; height: 60px; border-radius: 5%;">
+                                    {{ newexam.hazine }}<br> تومان </p>
+                                {% else %}
+                                <p class="button"
+                                    style="background-color: #ff00339c; position: absolute; height: 60px; border-radius: 50%;"> رایگان </p>
+                                {% endif %}
+                                {% endif %}
+                                <img style="background-image: url('{{ newexam.pic.url }}');border-radius: 5%; background-position: center;background-size: contain; background-repeat: no-repeat;"
                                     src="{% static 'images/exams-icon2.png' %}" alt="Image">
-										
-                                </figure>
+
+                            </figure>
+
+
+                            <hr style="max-height: 1px;">
+                            <div style="background-color: transparent;">
                                 <strong>{{ newexam.coursename }}</strong>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -994,14 +1020,14 @@
             <div class="columns box">
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.fru }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_fru.url }}">
                         </figure>
                     </a>
                 </div>
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.flu }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_flu.url }}">
                         </figure>
                     </a>
@@ -1010,14 +1036,14 @@
             <div class="columns box">
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.frd }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_frd.url }}">
                         </figure>
                     </a>
                 </div>
                 <div class="column  is-one-half has-text-centred">
                     <a href="{{ advertise.fld }}">
-                        <figure class="image">
+                        <figure class="image animreza">
                             <img src=" {{ advertise.pic_fld.url }}">
                         </figure>
                     </a>
