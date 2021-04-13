@@ -74,11 +74,6 @@ def tutorialexam(request):
     page = request.GET.get('page')
     paged_searchcourseexamshows = paginator.get_page(page)
 
-   
-
-
-
-
     reshteTahsiliid = ""
     bettercourseexamshows=""             
     if request.user.username:
@@ -125,7 +120,6 @@ def tutorialexam(request):
                 karbaruser1online = ""
                 reshteTahsiliid = ""
                 bettercourseexamshows = ""    
-            
         else:
             karbaruser1online = ""
             reshteTahsiliid = ""
@@ -134,23 +128,15 @@ def tutorialexam(request):
         karbaruser1online = ""
         reshteTahsiliid = ""
         bettercourseexamshows = ""
-
-
     paginator = Paginator(bettercourseexamshows, 8)
     page3 = request.GET.get('page3')
     paged_bettercourseexamshows = paginator.get_page(page3)
-
     newcourseexamanswersshows = examsanswer2.objects.all()
     newcourseexamshows = courseexam2.objects.all().order_by('-id')
     paginator = Paginator(newcourseexamshows, 20)
     page2 = request.GET.get('page2')
     paged_newcourseexamshows = paginator.get_page(page2)
-    
-
     offcourseexamshows = courseexam2.objects.filter(off_is_published = True).order_by('-id')
-    
-    
-
     context = {
         'footerAdmins': footerAdmins,
         'reshteTahsiliid': reshteTahsiliid,
@@ -171,7 +157,6 @@ def tutorialexam(request):
         'passexams':passexams,
         'passexamscourses':passexamscourses,
     }
-    
     return render(request, 'pages/exam.html', context)
 
 
@@ -182,14 +167,11 @@ def examresault(request):
         'footerAdmins': footerAdmins,
         'answers': answers,
     }
-
     if request.method == 'POST':
-        courseexamfkey1 = request.POST['courseexamid']
-        usernamefkey1 = request.POST['userid']
         for exams in request.POST:
                 if "examsid" in exams:
                     for answer in request.POST:
-                        if "userexamanswer" in answer:
+                        if "answernumber" in answer:
                                 userexamanswer = request.POST[answer]
                                 courseexamfkey = request.POST['courseexamid']
                                 usernamefkey = request.POST['userid']
@@ -197,7 +179,6 @@ def examresault(request):
                                 useranswersave = UserAnswerTest.objects.create(courseexamfkey=int(courseexamfkey), usernamefkey=int(
                                     usernamefkey), examquestionfkey=int(examquestionfkey), userexamanswer=int(userexamanswer),)
                                 useranswersave.save()
-
                                 answers = UserAnswerTest.objects.filter(courseexamfkey=int(courseexamfkey))
                                 footerAdmins = footerAdmin.objects.all()
                                 context = {
@@ -243,8 +224,10 @@ def examresaultshow(request, courseexam2_id):
     courseexam = get_object_or_404(courseexam2, pk=courseexam2_id)
     examss = exams2.objects.filter(coursenamefkey=courseexam2_id)
     countq = exams2.objects.filter(coursenamefkey=courseexam2_id).count()
-    useranswerexam = UserAnswerTest.objects.filter(courseexamfkey=courseexam2_id , usernamefkey=request.user.id)
-
+    useranswerexam = UserAnswerTest.objects.filter(courseexamfkey=courseexam2_id , usernamefkey=request.user.id).values_list('userexamanswer', flat=True)
+    useranswerexamss = 0
+    for useranswerexams in useranswerexam:
+        useranswerexamss = useranswerexamss + int(useranswerexams)
 
     context = {
         'useranswerexam':useranswerexam,
@@ -252,6 +235,7 @@ def examresaultshow(request, courseexam2_id):
         'courseexam': courseexam,
         'examss': examss,
         'countq':countq,
+        'useranswerexamss':useranswerexamss,
     }
 
     return render(request, 'pages/examresault.html', context)

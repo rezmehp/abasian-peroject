@@ -1,6 +1,6 @@
 {% extends 'base.html' %} exam resault {% block content %}
 <!--test-->
-<div onmousemove="answershow()" class="container  has-background-white-ter">
+<div class="container  has-background-white-ter">
     <section class="hero is-fullheight">
         <br><br>
         <h1 class="title has-text-centered">نتیجه آزمون</h1>
@@ -11,74 +11,14 @@
                         <div class="box field is-horizontal">
                             <div class="field-body">
                                 <div class="field">
-
                                     عنوان آزمون: {{ courseexam }}
+                                </div>
 
-                                </div>
                                 <div class="field">
-                                    تعداد سوالات : <span id="questionnumber"></span> عدد
-                                </div>
-                                <div class="field">
-                                    نمره از 100 -> <span id="resoult"></span>
+                                    نمره از 100 ->{{ useranswerexamss }}
                                 </div>
                             </div>
                         </div>
-
-
-                        {% if useranswerexam %}
-                        {% for useranswerexams in useranswerexam %}
-                        {% for exams in examss %}
-                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer == "0" %}
-                        <span id="na" class="nonea" hidden>1</span>
-                        {% endif %}
-                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer == exams.trueanswer|slugify %}
-                        <span id="ta" class="truea" hidden>1</span>
-                        {% endif %}
-                        {% if useranswerexams.examquestionfkey == exams.id|slugify and useranswerexams.userexamanswer != exams.trueanswer|slugify and useranswerexams.userexamanswer != "0" %}
-                        <span id="fa" class="falsea" hidden>1</span>
-
-                        {% endif %}
-                        {% endfor %}
-                        {% endfor %}
-                        {% endif %}
-
-                        <script>
-                            na = parseInt($(".nonea").text().length);
-                            ta = parseInt($(".truea").text().length);
-                            fa = parseInt($(".falsea").text().length);
-                            questionnumber = na + ta + fa;
-                            resoult = parseFloat((ta * 100) / questionnumber).toFixed(2)
-                            function answershow() {
-
-                                document.getElementById("countna").innerHTML = na;
-
-
-                                document.getElementById("countta").innerHTML = ta;
-
-
-                                document.getElementById("countfa").innerHTML = fa;
-
-                                document.getElementById("questionnumber").innerHTML = questionnumber;
-
-                                document.getElementById("resoult").innerHTML = resoult;
-                            }
-                        </script>
-
-                        <div class="box field is-horizontal">
-                            <div class="field-body">
-                                <div class="field has-text-success">
-                                    <b>تعداد پاسخ درست : </b><span id="countta"></span>
-                                </div>
-                                <div class="field has-text-danger">
-                                    <b>تعداد پاسخ نادرست : </b><span id="countfa"></span>
-                                </div>
-                                <div class="field has-text-link">
-                                    <b>تعداد سوال بی پاسخ : </b><span id="countna"></span>
-                                </div>
-                            </div>
-                        </div>
-
-
                         <div class="field">
                             <div class="field">
                                 <a class="button is-warning" href="{% url 'tutorialexam' %}">
@@ -92,7 +32,7 @@
             </div>
     </section>
 
-</div>
+    </div>
 
 
-{% endblock %}
+    {% endblock %}

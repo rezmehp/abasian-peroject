@@ -102,6 +102,7 @@ class UserAnswerTest(models.Model):
     usernamefkey = models.TextField(verbose_name="آیدی کاربر")
     examquestionfkey = models.TextField(verbose_name="آیدی سوال")
     userexamanswer = models.TextField(verbose_name="جواب کاربر")
+    # examanswernumber = models.TextField(verbose_name="نمره جواب کاربر")
     
     def __str__(self):
         return self.userexamanswer
